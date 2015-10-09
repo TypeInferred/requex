@@ -1,0 +1,41 @@
+{
+  "name": "PROJECT",
+  "version": "0.0.0",
+  "description": "DESCRIPTION",
+  "main": "dist/index.js",
+  "scripts": {
+    "clean": "rimraf lib",
+    "test": "./node_modules/.bin/mocha --compilers js:babel/register --recursive",
+    "test:watch": "./node_modules/.bin/mocha --compilers js:babel/register --recursive --watch",
+    "lint": "./node_modules/.bin/eslint src test examples",
+    "check": "npm run lint && npm run test",
+    "prebuild": "npm run clean && npm run check",
+    "build": "./node_modules/.bin/babel src --out-dir lib",
+    "prepublish": "npm run build",
+    "prebook": "npm run clean && ./node_modules/.bin/gitbook install",
+    "book": "./node_modules/.bin/gitbook build . _book",
+    "prebook:watch": "npm run prebook",
+    "book:watch": "./node_modules/.bin/gitbook serve",
+    "prebook:publish": "npm run book",
+    "book:publish": "gh-pages -d _book -b gh-pages"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/OWNER/PROJECT"
+  },
+  "author": "OWNER (http://github.com/OWNER)",
+  "license": "Apache2",
+  "bugs": {
+    "url": "https://github.com/OWNER/PROJECT/issues"
+  },
+  "homepage": "https://github.com/OWNER/PROJECT",
+  "devDependencies": {
+    "babel": "^5.8.23",
+    "chai": "^3.3.0",
+    "gh-pages": "^0.4.0",
+    "gitbook-cli": "^0.3.6",
+    "gitbook-plugin-prism": "^1.0.0",
+    "mocha": "^2.3.3",
+    "rimraf": "^2.4.3"
+  }
+}
