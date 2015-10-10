@@ -1,3 +1,3 @@
-# Summary
+# Table of contents
 
-Chapters go here...
+* [Arithmetic](/docs/arithmetic.md)

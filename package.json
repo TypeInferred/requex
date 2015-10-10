@@ -12,7 +12,8 @@
     "prebuild": "npm run clean && npm run check",
     "build": "./node_modules/.bin/babel src --out-dir lib",
     "prepublish": "npm run build",
-    "prebook": "npm run clean && ./node_modules/.bin/gitbook install",
+    "apidocs": "./node_modules/.bin/esdoc -c ./esdoc.json",
+    "prebook": "npm run clean && ./node_modules/.bin/gitbook install && npm run apidocs",
     "book": "./node_modules/.bin/gitbook build . _book",
     "prebook:watch": "npm run prebook",
     "book:watch": "./node_modules/.bin/gitbook serve",
@@ -32,6 +33,7 @@
   "devDependencies": {
     "babel": "^5.8.23",
     "chai": "^3.3.0",
+    "esdoc": "^0.4.0",
     "gh-pages": "^0.4.0",
     "gitbook-cli": "^0.3.6",
     "gitbook-plugin-prism": "^1.0.0",
