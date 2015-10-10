@@ -1,5 +1,5 @@
 {
-  "name": "PROJECT",
+  "name": "requex",
   "version": "0.0.0",
   "description": "DESCRIPTION",
   "main": "dist/index.js",
@@ -22,14 +22,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/OWNER/PROJECT"
+    "url": "https://github.com/TypeInferred/requex"
   },
-  "author": "OWNER (http://github.com/OWNER)",
+  "author": "TypeInferred (http://github.com/TypeInferred)",
   "license": "Apache2",
   "bugs": {
-    "url": "https://github.com/OWNER/PROJECT/issues"
+    "url": "https://github.com/TypeInferred/requex/issues"
   },
-  "homepage": "https://github.com/OWNER/PROJECT",
+  "homepage": "https://github.com/TypeInferred/requex",
   "devDependencies": {
     "babel": "^5.8.23",
     "chai": "^3.3.0",
