@@ -1,3 +1,3 @@
 # Table of contents
 
-* [Arithmetic](/docs/arithmetic.md)
+* [FAQ](/docs/FAQ.md)
