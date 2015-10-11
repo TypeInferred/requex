@@ -5,9 +5,9 @@
         
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <title>Introduction | Requex - Reducer Query Extensions</title>
+        <title>RxJs comparison | Requex - Reducer Query Extensions</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <meta name="description" content="This library helps you build &lt;a href=&#39;https://en.wikipedia.org/wiki/Fold_(higher-order_function)&#39;&gt;fold functions&lt;/a&gt; or Redux reducers declaratively. It allows you to specify reducers using queries over an event (or action) stream. You can use the resulting function to create a Redux store.">
+        <meta name="description" content="">
         <meta name="generator" content="GitBook 2.4.3">
         
         
@@ -15,13 +15,13 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
         <meta name="apple-mobile-web-app-capable" content="yes">
         <meta name="apple-mobile-web-app-status-bar-style" content="black">
-        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="gitbook/images/apple-touch-icon-precomposed-152.png">
-        <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
+        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+        <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
         
-    <link rel="stylesheet" href="gitbook/style.css">
+    <link rel="stylesheet" href="../../gitbook/style.css">
     
         
-        <link rel="stylesheet" href="gitbook/plugins/gitbook-plugin-prism/prism.css">
+        <link rel="stylesheet" href="../../gitbook/plugins/gitbook-plugin-prism/prism.css">
         
     
     
@@ -29,8 +29,8 @@
         
     
     
-    <link rel="next" href="./docs/preface/index.html" />
     
+    <link rel="prev" href="../../docs/preface/Prerequisites.html" />
     
 
         
@@ -38,7 +38,7 @@
     <body>
         
         
-    <div class="book" data-level="0" data-basepath="." data-revision="Sun Oct 11 2015 08:56:02 GMT+0100 (BST)">
+    <div class="book" data-level="1.2" data-basepath="../.." data-revision="Sun Oct 11 2015 08:56:02 GMT+0100 (BST)">
     
 
 <div class="book-summary">
@@ -56,10 +56,10 @@
 
             
     
-        <li class="chapter active" data-level="0" data-path="index.html">
+        <li class="chapter " data-level="0" data-path="index.html">
             
                 
-                    <a href="./index.html">
+                    <a href="../../index.html">
                 
                         <i class="fa fa-check"></i>
                         
@@ -72,7 +72,7 @@
         <li class="chapter " data-level="1" data-path="docs/preface/index.html">
             
                 
-                    <a href="./docs/preface/index.html">
+                    <a href="../../docs/preface/index.html">
                 
                         <i class="fa fa-check"></i>
                         
@@ -88,7 +88,7 @@
         <li class="chapter " data-level="1.1" data-path="docs/preface/Prerequisites.html">
             
                 
-                    <a href="./docs/preface/Prerequisites.html">
+                    <a href="../../docs/preface/Prerequisites.html">
                 
                         <i class="fa fa-check"></i>
                         
@@ -100,10 +100,10 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2" data-path="docs/preface/RxJs-comparison.html">
+        <li class="chapter active" data-level="1.2" data-path="docs/preface/RxJs-comparison.html">
             
                 
-                    <a href="./docs/preface/RxJs-comparison.html">
+                    <a href="../../docs/preface/RxJs-comparison.html">
                 
                         <i class="fa fa-check"></i>
                         
@@ -216,7 +216,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="./" >Requex - Reducer Query Extensions</a>
+        <a href="../../" >Requex - Reducer Query Extensions</a>
     </h1>
 </div>
 
@@ -226,9 +226,68 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h1 id="requex-reducer-query-extensions">Requex - Reducer Query Extensions</h1>
-<p>This library helps you build <a href="https://en.wikipedia.org/wiki/Fold_(higher-order_function)" target="_blank">fold functions</a> or <a href="https://rackt.github.io/redux/docs/api/Store.html" target="_blank">Redux reducers</a> declaratively. It allows you to specify reducers using queries over an event (or <a href="https://rackt.github.io/redux/docs/basics/Actions.html" target="_blank">action</a>) stream. You can use the resulting function to create a <a href="https://rackt.github.io/redux/docs/api/Store.html" target="_blank">Redux store</a>.</p>
-<p>For more information read the <a href="http://TypeInferred.github.io/requex" target="_blank">Requex docs</a>.</p>
+                        <h2 id="rxjs-comparison">RxJs comparison</h2>
+<p>You can build an observable model/state-tree in a declarative manner using <a href="http://reactivex.io/" target="_blank">RxJS</a> and it is a more mature library. </p>
+<p>For example, you might do this by using the incremental aggregation operators like <code>scan(...)</code> to build primitive operators like <code>runningTotal(...)</code> etc. and then <code>combineLatest(...)</code> to bring together streams representing property values into streams representing objects. </p>
+<p>This may be suitable for many applications. However, there are some drawbacks to this approach.</p>
+<ol>
+<li><p>Requex encourages a &quot;single state atom&quot; which makes it trivial to implement behaviours like undo/redo, hot-reloading etc. In Rx each instance of an aggregation operator (e.g., a <code>scan(...)</code>) has mutable state to keep track of its accumulator. Therefore, even simple applications end up with distributed mutable state. This means these behaviours become much harder to implement and reason about.</p>
+</li>
+<li><p>Sometimes a single event can cause changes to multiple parts of your model/state-tree.</p>
+</li>
+</ol>
+<p>Consider the following application.</p>
+<p>Inputs:</p>
+<ul>
+<li><code>A</code>, a number, initially <code>10</code></li>
+<li><code>B</code>, a number, initially <code>8</code></li>
+</ul>
+<p>Outputs:</p>
+<ul>
+<li><code>D</code>, the absolute difference of the two numbers, initially <code>2</code></li>
+<li><code>S</code>, the sum of the two numbers, initially <code>18</code></li>
+</ul>
+<p>Actions/Events:</p>
+<ul>
+<li><code>USER_CHANGED_A</code>, triggered when the user changes <code>A</code>&apos;s input value</li>
+<li><code>USER_CHANGED_B</code>, triggered when the user changes <code>B</code>&apos;s input value</li>
+</ul>
+<p>Model/state-tree structure:</p>
+<pre><code>root: {
+  inputs: { a: 10, b: 8 },
+  outputs: { d: 2, s: 18 }
+}
+</code></pre><p>If you use Rx, a single update in the application action/event stream can result in multiple updates in the model stream and wasted object allocations. </p>
+<p>For example: </p>
+<ul>
+<li>action/event <code>USER_CHANGED_A {payload: 11}</code> occurs in the application action/event stream<ul>
+<li>triggers <code>a = 11</code><ul>
+<li>triggers <code>inputs = { a: 11, b: 8}</code> (through <code>combineLatest(...)</code>)<ul>
+<li>triggers <code>root = { inputs: { a: 11, b: 8}, outputs: { d: 2, s: 18} }</code> (through <code>combineLatest(...)</code>)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>triggers <code>d = 3</code><ul>
+<li>triggers <code>outputs = { d: 3, s: 18}</code> (through <code>combineLatest(...)</code>)<ul>
+<li>triggers <code>root = { inputs: { a: 11, b: 8}, outputs: { d: 3, s: 18} }</code> (through <code>combineLatest(...)</code>)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>triggers <code>s = 19</code><ul>
+<li>triggers <code>outputs = { d: 3, s: 19}</code> (through <code>combineLatest(...)</code>)<ul>
+<li>triggers <code>root = { inputs: { a: 11, b: 8}, outputs: { d: 3, s: 19} }</code> (through <code>combineLatest(...)</code>)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>Here 1 event resulted in 3 unneccessary object allocations (1 x <code>outputs</code> and 2 x <code>root</code>). It also triggered 3 updates to the <code>root</code> observable. Therefore, if you weren&apos;t scheduling your virtual DOM render and diff using something like <code>requestAnimationFrame(...)</code> this could have caused 2 extra virtual DOM diffs and 2 extra DOM patches.</p>
+<p>You may be able to reduce this waste in your Rx model using scheduling but this would quickly become complex and hard to reason about.</p>
+<p>If you use Requex (or for that matter Redux), this extra waste isn&apos;t an issue as the events are reduced by your model in a depth-first manner. In the example application, this means the <code>inputs</code> and <code>outputs</code> objects would be updated and allocated before the <code>root</code> is allocated. This means that each event (or possibly batch of events) only causes a single update to your single state atom.</p>
 
                     
                     </section>
@@ -239,14 +298,14 @@
         </div>
 
         
+        <a href="../../docs/preface/Prerequisites.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: Prerequisites"><i class="fa fa-angle-left"></i></a>
         
-        <a href="./docs/preface/index.html" class="navigation navigation-next navigation-unique" aria-label="Next page: Preface"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>
 
         
-<script src="gitbook/app.js"></script>
+<script src="../../gitbook/app.js"></script>
 
 <script>
 require(["gitbook"], function(gitbook) {
