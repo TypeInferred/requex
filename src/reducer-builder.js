@@ -8,9 +8,9 @@ export default class ReducerBuilder {
   /** @ignore */
   constructor(reduceChain, handledEventTypes) {
     /** @ignore */
-    this.reduceChain = reduceChain;
+    this._reduceChain = reduceChain;
     /** @ignore */
-    this.handledEventTypes = handledEventTypes;
+    this._handledEventTypes = handledEventTypes;
   }
 
   /**
@@ -52,17 +52,17 @@ export default class ReducerBuilder {
   build() {
     const reduce = (previousState, event) => {
       let result;
-      this.reduceChain(previousState, event)(r => result = r);
+      this._reduceChain(previousState, event)(r => result = r);
       return result;
     };
-    return new ReducerDescriptor(reduce, this.handledEventTypes);
+    return new ReducerDescriptor(reduce, this._handledEventTypes);
   }
 
   /** @ignore */
   _chain(resultHandler) {
     return new ReducerBuilder(
-      (previousState, event) => next => this.reduceChain(previousState, event)(result => resultHandler(result, next, previousState)),
-      this.handledEventTypes
+      (previousState, event) => next => this._reduceChain(previousState, event)(result => resultHandler(result, next, previousState)),
+      this._handledEventTypes
     );
   }
 }
