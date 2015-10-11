@@ -420,18 +420,6 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
-    "src/reducer-builder.js~reducerbuilder#handledeventtypes",
-    "class/src/reducer-builder.js~ReducerBuilder.html#instance-member-handledEventTypes",
-    "src/reducer-builder.js~ReducerBuilder#handledEventTypes",
-    "member"
-  ],
-  [
-    "src/reducer-builder.js~reducerbuilder#reducechain",
-    "class/src/reducer-builder.js~ReducerBuilder.html#instance-member-reduceChain",
-    "src/reducer-builder.js~ReducerBuilder#reduceChain",
-    "member"
-  ],
-  [
     "src/reducer-builder.js~reducerbuilder#select",
     "class/src/reducer-builder.js~ReducerBuilder.html#instance-method-select",
     "src/reducer-builder.js~ReducerBuilder#select",

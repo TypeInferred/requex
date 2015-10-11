@@ -311,7 +311,7 @@
     "access": null,
     "description": null,
     "lineNumber": 1,
-    "content": "import ReducerDescriptor from './reducer-descriptor.js';\n\n/**\n * A builder for reducers.\n */\nexport default class ReducerBuilder {\n\n  /** @ignore */\n  constructor(reduceChain, handledEventTypes) {\n    this.reduceChain = reduceChain;\n    this.handledEventTypes = handledEventTypes;\n  }\n\n  /**\n   * Maps the reduced value onto another value using a function.\n   * @param {function(x:T1):T2} selector - The mapping function\n   * @returns {ReducerBuilder<T2>} A reducer builder that maps the value\n   */\n  select(selector) {\n    if (!selector) throw new Error('Missing selector argument');\n    return this._chain((result, next) => next(selector(result)));\n  }\n\n  /**\n   * Filters the value by applying a predicate function to the value\n   * @param {function(x:T):boolean} predicate - The predicate function\n   * @returns {ReducerBuilder<T>} A reducer builder than filters using the predicate\n   */\n  where(predicate) {\n    if (!predicate) throw new Error('Missing predicate argument');\n    return this._chain((result, next) => predicate(result) && next(result));\n  }\n\n  /**\n   * Accumulates the sum of the reduced values.\n   * @param {number|string} zeroValue - The zero value for the addition operator.\n   * @returns {ReducerBuilder<T>} A reducer builder that accumulates the sum\n   */\n  sum(zeroValue) {\n    return this._chain((result, next, previousState) => {\n      const acc = previousState || zeroValue;\n      next(acc + result);\n    });\n  }\n\n  /**\n   * Constructs a reducer descriptor from the query defined using the builder.\n   * @returns {ReducerDescriptor} a reducer descriptor\n   */\n  build() {\n    const reduce = (previousState, event) => {\n      let result;\n      this.reduceChain(previousState, event)(r => result = r);\n      return result;\n    };\n    return new ReducerDescriptor(reduce, this.handledEventTypes);\n  }\n\n  /** @ignore */\n  _chain(resultHandler) {\n    return new ReducerBuilder(\n      (previousState, event) => next => this.reduceChain(previousState, event)(result => resultHandler(result, next, previousState)),\n      this.handledEventTypes\n    );\n  }\n}"
+    "content": "import ReducerDescriptor from './reducer-descriptor.js';\n\n/**\n * A builder for reducers.\n */\nexport default class ReducerBuilder {\n\n  /** @ignore */\n  constructor(reduceChain, handledEventTypes) {\n    /** @ignore */\n    this.reduceChain = reduceChain;\n    /** @ignore */\n    this.handledEventTypes = handledEventTypes;\n  }\n\n  /**\n   * Maps the reduced value onto another value using a function.\n   * @param {function(x:T1):T2} selector - The mapping function\n   * @returns {ReducerBuilder<T2>} A reducer builder that maps the value\n   */\n  select(selector) {\n    if (!selector) throw new Error('Missing selector argument');\n    return this._chain((result, next) => next(selector(result)));\n  }\n\n  /**\n   * Filters the value by applying a predicate function to the value\n   * @param {function(x:T):boolean} predicate - The predicate function\n   * @returns {ReducerBuilder<T>} A reducer builder than filters using the predicate\n   */\n  where(predicate) {\n    if (!predicate) throw new Error('Missing predicate argument');\n    return this._chain((result, next) => predicate(result) && next(result));\n  }\n\n  /**\n   * Accumulates the sum of the reduced values.\n   * @param {number|string} zeroValue - The zero value for the addition operator.\n   * @returns {ReducerBuilder<T>} A reducer builder that accumulates the sum\n   */\n  sum(zeroValue) {\n    return this._chain((result, next, previousState) => {\n      const acc = previousState || zeroValue;\n      next(acc + result);\n    });\n  }\n\n  /**\n   * Constructs a reducer descriptor from the query defined using the builder.\n   * @returns {ReducerDescriptor} a reducer descriptor\n   */\n  build() {\n    const reduce = (previousState, event) => {\n      let result;\n      this.reduceChain(previousState, event)(r => result = r);\n      return result;\n    };\n    return new ReducerDescriptor(reduce, this.handledEventTypes);\n  }\n\n  /** @ignore */\n  _chain(resultHandler) {\n    return new ReducerBuilder(\n      (previousState, event) => next => this.reduceChain(previousState, event)(result => resultHandler(result, next, previousState)),\n      this.handledEventTypes\n    );\n  }\n}"
   },
   {
     "__docId__": 14,
@@ -367,8 +367,8 @@
     "longname": "src/reducer-builder.js~ReducerBuilder#reduceChain",
     "access": null,
     "description": null,
-    "lineNumber": 10,
-    "undocument": true,
+    "lineNumber": 11,
+    "ignore": true,
     "type": {
       "types": [
         "*"
@@ -385,8 +385,8 @@
     "longname": "src/reducer-builder.js~ReducerBuilder#handledEventTypes",
     "access": null,
     "description": null,
-    "lineNumber": 11,
-    "undocument": true,
+    "lineNumber": 13,
+    "ignore": true,
     "type": {
       "types": [
         "*"
@@ -403,7 +403,7 @@
     "longname": "src/reducer-builder.js~ReducerBuilder#select",
     "access": null,
     "description": "Maps the reduced value onto another value using a function.",
-    "lineNumber": 19,
+    "lineNumber": 21,
     "unknown": [
       {
         "tagName": "@returns",
@@ -442,7 +442,7 @@
     "longname": "src/reducer-builder.js~ReducerBuilder#where",
     "access": null,
     "description": "Filters the value by applying a predicate function to the value",
-    "lineNumber": 29,
+    "lineNumber": 31,
     "unknown": [
       {
         "tagName": "@returns",
@@ -481,7 +481,7 @@
     "longname": "src/reducer-builder.js~ReducerBuilder#sum",
     "access": null,
     "description": "Accumulates the sum of the reduced values.",
-    "lineNumber": 39,
+    "lineNumber": 41,
     "unknown": [
       {
         "tagName": "@returns",
@@ -521,7 +521,7 @@
     "longname": "src/reducer-builder.js~ReducerBuilder#build",
     "access": null,
     "description": "Constructs a reducer descriptor from the query defined using the builder.",
-    "lineNumber": 50,
+    "lineNumber": 52,
     "unknown": [
       {
         "tagName": "@returns",
@@ -549,7 +549,7 @@
     "longname": "src/reducer-builder.js~ReducerBuilder#_chain",
     "access": null,
     "description": null,
-    "lineNumber": 60,
+    "lineNumber": 62,
     "ignore": true,
     "params": [
       {

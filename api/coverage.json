@@ -1,6 +1,6 @@
 {
-  "coverage": "90%",
-  "expectCount": 20,
+  "coverage": "100%",
+  "expectCount": 18,
   "actualCount": 18,
   "files": {
     "src/constants.js": {
@@ -19,12 +19,9 @@
       "undocumentLines": []
     },
     "src/reducer-builder.js": {
-      "expectCount": 7,
+      "expectCount": 5,
       "actualCount": 5,
-      "undocumentLines": [
-        11,
-        10
-      ]
+      "undocumentLines": []
     },
     "src/reducer-descriptor.js": {
       "expectCount": 4,

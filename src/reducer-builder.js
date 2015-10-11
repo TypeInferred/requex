@@ -7,7 +7,9 @@ export default class ReducerBuilder {
 
   /** @ignore */
   constructor(reduceChain, handledEventTypes) {
+    /** @ignore */
     this.reduceChain = reduceChain;
+    /** @ignore */
     this.handledEventTypes = handledEventTypes;
   }
 
