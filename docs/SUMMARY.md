@@ -1,5 +1,5 @@
 # Table of contents
 
-* [Introduction](introduction/README.md)
-  * [Prerequisites](introduction/Prerequisites.md)
-  * [Differences from RxJS](introduction/Differences-from-RxJs.ms)
+* [Preface](/docs/preface/README.md)
+  * [Prerequisites](/docs/preface/Prerequisites.md)
+  * [RxJs comparison](/docs/preface/RxJs-comparison.md)

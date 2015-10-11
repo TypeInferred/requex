@@ -1,4 +1,4 @@
-### Differences from RxJS
+## RxJs comparison
 
 You can build an observable model/state-tree in a declarative manner using [RxJS](http://reactivex.io/) and it is a more mature library. 
 
