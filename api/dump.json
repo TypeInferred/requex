@@ -1,0 +1,1364 @@
+[
+  {
+    "__docId__": 0,
+    "kind": "file",
+    "static": true,
+    "variation": null,
+    "name": "src/constants.js",
+    "memberof": null,
+    "longname": "src/constants.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 4,
+    "content": "/**\n * Signifies all event types are handled.\n */\nexport const ALL_EVENT_TYPES = '*';"
+  },
+  {
+    "__docId__": 1,
+    "kind": "variable",
+    "static": true,
+    "variation": null,
+    "name": "ALL_EVENT_TYPES",
+    "memberof": "src/constants.js",
+    "longname": "src/constants.js~ALL_EVENT_TYPES",
+    "access": null,
+    "export": true,
+    "importPath": "requex/src/constants.js",
+    "importStyle": "{ALL_EVENT_TYPES}",
+    "description": "Signifies all event types are handled.",
+    "lineNumber": 4,
+    "type": {
+      "types": [
+        "string"
+      ]
+    }
+  },
+  {
+    "__docId__": 2,
+    "kind": "file",
+    "static": true,
+    "variation": null,
+    "name": "src/events.js",
+    "memberof": null,
+    "longname": "src/events.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1,
+    "content": "import hamt from 'hamt';\nimport ReducerBuilder from './reducer-builder.js';\nimport {ALL_EVENT_TYPES} from './constants.js';\n\n/**\n * A factory for creating reducer queries over the events in scope.\n */\nexport default class Events {\n  /**\n   * Creates a reducer query over events in scope matching the event type specified.\n   * @param {string} eventType - The event type\n   * @returns {ReducerBuilder} The query over the matching events\n   */\n  ofType(eventType) {\n    if (typeof eventType !== 'string') throw new Error('Invalid eventType argument. Expected a string.');\n    return new ReducerBuilder(\n      (_, event) => next => event && event.type === eventType && next(event), \n      hamt.set(eventType, true, hamt.empty));\n  }\n\n  /**\n   * Creates a reducer query of over all events in scope.\n   * @returns {ReducerBuilder} The query over the events in scope\n   */\n   ofAnyType() {\n    return new ReducerBuilder((_, event) => next => next(event), hamt.set('*', true, hamt.empty));\n   }\n}"
+  },
+  {
+    "__docId__": 3,
+    "kind": "class",
+    "static": true,
+    "variation": null,
+    "name": "Events",
+    "memberof": "src/events.js",
+    "longname": "src/events.js~Events",
+    "access": null,
+    "export": true,
+    "importPath": "requex/src/events.js",
+    "importStyle": "Events",
+    "description": "A factory for creating reducer queries over the events in scope.",
+    "lineNumber": 8,
+    "interface": false
+  },
+  {
+    "__docId__": 4,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "ofType",
+    "memberof": "src/events.js~Events",
+    "longname": "src/events.js~Events#ofType",
+    "access": null,
+    "description": "Creates a reducer query over events in scope matching the event type specified.",
+    "lineNumber": 14,
+    "unknown": [
+      {
+        "tagName": "@returns",
+        "tagValue": "{ReducerBuilder} The query over the matching events"
+      }
+    ],
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "eventType",
+        "description": "The event type"
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "ReducerBuilder"
+      ],
+      "spread": false,
+      "description": "The query over the matching events"
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 5,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "ofAnyType",
+    "memberof": "src/events.js~Events",
+    "longname": "src/events.js~Events#ofAnyType",
+    "access": null,
+    "description": "Creates a reducer query of over all events in scope.",
+    "lineNumber": 25,
+    "unknown": [
+      {
+        "tagName": "@returns",
+        "tagValue": "{ReducerBuilder} The query over the events in scope"
+      }
+    ],
+    "params": [],
+    "return": {
+      "nullable": null,
+      "types": [
+        "ReducerBuilder"
+      ],
+      "spread": false,
+      "description": "The query over the events in scope"
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 6,
+    "kind": "file",
+    "static": true,
+    "variation": null,
+    "name": "src/index.js",
+    "memberof": null,
+    "longname": "src/index.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1,
+    "content": "import hamt from 'hamt';\nimport Events from './events.js';\nimport ReducerBuilder from './reducer-builder.js';\nimport * as Consts from './constants.js';\n\nconst events = new Events();\n\n/**\n * Collection of constant values for event types etc.\n */\nexport const Constants = Consts;\n\n/**\n * A factory for creating reducer queries.\n */\nexport default class From {\n  /**\n   * A sub-factory for creating reducer queries over the events in scope.\n   * @returns {Events} The factory\n   */\n  static events() {\n    return events;\n  }\n\n  /**\n   * A reducer query returning the value provided.\n   * @param value - The value\n   * @returns {ReducerBuilder} - The reducer query containing the value\n   */\n  static value(value) {\n    return new ReducerBuilder((previousState, event) => next => next(value), hamt.empty)\n  }\n\n  /**\n   * Builds a a reducer query from a structure of reducer queries and constants representing\n   * the reduced structure.\n   * @returns {ReducerBuilder} - The reducer query builder\n   */\n  static structure(reducerStructure) {\n    if (typeof reducerStructure !== 'object') throw new Error('Invalid reducerStructure argument. Expected an object.');\n    const keys = Object.keys(reducerStructure);\n    const constantKeys = keys.filter(k => !(reducerStructure[k] instanceof ReducerBuilder));\n    const reducerKeys = keys.filter(k => reducerStructure[k] instanceof ReducerBuilder);\n    const reducerLookup = reducerKeys.reduce((acc, k) => hamt.set(k, reducerStructure[k].build(), acc), hamt.empty);\n    const handledEventTypes = hamt.values(reducerLookup).reduce((acc, reducerProperty) => {\n      const reducerPropertyHandledEvents = hamt.keys(reducerProperty.handledEventTypes);\n      return reducerPropertyHandledEvents.reduce((innerAcc, eventType) => hamt.set(eventType, true, innerAcc), acc);\n    }, hamt.empty);\n    return new ReducerBuilder((previousState, event) => next => {\n      // Track whether the state has actually changed. If not, we can return the previous state.\n      const isSeeding = previousState === undefined;\n      let hasStateChanged = isSeeding;\n      const nextState = {};\n      // Reduce reducer properties using previous state and the event\n      reducerKeys.forEach(k => {\n        const previousPropertyValue = previousState && previousState[k];\n        const propertyReducer = hamt.get(k, reducerLookup);\n        // Property can change on initial seed or if the reducer can handle the event.\n        const couldPropertyChange = isSeeding || hamt.get(event, propertyReducer.handledEventTypes);\n        if (couldPropertyChange) {\n          const newPropertyValue = propertyReducer.reduce(previousState, event);\n          // If it has changed we take the new value and will produce a new version of the state.\n          if (newPropertyValue !== previousPropertyValue) {\n            hasStateChanged = true;\n            nextState[k] = newPropertyValue;\n            return;\n          }\n        }\n        nextState[k] = previousPropertyValue;\n      });\n      if (hasStateChanged) {\n        // Copy constants\n        constantKeys.forEach(k => nextState[k] = reducerStructure[k]);\n        next(nextState);\n        return;\n      }\n      next(previousState);\n    }, handledEventTypes)\n  }\n}"
+  },
+  {
+    "__docId__": 7,
+    "kind": "variable",
+    "static": true,
+    "variation": null,
+    "name": "events",
+    "memberof": "src/index.js",
+    "longname": "src/index.js~events",
+    "access": null,
+    "export": false,
+    "importPath": "requex/src/index.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 6,
+    "undocument": true,
+    "type": {
+      "types": [
+        "src/events.js~Events"
+      ]
+    }
+  },
+  {
+    "__docId__": 8,
+    "kind": "variable",
+    "static": true,
+    "variation": null,
+    "name": "Constants",
+    "memberof": "src/index.js",
+    "longname": "src/index.js~Constants",
+    "access": null,
+    "export": true,
+    "importPath": "requex/src/index.js",
+    "importStyle": "{Constants}",
+    "description": "Collection of constant values for event types etc.",
+    "lineNumber": 11,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 9,
+    "kind": "class",
+    "static": true,
+    "variation": null,
+    "name": "From",
+    "memberof": "src/index.js",
+    "longname": "src/index.js~From",
+    "access": null,
+    "export": true,
+    "importPath": "requex/src/index.js",
+    "importStyle": "From",
+    "description": "A factory for creating reducer queries.",
+    "lineNumber": 16,
+    "interface": false
+  },
+  {
+    "__docId__": 10,
+    "kind": "method",
+    "static": true,
+    "variation": null,
+    "name": "events",
+    "memberof": "src/index.js~From",
+    "longname": "src/index.js~From.events",
+    "access": null,
+    "description": "A sub-factory for creating reducer queries over the events in scope.",
+    "lineNumber": 21,
+    "unknown": [
+      {
+        "tagName": "@returns",
+        "tagValue": "{Events} The factory"
+      }
+    ],
+    "params": [],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Events"
+      ],
+      "spread": false,
+      "description": "The factory"
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 11,
+    "kind": "method",
+    "static": true,
+    "variation": null,
+    "name": "value",
+    "memberof": "src/index.js~From",
+    "longname": "src/index.js~From.value",
+    "access": null,
+    "description": "A reducer query returning the value provided.",
+    "lineNumber": 30,
+    "unknown": [
+      {
+        "tagName": "@returns",
+        "tagValue": "{ReducerBuilder} - The reducer query containing the value"
+      }
+    ],
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "*"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "value",
+        "description": "The value"
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "ReducerBuilder"
+      ],
+      "spread": false,
+      "description": "The reducer query containing the value"
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 12,
+    "kind": "method",
+    "static": true,
+    "variation": null,
+    "name": "structure",
+    "memberof": "src/index.js~From",
+    "longname": "src/index.js~From.structure",
+    "access": null,
+    "description": "Builds a a reducer query from a structure of reducer queries and constants representing\nthe reduced structure.",
+    "lineNumber": 39,
+    "unknown": [
+      {
+        "tagName": "@returns",
+        "tagValue": "{ReducerBuilder} - The reducer query builder"
+      }
+    ],
+    "params": [
+      {
+        "name": "reducerStructure",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "ReducerBuilder"
+      ],
+      "spread": false,
+      "description": "The reducer query builder"
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 13,
+    "kind": "file",
+    "static": true,
+    "variation": null,
+    "name": "src/reducer-builder.js",
+    "memberof": null,
+    "longname": "src/reducer-builder.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1,
+    "content": "import ReducerDescriptor from './reducer-descriptor.js';\n\n/**\n * A builder for reducers.\n */\nexport default class ReducerBuilder {\n\n  /** ignore */\n  constructor(reduceChain, handledEventTypes) {\n    this.reduceChain = reduceChain;\n    this.handledEventTypes = handledEventTypes;\n  }\n\n  /**\n   * Maps the reduced value onto another value using a function.\n   * @param {function(x:T1):T2} selector - The mapping function\n   * @returns ReducerBuilder<T2> A reducer builder that maps the value\n   */\n  select(selector) {\n    if (!selector) throw new Error('Missing selector argument');\n    return this._chain((result, next) => next(selector(result)));\n  }\n\n  /**\n   * Filters the value by applying a predicate function to the value\n   * @param {function(x:T):boolean} predicate - The predicate function\n   * @returns ReducerBuilder<T> A reducer builder than filters using the predicate\n   */\n  where(predicate) {\n    if (!predicate) throw new Error('Missing predicate argument');\n    return this._chain((result, next) => predicate(result) && next(result));\n  }\n\n  /**\n   * Accumulates the sum of the reduced values.\n   * @param {number|string} zeroValue - The zero value for the addition operator.\n   * @returns ReducerBuilder<T> A reducer builder that accumulates the sum\n   */\n  sum(zeroValue) {\n    return this._chain((result, next, previousState) => {\n      const acc = previousState || zeroValue;\n      next(acc + result);\n    });\n  }\n\n  /**\n   * Constructs a reducer descriptor from the query defined using the builder.\n   * @returns {ReducerDescriptor} a reducer descriptor\n   */\n  build() {\n    const reduce = (previousState, event) => {\n      let result;\n      this.reduceChain(previousState, event)(r => result = r);\n      return result;\n    };\n    return new ReducerDescriptor(reduce, this.handledEventTypes);\n  }\n\n  /** @ignore */\n  _chain(resultHandler) {\n    return new ReducerBuilder(\n      (previousState, event) => next => this.reduceChain(previousState, event)(result => resultHandler(result, next, previousState)),\n      this.handledEventTypes\n    );\n  }\n}"
+  },
+  {
+    "__docId__": 14,
+    "kind": "class",
+    "static": true,
+    "variation": null,
+    "name": "ReducerBuilder",
+    "memberof": "src/reducer-builder.js",
+    "longname": "src/reducer-builder.js~ReducerBuilder",
+    "access": null,
+    "export": true,
+    "importPath": "requex/src/reducer-builder.js",
+    "importStyle": "ReducerBuilder",
+    "description": "A builder for reducers.",
+    "lineNumber": 6,
+    "interface": false
+  },
+  {
+    "__docId__": 15,
+    "kind": "constructor",
+    "static": false,
+    "variation": null,
+    "name": "constructor",
+    "memberof": "src/reducer-builder.js~ReducerBuilder",
+    "longname": "src/reducer-builder.js~ReducerBuilder#constructor",
+    "access": null,
+    "description": "ignore",
+    "lineNumber": 9,
+    "params": [
+      {
+        "name": "reduceChain",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "handledEventTypes",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "generator": false
+  },
+  {
+    "__docId__": 16,
+    "kind": "member",
+    "static": false,
+    "variation": null,
+    "name": "reduceChain",
+    "memberof": "src/reducer-builder.js~ReducerBuilder",
+    "longname": "src/reducer-builder.js~ReducerBuilder#reduceChain",
+    "access": null,
+    "description": null,
+    "lineNumber": 10,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 17,
+    "kind": "member",
+    "static": false,
+    "variation": null,
+    "name": "handledEventTypes",
+    "memberof": "src/reducer-builder.js~ReducerBuilder",
+    "longname": "src/reducer-builder.js~ReducerBuilder#handledEventTypes",
+    "access": null,
+    "description": null,
+    "lineNumber": 11,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 18,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "select",
+    "memberof": "src/reducer-builder.js~ReducerBuilder",
+    "longname": "src/reducer-builder.js~ReducerBuilder#select",
+    "access": null,
+    "description": "Maps the reduced value onto another value using a function.",
+    "lineNumber": 19,
+    "unknown": [
+      {
+        "tagName": "@returns",
+        "tagValue": "ReducerBuilder<T2> A reducer builder that maps the value"
+      }
+    ],
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "function(x:T1):T2"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "selector",
+        "description": "The mapping function"
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "*"
+      ],
+      "spread": false,
+      "description": "ReducerBuilder<T2> A reducer builder that maps the value"
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 19,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "where",
+    "memberof": "src/reducer-builder.js~ReducerBuilder",
+    "longname": "src/reducer-builder.js~ReducerBuilder#where",
+    "access": null,
+    "description": "Filters the value by applying a predicate function to the value",
+    "lineNumber": 29,
+    "unknown": [
+      {
+        "tagName": "@returns",
+        "tagValue": "ReducerBuilder<T> A reducer builder than filters using the predicate"
+      }
+    ],
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "function(x:T):boolean"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "predicate",
+        "description": "The predicate function"
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "*"
+      ],
+      "spread": false,
+      "description": "ReducerBuilder<T> A reducer builder than filters using the predicate"
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 20,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "sum",
+    "memberof": "src/reducer-builder.js~ReducerBuilder",
+    "longname": "src/reducer-builder.js~ReducerBuilder#sum",
+    "access": null,
+    "description": "Accumulates the sum of the reduced values.",
+    "lineNumber": 39,
+    "unknown": [
+      {
+        "tagName": "@returns",
+        "tagValue": "ReducerBuilder<T> A reducer builder that accumulates the sum"
+      }
+    ],
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "number",
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "zeroValue",
+        "description": "The zero value for the addition operator."
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "*"
+      ],
+      "spread": false,
+      "description": "ReducerBuilder<T> A reducer builder that accumulates the sum"
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 21,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "build",
+    "memberof": "src/reducer-builder.js~ReducerBuilder",
+    "longname": "src/reducer-builder.js~ReducerBuilder#build",
+    "access": null,
+    "description": "Constructs a reducer descriptor from the query defined using the builder.",
+    "lineNumber": 50,
+    "unknown": [
+      {
+        "tagName": "@returns",
+        "tagValue": "{ReducerDescriptor} a reducer descriptor"
+      }
+    ],
+    "params": [],
+    "return": {
+      "nullable": null,
+      "types": [
+        "ReducerDescriptor"
+      ],
+      "spread": false,
+      "description": "a reducer descriptor"
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 22,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "_chain",
+    "memberof": "src/reducer-builder.js~ReducerBuilder",
+    "longname": "src/reducer-builder.js~ReducerBuilder#_chain",
+    "access": null,
+    "description": null,
+    "lineNumber": 60,
+    "ignore": true,
+    "params": [
+      {
+        "name": "resultHandler",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 23,
+    "kind": "file",
+    "static": true,
+    "variation": null,
+    "name": "src/reducer-descriptor.js",
+    "memberof": null,
+    "longname": "src/reducer-descriptor.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 4,
+    "content": "/**\n * A reducer along with the event types that it and its children can handle.\n */\nexport default class ReducerDescriptor {\n  /**\n   * Constructs a descriptor that contains the reducer function along with the events\n   * that it and its children can handle.\n   * @param {ReducerFunc} reduce - The reducer function (see: [Reducers](https://rackt.github.io/redux/docs/basics/Reducers.html#handling-actions))\n   */\n  constructor(reduce, handledEventTypes) {\n    /**\n     * @type {ReducerFunc}\n     */\n    this.reduce = reduce;\n    /**\n     * @type {HAMT<string>}\n     */\n    this.handledEventTypes = handledEventTypes;\n  }\n}"
+  },
+  {
+    "__docId__": 24,
+    "kind": "class",
+    "static": true,
+    "variation": null,
+    "name": "ReducerDescriptor",
+    "memberof": "src/reducer-descriptor.js",
+    "longname": "src/reducer-descriptor.js~ReducerDescriptor",
+    "access": null,
+    "export": true,
+    "importPath": "requex/src/reducer-descriptor.js",
+    "importStyle": "ReducerDescriptor",
+    "description": "A reducer along with the event types that it and its children can handle.",
+    "lineNumber": 4,
+    "interface": false
+  },
+  {
+    "__docId__": 25,
+    "kind": "constructor",
+    "static": false,
+    "variation": null,
+    "name": "constructor",
+    "memberof": "src/reducer-descriptor.js~ReducerDescriptor",
+    "longname": "src/reducer-descriptor.js~ReducerDescriptor#constructor",
+    "access": null,
+    "description": "Constructs a descriptor that contains the reducer function along with the events\nthat it and its children can handle.",
+    "lineNumber": 10,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "ReducerFunc"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "reduce",
+        "description": "The reducer function (see: [Reducers](https://rackt.github.io/redux/docs/basics/Reducers.html#handling-actions))"
+      }
+    ],
+    "generator": false
+  },
+  {
+    "__docId__": 26,
+    "kind": "member",
+    "static": false,
+    "variation": null,
+    "name": "reduce",
+    "memberof": "src/reducer-descriptor.js~ReducerDescriptor",
+    "longname": "src/reducer-descriptor.js~ReducerDescriptor#reduce",
+    "access": null,
+    "description": null,
+    "lineNumber": 14,
+    "type": {
+      "nullable": null,
+      "types": [
+        "ReducerFunc"
+      ],
+      "spread": false,
+      "description": null
+    }
+  },
+  {
+    "__docId__": 27,
+    "kind": "member",
+    "static": false,
+    "variation": null,
+    "name": "handledEventTypes",
+    "memberof": "src/reducer-descriptor.js~ReducerDescriptor",
+    "longname": "src/reducer-descriptor.js~ReducerDescriptor#handledEventTypes",
+    "access": null,
+    "description": null,
+    "lineNumber": 18,
+    "type": {
+      "nullable": null,
+      "types": [
+        "HAMT<string>"
+      ],
+      "spread": false,
+      "description": null
+    }
+  },
+  {
+    "__docId__": 29,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Infinity",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Infinity",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Infinity",
+    "access": null,
+    "description": null,
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 30,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "NaN",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/NaN",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~NaN",
+    "access": null,
+    "description": null,
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 31,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "undefined",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~undefined",
+    "access": null,
+    "description": null,
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 32,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "null",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~null",
+    "access": null,
+    "description": null,
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 33,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Object",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Object",
+    "access": null,
+    "description": null,
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 34,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "object",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~object",
+    "access": null,
+    "description": null,
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 35,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Function",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Function",
+    "access": null,
+    "description": null,
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 36,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "function",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~function",
+    "access": null,
+    "description": null,
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 37,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Boolean",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Boolean",
+    "access": null,
+    "description": null,
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 38,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "boolean",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~boolean",
+    "access": null,
+    "description": null,
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 39,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Symbol",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Symbol",
+    "access": null,
+    "description": null,
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 40,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Error",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Error",
+    "access": null,
+    "description": null,
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 41,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "EvalError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/EvalError",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~EvalError",
+    "access": null,
+    "description": null,
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 42,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "InternalError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/InternalError",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~InternalError",
+    "access": null,
+    "description": null,
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 43,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "RangeError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RangeError",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~RangeError",
+    "access": null,
+    "description": null,
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 44,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "ReferenceError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ReferenceError",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~ReferenceError",
+    "access": null,
+    "description": null,
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 45,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "SyntaxError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/SyntaxError",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~SyntaxError",
+    "access": null,
+    "description": null,
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 46,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "TypeError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypeError",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~TypeError",
+    "access": null,
+    "description": null,
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 47,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "URIError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/URIError",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~URIError",
+    "access": null,
+    "description": null,
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 48,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Number",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Number",
+    "access": null,
+    "description": null,
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 49,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "number",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~number",
+    "access": null,
+    "description": null,
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 50,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Date",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Date",
+    "access": null,
+    "description": null,
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 51,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "String",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~String",
+    "access": null,
+    "description": null,
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 52,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "string",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~string",
+    "access": null,
+    "description": null,
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 53,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "RegExp",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~RegExp",
+    "access": null,
+    "description": null,
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 54,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Array",
+    "access": null,
+    "description": null,
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 55,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Int8Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Int8Array",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Int8Array",
+    "access": null,
+    "description": null,
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 56,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Uint8Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Uint8Array",
+    "access": null,
+    "description": null,
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 57,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Uint8ClampedArray",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8ClampedArray",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Uint8ClampedArray",
+    "access": null,
+    "description": null,
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 58,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Int16Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Int16Array",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Int16Array",
+    "access": null,
+    "description": null,
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 59,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Uint16Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint16Array",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Uint16Array",
+    "access": null,
+    "description": null,
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 60,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Int32Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Int32Array",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Int32Array",
+    "access": null,
+    "description": null,
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 61,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Uint32Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint32Array",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Uint32Array",
+    "access": null,
+    "description": null,
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 62,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Float32Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Float32Array",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Float32Array",
+    "access": null,
+    "description": null,
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 63,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Float64Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Float64Array",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Float64Array",
+    "access": null,
+    "description": null,
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 64,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Map",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Map",
+    "access": null,
+    "description": null,
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 65,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Set",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Set",
+    "access": null,
+    "description": null,
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 66,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "WeakMap",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakMap",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~WeakMap",
+    "access": null,
+    "description": null,
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 67,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "WeakSet",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakSet",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~WeakSet",
+    "access": null,
+    "description": null,
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 68,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "ArrayBuffer",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~ArrayBuffer",
+    "access": null,
+    "description": null,
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 69,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "DataView",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/DataView",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~DataView",
+    "access": null,
+    "description": null,
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 70,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "JSON",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~JSON",
+    "access": null,
+    "description": null,
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 71,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Promise",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Promise",
+    "access": null,
+    "description": null,
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 72,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Generator",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Generator",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Generator",
+    "access": null,
+    "description": null,
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 73,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "GeneratorFunction",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/GeneratorFunction",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~GeneratorFunction",
+    "access": null,
+    "description": null,
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 74,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Reflect",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Reflect",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Reflect",
+    "access": null,
+    "description": null,
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 75,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Proxy",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Proxy",
+    "access": null,
+    "description": null,
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 77,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "CanvasRenderingContext2D",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D",
+    "memberof": "BuiltinExternal/WebAPIExternal.js",
+    "longname": "BuiltinExternal/WebAPIExternal.js~CanvasRenderingContext2D",
+    "access": null,
+    "description": null,
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 78,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "DocumentFragment",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/API/DocumentFragment",
+    "memberof": "BuiltinExternal/WebAPIExternal.js",
+    "longname": "BuiltinExternal/WebAPIExternal.js~DocumentFragment",
+    "access": null,
+    "description": null,
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 79,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Element",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/API/Element",
+    "memberof": "BuiltinExternal/WebAPIExternal.js",
+    "longname": "BuiltinExternal/WebAPIExternal.js~Element",
+    "access": null,
+    "description": null,
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 80,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Event",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/API/Event",
+    "memberof": "BuiltinExternal/WebAPIExternal.js",
+    "longname": "BuiltinExternal/WebAPIExternal.js~Event",
+    "access": null,
+    "description": null,
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 81,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Node",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/API/Node",
+    "memberof": "BuiltinExternal/WebAPIExternal.js",
+    "longname": "BuiltinExternal/WebAPIExternal.js~Node",
+    "access": null,
+    "description": null,
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 82,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "NodeList",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/API/NodeList",
+    "memberof": "BuiltinExternal/WebAPIExternal.js",
+    "longname": "BuiltinExternal/WebAPIExternal.js~NodeList",
+    "access": null,
+    "description": null,
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 83,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "XMLHttpRequest",
+    "externalLink": "https://developer.mozilla.org/en/docs/Web/API/XMLHttpRequest",
+    "memberof": "BuiltinExternal/WebAPIExternal.js",
+    "longname": "BuiltinExternal/WebAPIExternal.js~XMLHttpRequest",
+    "access": null,
+    "description": null,
+    "builtinExternal": true
+  }
+]

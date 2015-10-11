@@ -1,0 +1,35 @@
+{
+  "coverage": "90.47%",
+  "expectCount": 21,
+  "actualCount": 19,
+  "files": {
+    "src/constants.js": {
+      "expectCount": 1,
+      "actualCount": 1,
+      "undocumentLines": []
+    },
+    "src/index.js": {
+      "expectCount": 5,
+      "actualCount": 5,
+      "undocumentLines": []
+    },
+    "src/events.js": {
+      "expectCount": 3,
+      "actualCount": 3,
+      "undocumentLines": []
+    },
+    "src/reducer-builder.js": {
+      "expectCount": 8,
+      "actualCount": 6,
+      "undocumentLines": [
+        11,
+        10
+      ]
+    },
+    "src/reducer-descriptor.js": {
+      "expectCount": 4,
+      "actualCount": 4,
+      "undocumentLines": []
+    }
+  }
+}
