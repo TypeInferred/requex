@@ -420,12 +420,6 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
-    "src/reducer-builder.js~reducerbuilder#constructor",
-    "class/src/reducer-builder.js~ReducerBuilder.html#instance-constructor-constructor",
-    "src/reducer-builder.js~ReducerBuilder#constructor",
-    "method"
-  ],
-  [
     "src/reducer-builder.js~reducerbuilder#handledeventtypes",
     "class/src/reducer-builder.js~ReducerBuilder.html#instance-member-handledEventTypes",
     "src/reducer-builder.js~ReducerBuilder#handledEventTypes",

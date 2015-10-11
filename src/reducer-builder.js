@@ -5,7 +5,7 @@ import ReducerDescriptor from './reducer-descriptor.js';
  */
 export default class ReducerBuilder {
 
-  /** ignore */
+  /** @ignore */
   constructor(reduceChain, handledEventTypes) {
     this.reduceChain = reduceChain;
     this.handledEventTypes = handledEventTypes;
