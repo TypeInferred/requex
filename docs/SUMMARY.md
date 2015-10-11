@@ -1,3 +1,5 @@
 # Table of contents
 
-* [FAQ](/docs/FAQ.md)
+* [Introduction](introduction/README.md)
+  * [Prerequisites](introduction/Prerequisites.md)
+  * [Differences from RxJS](introduction/Differences-from-RxJs.ms)

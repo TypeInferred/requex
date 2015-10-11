@@ -1,8 +1,6 @@
-# Frequently Asked Questions
+### Differences from RxJS
 
-## Why not use RxJS?
-
-You can build an observable model/state-tree in a declarative manner using RxJS and it is a more mature library. 
+You can build an observable model/state-tree in a declarative manner using [RxJS](http://reactivex.io/) and it is a more mature library. 
 
 For example, you might do this by using the incremental aggregation operators like `scan(...)` to build primitive operators like `runningTotal(...)` etc. and then `combineLatest(...)` to bring together streams representing property values into streams representing objects. 
 
