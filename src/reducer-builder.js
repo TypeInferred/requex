@@ -14,7 +14,7 @@ export default class ReducerBuilder {
   /**
    * Maps the reduced value onto another value using a function.
    * @param {function(x:T1):T2} selector - The mapping function
-   * @returns ReducerBuilder<T2> A reducer builder that maps the value
+   * @returns {ReducerBuilder<T2>} A reducer builder that maps the value
    */
   select(selector) {
     if (!selector) throw new Error('Missing selector argument');
@@ -24,7 +24,7 @@ export default class ReducerBuilder {
   /**
    * Filters the value by applying a predicate function to the value
    * @param {function(x:T):boolean} predicate - The predicate function
-   * @returns ReducerBuilder<T> A reducer builder than filters using the predicate
+   * @returns {ReducerBuilder<T>} A reducer builder than filters using the predicate
    */
   where(predicate) {
     if (!predicate) throw new Error('Missing predicate argument');
@@ -34,7 +34,7 @@ export default class ReducerBuilder {
   /**
    * Accumulates the sum of the reduced values.
    * @param {number|string} zeroValue - The zero value for the addition operator.
-   * @returns ReducerBuilder<T> A reducer builder that accumulates the sum
+   * @returns {ReducerBuilder<T>} A reducer builder that accumulates the sum
    */
   sum(zeroValue) {
     return this._chain((result, next, previousState) => {
