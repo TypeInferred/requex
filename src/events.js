@@ -14,7 +14,7 @@ export default class Events {
   ofType(eventType) {
     if (typeof eventType !== 'string') throw new Error('Invalid eventType argument. Expected a string.');
     return new ReducerBuilder(
-      (_, event) => next => event && event.type === eventType && next(event), 
+      ({event, next}) => event && event.type === eventType && next(event), 
       hamt.set(eventType, true, hamt.empty));
   }
 
@@ -23,6 +23,6 @@ export default class Events {
    * @returns {ReducerBuilder} The query over the events in scope
    */
    ofAnyType() {
-    return new ReducerBuilder((_, event) => next => next(event), hamt.set('*', true, hamt.empty));
+    return new ReducerBuilder(({event, next}) => next(event), hamt.set('*', true, hamt.empty));
    }
 }

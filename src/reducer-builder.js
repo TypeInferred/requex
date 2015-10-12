@@ -20,7 +20,7 @@ export default class ReducerBuilder {
    */
   select(selector) {
     if (!selector) throw new Error('Missing selector argument');
-    return this._chain((next, result, hasResult) => hasResult && next(selector(result)));
+    return this._chain(({hasChainValue, chainValue, next}) => hasChainValue && next(selector(chainValue)));
   }
 
   /**
@@ -30,7 +30,7 @@ export default class ReducerBuilder {
    */
   where(predicate) {
     if (!predicate) throw new Error('Missing predicate argument');
-    return this._chain((next, result, hasResult) => hasResult && predicate(result) && next(result));
+    return this._chain(({hasChainValue, chainValue, next}) => hasChainValue && predicate(chainValue) && next(chainValue));
   }
 
   /**
@@ -39,12 +39,12 @@ export default class ReducerBuilder {
    * @returns {ReducerBuilder<T>} A reducer builder that accumulates the sum
    */
   sum(zeroValue) {
-    return this._chain((next, result, hasResult, previousState) => {
-      if (hasResult) {
-        const acc = previousState || zeroValue;
-        next(acc + result);
+    return this._chain(context => {
+      if (context.hasChainValue) {
+        const acc = context.previousState || zeroValue;
+        context.next(acc + context.chainValue);
       } else {
-        next(zeroValue);
+        context.next(zeroValue);
       }
     }, (next, _) => next(zeroValue));
   }
@@ -56,7 +56,13 @@ export default class ReducerBuilder {
   build() {
     const reduce = (previousState, event) => {
       let result;
-      this._reduceChain(previousState, event)(r => result = r);
+      this._reduceChain({
+        next: r => result = r,
+        previousState, 
+        event,
+        chainValue: event,
+        hasChainValue: event !== undefined
+      });
       return result;
     };
     return new ReducerDescriptor(reduce, this._handledEventTypes);
@@ -64,14 +70,25 @@ export default class ReducerBuilder {
 
   /** @ignore */
   _chain(resultHandler, seedFactory) {
-    return new ReducerBuilder(
-      (previousState, event) => next => {
+    return new ReducerBuilder(({previousState, event, chainValue, hasChainValue, next}) => {
         let result, hasResult;
-        this._reduceChain(previousState, event)(r => {
-          result = r;
-          hasResult = true;
+        this._reduceChain({
+          next: r => {
+            result = r;
+            hasResult = true;
+          },
+          event,
+          chainValue,
+          hasChainValue,
+          previousState
         });
-        resultHandler(next, result, hasResult, previousState);
+        resultHandler({
+          chainValue: result,
+          hasChainValue: hasResult,
+          event,
+          next,
+          previousState
+        });
       },
       this._handledEventTypes
     );

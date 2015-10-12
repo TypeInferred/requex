@@ -28,7 +28,7 @@ export default class From {
    * @returns {ReducerBuilder} - The reducer query containing the value
    */
   static value(value) {
-    return new ReducerBuilder((previousState, event) => next => next(value), hamt.empty)
+    return new ReducerBuilder(({next}) => next(value), hamt.empty)
   }
 
   /**
@@ -46,7 +46,7 @@ export default class From {
       const reducerPropertyHandledEvents = hamt.keys(reducerProperty.handledEventTypes);
       return reducerPropertyHandledEvents.reduce((innerAcc, eventType) => hamt.set(eventType, true, innerAcc), acc);
     }, hamt.empty);
-    return new ReducerBuilder((previousState, event) => next => {
+    return new ReducerBuilder(({previousState, event, next}) => {
       // Track whether the state has actually changed. If not, we can return the previous state.
       const isSeeding = previousState === undefined;
       let hasStateChanged = isSeeding;
