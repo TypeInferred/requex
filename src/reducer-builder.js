@@ -55,6 +55,8 @@ export default class ReducerBuilder {
   lift() {
     return this._chain(({hasChainCompleted, previousState, previousAuxillary, chainValue, chainAuxillary, event, next}) => {
       const reducerStructure = chainValue;
+      // TODO: Fix passing handledEventTypes through continuation. How to do performantly? Reference check?
+      // TODO: Move this outside of here: {
       if (typeof reducerStructure !== 'object') throw new Error('Invalid reducerStructure argument. Expected an object.');
       const keys = Object.keys(reducerStructure);
       const constantKeys = keys.filter(k => !(reducerStructure[k] instanceof ReducerBuilder));
@@ -64,6 +66,7 @@ export default class ReducerBuilder {
         const reducerPropertyHandledEvents = hamt.keys(reducerProperty.handledEventTypes);
         return reducerPropertyHandledEvents.reduce((innerAcc, eventType) => hamt.set(eventType, true, innerAcc), acc);
       }, hamt.empty);
+      // }
       const previousStructure = previousState;
       const previousAuxillaryStructure = previousAuxillary;
       // Track whether the state has actually changed. If not, we can return the previous state.
