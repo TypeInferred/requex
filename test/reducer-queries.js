@@ -117,12 +117,35 @@ describe('Reducer queries', () => {
     const event = { type: 'inc' };
     // Act
     const reducer = query.build();
-    let state = 0; // TODO: fix seeding.
+    let state;
     for (var i = 0; i < 3; i++) {
       state = reducer.reduce(state, event);
     }
     // Assert
     expect(state).to.equal(3); 
+  });
+
+  it('should reduce queries containing projections after reductions', () => {
+    const query = From.events().ofType('inc').select(_ => 1).sum(0).select(x => 2 * x);
+    const event = { type: 'inc' };
+    // Act
+    const reducer = query.build();
+    let state;
+    for (var i = 0; i < 3; i++) {
+      state = reducer.reduce(state, event);
+    }
+    // Assert
+    expect(state).to.equal(6); 
+  });
+
+  it('should reduce to seed values before a matching event occurs', () => {
+    const query = From.events().ofAnyType().where(_ => false).sum(10);
+    const event = { type: 'inc' };
+    // Act
+    const reducer = query.build();
+    const state = reducer.reduce(undefined, event);
+    // Assert
+    expect(state).to.equal(10); 
   });
 
   // Handled events....
