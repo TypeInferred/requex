@@ -20,7 +20,7 @@ export default class ReducerBuilder {
    */
   select(selector) {
     if (!selector) throw new Error('Missing selector argument');
-    return this._chain((result, next) => next(selector(result)));
+    return this._chain((next, result, hasResult) => hasResult && next(selector(result)));
   }
 
   /**
@@ -30,7 +30,7 @@ export default class ReducerBuilder {
    */
   where(predicate) {
     if (!predicate) throw new Error('Missing predicate argument');
-    return this._chain((result, next) => predicate(result) && next(result));
+    return this._chain((next, result, hasResult) => hasResult && predicate(result) && next(result));
   }
 
   /**
@@ -39,10 +39,14 @@ export default class ReducerBuilder {
    * @returns {ReducerBuilder<T>} A reducer builder that accumulates the sum
    */
   sum(zeroValue) {
-    return this._chain((result, next, previousState) => {
-      const acc = previousState || zeroValue;
-      next(acc + result);
-    });
+    return this._chain((next, result, hasResult, previousState) => {
+      if (hasResult) {
+        const acc = previousState || zeroValue;
+        next(acc + result);
+      } else {
+        next(zeroValue);
+      }
+    }, (next, _) => next(zeroValue));
   }
 
   /**
@@ -59,9 +63,16 @@ export default class ReducerBuilder {
   }
 
   /** @ignore */
-  _chain(resultHandler) {
+  _chain(resultHandler, seedFactory) {
     return new ReducerBuilder(
-      (previousState, event) => next => this._reduceChain(previousState, event)(result => resultHandler(result, next, previousState)),
+      (previousState, event) => next => {
+        let result, hasResult;
+        this._reduceChain(previousState, event)(r => {
+          result = r;
+          hasResult = true;
+        });
+        resultHandler(next, result, hasResult, previousState);
+      },
       this._handledEventTypes
     );
   }
