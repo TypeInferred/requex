@@ -117,10 +117,11 @@ describe('Reducer queries', () => {
     const event = { type: 'inc' };
     // Act
     const reducer = query.build();
-    let state;
+    let state, aux;
     for (var i = 0; i < 3; i++) {
-      const {newState} = reducer.reduce({previousState: state, event});
+      const {newState, newAuxillary} = reducer.reduce({previousState: state, previousAuxillary: aux, event});
       state = newState;
+      aux = newAuxillary;
     }
     // Assert
     expect(state).to.equal(3); 
@@ -131,9 +132,11 @@ describe('Reducer queries', () => {
     const event = { type: 'inc' };
     // Act
     const reducer = query.build();
-    let state;
+    let state, aux;
     for (var i = 0; i < 3; i++) {
-      const {newState} = reducer.reduce({previousState: state, event});
+      const {newState, newAuxillary} = reducer.reduce({previousState: state, previousAuxillary: aux, event});
+      state = newState;
+      aux = newAuxillary;
     }
     // Assert
     expect(state).to.equal(6); 

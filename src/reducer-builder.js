@@ -40,13 +40,22 @@ export default class ReducerBuilder {
    * @returns {ReducerBuilder<T>} A reducer builder that accumulates the sum
    */
   sum(zeroValue) {
+    return this.fold((acc, x) => acc + x, zeroValue);
+  }
+
+  /**
+   * Accumulates using the accumulate function over the reduced values.
+   * @param {function(acc:T2, value:T1): T2} accumulate - The accumulator function
+   * @param seedValue - The seed value for the accumulation.
+   * @returns {ReducerBuilder<T2>} A reducer builder that accumulates the sum
+   */
+  fold(accumulate, seedValue) {
     return this._chain(context => {
-      if (context.hasChainCompleted) {
-        const acc = context.previousState || zeroValue;
-        context.next(acc + context.chainValue);
-      } else {
-        context.next(zeroValue);
-      }
+      const acc = context.previousAuxillary && context.previousAuxillary[context.chainIndex] || seedValue;
+      const aux = context.chainAuxillary; // TODO: Maybe this should be mutable? As long as the output is immutable.
+      const nextAcc = context.hasChainCompleted ? accumulate(acc, context.chainValue) : acc;
+      const nextAux = Object.assign({}, aux, {[context.chainIndex]: nextAcc});
+      context.next(nextAcc, nextAux);
     }, (next, _) => next(zeroValue));
   }
 
@@ -125,7 +134,8 @@ export default class ReducerBuilder {
         event: context.event,
         chainValue: context.event,
         hasChainCompleted: context.event !== undefined,
-        chainAuxillary: context.previousAuxillary
+        chainAuxillary: context.previousAuxillary,
+        chainIndex: 0
       });
       return {newState, newAuxillary};
     };
@@ -147,7 +157,9 @@ export default class ReducerBuilder {
         resultHandler(Object.assign({}, context, {
           chainValue,
           chainAuxillary,
-          hasChainCompleted
+          hasChainCompleted,
+          chainIndex: context.chainIndex + 1,
+          next: (r, a) => context.next(r, a || chainAuxillary)
         }));
       },
       this._handledEventTypes
