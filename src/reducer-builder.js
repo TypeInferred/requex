@@ -53,33 +53,17 @@ export default class ReducerBuilder {
   //TODO: This needs a massive refactor + removal of allocation from the hot paths!
   /** ignore */
   lift() {
-    return this._chain(({hasChainCompleted, previousState, previousAuxillary, chainValue, chainAuxillary, event, next}) => {
-      const reducerStructure = chainValue;
-      // TODO: Fix passing handledEventTypes through continuation. How to do performantly? Reference check?
-      // TODO: Move this outside of here: {
-      if (typeof reducerStructure !== 'object') throw new Error('Invalid reducerStructure argument. Expected an object.');
-      const keys = Object.keys(reducerStructure);
-      const constantKeys = keys.filter(k => !(reducerStructure[k] instanceof ReducerBuilder));
-      const reducerKeys = keys.filter(k => reducerStructure[k] instanceof ReducerBuilder);
-      const reducerLookup = reducerKeys.reduce((acc, k) => hamt.set(k, reducerStructure[k].build(), acc), hamt.empty);
-      const handledEventTypes = hamt.values(reducerLookup).reduce((acc, reducerProperty) => {
-        const reducerPropertyHandledEvents = hamt.keys(reducerProperty.handledEventTypes);
-        return reducerPropertyHandledEvents.reduce((innerAcc, eventType) => hamt.set(eventType, true, innerAcc), acc);
-      }, hamt.empty);
-      // }
-      const previousStructure = previousState;
-      const previousAuxillaryStructure = previousAuxillary;
+    return this._chain(({previousState, previousAuxillary, chainValue, chainAuxillary, event, next}) => {
       // Track whether the state has actually changed. If not, we can return the previous state.
-      const isSeeding = previousStructure === undefined || event === undefined;
+      const isSeeding = previousState === undefined || event === undefined;
       let hasStateChanged = isSeeding;
       let hasAuxillaryChanged = isSeeding;
       let nextState = {};
-      let nextAux = {};
+      let nextAux = Object.assign({}, chainAuxillary);
       // Reduce reducer properties using previous state and the event
-      reducerKeys.forEach(k => {
-        const previousPropertyValue = previousStructure && previousStructure[k];
-        const previousPropertyAux = previousAuxillaryStructure && previousAuxillaryStructure[k];
-        const propertyReducer = hamt.get(k, reducerLookup);
+      hamt.pairs(chainValue.reducerProperties).forEach(([k, propertyReducer]) => {
+        const previousPropertyValue = previousState && previousState[k];
+        const previousPropertyAux = previousAuxillary && previousAuxillary[k];
         // Property can change on initial seed or if the reducer can handle the event.
         const couldPropertyChange = isSeeding || propertyReducer.couldHandle(event);
         if (couldPropertyChange) {
@@ -113,13 +97,12 @@ export default class ReducerBuilder {
         }
       });
       if (hasStateChanged) {
-        // Copy constants
-        constantKeys.forEach(k => nextState[k] = reducerStructure[k]);
-      } else {
+        nextState = Object.assign(nextState, chainValue.constantProperties);
+      } else { 
         nextState = previousState;
       }
       if (!hasAuxillaryChanged) {
-        nextAux = previousAuxillaryStructure;
+        nextAux = previousAuxillary;
       }
       next(nextState, nextAux);
     });
