@@ -1,17 +1,16 @@
-import ReducerDescriptor from './reducer-descriptor.js';
-import hamt from 'hamt';
+import MappedReducer from './reducers/mapped-reducer.js';
+import FilteredReducer from './reducers/filtered-reducer.js';
+import FoldingReducer from './reducers/folding-reducer.js';
+import ReducerQuery from './reducer-query.js';
 
 /**
- * A builder for reducers.
+ * A fluent reducer-query builder.
  */
 export default class ReducerBuilder {
 
   /** @ignore */
-  constructor(reduceChain, handledEventTypes) {
-    /** @ignore */
-    this._reduceChain = reduceChain;
-    /** @ignore */
-    this._handledEventTypes = handledEventTypes;
+  constructor(parent) {
+    this.parent = parent;
   }
 
   /**
@@ -20,8 +19,7 @@ export default class ReducerBuilder {
    * @returns {ReducerBuilder<T2>} A reducer builder that maps the value
    */
   select(selector) {
-    if (!selector) throw new Error('Missing selector argument');
-    return this._chain(({hasChainCompleted, chainValue, next}) => hasChainCompleted && next(selector(chainValue)));
+    return this._wrap(new MappedReducer(this.parent, selector));
   }
 
   /**
@@ -30,8 +28,7 @@ export default class ReducerBuilder {
    * @returns {ReducerBuilder<T>} A reducer builder than filters using the predicate
    */
   where(predicate) {
-    if (!predicate) throw new Error('Missing predicate argument');
-    return this._chain(({hasChainCompleted, chainValue, next}) => hasChainCompleted && predicate(chainValue) && next(chainValue));
+    return this._wrap(new FilteredReducer(this.parent, predicate));
   }
 
   /**
@@ -40,7 +37,7 @@ export default class ReducerBuilder {
    * @returns {ReducerBuilder<T>} A reducer builder that accumulates the sum
    */
   sum(zeroValue) {
-    return this.fold((acc, x) => acc + x, zeroValue);
+    return this._wrap(new FoldingReducer(this.parent, (acc, x) => acc + x, zeroValue));
   }
 
   /**
@@ -50,119 +47,19 @@ export default class ReducerBuilder {
    * @returns {ReducerBuilder<T2>} A reducer builder that accumulates the sum
    */
   fold(accumulate, seedValue) {
-    return this._chain(context => {
-      const acc = context.previousAuxillary && context.previousAuxillary[context.chainIndex] || seedValue;
-      const aux = context.chainAuxillary; // TODO: Maybe this should be mutable? As long as the output is immutable.
-      const nextAcc = context.hasChainCompleted ? accumulate(acc, context.chainValue) : acc;
-      const nextAux = Object.assign({}, aux, {[context.chainIndex]: nextAcc});
-      context.next(nextAcc, nextAux);
-    }, (next, _) => next(zeroValue));
-  }
-
-  //TODO: This needs a massive refactor + removal of allocation from the hot paths!
-  /** ignore */
-  lift() {
-    return this._chain(({previousState, previousAuxillary, chainValue, chainAuxillary, event, next}) => {
-      // Track whether the state has actually changed. If not, we can return the previous state.
-      const isSeeding = previousState === undefined || event === undefined;
-      let hasStateChanged = isSeeding;
-      let hasAuxillaryChanged = isSeeding;
-      let nextState = {};
-      let nextAux = Object.assign({}, chainAuxillary);
-      // Reduce reducer properties using previous state and the event
-      hamt.pairs(chainValue.reducerProperties).forEach(([k, propertyReducer]) => {
-        const previousPropertyValue = previousState && previousState[k];
-        const previousPropertyAux = previousAuxillary && previousAuxillary[k];
-        // Property can change on initial seed or if the reducer can handle the event.
-        const couldPropertyChange = isSeeding || propertyReducer.couldHandle(event);
-        if (couldPropertyChange) {
-          const reductionResult = propertyReducer.reduce({
-            previousState: previousPropertyValue,
-            previousAuxillary: previousPropertyAux,
-            chainValue: previousPropertyValue,
-            chainAuxillary: previousPropertyAux,
-            hasChainCompleted: !isSeeding,
-            event
-          });
-          const newPropertyValue = reductionResult.newState;
-          const newPropertyAux = reductionResult.newAuxillary;
-          // If it has changed we take the new value and will produce a new version of the state.
-          if (newPropertyValue !== previousPropertyValue) {
-            hasStateChanged = true;
-            nextState[k] = newPropertyValue;
-          } else {
-            nextState[k] = previousPropertyValue;
-          }
-          // Same for the aux
-          if (newPropertyAux !== previousPropertyAux) {
-            hasAuxillaryChanged = true;
-            nextAux[k] = newPropertyAux;
-          } else {
-            nextAux[k] = previousPropertyAux;
-          }
-        } else {
-          nextState[k] = previousPropertyValue;
-          nextAux[k] = previousPropertyAux;
-        }
-      });
-      if (hasStateChanged) {
-        nextState = Object.assign(nextState, chainValue.constantProperties);
-      } else { 
-        nextState = previousState;
-      }
-      if (!hasAuxillaryChanged) {
-        nextAux = previousAuxillary;
-      }
-      next(nextState, nextAux);
-    });
+    return this._wrap(new FoldingReducer(this.parent, accumulate, seedValue));
   }
 
   /**
-   * Constructs a reducer descriptor from the query defined using the builder.
-   * @returns {ReducerDescriptor} a reducer descriptor
+   * Constructs a reducer from the query defined using the builder.
+   * @returns {ReducerQuery} a reducer query
    */
   build() {
-    const reduce = (context = {}) => {
-      let newState, newAuxillary;
-      this._reduceChain({
-        next: (r, a) => {
-          newState = r;
-          newAuxillary = a;
-        },
-        previousState: context.previousState,
-        previousAuxillary: context.previousAuxillary, // Auxillary state for accumulators.
-        event: context.event,
-        chainValue: context.event,
-        hasChainCompleted: context.event !== undefined,
-        chainAuxillary: context.previousAuxillary,
-        chainIndex: 0
-      });
-      return {newState, newAuxillary};
-    };
-    return new ReducerDescriptor(reduce, this._handledEventTypes);
+    return new ReducerQuery(this.parent);
   }
 
-  /** @ignore */
-  _chain(resultHandler) {
-    return new ReducerBuilder(context => {
-        let chainValue, chainAuxillary, hasChainCompleted;
-        this._reduceChain(Object.assign({}, context, {
-          next: (r, a) => {
-            chainValue = r;
-            chainAuxillary = a;
-            hasChainCompleted = true;
-          }
-        }));
-        chainAuxillary = chainAuxillary || context.chainAuxillary;
-        resultHandler(Object.assign({}, context, {
-          chainValue,
-          chainAuxillary,
-          hasChainCompleted,
-          chainIndex: context.chainIndex + 1,
-          next: (r, a) => context.next(r, a || chainAuxillary)
-        }));
-      },
-      this._handledEventTypes
-    );
+  /** ignore */
+  _wrap(reducer) {
+    return new ReducerBuilder(reducer);
   }
 }
