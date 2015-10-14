@@ -16,7 +16,7 @@ export default class FilteredReducer extends ChainedReducer {
   }
 
   /** @ignore */
-  process(valueMaybe) {
-    return valueMaybe.filter(([eventNumber, x]) => this._predicate(x));
+  process(parentValues) {
+    return parentValues.filter(([eventNumber, x]) => this._predicate(x));
   }
 }

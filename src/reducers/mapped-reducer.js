@@ -2,11 +2,11 @@ import ChainedReducer from './chained-reducer.js';
 
 /**
  * <b>INTERNAL</b>
- * Yields its parent's results after mapping them through a selector function.
+ * Yields mapped versions of its parent's results.
  */
 export default class MappedReducer extends ChainedReducer {
   /**
-   * Constructs a reducer that yields its parent's results after mapping them through a selector function
+   * Constructs a reducer that yields mapped versions of its parent's results by passing them through a selector function.
    * @param  {Reducer} parent - The parent reducer.
    * @param  {function(x:T1):T2} - The selector function.
    */
@@ -16,7 +16,7 @@ export default class MappedReducer extends ChainedReducer {
   }
 
   /** @ignore */
-  process(valueMaybe) {
-    return valueMaybe.map(([eventNumber, x]) => [eventNumber, this._selector(x)]);
+  process(parentValues) {
+    return parentValues.map(([eventNumber, x]) => [eventNumber, this._selector(x)]);
   }
 }

@@ -200,4 +200,14 @@ describe('Reducer queries', () => {
     // Assert
     expect(newState).to.not.exist;
   });
+
+  it('should reduce Reduce.value([1,2,3]).flatMap(xs => xs) to 3', () => {
+    // Arrange
+    const query = Reduce.value([1,2,3]).flatMap(xs => xs);
+    // Act
+    const reducer = query.build();
+    const {newState} = reducer.reduce();
+    // Assert
+    expect(newState).to.equal(3);
+  });
 });

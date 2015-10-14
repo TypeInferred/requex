@@ -1,4 +1,5 @@
 import MappedReducer from './reducers/mapped-reducer.js';
+import FlatMappedReducer from './reducers/flat-mapped-reducer.js';
 import FilteredReducer from './reducers/filtered-reducer.js';
 import FoldingReducer from './reducers/folding-reducer.js';
 import ReducerQuery from './reducer-query.js';
@@ -24,7 +25,34 @@ export default class ReducerBuilder {
    * @returns {ReducerBuilder<T2>} A reducer builder that maps the value
    */
   select(selector) {
+    return this.map(selector);
+  }
+
+  /**
+   * Maps the reduced value onto another value using a function.
+   * @param {function(x:T1):T2} selector - The mapping function
+   * @returns {ReducerBuilder<T2>} A reducer builder that maps the value
+   */
+  map(selector) {
     return this._wrap(new MappedReducer(this._parent, selector));
+  }
+
+  /**
+   * Flat maps the reduced value onto many values using a function.
+   * @param {function(x:T1):Array<T2>} manySelector - The flat-mapping function
+   * @returns {ReducerBuilder<T2>} A reducer builder that maps the value
+   */
+  selectMany(manySelector) {
+    return this.flatMap(manySelector);
+  }
+
+  /**
+   * Flat maps the reduced value onto many values using a function.
+   * @param {function(x:T1):Array<T2>} manySelector - The flat-mapping function
+   * @returns {ReducerBuilder<T2>} A reducer builder that maps the value
+   */
+  flatMap(manySelector) {
+    return this._wrap(new FlatMappedReducer(this._parent, manySelector));
   }
 
   /**
@@ -33,6 +61,15 @@ export default class ReducerBuilder {
    * @returns {ReducerBuilder<T>} A reducer builder than filters using the predicate
    */
   where(predicate) {
+    return this.filter(predicate);
+  }
+
+  /**
+   * Filters the value by applying a predicate function to the value
+   * @param {function(x:T):boolean} predicate - The predicate function
+   * @returns {ReducerBuilder<T>} A reducer builder than filters using the predicate
+   */
+  filter(predicate) {
     return this._wrap(new FilteredReducer(this._parent, predicate));
   }
 
