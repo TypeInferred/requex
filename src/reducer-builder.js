@@ -49,6 +49,8 @@ export default class ReducerBuilder {
 
   /**
    * Flat maps the reduced value onto many values using a function.
+   * Experimental as it affects the event numbering so the changes are compacted when they reach a structure reducer.
+   * @experimental
    * @param {function(x:T1):Array<T2>} manySelector - The flat-mapping function
    * @returns {ReducerBuilder<T2>} A reducer builder that maps the value
    */
