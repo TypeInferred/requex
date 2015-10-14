@@ -211,6 +211,16 @@ describe('Reducer queries', () => {
     expect(newState).to.equal(3);
   });
 
+  it('should reduce reducers', () => {
+    // Arrange
+    const query = Reduce.value(2).flatReduce(x => Reduce.value(x).map(x => 3 * x));
+    // Act
+    const reducer = query.build();
+    const {newState} = reducer.reduce();
+    // Assert
+    expect(newState).to.equal(6);
+  });
+
   it('should filter events from parts of the model where they are not in scope', () => {
     // Arrange
     const todo = id => 

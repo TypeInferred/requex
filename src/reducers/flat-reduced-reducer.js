@@ -35,7 +35,7 @@ export default class FlatReducedReducer extends Reducer {
     const data = context.getStoredValue();
     const updates = [];
     let currentInput, currentCount;
-    //TODO: STOP OVERLAPPING EVENTS AS DESCRIBED ABOVE!!
+    //TODO: STOP OVERLAPPING EVENTS AS DESCRIBED ABOVE!
     if (data) {
       const lastInput = currentInput = data.lastInput;
       const lastCount = currentCount = data.lastCount;

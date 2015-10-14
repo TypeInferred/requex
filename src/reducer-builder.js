@@ -1,5 +1,6 @@
 import MappedReducer from './reducers/mapped-reducer.js';
 import FlatMappedReducer from './reducers/flat-mapped-reducer.js';
+import FlatReducedReducer from './reducers/flat-reduced-reducer.js';
 import FilteredReducer from './reducers/filtered-reducer.js';
 import ScopedReducer from './reducers/scoped-reducer.js';
 import FoldingReducer from './reducers/folding-reducer.js';
@@ -56,6 +57,10 @@ export default class ReducerBuilder {
    */
   flatMap(manySelector) {
     return this._wrap(new FlatMappedReducer(this._parent, manySelector));
+  }
+
+  flatReduce(reducerSelector) {
+    return this._wrap(new FlatReducedReducer(this._parent, reducerSelector));
   }
 
   /**
