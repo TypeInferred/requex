@@ -153,7 +153,7 @@ describe('Reducer queries', () => {
   });
 
   // Handled events....
-
+  /* TODO: This should probably be tested somewhere else...
   it('should have no handled events for query From.value(10)', () => {
     // Arrange
     const query = From.value(10);
@@ -223,5 +223,5 @@ describe('Reducer queries', () => {
       ['abc', true]
     ]);
   });
-
+  */
 });
