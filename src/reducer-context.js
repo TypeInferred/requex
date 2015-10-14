@@ -15,7 +15,7 @@ export default class ReducerContext {
   }
 
   store(value) {
-    this.nextAuxillary[this.route.join('')] = value;
+    this.nextAuxillary[this.route.join('--')] = value; // TODO: Need to ensure we avoid collisions here.
   }
 
   getStoredValue() {
