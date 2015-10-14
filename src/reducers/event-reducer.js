@@ -14,7 +14,7 @@ export default class EventReducer extends Reducer {
   }
 
   /** @ignore */
-  getNext(context) {
+  getNextUpdates(context) {
     return context.events.filter(([eventNumber, e]) => e.type === this._eventType);
   }
 }

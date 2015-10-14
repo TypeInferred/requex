@@ -38,7 +38,7 @@ export default class ReducerQuery {
     const events = context && (context.events || [context.event]) || [];
     const numberedEvents = events.map(e => [this._eventIndex++, e]);
     const internalContext = new ReducerContext(context && context.previousAuxillary, numberedEvents);
-    const updates = this._reducer.getNext(internalContext);
+    const updates = this._reducer.reduce(internalContext);
     const newState = updates.length ? updates[updates.length - 1][1] : (context && context.previousState);
     const newAuxillary = internalContext.nextAuxillary;
     return {newState, newAuxillary};

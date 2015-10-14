@@ -15,6 +15,16 @@ export default class ReducerContext {
      */
     this._previousAuxillary = previousAuxillary || {};
     /**
+     * This is the current level of scope. I.e., the route from the root to the current reducer.
+     * @type {Array<string>}
+     */
+    this._route = [];
+    /**
+     * This is the current number of greedy consumers that will consume the updates produced from this context.
+     * @type {number}
+     */
+    this._greedyConsumerCount = 0;
+    /**
      * This contains the auxillary state built up in a reduction pass. For example, this
      * may include accumulator values for folds that cannot easily be derived from looking 
      * at the previous state.
@@ -25,11 +35,6 @@ export default class ReducerContext {
      * From.events().ofAnyType().select(_ => 1).sum(0).select(x => 2 * x)
      */
     this.nextAuxillary = {};
-    /**
-     * This is the current level of scope. I.e., the route from the root to the current reducer.
-     * @type {Array<string>}
-     */
-    this._route = [];
     /**  
      * The events being reduced.
      * @type {Array<Event>}
@@ -46,10 +51,54 @@ export default class ReducerContext {
   }
 
   /**
-   * Exits a scoped region. This is used to address auxillary state.
+   * Exits a scoped region. See {@link ReducerContext#enter} for more details.
    */
   exit() {
     this._route.pop();
+  }
+
+  /**
+   * Ensures that results from inside the "greedy region" using the context are
+   * not optimised away. See {@link ReducerContext#optimise} for more details.
+   */
+  enterGreedy() {
+    this._greedyConsumerCount++;
+  }
+
+  /**
+   * Exits a greedy region. See {@link ReducerContext#enterGreedy} for more details.
+   */
+  exitGreedy() {
+    this._greedyConsumerCount--;
+  }
+
+  /**
+   * Optimises a batch of updates by dropping all but the latest update where there are
+   * no consumers that are greedy (i.e., that need to consume all updates for correctness). 
+   * 
+   * @example <caption>Pure projections can safely drop all but the latest results</caption>
+   * From.events().ofAnyType().select(e => e.value).select(x => 2 * x)
+   * // Not dropped: [{ value: 1 }, { value: 2}]  =>  4
+   * // Dropped:     [{ value: 2 }]               =>  4
+   * // ^^^ Same results
+   *
+   * @example <caption>Accumulations must see all values otherwise the results are different</caption>
+   * From.events().ofAnyType().select(e => e.value).sum(0)
+   * // Not dropped: [{ value: 1 }, { value: 2}]  =>  3
+   * // Dropped:     [{ value: 2 }]               =>  2
+   * // ^^^ Different results
+   *
+   * @example <caption>Filters must see all values otherwise the results are different</caption>
+   * From.events().ofAnyType().select(e => e.value).where(x => x < 2)
+   * // Not dropped: [{ value: 1 }, { value: 2}]  =>  2
+   * // Dropped:     [{ value: 2 }]               =>  _
+   * // ^^^ Different results
+   */
+  optimise(updates) {
+    if (updates.length === 0 || this._greedyConsumerCount > 0) {
+      return updates;
+    }
+    return [updates[updates.length - 1]];
   }
 
   /**

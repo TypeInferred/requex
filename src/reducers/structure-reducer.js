@@ -31,7 +31,7 @@ export default class StructureReducer extends Reducer {
   }
 
   /** @ignore */
-  getNext(context) {
+  getNextUpdates(context) {
     context.enter('obj');
     const hasPreviousValue = !!context.getStoredValue();
     const propertyChanges = {};
@@ -58,7 +58,7 @@ export default class StructureReducer extends Reducer {
     const prevPropertyResult = context.getStoredValue();
     let currentPropertyValue = prevPropertyResult;
     originalProperties[k] = currentPropertyValue;
-    reducer.getNext(context).forEach(([eventNumber, propertyValue]) => {
+    reducer.reduce(context).forEach(([eventNumber, propertyValue]) => {
       if (currentPropertyValue !== propertyValue) {
         const propertyChangesForEvent = propertyChanges[eventNumber] || (propertyChanges[eventNumber] = {});
         propertyChangesForEvent[k] = propertyValue;

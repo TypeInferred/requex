@@ -6,7 +6,7 @@ import Reducer from './reducer.js';
  */
 export default class AnyEventReducer extends Reducer {
   /** @ignore */
-  getNext(context) {
+  getNextUpdates(context) {
     return context.events;
   }
 }

@@ -11,7 +11,7 @@ export default class FilteredReducer extends ChainedReducer {
    * @param  {function(x:T):boolean} - The predicate to test the results from the parent
    */
   constructor(parent, predicate) {
-    super(parent);
+    super(parent, true);
     this._predicate = predicate;
   }
 

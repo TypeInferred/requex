@@ -10,7 +10,15 @@ export default class Reducer {
    * @return {Array<T>} An array of reduced values or the empty array if no changes have occured
    * @abstract
    */
-  getNext(context) {
+  getNextUpdates(context) {
     throw new Error('Abstract method.');
+  }
+
+  /**
+   * Computes the updates to the reducer's state in the given context. May optimise. See {@link ReducerContext#optimise} for more details.
+   */
+  reduce(context) {
+    const updates = this.getNextUpdates(context);
+    return context.optimise(updates);
   }
 }

@@ -142,6 +142,39 @@ describe('Reducer queries', () => {
     expect(state).to.equal(6); 
   });
 
+  it('should reduce queries containing projections before reductions with batches of events', () => {
+    const query = From.events().ofType('inc').select(_ => 1).sum(0);
+    const events = [{ type: 'inc' }, { type: 'inc' }, { type: 'inc' }];
+    // Act
+    const reducer = query.build();
+    const {newState, newAuxillary} = reducer.reduce({events});
+    // Assert
+    expect(newState).to.equal(3); 
+  });
+
+  it('should reduce queries containing filters with batches of events', () => {
+    const query = From.events().ofType('inc').select(e => e.value).where(x => x < 2);
+    const events = [{ type: 'inc', value: 1 }, { type: 'inc', value: 2 }];
+    // Act
+    const reducer = query.build();
+    const {newState, newAuxillary} = reducer.reduce({events});
+    // Assert
+    expect(newState).to.equal(1); 
+  });
+
+  it('should reduce queries containing multiple reductions', () => {
+    const query = From.events().ofType('inc')  //          e,  e
+                               .select(_ => 1) //          1,  1
+                               .sum(1)         //      1,  2,  3
+                               .sum(0);        //  0,  1,  3,  6
+    const events = [{ type: 'inc' }, { type: 'inc' }];
+    // Act
+    const reducer = query.build();
+    const {newState, newAuxillary} = reducer.reduce({events});
+    // Assert
+    expect(newState).to.equal(6); 
+  });
+
   it('should reduce to seed values before a matching event occurs', () => {
     const query = From.events().ofAnyType().where(_ => false).sum(10);
     const event = { type: 'inc' };

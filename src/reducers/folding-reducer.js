@@ -13,13 +13,13 @@ export default class FoldingReducer extends ChainedReducer {
    * @param  {T2} seed - The initial value
    */
   constructor(parent, accumulate, seed) {
-    super(parent);
+    super(parent, true);
     this._accumulate = accumulate;
     this._seed = seed;
   }
 
   /** @ignore */
-  process(valueMaybe, context) {
+  process(parentValues, context) {
     context.enter('fold');
     const stored = context.getStoredValue();
     // Here we emit the seed the first time and then
@@ -27,7 +27,7 @@ export default class FoldingReducer extends ChainedReducer {
     // as there could be multiple levels of reduction.
     let acc = stored ? stored[0] : this._seed;
     const result = stored ? [] : [[-1, acc]];
-    valueMaybe.forEach(([eventNumber, v]) => {
+    parentValues.forEach(([eventNumber, v]) => {
       acc = this._accumulate(acc, v);
       result.push([eventNumber, acc]);
     });

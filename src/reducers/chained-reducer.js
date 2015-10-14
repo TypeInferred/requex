@@ -10,14 +10,19 @@ export default class ChainedReducer extends Reducer {
   /**
    * @param {Reducer} parent - The parent reducer that feeds this reducer values.
    */
-  constructor(parent) {
+  constructor(parent, isGreedy = false) {
     super();
     this._parent = parent;
+    this._isGreedy = isGreedy;
   }
 
   /** @ignore */
-  getNext(context) {
-    return this.process(this._parent.getNext(context), context);
+  getNextUpdates(context) {
+    this._isGreedy && context.enterGreedy();
+    const parentUpdates = this._parent.reduce(context);
+    const updates = this.process(parentUpdates, context);
+    this._isGreedy && context.exitGreedy();
+    return updates;
   }
 
   /**

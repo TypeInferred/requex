@@ -15,7 +15,7 @@ export default class ValueReducer extends Reducer {
   }
 
   /** @ignore */
-  getNext(context) {
+  getNextUpdates(context) {
     context.enter('value');
     const hasEmitted = context.getStoredValue();
     context.store(true);
