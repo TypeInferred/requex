@@ -1,6 +1,6 @@
 import chai from 'chai';
 import hamt from 'hamt';
-import From, {Constants} from '../src/index.js';
+import Reduce from '../src/index.js';
 
 const expect = chai.expect;
 
@@ -8,9 +8,9 @@ describe('Reducer queries', () => {
 
   // Query reducing...
 
-  it('should reduce the query From.value(10) to 10', () => {
+  it('should reduce the query Reduce.value(10) to 10', () => {
     // Arrange
-    const query = From.value(10);
+    const query = Reduce.value(10);
     // Act
     const reducer = query.build();
     const {newState} = reducer.reduce();
@@ -18,9 +18,9 @@ describe('Reducer queries', () => {
     expect(newState).to.equal(10);
   });
 
-  it('should reduce the query From.value(10).select(x => x * 2) to 20', () => {
+  it('should reduce the query Reduce.value(10).select(x => x * 2) to 20', () => {
     // Arrange
-    const query = From.value(10).select(x => x * 2);
+    const query = Reduce.value(10).select(x => x * 2);
     // Act
     const reducer = query.build();
     const {newState} = reducer.reduce();
@@ -28,9 +28,9 @@ describe('Reducer queries', () => {
     expect(newState).to.equal(20);
   });
 
-  it('should reduce the query From.value(10).where(x => x === 10) to 10', () => {
+  it('should reduce the query Reduce.value(10).where(x => x === 10) to 10', () => {
     // Arrange
-    const query = From.value(10).where(x => x === 10);
+    const query = Reduce.value(10).where(x => x === 10);
     // Act
     const reducer = query.build();
     const {newState} = reducer.reduce();
@@ -38,9 +38,9 @@ describe('Reducer queries', () => {
     expect(newState).to.equal(10);
   });
 
-  it('should reduce the query From.value(10).where(x => x === 20) to undefined', () => {
+  it('should reduce the query Reduce.value(10).where(x => x === 20) to undefined', () => {
     // Arrange
-    const query = From.value(10).where(x => x === 20);
+    const query = Reduce.value(10).where(x => x === 20);
     // Act
     const reducer = query.build();
     const {newState} = reducer.reduce();
@@ -48,9 +48,9 @@ describe('Reducer queries', () => {
     expect(newState).to.not.exist;
   });
 
-  it('should reduce the query From.events().ofType("abc") and events { type: "abc" } to { type: "abc" }', () => {
+  it('should reduce the query Reduce.eventsOfType("abc") and events { type: "abc" } to { type: "abc" }', () => {
     // Arrange
-    const query = From.events().ofType('abc');
+    const query = Reduce.eventsOfType('abc');
     const event = { type: 'abc' };
     // Act
     const reducer = query.build();
@@ -59,9 +59,9 @@ describe('Reducer queries', () => {
     expect(newState).to.deep.equal(event);
   });
 
-  it('should reduce the query From.events().ofType("abc") and events { type: "def" } to undefined', () => {
+  it('should reduce the query Reduce.eventsOfType("abc") and events { type: "def" } to undefined', () => {
     // Arrange
-    const query = From.events().ofType('abc');
+    const query = Reduce.eventsOfType('abc');
     const event = { type: 'def' };
     // Act
     const reducer = query.build();
@@ -70,9 +70,9 @@ describe('Reducer queries', () => {
     expect(newState).to.not.exist;
   });
 
-  it('should reduce the query From.events().ofAnyType() and events { type: "abc" } to { type: "abc" }', () => {
+  it('should reduce the query Reduce.allEvents() and events { type: "abc" } to { type: "abc" }', () => {
     // Arrange
-    const query = From.events().ofAnyType();
+    const query = Reduce.allEvents();
     const event = { type: 'abc' };
     // Act
     const reducer = query.build();
@@ -84,7 +84,7 @@ describe('Reducer queries', () => {
   it('should reduce constant structures to themselves', () => {
     // Arrange
     const structure = { foo: 'abc', bar: 'def' };
-    const query = From.structure(structure);
+    const query = Reduce.structure(structure);
     // Act
     const reducer = query.build();
     const {newState} = reducer.reduce();
@@ -96,10 +96,10 @@ describe('Reducer queries', () => {
     // Arrange
     const structure = { 
       foo: 'abc', 
-      bar: From.value(10),
-      baz: From.events().ofType('test-event-type').select(e => e.value)
+      bar: Reduce.value(10),
+      baz: Reduce.eventsOfType('test-event-type').select(e => e.value)
     };
-    const query = From.structure(structure);
+    const query = Reduce.structure(structure);
     // Act
     const reducer = query.build();
     const event = { type: 'test-event-type', value: 42 };
@@ -112,8 +112,8 @@ describe('Reducer queries', () => {
     });
   });
 
-  it('should reduce the query From.events().ofType("inc").select(_ => 1).sum(0) and 3 events { type: "inc"} to 3', () => {
-    const query = From.events().ofType('inc').select(_ => 1).sum(0);
+  it('should reduce the query Reduce.eventsOfType("inc").select(_ => 1).sum(0) and 3 events { type: "inc"} to 3', () => {
+    const query = Reduce.eventsOfType('inc').select(_ => 1).sum(0);
     const event = { type: 'inc' };
     // Act
     const reducer = query.build();
@@ -128,7 +128,7 @@ describe('Reducer queries', () => {
   });
 
   it('should reduce queries containing projections after reductions', () => {
-    const query = From.events().ofType('inc').select(_ => 1).sum(0).select(x => 2 * x);
+    const query = Reduce.eventsOfType('inc').select(_ => 1).sum(0).select(x => 2 * x);
     const event = { type: 'inc' };
     // Act
     const reducer = query.build();
@@ -143,7 +143,7 @@ describe('Reducer queries', () => {
   });
 
   it('should reduce queries containing projections before reductions with batches of events', () => {
-    const query = From.events().ofType('inc').select(_ => 1).sum(0);
+    const query = Reduce.eventsOfType('inc').select(_ => 1).sum(0);
     const events = [{ type: 'inc' }, { type: 'inc' }, { type: 'inc' }];
     // Act
     const reducer = query.build();
@@ -153,7 +153,7 @@ describe('Reducer queries', () => {
   });
 
   it('should reduce queries containing filters with batches of events', () => {
-    const query = From.events().ofType('inc').select(e => e.value).where(x => x < 2);
+    const query = Reduce.eventsOfType('inc').select(e => e.value).where(x => x < 2);
     const events = [{ type: 'inc', value: 1 }, { type: 'inc', value: 2 }];
     // Act
     const reducer = query.build();
@@ -163,10 +163,10 @@ describe('Reducer queries', () => {
   });
 
   it('should reduce queries containing multiple reductions', () => {
-    const query = From.events().ofType('inc')  //          e,  e
-                               .select(_ => 1) //          1,  1
-                               .sum(1)         //      1,  2,  3
-                               .sum(0);        //  0,  1,  3,  6
+    const query = Reduce.eventsOfType('inc') //          e,  e
+                        .select(_ => 1)      //          1,  1
+                        .sum(1)              //      1,  2,  3
+                        .sum(0);             //  0,  1,  3,  6
     const events = [{ type: 'inc' }, { type: 'inc' }];
     // Act
     const reducer = query.build();
@@ -176,7 +176,7 @@ describe('Reducer queries', () => {
   });
 
   it('should reduce to seed values before a matching event occurs', () => {
-    const query = From.events().ofAnyType().where(_ => false).sum(10);
+    const query = Reduce.allEvents().where(_ => false).sum(10);
     const event = { type: 'inc' };
     // Act
     const reducer = query.build();
