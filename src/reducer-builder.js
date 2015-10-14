@@ -1,16 +1,16 @@
-import ReducerDescriptor from './reducer-descriptor.js';
+import MappedReducer from './reducers/mapped-reducer.js';
+import FilteredReducer from './reducers/filtered-reducer.js';
+import FoldingReducer from './reducers/folding-reducer.js';
+import ReducerQuery from './reducer-query.js';
 
 /**
- * A builder for reducers.
+ * A fluent reducer-query builder.
  */
 export default class ReducerBuilder {
 
   /** @ignore */
-  constructor(reduceChain, handledEventTypes) {
-    /** @ignore */
-    this._reduceChain = reduceChain;
-    /** @ignore */
-    this._handledEventTypes = handledEventTypes;
+  constructor(parent) {
+    this.parent = parent;
   }
 
   /**
@@ -19,8 +19,7 @@ export default class ReducerBuilder {
    * @returns {ReducerBuilder<T2>} A reducer builder that maps the value
    */
   select(selector) {
-    if (!selector) throw new Error('Missing selector argument');
-    return this._chain((result, next) => next(selector(result)));
+    return this._wrap(new MappedReducer(this.parent, selector));
   }
 
   /**
@@ -29,8 +28,7 @@ export default class ReducerBuilder {
    * @returns {ReducerBuilder<T>} A reducer builder than filters using the predicate
    */
   where(predicate) {
-    if (!predicate) throw new Error('Missing predicate argument');
-    return this._chain((result, next) => predicate(result) && next(result));
+    return this._wrap(new FilteredReducer(this.parent, predicate));
   }
 
   /**
@@ -39,30 +37,29 @@ export default class ReducerBuilder {
    * @returns {ReducerBuilder<T>} A reducer builder that accumulates the sum
    */
   sum(zeroValue) {
-    return this._chain((result, next, previousState) => {
-      const acc = previousState || zeroValue;
-      next(acc + result);
-    });
+    return this._wrap(new FoldingReducer(this.parent, (acc, x) => acc + x, zeroValue));
   }
 
   /**
-   * Constructs a reducer descriptor from the query defined using the builder.
-   * @returns {ReducerDescriptor} a reducer descriptor
+   * Accumulates using the accumulate function over the reduced values.
+   * @param {function(acc:T2, value:T1): T2} accumulate - The accumulator function
+   * @param seedValue - The seed value for the accumulation.
+   * @returns {ReducerBuilder<T2>} A reducer builder that accumulates the sum
    */
-  build() {
-    const reduce = (previousState, event) => {
-      let result;
-      this._reduceChain(previousState, event)(r => result = r);
-      return result;
-    };
-    return new ReducerDescriptor(reduce, this._handledEventTypes);
+  fold(accumulate, seedValue) {
+    return this._wrap(new FoldingReducer(this.parent, accumulate, seedValue));
   }
 
-  /** @ignore */
-  _chain(resultHandler) {
-    return new ReducerBuilder(
-      (previousState, event) => next => this._reduceChain(previousState, event)(result => resultHandler(result, next, previousState)),
-      this._handledEventTypes
-    );
+  /**
+   * Constructs a reducer from the query defined using the builder.
+   * @returns {ReducerQuery} a reducer query
+   */
+  build() {
+    return new ReducerQuery(this.parent);
+  }
+
+  /** ignore */
+  _wrap(reducer) {
+    return new ReducerBuilder(reducer);
   }
 }

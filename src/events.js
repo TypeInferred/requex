@@ -1,6 +1,6 @@
-import hamt from 'hamt';
+import AnyEventReducer from './reducers/any-event-reducer.js';
+import EventReducer from './reducers/event-reducer.js';
 import ReducerBuilder from './reducer-builder.js';
-import {ALL_EVENT_TYPES} from './constants.js';
 
 /**
  * A factory for creating reducer queries over the events in scope.
@@ -12,10 +12,7 @@ export default class Events {
    * @returns {ReducerBuilder} The query over the matching events
    */
   ofType(eventType) {
-    if (typeof eventType !== 'string') throw new Error('Invalid eventType argument. Expected a string.');
-    return new ReducerBuilder(
-      (_, event) => next => event && event.type === eventType && next(event), 
-      hamt.set(eventType, true, hamt.empty));
+    return new ReducerBuilder(new EventReducer(eventType));
   }
 
   /**
@@ -23,6 +20,6 @@ export default class Events {
    * @returns {ReducerBuilder} The query over the events in scope
    */
    ofAnyType() {
-    return new ReducerBuilder((_, event) => next => next(event), hamt.set('*', true, hamt.empty));
+    return new ReducerBuilder(new AnyEventReducer());
    }
 }
