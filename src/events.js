@@ -3,7 +3,7 @@ import EventReducer from './reducers/event-reducer.js';
 import ReducerBuilder from './reducer-builder.js';
 
 /**
- * A factory for creating reducer queries over the events in scope.
+ * A factory for creating reducer queries from events.
  */
 export default class Events {
   /**

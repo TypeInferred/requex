@@ -10,7 +10,12 @@ export default class ReducerBuilder {
 
   /** @ignore */
   constructor(parent) {
-    this.parent = parent;
+    /** 
+     * The previous reducer in the fluent chain.
+     * @type {Reducer}
+     * @private
+     */
+    this._parent = parent;
   }
 
   /**
@@ -19,7 +24,7 @@ export default class ReducerBuilder {
    * @returns {ReducerBuilder<T2>} A reducer builder that maps the value
    */
   select(selector) {
-    return this._wrap(new MappedReducer(this.parent, selector));
+    return this._wrap(new MappedReducer(this._parent, selector));
   }
 
   /**
@@ -28,7 +33,7 @@ export default class ReducerBuilder {
    * @returns {ReducerBuilder<T>} A reducer builder than filters using the predicate
    */
   where(predicate) {
-    return this._wrap(new FilteredReducer(this.parent, predicate));
+    return this._wrap(new FilteredReducer(this._parent, predicate));
   }
 
   /**
@@ -37,7 +42,7 @@ export default class ReducerBuilder {
    * @returns {ReducerBuilder<T>} A reducer builder that accumulates the sum
    */
   sum(zeroValue) {
-    return this._wrap(new FoldingReducer(this.parent, (acc, x) => acc + x, zeroValue));
+    return this._wrap(new FoldingReducer(this._parent, (acc, x) => acc + x, zeroValue));
   }
 
   /**
@@ -47,7 +52,7 @@ export default class ReducerBuilder {
    * @returns {ReducerBuilder<T2>} A reducer builder that accumulates the sum
    */
   fold(accumulate, seedValue) {
-    return this._wrap(new FoldingReducer(this.parent, accumulate, seedValue));
+    return this._wrap(new FoldingReducer(this._parent, accumulate, seedValue));
   }
 
   /**
@@ -55,7 +60,16 @@ export default class ReducerBuilder {
    * @returns {ReducerQuery} a reducer query
    */
   build() {
-    return new ReducerQuery(this.parent);
+    return new ReducerQuery(this._parent);
+  }
+
+  /**
+   * <b>INTERNAL</b>
+   * Returns the most recent reducer in the fluent chain.
+   * @return {Reducer} The most recent reducer in the fluent chain.
+   */
+  unwrap() {
+    return this._parent;
   }
 
   /** ignore */

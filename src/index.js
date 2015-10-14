@@ -1,15 +1,9 @@
 import Events from './events.js';
-import Consts from './constants.js';
 import ReducerBuilder from './reducer-builder.js';
 import ValueReducer from './reducers/value-reducer.js';
 import StructureReducer from './reducers/structure-reducer.js';
 
 const events = new Events();
-
-/**
- * Collection of constant values for event types etc.
- */
-export const Constants = Consts;
 
 /**
  * A factory for creating reducer queries.
