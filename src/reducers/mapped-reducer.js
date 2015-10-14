@@ -8,7 +8,7 @@ export default class MappedReducer extends ChainedReducer {
   /**
    * Constructs a reducer that yields mapped versions of its parent's results by passing them through a selector function.
    * @param  {Reducer} parent - The parent reducer.
-   * @param  {function(x:T1):T2} - The selector function.
+   * @param  {function(x:T1):T2} selector - The selector function.
    */
   constructor(parent, selector) {
     super(parent);

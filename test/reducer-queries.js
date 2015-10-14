@@ -210,4 +210,37 @@ describe('Reducer queries', () => {
     // Assert
     expect(newState).to.equal(3);
   });
+
+  it('should filter events from parts of the model where they are not in scope', () => {
+    // Arrange
+    const todo = id => 
+      Reduce.structure({
+        id: id,
+        description: 'my description',
+        isCompleted: Reduce.eventsOfType('checked')
+                           .select(_ => true)
+      }).scoped(e => !e.id || e.id === id);
+    const staticTodoList = Reduce.structure({
+      item1: todo(1),
+      item2: todo(2)
+    });
+    const events = [
+      { type: 'checked', id: 2 }
+    ];
+    // Act
+    const reducer = staticTodoList.build();
+    const {newState} = reducer.reduce({events});
+    // Assert
+    expect(newState).to.deep.equal({
+      item1: {
+        id: 1,
+        description: 'my description'
+      },
+      item2: {
+        id: 2,
+        description: 'my description',
+        isCompleted: true
+      }
+    });
+  });
 });

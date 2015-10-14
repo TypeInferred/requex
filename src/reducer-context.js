@@ -43,7 +43,7 @@ export default class ReducerContext {
   }
 
   /**
-   * Enters a scoped region. This is used to address auxillary state.
+   * Enters a scoped storage region. This is used to address auxillary state.
    * @param {string} name - The name of the scope region
    */
   enter(name) {
@@ -51,7 +51,7 @@ export default class ReducerContext {
   }
 
   /**
-   * Exits a scoped region. See {@link ReducerContext#enter} for more details.
+   * Exits a scoped storage region. See {@link ReducerContext#enter} for more details.
    */
   exit() {
     this._route.pop();
@@ -70,6 +70,26 @@ export default class ReducerContext {
    */
   exitGreedy() {
     this._greedyConsumerCount--;
+  }
+
+  /**
+   * Enters a region where the scope of the events is limited to those that pass the predicate. This is useful
+   * for addressing individual elements in a collection.
+   * @param  {function(e:Event):boolean} predicate - The predicate to determine which events are in scope.
+   * @return {Array<Event>} The unscoped events to put back at the end of the region.
+   */
+  enterEventScope(predicate) {
+    const unscopedEvents = this.events;
+    this.events = this.events.filter(([eventNumber, event]) => predicate(event));
+    return unscopedEvents;
+  }
+
+  /**
+   * Exits a region of event scoping. See {@link ReducerContext#enterEventScope}.
+   * @param  {Array<Event>} unscopedEvents - The unscoped events that were present when entering the region. 
+   */
+  exitEventScope(unscopedEvents) {
+    this.events = unscopedEvents;
   }
 
   /**

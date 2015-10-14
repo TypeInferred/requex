@@ -8,7 +8,7 @@ export default class FlatMappedReducer extends ChainedReducer {
   /**
    * Constructs a reducer that expands its parent's results by passing them through a manySelector function.
    * @param  {Reducer} parent - The parent reducer.
-   * @param  {function(x:T1):T2} - The manySelector function.
+   * @param  {function(x:T1):T2} manySelector - The manySelector function.
    */
   constructor(parent, manySelector) {
     super(parent);

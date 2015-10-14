@@ -1,6 +1,7 @@
 import MappedReducer from './reducers/mapped-reducer.js';
 import FlatMappedReducer from './reducers/flat-mapped-reducer.js';
 import FilteredReducer from './reducers/filtered-reducer.js';
+import ScopedReducer from './reducers/scoped-reducer.js';
 import FoldingReducer from './reducers/folding-reducer.js';
 import ReducerQuery from './reducer-query.js';
 
@@ -58,7 +59,7 @@ export default class ReducerBuilder {
   /**
    * Filters the value by applying a predicate function to the value
    * @param {function(x:T):boolean} predicate - The predicate function
-   * @returns {ReducerBuilder<T>} A reducer builder than filters using the predicate
+   * @returns {ReducerBuilder<T>} A reducer builder that filters using the predicate
    */
   where(predicate) {
     return this.filter(predicate);
@@ -67,10 +68,19 @@ export default class ReducerBuilder {
   /**
    * Filters the value by applying a predicate function to the value
    * @param {function(x:T):boolean} predicate - The predicate function
-   * @returns {ReducerBuilder<T>} A reducer builder than filters using the predicate
+   * @returns {ReducerBuilder<T>} A reducer builder that filters using the predicate
    */
   filter(predicate) {
     return this._wrap(new FilteredReducer(this._parent, predicate));
+  }
+
+  /**
+   * Scopes the events that are visible to reducers in the fluent chain leading to this.
+   * @param  {function(e:Event):boolean} predicate - The predicate to determine if an event is in scope.
+   * @returns {ReducerBuilder<T>} A reducer builder that is scoped to events passing the predicate.
+   */
+  scoped(predicate) {
+    return this._wrap(new ScopedReducer(this._parent, predicate));
   }
 
   /**
