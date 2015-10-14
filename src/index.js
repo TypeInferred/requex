@@ -3,6 +3,7 @@ import ValueReducer from './reducers/value-reducer.js';
 import EventReducer from './reducers/event-reducer.js';
 import AnyEventReducer from './reducers/any-event-reducer.js';
 import StructureReducer from './reducers/structure-reducer.js';
+import NeverReducer from './reducers/never-reducer.js';
 
 /**
  * A factory for creating reducer queries.
@@ -41,5 +42,13 @@ export default class Reduce {
    */
   static structure(reducerStructure) {
     return new ReducerBuilder(new StructureReducer(reducerStructure));
+  }
+
+  /**
+   * A reducer query that never produces any updates in state.
+   * @returns {ReducerBuilder} - The reducer query builder
+   */
+  static never() {
+    return new ReducerBuilder(new NeverReducer());
   }
 }

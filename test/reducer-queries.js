@@ -113,6 +113,7 @@ describe('Reducer queries', () => {
   });
 
   it('should reduce the query Reduce.eventsOfType("inc").select(_ => 1).sum(0) and 3 events { type: "inc"} to 3', () => {
+    // Arrange
     const query = Reduce.eventsOfType('inc').select(_ => 1).sum(0);
     const event = { type: 'inc' };
     // Act
@@ -128,6 +129,7 @@ describe('Reducer queries', () => {
   });
 
   it('should reduce queries containing projections after reductions', () => {
+    // Arrange
     const query = Reduce.eventsOfType('inc').select(_ => 1).sum(0).select(x => 2 * x);
     const event = { type: 'inc' };
     // Act
@@ -143,6 +145,7 @@ describe('Reducer queries', () => {
   });
 
   it('should reduce queries containing projections before reductions with batches of events', () => {
+    // Arrange
     const query = Reduce.eventsOfType('inc').select(_ => 1).sum(0);
     const events = [{ type: 'inc' }, { type: 'inc' }, { type: 'inc' }];
     // Act
@@ -153,6 +156,7 @@ describe('Reducer queries', () => {
   });
 
   it('should reduce queries containing filters with batches of events', () => {
+    // Arrange
     const query = Reduce.eventsOfType('inc').select(e => e.value).where(x => x < 2);
     const events = [{ type: 'inc', value: 1 }, { type: 'inc', value: 2 }];
     // Act
@@ -163,6 +167,7 @@ describe('Reducer queries', () => {
   });
 
   it('should reduce queries containing multiple reductions', () => {
+    // Arrange
     const query = Reduce.eventsOfType('inc') //          e,  e
                         .select(_ => 1)      //          1,  1
                         .sum(1)              //      1,  2,  3
@@ -176,6 +181,7 @@ describe('Reducer queries', () => {
   });
 
   it('should reduce to seed values before a matching event occurs', () => {
+    // Arrange
     const query = Reduce.allEvents().where(_ => false).sum(10);
     const event = { type: 'inc' };
     // Act
@@ -183,5 +189,15 @@ describe('Reducer queries', () => {
     const {newState} = reducer.reduce({event});
     // Assert
     expect(newState).to.equal(10); 
+  });
+
+  it('should reduce Reduce.never() to undefined', () => {
+    // Arrange
+    const query = Reduce.never();
+    // Act
+    const reducer = query.build();
+    const {newState} = reducer.reduce();
+    // Assert
+    expect(newState).to.not.exist;
   });
 });
