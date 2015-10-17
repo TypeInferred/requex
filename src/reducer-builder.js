@@ -38,15 +38,6 @@ export default class ReducerBuilder {
     return this._wrap(new MappedReducer(this._parent, selector));
   }
 
-  /**
-   * Flat maps the reduced value onto many values using a function.
-   * @param {function(x:T1):Array<T2>} manySelector - The flat-mapping function
-   * @returns {ReducerBuilder<T2>} A reducer builder that maps the value
-   */
-  selectMany(manySelector) {
-    return this.flatMap(manySelector);
-  }
-
 
   flatReduce(reducerSelector) {
     return this._wrap(new FlatReducedReducer(this._parent, reducerSelector));
@@ -97,6 +88,29 @@ export default class ReducerBuilder {
   fold(accumulate, seedValue) {
     return this._wrap(new FoldingReducer(this._parent, accumulate, seedValue));
   }
+
+  /**
+   * Accumulates a dictionary from deltas. Remove deltas will be applied before add deltas.
+   * TODO: Use a persistent map data structure. Currently O(N) per delta but could be O(log2(N)) 
+   * 
+   * @returns {ReducerBuilder<T>} A reducer builder
+   * 
+   * @example <caption>Add delta</caption>
+   * Reduce.eventsOfType('add-todo').map(e => ({added: [[e.todoId, e.title]]}))
+   *
+   * @example <caption>Remove deltas</caption>
+   * Reduce.eventsOfType('remove-todo').map(e => ({removed: [e.todoId]}))
+   */
+  toDictionary(seed) {
+    const empty = [];
+    const initial = seed || {};
+    return this._wrap(new FoldingReducer(this._parent, (acc, delta) => {
+      const copy = Object.assign({}, acc);
+      delta.removed && delta.removed.forEach(k => delete copy[k]);
+      delta.added && delta.added.forEach(([k, v]) => copy[k] = v);
+      return copy;
+    }, initial));
+  } 
 
   /**
    * Constructs a reducer from the query defined using the builder.

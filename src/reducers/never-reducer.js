@@ -6,6 +6,7 @@ import Option from '../option.js';
  * Never yields
  */
 export default class NeverReducer extends Reducer {
+  /** @ignore */
   reduce() {
     return Option.none();
   }

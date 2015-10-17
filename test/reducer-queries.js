@@ -1,5 +1,4 @@
 import chai from 'chai';
-import hamt from 'hamt';
 import Reduce from '../src/index.js';
 
 const expect = chai.expect;
@@ -279,5 +278,98 @@ describe('Reducer queries', () => {
         isCompleted: true
       }
     });
+  });
+
+  it('should reduce maps from single add deltas', () => {
+    // Arrange
+    const query = Reduce.eventsOfType('add-todo')
+                        .map(e => ({ added: [[e.todoId, e.title]] }))
+                        .toDictionary();
+    // Act
+    const reducer = query.build();
+    const events = [
+      { type: 'add-todo', todoId: 40, title: 'Pick up milk' },
+      { type: 'add-todo', todoId: 42, title: 'Buy the paper' }
+    ];
+    const {newState} = reducer.reduce({events});
+    // Assert
+    expect(newState).to.deep.equal({
+      [40]: 'Pick up milk',
+      [42]: 'Buy the paper'
+    });
+  });
+
+  it('should reduce maps from multiple add deltas', () => {
+    // Arrange
+    const query = Reduce.eventsOfType('add-todo')
+                        .map(e => ({ added: [[e.todoId, e.title], [e.todoId * 2, e.title]] }))
+                        .toDictionary();
+    // Act
+    const reducer = query.build();
+    const events = [
+      { type: 'add-todo', todoId: 40, title: 'Pick up milk' },
+      { type: 'add-todo', todoId: 42, title: 'Buy the paper' }
+    ];
+    const {newState} = reducer.reduce({events});
+    // Assert
+    expect(newState).to.deep.equal({
+      [40]: 'Pick up milk',
+      [80]: 'Pick up milk',
+      [42]: 'Buy the paper',
+      [84]: 'Buy the paper'
+    });
+  });
+
+  it('should initialize maps to their seeds if provided', () => {
+    // Arrange
+    const query = Reduce.never()
+                        .toDictionary({
+                          foo: 'bar'
+                        });
+    // Act
+    const reducer = query.build();
+    const {newState} = reducer.reduce();
+    // Assert
+    expect(newState).to.deep.equal({
+      foo: 'bar'
+    });
+  });
+
+  it('should reduce maps from single remove deltas', () => {
+    // Arrange
+    const query = Reduce.eventsOfType('remove-todo')
+                        .map(e => ({ removed: [e.todoId] }))
+                        .toDictionary({
+                          [40]: 'Pick up milk',
+                          [42]: 'Buy the paper'
+                        });
+    const events = [
+      { type: 'remove-todo', todoId: 40 }
+    ];
+    // Act
+    const reducer = query.build();
+    const {newState} = reducer.reduce({events});
+    // Assert
+    expect(newState).to.deep.equal({
+      [42]: 'Buy the paper'
+    });
+  });
+
+  it('should reduce maps from multiple remove deltas', () => {
+    // Arrange
+    const query = Reduce.eventsOfType('remove-todos')
+                        .map(e => ({ removed: e.todoIds }))
+                        .toDictionary({
+                          '40': 'Pick up milk',
+                          '42': 'Buy the paper'
+                        });
+    const events = [
+      { type: 'remove-todos', todoIds: [40, 42] }
+    ];
+    // Act
+    const reducer = query.build();
+    const {newState} = reducer.reduce({events});
+    // Assert
+    expect(newState).to.deep.equal({});
   });
 });
