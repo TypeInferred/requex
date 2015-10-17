@@ -39,6 +39,11 @@ export default class ReducerBuilder {
   }
 
 
+  /**
+   * Maps a value onto a reducer and produces values from that producer until the next value.
+   * @param  {function(x:T2):ReducerBuilder<T2>} reducerSelector - The function to project a value onto a reducer builder.
+   * @return {ReducerBuilder<T2>} A reducer builder
+   */
   flatReduce(reducerSelector) {
     return this._wrap(new FlatReducedReducer(this._parent, reducerSelector));
   }

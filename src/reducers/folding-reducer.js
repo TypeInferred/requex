@@ -21,6 +21,7 @@ export default class FoldingReducer extends Reducer {
     this._source = source;
   }
 
+  /** @ignore */
   reduce(context) {
     const value = context.getValue(SOURCE, this._source);
     const previous = context.getPreviousReduction();

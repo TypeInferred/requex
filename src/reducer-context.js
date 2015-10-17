@@ -38,18 +38,41 @@ export default class ReducerContext {
     this._event = eventMaybe;
   }
 
+  /**
+   * Returns an option wrapping the event being processed or none if there is none or it is out of scope.
+   * @return {Option<Event>} The event or none
+   */
   getEvent() {
     return this._event;
   }
 
+  /**
+   * Reduces the value of a child reducer and uses the storage key provided to address it in auxillary state.
+   * @param  {string} storageKey - The address to use for the child in auxillary state
+   * @param  {Reducer} reducer - The child reducer
+   * @return {Option<T>} The value if any produced in this context by the child reducer  
+   */
   getValue(storageKey, reducer) {
     return this._reduce(storageKey, reducer);
   }
 
+  /**
+   * Reduces the value of a child reducer and uses the storage key provided to address it in auxillary state.
+   * Doesn't use previous auxillary state to derive the value (i.e., it is "fresh").
+   * @param  {string} storageKey - The address to use for the child in auxillary state
+   * @param  {Reducer} reducer - The child reducer
+   * @return {Option<T>} The value if any produced in this context by the child reducer  
+   */
   getFreshValue(storageKey, reducer) {
     return this._reduce(storageKey, reducer, true);
   }
 
+  /**
+   * Returns the last value reduced by the current reducer if no storage key is provided otherwise that of
+   * the child with the address given by the storage key. Looks up this value in auxillary state.
+   * @param  {?string} storageKey - The address of the child or omitted for own value.
+   * @return {T} The last value reduced by the reducer
+   */
   getPreviousReduction(storageKey = null) {
     let previousEntry;
     if (storageKey) {
@@ -63,6 +86,12 @@ export default class ReducerContext {
     return previousEntry && previousEntry.length ? Option.some(previousEntry[0]) : Option.none();
   }
 
+  /**
+   * Scopes the context within the action callback to only hold events matching the predicate.
+   * @param  {function(e:Event):boolean} predicate - The filter over the events
+   * @param  {function():T} action - The callback
+   * @return {T} the value produced by the callback
+   */
   scopedBy(predicate, action) {
     const isEventInScope = this._event.reduce((_, e) => predicate(e), true);
     let result;
