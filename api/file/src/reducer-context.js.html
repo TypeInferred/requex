@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../">
+  <title data-ice="title">src/reducer-context.js | API Document</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  
+  
+</head>
+<body class="layout-container">
+
+<header>
+  <a href="./">Home</a>
+  
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  
+  <a data-ice="repoURL" href="https://github.com/TypeInferred/requex" class="repo-url-github">Repository</a>
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+</header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/index.js~Reduce.html">Reduce</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/option.js~Option.html">Option</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/reducer-builder.js~ReducerBuilder.html">ReducerBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/reducer-context.js~ReducerContext.html">ReducerContext</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/reducer-query.js~ReducerQuery.html">ReducerQuery</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-NewState">NewState</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-PreviousState">PreviousState</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">reducers</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/reducers/any-event-reducer.js~AnyEventReducer.html">AnyEventReducer</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/reducers/event-reducer.js~EventReducer.html">EventReducer</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/reducers/filtered-reducer.js~FilteredReducer.html">FilteredReducer</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/reducers/flat-reduced-reducer.js~FlatReducedReducer.html">FlatReducedReducer</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/reducers/folding-reducer.js~FoldingReducer.html">FoldingReducer</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/reducers/mapped-reducer.js~MappedReducer.html">MappedReducer</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/reducers/never-reducer.js~NeverReducer.html">NeverReducer</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/reducers/reducer.js~Reducer.html">Reducer</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/reducers/scoped-reducer.js~ScopedReducer.html">ScopedReducer</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/reducers/structure-reducer.js~StructureReducer.html">StructureReducer</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/reducers/value-reducer.js~ValueReducer.html">ValueReducer</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-INNER_SOURCE">INNER_SOURCE</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-ROOT">ROOT</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-SOURCE">SOURCE</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-VALUE">VALUE</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">src/reducer-context.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import {VALUE} from &apos;./reducers/storage-keys.js&apos;;
+import Option from &apos;./option.js&apos;;
+
+/**
+ * &lt;b&gt;INTERNAL&lt;/b&gt;
+ * Provides context for executing reducers so they can store and retrieve state.
+ */
+export default class ReducerContext {
+  /**
+   * Constructs a context used to by a tree of reducers.
+   * @param {Object} - The previous auxillary state used to retrieve stored values.
+   * @param {Array&lt;Event&gt;} - The events to reduce.
+   */
+  constructor(previousAuxillary, eventMaybe) {
+    /**
+     * This is the current level of scope. I.e., the route from the root to the current reducer.
+     * @type {Array&lt;string&gt;}
+     */
+    this._route = [];
+    /**
+     * This is the previous auxillary state used to retrieve stored values.
+     * @type {Object}
+     */
+    this._previousAuxillary = previousAuxillary || {};
+    
+    /**
+     * This contains the auxillary state built up in a reduction pass. For example, this
+     * may include accumulator values for folds that cannot easily be derived from looking 
+     * at the previous state.
+     * 
+     * @type {Object}
+     *
+     * @example &lt;caption&gt;Illustration where previous state isn&apos;t the same as the accumulator&lt;/caption&gt;
+     * From.events().ofAnyType().select(_ =&gt; 1).sum(0).select(x =&gt; 2 * x)
+     */
+    this.nextAuxillary = {};
+
+    this._event = eventMaybe;
+  }
+
+  /**
+   * Returns an option wrapping the event being processed or none if there is none or it is out of scope.
+   * @return {Option&lt;Event&gt;} The event or none
+   */
+  getEvent() {
+    return this._event;
+  }
+
+  /**
+   * Reduces the value of a child reducer and uses the storage key provided to address it in auxillary state.
+   * @param  {string} storageKey - The address to use for the child in auxillary state
+   * @param  {Reducer} reducer - The child reducer
+   * @return {Option&lt;T&gt;} The value if any produced in this context by the child reducer  
+   */
+  getValue(storageKey, reducer) {
+    return this._reduce(storageKey, reducer);
+  }
+
+  /**
+   * Reduces the value of a child reducer and uses the storage key provided to address it in auxillary state.
+   * Doesn&apos;t use previous auxillary state to derive the value (i.e., it is &quot;fresh&quot;).
+   * @param  {string} storageKey - The address to use for the child in auxillary state
+   * @param  {Reducer} reducer - The child reducer
+   * @return {Option&lt;T&gt;} The value if any produced in this context by the child reducer  
+   */
+  getFreshValue(storageKey, reducer) {
+    return this._reduce(storageKey, reducer, true);
+  }
+
+  /**
+   * Returns the last value reduced by the current reducer if no storage key is provided otherwise that of
+   * the child with the address given by the storage key. Looks up this value in auxillary state.
+   * @param  {?string} storageKey - The address of the child or omitted for own value.
+   * @return {T} The last value reduced by the reducer
+   */
+  getPreviousReduction(storageKey = null) {
+    let previousEntry;
+    if (storageKey) {
+      previousEntry = 
+        this._previousAuxillary &amp;&amp; 
+        this._previousAuxillary[storageKey] &amp;&amp; 
+        this._previousAuxillary[storageKey][VALUE];
+    } else {
+      previousEntry = this._previousAuxillary &amp;&amp; this._previousAuxillary[VALUE];
+    }
+    return previousEntry &amp;&amp; previousEntry.length ? Option.some(previousEntry[0]) : Option.none();
+  }
+
+  /**
+   * Scopes the context within the action callback to only hold events matching the predicate.
+   * @param  {function(e:Event):boolean} predicate - The filter over the events
+   * @param  {function():T} action - The callback
+   * @return {T} the value produced by the callback
+   */
+  scopedBy(predicate, action) {
+    const isEventInScope = this._event.reduce((_, e) =&gt; predicate(e), true);
+    let result;
+    if (isEventInScope) {
+      result = action(); 
+    } else {
+      const event = this._event;
+      this._event = Option.none();
+      result = action();
+      this._event = event;
+    }
+    return result;
+  }
+
+  _reduce(storageKey, reducer, shouldUseFreshState = false) {
+    const parentNextAux = this.nextAuxillary;
+    const parentPrevAux = this._previousAuxillary;
+    this.nextAuxillary = parentNextAux[storageKey] || (parentNextAux[storageKey] = {});
+    this._previousAuxillary = !shouldUseFreshState &amp;&amp; this._previousAuxillary &amp;&amp; this._previousAuxillary[storageKey];
+    const newValue = reducer.reduce(this);
+    if (newValue.isSome) {
+      this.nextAuxillary[VALUE] = [newValue.get()];
+    } else if (this._previousAuxillary &amp;&amp; this._previousAuxillary[VALUE] &amp;&amp; this._previousAuxillary[VALUE].length) {
+      this.nextAuxillary[VALUE] = this._previousAuxillary[VALUE];
+    }
+    this.nextAuxillary = parentNextAux;
+    this._previousAuxillary = parentPrevAux;
+    return newValue;
+  }
+}</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(0.4.0)</span></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

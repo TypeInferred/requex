@@ -1,26 +1,74 @@
 window.esdocSearchIndex = [
   [
-    "requex/src/constants.js~all_event_types",
-    "variable/index.html#static-variable-ALL_EVENT_TYPES",
-    "<span>ALL_EVENT_TYPES</span> <span class=\"search-result-import-path\">requex/src/constants.js</span>",
-    "variable"
-  ],
-  [
-    "requex/src/index.js~constants",
-    "variable/index.html#static-variable-Constants",
-    "<span>Constants</span> <span class=\"search-result-import-path\">requex/src/index.js</span>",
-    "variable"
-  ],
-  [
-    "requex/src/events.js~events",
-    "class/src/events.js~Events.html",
-    "<span>Events</span> <span class=\"search-result-import-path\">requex/src/events.js</span>",
+    "requex/src/reducers/any-event-reducer.js~anyeventreducer",
+    "class/src/reducers/any-event-reducer.js~AnyEventReducer.html",
+    "<span>AnyEventReducer</span> <span class=\"search-result-import-path\">requex/src/reducers/any-event-reducer.js</span>",
     "class"
   ],
   [
-    "requex/src/index.js~from",
-    "class/src/index.js~From.html",
-    "<span>From</span> <span class=\"search-result-import-path\">requex/src/index.js</span>",
+    "requex/src/reducers/event-reducer.js~eventreducer",
+    "class/src/reducers/event-reducer.js~EventReducer.html",
+    "<span>EventReducer</span> <span class=\"search-result-import-path\">requex/src/reducers/event-reducer.js</span>",
+    "class"
+  ],
+  [
+    "requex/src/reducers/filtered-reducer.js~filteredreducer",
+    "class/src/reducers/filtered-reducer.js~FilteredReducer.html",
+    "<span>FilteredReducer</span> <span class=\"search-result-import-path\">requex/src/reducers/filtered-reducer.js</span>",
+    "class"
+  ],
+  [
+    "requex/src/reducers/flat-reduced-reducer.js~flatreducedreducer",
+    "class/src/reducers/flat-reduced-reducer.js~FlatReducedReducer.html",
+    "<span>FlatReducedReducer</span> <span class=\"search-result-import-path\">requex/src/reducers/flat-reduced-reducer.js</span>",
+    "class"
+  ],
+  [
+    "requex/src/reducers/folding-reducer.js~foldingreducer",
+    "class/src/reducers/folding-reducer.js~FoldingReducer.html",
+    "<span>FoldingReducer</span> <span class=\"search-result-import-path\">requex/src/reducers/folding-reducer.js</span>",
+    "class"
+  ],
+  [
+    "requex/src/reducers/storage-keys.js~inner_source",
+    "variable/index.html#static-variable-INNER_SOURCE",
+    "<span>INNER_SOURCE</span> <span class=\"search-result-import-path\">requex/src/reducers/storage-keys.js</span>",
+    "variable"
+  ],
+  [
+    "requex/src/reducers/mapped-reducer.js~mappedreducer",
+    "class/src/reducers/mapped-reducer.js~MappedReducer.html",
+    "<span>MappedReducer</span> <span class=\"search-result-import-path\">requex/src/reducers/mapped-reducer.js</span>",
+    "class"
+  ],
+  [
+    "requex/src/reducers/never-reducer.js~neverreducer",
+    "class/src/reducers/never-reducer.js~NeverReducer.html",
+    "<span>NeverReducer</span> <span class=\"search-result-import-path\">requex/src/reducers/never-reducer.js</span>",
+    "class"
+  ],
+  [
+    "requex/src/option.js~option",
+    "class/src/option.js~Option.html",
+    "<span>Option</span> <span class=\"search-result-import-path\">requex/src/option.js</span>",
+    "class"
+  ],
+  [
+    "requex/src/reducers/storage-keys.js~root",
+    "variable/index.html#static-variable-ROOT",
+    "<span>ROOT</span> <span class=\"search-result-import-path\">requex/src/reducers/storage-keys.js</span>",
+    "variable"
+  ],
+  [
+    "requex/src/index.js~reduce",
+    "class/src/index.js~Reduce.html",
+    "<span>Reduce</span> <span class=\"search-result-import-path\">requex/src/index.js</span>",
+    "class"
+  ],
+  [
+    "requex/src/reducers/reducer.js~reducer",
+    "class/src/reducers/reducer.js~Reducer.html",
+    "<span>Reducer</span> <span class=\"search-result-import-path\">requex/src/reducers/reducer.js</span>",
     "class"
   ],
   [
@@ -30,9 +78,45 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
-    "requex/src/reducer-descriptor.js~reducerdescriptor",
-    "class/src/reducer-descriptor.js~ReducerDescriptor.html",
-    "<span>ReducerDescriptor</span> <span class=\"search-result-import-path\">requex/src/reducer-descriptor.js</span>",
+    "requex/src/reducer-context.js~reducercontext",
+    "class/src/reducer-context.js~ReducerContext.html",
+    "<span>ReducerContext</span> <span class=\"search-result-import-path\">requex/src/reducer-context.js</span>",
+    "class"
+  ],
+  [
+    "requex/src/reducer-query.js~reducerquery",
+    "class/src/reducer-query.js~ReducerQuery.html",
+    "<span>ReducerQuery</span> <span class=\"search-result-import-path\">requex/src/reducer-query.js</span>",
+    "class"
+  ],
+  [
+    "requex/src/reducers/storage-keys.js~source",
+    "variable/index.html#static-variable-SOURCE",
+    "<span>SOURCE</span> <span class=\"search-result-import-path\">requex/src/reducers/storage-keys.js</span>",
+    "variable"
+  ],
+  [
+    "requex/src/reducers/scoped-reducer.js~scopedreducer",
+    "class/src/reducers/scoped-reducer.js~ScopedReducer.html",
+    "<span>ScopedReducer</span> <span class=\"search-result-import-path\">requex/src/reducers/scoped-reducer.js</span>",
+    "class"
+  ],
+  [
+    "requex/src/reducers/structure-reducer.js~structurereducer",
+    "class/src/reducers/structure-reducer.js~StructureReducer.html",
+    "<span>StructureReducer</span> <span class=\"search-result-import-path\">requex/src/reducers/structure-reducer.js</span>",
+    "class"
+  ],
+  [
+    "requex/src/reducers/storage-keys.js~value",
+    "variable/index.html#static-variable-VALUE",
+    "<span>VALUE</span> <span class=\"search-result-import-path\">requex/src/reducers/storage-keys.js</span>",
+    "variable"
+  ],
+  [
+    "requex/src/reducers/value-reducer.js~valuereducer",
+    "class/src/reducers/value-reducer.js~ValueReducer.html",
+    "<span>ValueReducer</span> <span class=\"search-result-import-path\">requex/src/reducers/value-reducer.js</span>",
     "class"
   ],
   [
@@ -360,51 +444,105 @@ window.esdocSearchIndex = [
     "external"
   ],
   [
-    "src/constants.js",
-    "file/src/constants.js.html",
-    "src/constants.js",
-    "file"
-  ],
-  [
-    "src/events.js",
-    "file/src/events.js.html",
-    "src/events.js",
-    "file"
-  ],
-  [
-    "src/events.js~events#ofanytype",
-    "class/src/events.js~Events.html#instance-method-ofAnyType",
-    "src/events.js~Events#ofAnyType",
-    "method"
-  ],
-  [
-    "src/events.js~events#oftype",
-    "class/src/events.js~Events.html#instance-method-ofType",
-    "src/events.js~Events#ofType",
-    "method"
-  ],
-  [
     "src/index.js",
     "file/src/index.js.html",
     "src/index.js",
     "file"
   ],
   [
-    "src/index.js~from.events",
-    "class/src/index.js~From.html#static-method-events",
-    "src/index.js~From.events",
+    "src/index.js~reduce.allevents",
+    "class/src/index.js~Reduce.html#static-method-allEvents",
+    "src/index.js~Reduce.allEvents",
     "method"
   ],
   [
-    "src/index.js~from.structure",
-    "class/src/index.js~From.html#static-method-structure",
-    "src/index.js~From.structure",
+    "src/index.js~reduce.eventsoftype",
+    "class/src/index.js~Reduce.html#static-method-eventsOfType",
+    "src/index.js~Reduce.eventsOfType",
     "method"
   ],
   [
-    "src/index.js~from.value",
-    "class/src/index.js~From.html#static-method-value",
-    "src/index.js~From.value",
+    "src/index.js~reduce.never",
+    "class/src/index.js~Reduce.html#static-method-never",
+    "src/index.js~Reduce.never",
+    "method"
+  ],
+  [
+    "src/index.js~reduce.structure",
+    "class/src/index.js~Reduce.html#static-method-structure",
+    "src/index.js~Reduce.structure",
+    "method"
+  ],
+  [
+    "src/index.js~reduce.value",
+    "class/src/index.js~Reduce.html#static-method-value",
+    "src/index.js~Reduce.value",
+    "method"
+  ],
+  [
+    "src/option.js",
+    "file/src/option.js.html",
+    "src/option.js",
+    "file"
+  ],
+  [
+    "src/option.js~option#bind",
+    "class/src/option.js~Option.html#instance-method-bind",
+    "src/option.js~Option#bind",
+    "method"
+  ],
+  [
+    "src/option.js~option#filter",
+    "class/src/option.js~Option.html#instance-method-filter",
+    "src/option.js~Option#filter",
+    "method"
+  ],
+  [
+    "src/option.js~option#get",
+    "class/src/option.js~Option.html#instance-method-get",
+    "src/option.js~Option#get",
+    "method"
+  ],
+  [
+    "src/option.js~option#isnone",
+    "class/src/option.js~Option.html#instance-member-isNone",
+    "src/option.js~Option#isNone",
+    "member"
+  ],
+  [
+    "src/option.js~option#issome",
+    "class/src/option.js~Option.html#instance-member-isSome",
+    "src/option.js~Option#isSome",
+    "member"
+  ],
+  [
+    "src/option.js~option#map",
+    "class/src/option.js~Option.html#instance-method-map",
+    "src/option.js~Option#map",
+    "method"
+  ],
+  [
+    "src/option.js~option#otherwise",
+    "class/src/option.js~Option.html#instance-method-otherwise",
+    "src/option.js~Option#otherwise",
+    "method"
+  ],
+  [
+    "src/option.js~option#reduce",
+    "class/src/option.js~Option.html#instance-method-reduce",
+    "src/option.js~Option#reduce",
+    "method"
+  ],
+  [
+    "src/option.js~option.none",
+    "class/src/option.js~Option.html#static-method-none",
+    "src/option.js~Option.none",
+    "method"
+  ],
+  [
+    "src/option.js~option.some",
+    "class/src/option.js~Option.html#static-method-some",
+    "src/option.js~Option.some",
     "method"
   ],
   [
@@ -420,6 +558,36 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "src/reducer-builder.js~reducerbuilder#filter",
+    "class/src/reducer-builder.js~ReducerBuilder.html#instance-method-filter",
+    "src/reducer-builder.js~ReducerBuilder#filter",
+    "method"
+  ],
+  [
+    "src/reducer-builder.js~reducerbuilder#flatreduce",
+    "class/src/reducer-builder.js~ReducerBuilder.html#instance-method-flatReduce",
+    "src/reducer-builder.js~ReducerBuilder#flatReduce",
+    "method"
+  ],
+  [
+    "src/reducer-builder.js~reducerbuilder#fold",
+    "class/src/reducer-builder.js~ReducerBuilder.html#instance-method-fold",
+    "src/reducer-builder.js~ReducerBuilder#fold",
+    "method"
+  ],
+  [
+    "src/reducer-builder.js~reducerbuilder#map",
+    "class/src/reducer-builder.js~ReducerBuilder.html#instance-method-map",
+    "src/reducer-builder.js~ReducerBuilder#map",
+    "method"
+  ],
+  [
+    "src/reducer-builder.js~reducerbuilder#scoped",
+    "class/src/reducer-builder.js~ReducerBuilder.html#instance-method-scoped",
+    "src/reducer-builder.js~ReducerBuilder#scoped",
+    "method"
+  ],
+  [
     "src/reducer-builder.js~reducerbuilder#select",
     "class/src/reducer-builder.js~ReducerBuilder.html#instance-method-select",
     "src/reducer-builder.js~ReducerBuilder#select",
@@ -432,33 +600,219 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "src/reducer-builder.js~reducerbuilder#todictionary",
+    "class/src/reducer-builder.js~ReducerBuilder.html#instance-method-toDictionary",
+    "src/reducer-builder.js~ReducerBuilder#toDictionary",
+    "method"
+  ],
+  [
+    "src/reducer-builder.js~reducerbuilder#unwrap",
+    "class/src/reducer-builder.js~ReducerBuilder.html#instance-method-unwrap",
+    "src/reducer-builder.js~ReducerBuilder#unwrap",
+    "method"
+  ],
+  [
     "src/reducer-builder.js~reducerbuilder#where",
     "class/src/reducer-builder.js~ReducerBuilder.html#instance-method-where",
     "src/reducer-builder.js~ReducerBuilder#where",
     "method"
   ],
   [
-    "src/reducer-descriptor.js",
-    "file/src/reducer-descriptor.js.html",
-    "src/reducer-descriptor.js",
+    "src/reducer-context.js",
+    "file/src/reducer-context.js.html",
+    "src/reducer-context.js",
     "file"
   ],
   [
-    "src/reducer-descriptor.js~reducerdescriptor#constructor",
-    "class/src/reducer-descriptor.js~ReducerDescriptor.html#instance-constructor-constructor",
-    "src/reducer-descriptor.js~ReducerDescriptor#constructor",
+    "src/reducer-context.js~reducercontext#constructor",
+    "class/src/reducer-context.js~ReducerContext.html#instance-constructor-constructor",
+    "src/reducer-context.js~ReducerContext#constructor",
     "method"
   ],
   [
-    "src/reducer-descriptor.js~reducerdescriptor#handledeventtypes",
-    "class/src/reducer-descriptor.js~ReducerDescriptor.html#instance-member-handledEventTypes",
-    "src/reducer-descriptor.js~ReducerDescriptor#handledEventTypes",
+    "src/reducer-context.js~reducercontext#getevent",
+    "class/src/reducer-context.js~ReducerContext.html#instance-method-getEvent",
+    "src/reducer-context.js~ReducerContext#getEvent",
+    "method"
+  ],
+  [
+    "src/reducer-context.js~reducercontext#getfreshvalue",
+    "class/src/reducer-context.js~ReducerContext.html#instance-method-getFreshValue",
+    "src/reducer-context.js~ReducerContext#getFreshValue",
+    "method"
+  ],
+  [
+    "src/reducer-context.js~reducercontext#getpreviousreduction",
+    "class/src/reducer-context.js~ReducerContext.html#instance-method-getPreviousReduction",
+    "src/reducer-context.js~ReducerContext#getPreviousReduction",
+    "method"
+  ],
+  [
+    "src/reducer-context.js~reducercontext#getvalue",
+    "class/src/reducer-context.js~ReducerContext.html#instance-method-getValue",
+    "src/reducer-context.js~ReducerContext#getValue",
+    "method"
+  ],
+  [
+    "src/reducer-context.js~reducercontext#nextauxillary",
+    "class/src/reducer-context.js~ReducerContext.html#instance-member-nextAuxillary",
+    "src/reducer-context.js~ReducerContext#nextAuxillary",
     "member"
   ],
   [
-    "src/reducer-descriptor.js~reducerdescriptor#reduce",
-    "class/src/reducer-descriptor.js~ReducerDescriptor.html#instance-member-reduce",
-    "src/reducer-descriptor.js~ReducerDescriptor#reduce",
-    "member"
+    "src/reducer-context.js~reducercontext#scopedby",
+    "class/src/reducer-context.js~ReducerContext.html#instance-method-scopedBy",
+    "src/reducer-context.js~ReducerContext#scopedBy",
+    "method"
+  ],
+  [
+    "src/reducer-query.js",
+    "file/src/reducer-query.js.html",
+    "src/reducer-query.js",
+    "file"
+  ],
+  [
+    "src/reducer-query.js~reducerquery#reduce",
+    "class/src/reducer-query.js~ReducerQuery.html#instance-method-reduce",
+    "src/reducer-query.js~ReducerQuery#reduce",
+    "method"
+  ],
+  [
+    "src/reducer-query.js~reducerquery.newstate",
+    "typedef/index.html#static-typedef-NewState",
+    "src/reducer-query.js~ReducerQuery.NewState",
+    "typedef"
+  ],
+  [
+    "src/reducer-query.js~reducerquery.previousstate",
+    "typedef/index.html#static-typedef-PreviousState",
+    "src/reducer-query.js~ReducerQuery.PreviousState",
+    "typedef"
+  ],
+  [
+    "src/reducers/any-event-reducer.js",
+    "file/src/reducers/any-event-reducer.js.html",
+    "src/reducers/any-event-reducer.js",
+    "file"
+  ],
+  [
+    "src/reducers/event-reducer.js",
+    "file/src/reducers/event-reducer.js.html",
+    "src/reducers/event-reducer.js",
+    "file"
+  ],
+  [
+    "src/reducers/event-reducer.js~eventreducer#constructor",
+    "class/src/reducers/event-reducer.js~EventReducer.html#instance-constructor-constructor",
+    "src/reducers/event-reducer.js~EventReducer#constructor",
+    "method"
+  ],
+  [
+    "src/reducers/filtered-reducer.js",
+    "file/src/reducers/filtered-reducer.js.html",
+    "src/reducers/filtered-reducer.js",
+    "file"
+  ],
+  [
+    "src/reducers/filtered-reducer.js~filteredreducer#constructor",
+    "class/src/reducers/filtered-reducer.js~FilteredReducer.html#instance-constructor-constructor",
+    "src/reducers/filtered-reducer.js~FilteredReducer#constructor",
+    "method"
+  ],
+  [
+    "src/reducers/flat-reduced-reducer.js",
+    "file/src/reducers/flat-reduced-reducer.js.html",
+    "src/reducers/flat-reduced-reducer.js",
+    "file"
+  ],
+  [
+    "src/reducers/flat-reduced-reducer.js~flatreducedreducer#constructor",
+    "class/src/reducers/flat-reduced-reducer.js~FlatReducedReducer.html#instance-constructor-constructor",
+    "src/reducers/flat-reduced-reducer.js~FlatReducedReducer#constructor",
+    "method"
+  ],
+  [
+    "src/reducers/folding-reducer.js",
+    "file/src/reducers/folding-reducer.js.html",
+    "src/reducers/folding-reducer.js",
+    "file"
+  ],
+  [
+    "src/reducers/folding-reducer.js~foldingreducer#constructor",
+    "class/src/reducers/folding-reducer.js~FoldingReducer.html#instance-constructor-constructor",
+    "src/reducers/folding-reducer.js~FoldingReducer#constructor",
+    "method"
+  ],
+  [
+    "src/reducers/mapped-reducer.js",
+    "file/src/reducers/mapped-reducer.js.html",
+    "src/reducers/mapped-reducer.js",
+    "file"
+  ],
+  [
+    "src/reducers/mapped-reducer.js~mappedreducer#constructor",
+    "class/src/reducers/mapped-reducer.js~MappedReducer.html#instance-constructor-constructor",
+    "src/reducers/mapped-reducer.js~MappedReducer#constructor",
+    "method"
+  ],
+  [
+    "src/reducers/never-reducer.js",
+    "file/src/reducers/never-reducer.js.html",
+    "src/reducers/never-reducer.js",
+    "file"
+  ],
+  [
+    "src/reducers/reducer.js",
+    "file/src/reducers/reducer.js.html",
+    "src/reducers/reducer.js",
+    "file"
+  ],
+  [
+    "src/reducers/reducer.js~reducer#reduce",
+    "class/src/reducers/reducer.js~Reducer.html#instance-method-reduce",
+    "src/reducers/reducer.js~Reducer#reduce",
+    "method"
+  ],
+  [
+    "src/reducers/scoped-reducer.js",
+    "file/src/reducers/scoped-reducer.js.html",
+    "src/reducers/scoped-reducer.js",
+    "file"
+  ],
+  [
+    "src/reducers/scoped-reducer.js~scopedreducer#constructor",
+    "class/src/reducers/scoped-reducer.js~ScopedReducer.html#instance-constructor-constructor",
+    "src/reducers/scoped-reducer.js~ScopedReducer#constructor",
+    "method"
+  ],
+  [
+    "src/reducers/storage-keys.js",
+    "file/src/reducers/storage-keys.js.html",
+    "src/reducers/storage-keys.js",
+    "file"
+  ],
+  [
+    "src/reducers/structure-reducer.js",
+    "file/src/reducers/structure-reducer.js.html",
+    "src/reducers/structure-reducer.js",
+    "file"
+  ],
+  [
+    "src/reducers/structure-reducer.js~structurereducer#constructor",
+    "class/src/reducers/structure-reducer.js~StructureReducer.html#instance-constructor-constructor",
+    "src/reducers/structure-reducer.js~StructureReducer#constructor",
+    "method"
+  ],
+  [
+    "src/reducers/value-reducer.js",
+    "file/src/reducers/value-reducer.js.html",
+    "src/reducers/value-reducer.js",
+    "file"
+  ],
+  [
+    "src/reducers/value-reducer.js~valuereducer#constructor",
+    "class/src/reducers/value-reducer.js~ValueReducer.html#instance-constructor-constructor",
+    "src/reducers/value-reducer.js~ValueReducer#constructor",
+    "method"
   ]
 ]

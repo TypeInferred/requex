@@ -31,39 +31,59 @@
 <nav class="navigation" data-ice="nav"><div>
   <ul>
     
-  <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/events.js~Events.html">Events</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/index.js~From.html">From</a></span></span></li>
+  <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/index.js~Reduce.html">Reduce</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/option.js~Option.html">Option</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/reducer-builder.js~ReducerBuilder.html">ReducerBuilder</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/reducer-descriptor.js~ReducerDescriptor.html">ReducerDescriptor</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-ALL_EVENT_TYPES">ALL_EVENT_TYPES</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-Constants">Constants</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/reducer-context.js~ReducerContext.html">ReducerContext</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/reducer-query.js~ReducerQuery.html">ReducerQuery</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-NewState">NewState</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-PreviousState">PreviousState</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">reducers</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/reducers/any-event-reducer.js~AnyEventReducer.html">AnyEventReducer</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/reducers/event-reducer.js~EventReducer.html">EventReducer</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/reducers/filtered-reducer.js~FilteredReducer.html">FilteredReducer</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/reducers/flat-reduced-reducer.js~FlatReducedReducer.html">FlatReducedReducer</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/reducers/folding-reducer.js~FoldingReducer.html">FoldingReducer</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/reducers/mapped-reducer.js~MappedReducer.html">MappedReducer</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/reducers/never-reducer.js~NeverReducer.html">NeverReducer</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/reducers/reducer.js~Reducer.html">Reducer</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/reducers/scoped-reducer.js~ScopedReducer.html">ScopedReducer</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/reducers/structure-reducer.js~StructureReducer.html">StructureReducer</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/reducers/value-reducer.js~ValueReducer.html">ValueReducer</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-INNER_SOURCE">INNER_SOURCE</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-ROOT">ROOT</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-SOURCE">SOURCE</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-VALUE">VALUE</a></span></span></li>
 </ul>
 </div>
 </nav>
 
 <div class="content" data-ice="content"><h1 data-ice="title">src/index.js</h1>
-<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import hamt from &apos;hamt&apos;;
-import Events from &apos;./events.js&apos;;
-import ReducerBuilder from &apos;./reducer-builder.js&apos;;
-import * as Consts from &apos;./constants.js&apos;;
-
-const events = new Events();
-
-/**
- * Collection of constant values for event types etc.
- */
-export const Constants = Consts;
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import ReducerBuilder from &apos;./reducer-builder.js&apos;;
+import ValueReducer from &apos;./reducers/value-reducer.js&apos;;
+import EventReducer from &apos;./reducers/event-reducer.js&apos;;
+import AnyEventReducer from &apos;./reducers/any-event-reducer.js&apos;;
+import StructureReducer from &apos;./reducers/structure-reducer.js&apos;;
+import NeverReducer from &apos;./reducers/never-reducer.js&apos;;
 
 /**
  * A factory for creating reducer queries.
  */
-export default class From {
+export default class Reduce {
   /**
-   * A sub-factory for creating reducer queries over the events in scope.
-   * @returns {Events} The factory
+   * Creates a reducer query over events in scope matching the event type specified.
+   * @param {string} eventType - The event type
+   * @returns {ReducerBuilder} The query over the matching events
    */
-  static events() {
-    return events;
+  static eventsOfType(eventType) {
+    return new ReducerBuilder(new EventReducer(eventType));
+  }
+
+  /**
+   * Creates a reducer query of over all events in scope.
+   * @returns {ReducerBuilder} The query over the events in scope
+   */
+  static allEvents() {
+    return new ReducerBuilder(new AnyEventReducer());
   }
 
   /**
@@ -72,7 +92,7 @@ export default class From {
    * @returns {ReducerBuilder} - The reducer query containing the value
    */
   static value(value) {
-    return new ReducerBuilder((previousState, event) =&gt; next =&gt; next(value), hamt.empty)
+    return new ReducerBuilder(new ValueReducer(value));
   }
 
   /**
@@ -81,45 +101,15 @@ export default class From {
    * @returns {ReducerBuilder} - The reducer query builder
    */
   static structure(reducerStructure) {
-    if (typeof reducerStructure !== &apos;object&apos;) throw new Error(&apos;Invalid reducerStructure argument. Expected an object.&apos;);
-    const keys = Object.keys(reducerStructure);
-    const constantKeys = keys.filter(k =&gt; !(reducerStructure[k] instanceof ReducerBuilder));
-    const reducerKeys = keys.filter(k =&gt; reducerStructure[k] instanceof ReducerBuilder);
-    const reducerLookup = reducerKeys.reduce((acc, k) =&gt; hamt.set(k, reducerStructure[k].build(), acc), hamt.empty);
-    const handledEventTypes = hamt.values(reducerLookup).reduce((acc, reducerProperty) =&gt; {
-      const reducerPropertyHandledEvents = hamt.keys(reducerProperty.handledEventTypes);
-      return reducerPropertyHandledEvents.reduce((innerAcc, eventType) =&gt; hamt.set(eventType, true, innerAcc), acc);
-    }, hamt.empty);
-    return new ReducerBuilder((previousState, event) =&gt; next =&gt; {
-      // Track whether the state has actually changed. If not, we can return the previous state.
-      const isSeeding = previousState === undefined;
-      let hasStateChanged = isSeeding;
-      const nextState = {};
-      // Reduce reducer properties using previous state and the event
-      reducerKeys.forEach(k =&gt; {
-        const previousPropertyValue = previousState &amp;&amp; previousState[k];
-        const propertyReducer = hamt.get(k, reducerLookup);
-        // Property can change on initial seed or if the reducer can handle the event.
-        const couldPropertyChange = isSeeding || hamt.get(event, propertyReducer.handledEventTypes);
-        if (couldPropertyChange) {
-          const newPropertyValue = propertyReducer.reduce(previousState, event);
-          // If it has changed we take the new value and will produce a new version of the state.
-          if (newPropertyValue !== previousPropertyValue) {
-            hasStateChanged = true;
-            nextState[k] = newPropertyValue;
-            return;
-          }
-        }
-        nextState[k] = previousPropertyValue;
-      });
-      if (hasStateChanged) {
-        // Copy constants
-        constantKeys.forEach(k =&gt; nextState[k] = reducerStructure[k]);
-        next(nextState);
-        return;
-      }
-      next(previousState);
-    }, handledEventTypes)
+    return new ReducerBuilder(new StructureReducer(reducerStructure));
+  }
+
+  /**
+   * A reducer query that never produces any updates in state.
+   * @returns {ReducerBuilder} - The reducer query builder
+   */
+  static never() {
+    return new ReducerBuilder(new NeverReducer());
   }
 }</code></pre>
 

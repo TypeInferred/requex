@@ -1,16 +1,23 @@
-import ReducerDescriptor from './reducer-descriptor.js';
+import MappedReducer from './reducers/mapped-reducer.js';
+import FlatReducedReducer from './reducers/flat-reduced-reducer.js';
+import FilteredReducer from './reducers/filtered-reducer.js';
+import ScopedReducer from './reducers/scoped-reducer.js';
+import FoldingReducer from './reducers/folding-reducer.js';
+import ReducerQuery from './reducer-query.js';
 
 /**
- * A builder for reducers.
+ * A fluent reducer-query builder.
  */
 export default class ReducerBuilder {
 
   /** @ignore */
-  constructor(reduceChain, handledEventTypes) {
-    /** @ignore */
-    this._reduceChain = reduceChain;
-    /** @ignore */
-    this._handledEventTypes = handledEventTypes;
+  constructor(parent) {
+    /** 
+     * The previous reducer in the fluent chain.
+     * @type {Reducer}
+     * @private
+     */
+    this._parent = parent;
   }
 
   /**
@@ -19,18 +26,53 @@ export default class ReducerBuilder {
    * @returns {ReducerBuilder<T2>} A reducer builder that maps the value
    */
   select(selector) {
-    if (!selector) throw new Error('Missing selector argument');
-    return this._chain((result, next) => next(selector(result)));
+    return this.map(selector);
+  }
+
+  /**
+   * Maps the reduced value onto another value using a function.
+   * @param {function(x:T1):T2} selector - The mapping function
+   * @returns {ReducerBuilder<T2>} A reducer builder that maps the value
+   */
+  map(selector) {
+    return this._wrap(new MappedReducer(this._parent, selector));
+  }
+
+
+  /**
+   * Maps a value onto a reducer and produces values from that producer until the next value.
+   * @param  {function(x:T2):ReducerBuilder<T2>} reducerSelector - The function to project a value onto a reducer builder.
+   * @return {ReducerBuilder<T2>} A reducer builder
+   */
+  flatReduce(reducerSelector) {
+    return this._wrap(new FlatReducedReducer(this._parent, reducerSelector));
   }
 
   /**
    * Filters the value by applying a predicate function to the value
    * @param {function(x:T):boolean} predicate - The predicate function
-   * @returns {ReducerBuilder<T>} A reducer builder than filters using the predicate
+   * @returns {ReducerBuilder<T>} A reducer builder that filters using the predicate
    */
   where(predicate) {
-    if (!predicate) throw new Error('Missing predicate argument');
-    return this._chain((result, next) => predicate(result) && next(result));
+    return this.filter(predicate);
+  }
+
+  /**
+   * Filters the value by applying a predicate function to the value
+   * @param {function(x:T):boolean} predicate - The predicate function
+   * @returns {ReducerBuilder<T>} A reducer builder that filters using the predicate
+   */
+  filter(predicate) {
+    return this._wrap(new FilteredReducer(this._parent, predicate));
+  }
+
+  /**
+   * Scopes the events that are visible to reducers in the fluent chain leading to this.
+   * @param  {function(e:Event):boolean} predicate - The predicate to determine if an event is in scope.
+   * @returns {ReducerBuilder<T>} A reducer builder that is scoped to events passing the predicate.
+   */
+  scoped(predicate) {
+    return this._wrap(new ScopedReducer(this._parent, predicate));
   }
 
   /**
@@ -39,30 +81,61 @@ export default class ReducerBuilder {
    * @returns {ReducerBuilder<T>} A reducer builder that accumulates the sum
    */
   sum(zeroValue) {
-    return this._chain((result, next, previousState) => {
-      const acc = previousState || zeroValue;
-      next(acc + result);
-    });
+    return this._wrap(new FoldingReducer(this._parent, (acc, x) => acc + x, zeroValue));
   }
 
   /**
-   * Constructs a reducer descriptor from the query defined using the builder.
-   * @returns {ReducerDescriptor} a reducer descriptor
+   * Accumulates using the accumulate function over the reduced values.
+   * @param {function(acc:T2, value:T1): T2} accumulate - The accumulator function
+   * @param seedValue - The seed value for the accumulation.
+   * @returns {ReducerBuilder<T2>} A reducer builder that accumulates the sum
    */
-  build() {
-    const reduce = (previousState, event) => {
-      let result;
-      this._reduceChain(previousState, event)(r => result = r);
-      return result;
-    };
-    return new ReducerDescriptor(reduce, this._handledEventTypes);
+  fold(accumulate, seedValue) {
+    return this._wrap(new FoldingReducer(this._parent, accumulate, seedValue));
   }
 
-  /** @ignore */
-  _chain(resultHandler) {
-    return new ReducerBuilder(
-      (previousState, event) => next => this._reduceChain(previousState, event)(result => resultHandler(result, next, previousState)),
-      this._handledEventTypes
-    );
+  /**
+   * Accumulates a dictionary from deltas. Remove deltas will be applied before add deltas.
+   * TODO: Use a persistent map data structure. Currently O(N) per delta but could be O(log2(N)) 
+   * 
+   * @returns {ReducerBuilder<T>} A reducer builder
+   * 
+   * @example <caption>Add delta</caption>
+   * Reduce.eventsOfType('add-todo').map(e => ({added: [[e.todoId, e.title]]}))
+   *
+   * @example <caption>Remove deltas</caption>
+   * Reduce.eventsOfType('remove-todo').map(e => ({removed: [e.todoId]}))
+   */
+  toDictionary(seed) {
+    const empty = [];
+    const initial = seed || {};
+    return this._wrap(new FoldingReducer(this._parent, (acc, delta) => {
+      const copy = Object.assign({}, acc);
+      delta.removed && delta.removed.forEach(k => delete copy[k]);
+      delta.added && delta.added.forEach(([k, v]) => copy[k] = v);
+      return copy;
+    }, initial));
+  } 
+
+  /**
+   * Constructs a reducer from the query defined using the builder.
+   * @returns {ReducerQuery} a reducer query
+   */
+  build() {
+    return new ReducerQuery(this._parent);
+  }
+
+  /**
+   * <b>INTERNAL</b>
+   * Returns the most recent reducer in the fluent chain.
+   * @return {Reducer} The most recent reducer in the fluent chain.
+   */
+  unwrap() {
+    return this._parent;
+  }
+
+  /** ignore */
+  _wrap(reducer) {
+    return new ReducerBuilder(reducer);
   }
 }

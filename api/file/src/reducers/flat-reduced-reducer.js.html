@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../../">
+  <title data-ice="title">src/reducers/flat-reduced-reducer.js | API Document</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  
+  
+</head>
+<body class="layout-container">
+
+<header>
+  <a href="./">Home</a>
+  
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  
+  <a data-ice="repoURL" href="https://github.com/TypeInferred/requex" class="repo-url-github">Repository</a>
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+</header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/index.js~Reduce.html">Reduce</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/option.js~Option.html">Option</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/reducer-builder.js~ReducerBuilder.html">ReducerBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/reducer-context.js~ReducerContext.html">ReducerContext</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/reducer-query.js~ReducerQuery.html">ReducerQuery</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-NewState">NewState</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-PreviousState">PreviousState</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">reducers</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/reducers/any-event-reducer.js~AnyEventReducer.html">AnyEventReducer</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/reducers/event-reducer.js~EventReducer.html">EventReducer</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/reducers/filtered-reducer.js~FilteredReducer.html">FilteredReducer</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/reducers/flat-reduced-reducer.js~FlatReducedReducer.html">FlatReducedReducer</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/reducers/folding-reducer.js~FoldingReducer.html">FoldingReducer</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/reducers/mapped-reducer.js~MappedReducer.html">MappedReducer</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/reducers/never-reducer.js~NeverReducer.html">NeverReducer</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/reducers/reducer.js~Reducer.html">Reducer</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/reducers/scoped-reducer.js~ScopedReducer.html">ScopedReducer</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/reducers/structure-reducer.js~StructureReducer.html">StructureReducer</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/reducers/value-reducer.js~ValueReducer.html">ValueReducer</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-INNER_SOURCE">INNER_SOURCE</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-ROOT">ROOT</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-SOURCE">SOURCE</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-VALUE">VALUE</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">src/reducers/flat-reduced-reducer.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import Reducer from &apos;./reducer.js&apos;;
+import {SOURCE, INNER_SOURCE} from &apos;./storage-keys.js&apos;;
+
+/**
+ * &lt;b&gt;INTERNAL&lt;/b&gt;
+ * A reducing reducer.
+ */
+export default class FlatReducedReducer extends Reducer {
+  /**
+   * Creates a reducer from the source&apos;s value using the function provided then yields results from that reducer
+   * until the next source value.
+   *
+   * TODO: Marble diagram to explain!
+   * 
+   * @param  {[type]} source      [description]
+   * @param  {[type]} flatReducer [description]
+   * @return {[type]}             [description]
+   */
+  constructor(source, flatReducer) {
+    super();
+    this._source = source;
+    this._flatReducer = flatReducer;
+  }
+
+  /** @ignore */
+  reduce(context) {
+    const previousReducerSeed = context.getPreviousReduction(SOURCE);
+    const newReducerSeed = context.getValue(SOURCE, this._source);
+    const isNewReductionChain = newReducerSeed.isSome;
+    const currentSeed = isNewReductionChain ? newReducerSeed : previousReducerSeed;
+    return currentSeed.bind(seed =&gt; {
+      const reducer = this._flatReducer(seed).unwrap();
+      if (isNewReductionChain) {
+        return context.getFreshValue(INNER_SOURCE, reducer);
+      }
+      return context.getValue(INNER_SOURCE, reducer);
+    });
+  }
+}</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(0.4.0)</span></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

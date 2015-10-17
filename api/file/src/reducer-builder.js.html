@@ -31,30 +31,53 @@
 <nav class="navigation" data-ice="nav"><div>
   <ul>
     
-  <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/events.js~Events.html">Events</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/index.js~From.html">From</a></span></span></li>
+  <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/index.js~Reduce.html">Reduce</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/option.js~Option.html">Option</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/reducer-builder.js~ReducerBuilder.html">ReducerBuilder</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/reducer-descriptor.js~ReducerDescriptor.html">ReducerDescriptor</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-ALL_EVENT_TYPES">ALL_EVENT_TYPES</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-Constants">Constants</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/reducer-context.js~ReducerContext.html">ReducerContext</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/reducer-query.js~ReducerQuery.html">ReducerQuery</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-NewState">NewState</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-PreviousState">PreviousState</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">reducers</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/reducers/any-event-reducer.js~AnyEventReducer.html">AnyEventReducer</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/reducers/event-reducer.js~EventReducer.html">EventReducer</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/reducers/filtered-reducer.js~FilteredReducer.html">FilteredReducer</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/reducers/flat-reduced-reducer.js~FlatReducedReducer.html">FlatReducedReducer</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/reducers/folding-reducer.js~FoldingReducer.html">FoldingReducer</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/reducers/mapped-reducer.js~MappedReducer.html">MappedReducer</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/reducers/never-reducer.js~NeverReducer.html">NeverReducer</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/reducers/reducer.js~Reducer.html">Reducer</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/reducers/scoped-reducer.js~ScopedReducer.html">ScopedReducer</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/reducers/structure-reducer.js~StructureReducer.html">StructureReducer</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/reducers/value-reducer.js~ValueReducer.html">ValueReducer</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-INNER_SOURCE">INNER_SOURCE</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-ROOT">ROOT</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-SOURCE">SOURCE</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-VALUE">VALUE</a></span></span></li>
 </ul>
 </div>
 </nav>
 
 <div class="content" data-ice="content"><h1 data-ice="title">src/reducer-builder.js</h1>
-<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import ReducerDescriptor from &apos;./reducer-descriptor.js&apos;;
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import MappedReducer from &apos;./reducers/mapped-reducer.js&apos;;
+import FlatReducedReducer from &apos;./reducers/flat-reduced-reducer.js&apos;;
+import FilteredReducer from &apos;./reducers/filtered-reducer.js&apos;;
+import ScopedReducer from &apos;./reducers/scoped-reducer.js&apos;;
+import FoldingReducer from &apos;./reducers/folding-reducer.js&apos;;
+import ReducerQuery from &apos;./reducer-query.js&apos;;
 
 /**
- * A builder for reducers.
+ * A fluent reducer-query builder.
  */
 export default class ReducerBuilder {
 
   /** @ignore */
-  constructor(reduceChain, handledEventTypes) {
-    /** @ignore */
-    this._reduceChain = reduceChain;
-    /** @ignore */
-    this._handledEventTypes = handledEventTypes;
+  constructor(parent) {
+    /** 
+     * The previous reducer in the fluent chain.
+     * @type {Reducer}
+     * @private
+     */
+    this._parent = parent;
   }
 
   /**
@@ -63,18 +86,53 @@ export default class ReducerBuilder {
    * @returns {ReducerBuilder&lt;T2&gt;} A reducer builder that maps the value
    */
   select(selector) {
-    if (!selector) throw new Error(&apos;Missing selector argument&apos;);
-    return this._chain((result, next) =&gt; next(selector(result)));
+    return this.map(selector);
+  }
+
+  /**
+   * Maps the reduced value onto another value using a function.
+   * @param {function(x:T1):T2} selector - The mapping function
+   * @returns {ReducerBuilder&lt;T2&gt;} A reducer builder that maps the value
+   */
+  map(selector) {
+    return this._wrap(new MappedReducer(this._parent, selector));
+  }
+
+
+  /**
+   * Maps a value onto a reducer and produces values from that producer until the next value.
+   * @param  {function(x:T2):ReducerBuilder&lt;T2&gt;} reducerSelector - The function to project a value onto a reducer builder.
+   * @return {ReducerBuilder&lt;T2&gt;} A reducer builder
+   */
+  flatReduce(reducerSelector) {
+    return this._wrap(new FlatReducedReducer(this._parent, reducerSelector));
   }
 
   /**
    * Filters the value by applying a predicate function to the value
    * @param {function(x:T):boolean} predicate - The predicate function
-   * @returns {ReducerBuilder&lt;T&gt;} A reducer builder than filters using the predicate
+   * @returns {ReducerBuilder&lt;T&gt;} A reducer builder that filters using the predicate
    */
   where(predicate) {
-    if (!predicate) throw new Error(&apos;Missing predicate argument&apos;);
-    return this._chain((result, next) =&gt; predicate(result) &amp;&amp; next(result));
+    return this.filter(predicate);
+  }
+
+  /**
+   * Filters the value by applying a predicate function to the value
+   * @param {function(x:T):boolean} predicate - The predicate function
+   * @returns {ReducerBuilder&lt;T&gt;} A reducer builder that filters using the predicate
+   */
+  filter(predicate) {
+    return this._wrap(new FilteredReducer(this._parent, predicate));
+  }
+
+  /**
+   * Scopes the events that are visible to reducers in the fluent chain leading to this.
+   * @param  {function(e:Event):boolean} predicate - The predicate to determine if an event is in scope.
+   * @returns {ReducerBuilder&lt;T&gt;} A reducer builder that is scoped to events passing the predicate.
+   */
+  scoped(predicate) {
+    return this._wrap(new ScopedReducer(this._parent, predicate));
   }
 
   /**
@@ -83,31 +141,62 @@ export default class ReducerBuilder {
    * @returns {ReducerBuilder&lt;T&gt;} A reducer builder that accumulates the sum
    */
   sum(zeroValue) {
-    return this._chain((result, next, previousState) =&gt; {
-      const acc = previousState || zeroValue;
-      next(acc + result);
-    });
+    return this._wrap(new FoldingReducer(this._parent, (acc, x) =&gt; acc + x, zeroValue));
   }
 
   /**
-   * Constructs a reducer descriptor from the query defined using the builder.
-   * @returns {ReducerDescriptor} a reducer descriptor
+   * Accumulates using the accumulate function over the reduced values.
+   * @param {function(acc:T2, value:T1): T2} accumulate - The accumulator function
+   * @param seedValue - The seed value for the accumulation.
+   * @returns {ReducerBuilder&lt;T2&gt;} A reducer builder that accumulates the sum
    */
-  build() {
-    const reduce = (previousState, event) =&gt; {
-      let result;
-      this._reduceChain(previousState, event)(r =&gt; result = r);
-      return result;
-    };
-    return new ReducerDescriptor(reduce, this._handledEventTypes);
+  fold(accumulate, seedValue) {
+    return this._wrap(new FoldingReducer(this._parent, accumulate, seedValue));
   }
 
-  /** @ignore */
-  _chain(resultHandler) {
-    return new ReducerBuilder(
-      (previousState, event) =&gt; next =&gt; this._reduceChain(previousState, event)(result =&gt; resultHandler(result, next, previousState)),
-      this._handledEventTypes
-    );
+  /**
+   * Accumulates a dictionary from deltas. Remove deltas will be applied before add deltas.
+   * TODO: Use a persistent map data structure. Currently O(N) per delta but could be O(log2(N)) 
+   * 
+   * @returns {ReducerBuilder&lt;T&gt;} A reducer builder
+   * 
+   * @example &lt;caption&gt;Add delta&lt;/caption&gt;
+   * Reduce.eventsOfType(&apos;add-todo&apos;).map(e =&gt; ({added: [[e.todoId, e.title]]}))
+   *
+   * @example &lt;caption&gt;Remove deltas&lt;/caption&gt;
+   * Reduce.eventsOfType(&apos;remove-todo&apos;).map(e =&gt; ({removed: [e.todoId]}))
+   */
+  toDictionary(seed) {
+    const empty = [];
+    const initial = seed || {};
+    return this._wrap(new FoldingReducer(this._parent, (acc, delta) =&gt; {
+      const copy = Object.assign({}, acc);
+      delta.removed &amp;&amp; delta.removed.forEach(k =&gt; delete copy[k]);
+      delta.added &amp;&amp; delta.added.forEach(([k, v]) =&gt; copy[k] = v);
+      return copy;
+    }, initial));
+  } 
+
+  /**
+   * Constructs a reducer from the query defined using the builder.
+   * @returns {ReducerQuery} a reducer query
+   */
+  build() {
+    return new ReducerQuery(this._parent);
+  }
+
+  /**
+   * &lt;b&gt;INTERNAL&lt;/b&gt;
+   * Returns the most recent reducer in the fluent chain.
+   * @return {Reducer} The most recent reducer in the fluent chain.
+   */
+  unwrap() {
+    return this._parent;
+  }
+
+  /** ignore */
+  _wrap(reducer) {
+    return new ReducerBuilder(reducer);
   }
 }</code></pre>
 

@@ -1,25 +1,29 @@
-import hamt from 'hamt';
-import Events from './events.js';
 import ReducerBuilder from './reducer-builder.js';
-import * as Consts from './constants.js';
-
-const events = new Events();
-
-/**
- * Collection of constant values for event types etc.
- */
-export const Constants = Consts;
+import ValueReducer from './reducers/value-reducer.js';
+import EventReducer from './reducers/event-reducer.js';
+import AnyEventReducer from './reducers/any-event-reducer.js';
+import StructureReducer from './reducers/structure-reducer.js';
+import NeverReducer from './reducers/never-reducer.js';
 
 /**
  * A factory for creating reducer queries.
  */
-export default class From {
+export default class Reduce {
   /**
-   * A sub-factory for creating reducer queries over the events in scope.
-   * @returns {Events} The factory
+   * Creates a reducer query over events in scope matching the event type specified.
+   * @param {string} eventType - The event type
+   * @returns {ReducerBuilder} The query over the matching events
    */
-  static events() {
-    return events;
+  static eventsOfType(eventType) {
+    return new ReducerBuilder(new EventReducer(eventType));
+  }
+
+  /**
+   * Creates a reducer query of over all events in scope.
+   * @returns {ReducerBuilder} The query over the events in scope
+   */
+  static allEvents() {
+    return new ReducerBuilder(new AnyEventReducer());
   }
 
   /**
@@ -28,7 +32,7 @@ export default class From {
    * @returns {ReducerBuilder} - The reducer query containing the value
    */
   static value(value) {
-    return new ReducerBuilder((previousState, event) => next => next(value), hamt.empty)
+    return new ReducerBuilder(new ValueReducer(value));
   }
 
   /**
@@ -37,44 +41,14 @@ export default class From {
    * @returns {ReducerBuilder} - The reducer query builder
    */
   static structure(reducerStructure) {
-    if (typeof reducerStructure !== 'object') throw new Error('Invalid reducerStructure argument. Expected an object.');
-    const keys = Object.keys(reducerStructure);
-    const constantKeys = keys.filter(k => !(reducerStructure[k] instanceof ReducerBuilder));
-    const reducerKeys = keys.filter(k => reducerStructure[k] instanceof ReducerBuilder);
-    const reducerLookup = reducerKeys.reduce((acc, k) => hamt.set(k, reducerStructure[k].build(), acc), hamt.empty);
-    const handledEventTypes = hamt.values(reducerLookup).reduce((acc, reducerProperty) => {
-      const reducerPropertyHandledEvents = hamt.keys(reducerProperty.handledEventTypes);
-      return reducerPropertyHandledEvents.reduce((innerAcc, eventType) => hamt.set(eventType, true, innerAcc), acc);
-    }, hamt.empty);
-    return new ReducerBuilder((previousState, event) => next => {
-      // Track whether the state has actually changed. If not, we can return the previous state.
-      const isSeeding = previousState === undefined;
-      let hasStateChanged = isSeeding;
-      const nextState = {};
-      // Reduce reducer properties using previous state and the event
-      reducerKeys.forEach(k => {
-        const previousPropertyValue = previousState && previousState[k];
-        const propertyReducer = hamt.get(k, reducerLookup);
-        // Property can change on initial seed or if the reducer can handle the event.
-        const couldPropertyChange = isSeeding || hamt.get(event, propertyReducer.handledEventTypes);
-        if (couldPropertyChange) {
-          const newPropertyValue = propertyReducer.reduce(previousState, event);
-          // If it has changed we take the new value and will produce a new version of the state.
-          if (newPropertyValue !== previousPropertyValue) {
-            hasStateChanged = true;
-            nextState[k] = newPropertyValue;
-            return;
-          }
-        }
-        nextState[k] = previousPropertyValue;
-      });
-      if (hasStateChanged) {
-        // Copy constants
-        constantKeys.forEach(k => nextState[k] = reducerStructure[k]);
-        next(nextState);
-        return;
-      }
-      next(previousState);
-    }, handledEventTypes)
+    return new ReducerBuilder(new StructureReducer(reducerStructure));
+  }
+
+  /**
+   * A reducer query that never produces any updates in state.
+   * @returns {ReducerBuilder} - The reducer query builder
+   */
+  static never() {
+    return new ReducerBuilder(new NeverReducer());
   }
 }

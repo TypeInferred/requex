@@ -1,31 +1,91 @@
 {
   "coverage": "100%",
-  "expectCount": 18,
-  "actualCount": 18,
+  "expectCount": 63,
+  "actualCount": 63,
   "files": {
-    "src/constants.js": {
+    "src/reducers/any-event-reducer.js": {
       "expectCount": 1,
       "actualCount": 1,
       "undocumentLines": []
     },
-    "src/index.js": {
-      "expectCount": 5,
-      "actualCount": 5,
+    "src/reducers/event-reducer.js": {
+      "expectCount": 2,
+      "actualCount": 2,
       "undocumentLines": []
     },
-    "src/events.js": {
-      "expectCount": 3,
-      "actualCount": 3,
+    "src/reducers/filtered-reducer.js": {
+      "expectCount": 2,
+      "actualCount": 2,
+      "undocumentLines": []
+    },
+    "src/reducers/flat-reduced-reducer.js": {
+      "expectCount": 2,
+      "actualCount": 2,
+      "undocumentLines": []
+    },
+    "src/reducers/folding-reducer.js": {
+      "expectCount": 2,
+      "actualCount": 2,
+      "undocumentLines": []
+    },
+    "src/reducers/storage-keys.js": {
+      "expectCount": 4,
+      "actualCount": 4,
+      "undocumentLines": []
+    },
+    "src/reducers/mapped-reducer.js": {
+      "expectCount": 2,
+      "actualCount": 2,
+      "undocumentLines": []
+    },
+    "src/reducers/never-reducer.js": {
+      "expectCount": 1,
+      "actualCount": 1,
+      "undocumentLines": []
+    },
+    "src/option.js": {
+      "expectCount": 11,
+      "actualCount": 11,
+      "undocumentLines": []
+    },
+    "src/index.js": {
+      "expectCount": 6,
+      "actualCount": 6,
+      "undocumentLines": []
+    },
+    "src/reducers/reducer.js": {
+      "expectCount": 2,
+      "actualCount": 2,
       "undocumentLines": []
     },
     "src/reducer-builder.js": {
-      "expectCount": 5,
-      "actualCount": 5,
+      "expectCount": 12,
+      "actualCount": 12,
       "undocumentLines": []
     },
-    "src/reducer-descriptor.js": {
-      "expectCount": 4,
-      "actualCount": 4,
+    "src/reducer-context.js": {
+      "expectCount": 8,
+      "actualCount": 8,
+      "undocumentLines": []
+    },
+    "src/reducer-query.js": {
+      "expectCount": 2,
+      "actualCount": 2,
+      "undocumentLines": []
+    },
+    "src/reducers/scoped-reducer.js": {
+      "expectCount": 2,
+      "actualCount": 2,
+      "undocumentLines": []
+    },
+    "src/reducers/structure-reducer.js": {
+      "expectCount": 2,
+      "actualCount": 2,
+      "undocumentLines": []
+    },
+    "src/reducers/value-reducer.js": {
+      "expectCount": 2,
+      "actualCount": 2,
       "undocumentLines": []
     }
   }
