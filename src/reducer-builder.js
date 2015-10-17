@@ -4,6 +4,7 @@ import FilteredReducer from './reducers/filtered-reducer.js';
 import ScopedReducer from './reducers/scoped-reducer.js';
 import FoldingReducer from './reducers/folding-reducer.js';
 import ReducerQuery from './reducer-query.js';
+import LinkedList from './linked-list.js';
 
 /**
  * A fluent reducer-query builder.
@@ -107,15 +108,39 @@ export default class ReducerBuilder {
    * Reduce.eventsOfType('remove-todo').map(e => ({removed: [e.todoId]}))
    */
   toDictionary(seed) {
-    const empty = [];
     const initial = seed || {};
-    return this._wrap(new FoldingReducer(this._parent, (acc, delta) => {
+    return this.fold((acc, delta) => {
       const copy = Object.assign({}, acc);
       delta.removed && delta.removed.forEach(k => delete copy[k]);
       delta.added && delta.added.forEach(([k, v]) => copy[k] = v);
       return copy;
-    }, initial));
+    }, initial);
   } 
+
+  /**
+   * Accumulates a linked list from deltas. Remove deltas will be applied before add deltas.
+   * The linked list is stored by most recent addition at the head to least recent at the tail
+   * (i.e., reverse order).
+   * 
+   * @param  {Array<T>}  seed - The initial values to be held in the linked list.
+   * @param  {function(x:T):TKey}  keySelector - The function used to determine the key of an element when removing by key
+   * @return {ReducerBuilder<T>} A reducer builder
+   */
+  toLinkedList(seed, keySelector) {
+    const isReversedOrder = true;
+    const initial = seed && LinkedList.ofArray(seed, isReversedOrder) || LinkedList.nil();
+    return this.fold((outerAcc, delta) => {
+      const afterRemoval = 
+        delta.removed
+        ? LinkedList.filter(outerAcc, item => !delta.removed.includes(keySelector(item)))
+        : outerAcc;
+      const afterAddition =
+        delta.added
+        ? delta.added.reduceRight((innerAcc, x) => LinkedList.cons(x, innerAcc), afterRemoval)
+        : afterRemoval;
+      return afterAddition;
+    }, initial);
+  }
 
   /**
    * Constructs a reducer from the query defined using the builder.

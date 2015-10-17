@@ -1,5 +1,5 @@
 import chai from 'chai';
-import Reduce from '../src/index.js';
+import Reduce, {LinkedList} from '../src/index.js';
 
 const expect = chai.expect;
 
@@ -371,5 +371,51 @@ describe('Reducer queries', () => {
     const {newState} = reducer.reduce({events});
     // Assert
     expect(newState).to.deep.equal({});
+  });
+
+  it('should reduce linked lists from add deltas and preserve order', () => {
+    // Arrange
+    const query = Reduce.eventsOfType('add-todo')
+                        .map(e => ({ added: [{ id: e.todoId, title: e.title}] }))
+                        .toLinkedList();
+    // Act
+    const reducer = query.build();
+    const events = [
+      { type: 'add-todo', todoId: 40, title: 'Pick up milk' },
+      { type: 'add-todo', todoId: 42, title: 'Buy the paper' }
+    ];
+    const {newState} = reducer.reduce({events});
+    // Assert
+    expect(LinkedList.toArray(newState)).to.deep.equal([
+      {id: 40, title: 'Pick up milk'},
+      {id: 42, title: 'Buy the paper'}
+    ]);
+  });
+
+  it('should initialize linked lists to their seeds if provided', () => {
+    // Arrange
+    const query = Reduce.never()
+                        .toLinkedList(['foo']);
+    // Act
+    const reducer = query.build();
+    const {newState} = reducer.reduce();
+    // Assert
+    expect(LinkedList.toArray(newState)).to.deep.equal(['foo']);
+  });
+
+  it('should reduce linked lists from remove deltas', () => {
+    // Arrange
+    const query = Reduce.eventsOfType('remove-todo')
+                        .map(e => e.todoId)
+                        .map(todoId => ({ removed: [todoId] }))
+                        .toLinkedList([{id: 20}, {id: 40}, {id: 80}], item => item.id);
+    // Act
+    const reducer = query.build();
+    const events = [
+      { type: 'remove-todo', todoId: 40 },
+    ];
+    const {newState} = reducer.reduce({events});
+    // Assert
+    expect(LinkedList.toArray(newState)).to.deep.equal([{id: 20}, {id: 80}]);
   });
 });

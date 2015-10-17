@@ -4,6 +4,20 @@ import EventReducer from './reducers/event-reducer.js';
 import AnyEventReducer from './reducers/any-event-reducer.js';
 import StructureReducer from './reducers/structure-reducer.js';
 import NeverReducer from './reducers/never-reducer.js';
+import _Option from './option.js';
+import _LinkedList from './linked-list.js';
+
+/**
+ * Represents an optional type, i.e., some value or none.
+ * @type {Option<T>}
+ */
+export const Option = _Option;
+
+/**
+ * Represents a linked-list
+ * @type {LinkedList<T>}
+ */
+export const LinkedList = _LinkedList;
 
 /**
  * A factory for creating reducer queries.
