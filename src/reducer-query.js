@@ -1,4 +1,6 @@
 import ReducerContext from './reducer-context.js';
+import {ROOT} from './reducers/storage-keys.js';
+import Option from './option.js';
 
 /**
  * An entry-point to a tree of reducers forming a reducer query. Provides convenience methods for reducing events.
@@ -36,11 +38,16 @@ export default class ReducerQuery {
    */
   reduce(context) {
     const events = context && (context.events || [context.event]) || [];
-    const numberedEvents = events.map(e => [this._eventIndex++, e]);
-    const internalContext = new ReducerContext(context && context.previousAuxillary, numberedEvents);
-    const updates = this._reducer.reduce(internalContext);
-    const newState = updates.length ? updates[updates.length - 1][1] : (context && context.previousState);
-    const newAuxillary = internalContext.nextAuxillary;
+    const eventsMaybe = events.length ? events.map(Option.some) : [Option.none()];
+    const output = eventsMaybe.reduce((acc, e) => {
+      const internalContext = new ReducerContext(acc.auxillary, e);
+      const updateMaybe = internalContext.getValue(ROOT, this._reducer);
+      const update = updateMaybe.isSome ? updateMaybe : acc.update;
+      return {auxillary: internalContext.nextAuxillary, update};
+    }, {auxillary: context && context.previousAuxillary, update: Option.none()});
+
+    const newAuxillary = output.auxillary;
+    const newState = output.update.otherwise(context && context.previousState);
     return {newState, newAuxillary};
   }
 }

@@ -4,21 +4,11 @@
  */
 export default class Reducer {
   /**
-   * <b>INTERNAL</b>
-   * Gets the next reduced values using the context provided. May produce many updates or none.
-   * @param  {ReducerContext} context - The context in which to execute the reducer.
-   * @return {Array<T>} An array of reduced values or the empty array if no changes have occured
-   * @abstract
-   */
-  getNextUpdates(context) {
-    throw new Error('Abstract method.');
-  }
-
-  /**
-   * Computes the updates to the reducer's state in the given context. May optimise. See {@link ReducerContext#optimise} for more details.
+   * Reduces a new value given some previous state if possible.
+   * @param  {ReducerContext} context - The context under which to reduce a new state if possible.
+   * @return {Option<T>} Some value if able to reduce a value otherwise none.
    */
   reduce(context) {
-    const updates = this.getNextUpdates(context);
-    return context.optimise(updates);
+    throw new Error('Abstract method.');
   }
 }

@@ -1,22 +1,25 @@
-import ChainedReducer from './chained-reducer.js';
+import Reducer from './reducer.js';
+import Option from '../option.js';
+import {SOURCE} from './storage-keys.js';
 
 /**
  * <b>INTERNAL</b>
- * Yields mapped versions of its parent's results.
+ * Yields mapped versions of its source's results.
  */
-export default class MappedReducer extends ChainedReducer {
+export default class MappedReducer extends Reducer {
   /**
-   * Constructs a reducer that yields mapped versions of its parent's results by passing them through a selector function.
-   * @param  {Reducer} parent - The parent reducer.
+   * Constructs a reducer that yields mapped versions of its source's results by passing them through a selector function.
+   * @param  {Reducer} source - The source reducer.
    * @param  {function(x:T1):T2} selector - The selector function.
    */
-  constructor(parent, selector) {
-    super(parent);
+  constructor(source, selector) {
+    super();
+    this._source = source;
     this._selector = selector;
   }
 
   /** @ignore */
-  process(parentValues) {
-    return parentValues.map(([eventNumber, x]) => [eventNumber, this._selector(x)]);
+  reduce(context) {
+    return context.getValue(SOURCE, this._source).map(this._selector);
   }
 }

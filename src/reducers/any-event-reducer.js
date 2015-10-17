@@ -1,4 +1,5 @@
 import Reducer from './reducer.js';
+import Option from '../option.js';
 
 /**
  * <b>INTERNAL</b>
@@ -6,7 +7,7 @@ import Reducer from './reducer.js';
  */
 export default class AnyEventReducer extends Reducer {
   /** @ignore */
-  getNextUpdates(context) {
-    return context.events;
+  reduce(context) {
+    return context.getEvent();
   }
 }

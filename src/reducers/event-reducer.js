@@ -1,4 +1,6 @@
 import Reducer from './reducer.js';
+import Option from '../option.js';
+
 /**
  * <b>INTERNAL</b>
  * Yields any matching events in the context.
@@ -14,7 +16,7 @@ export default class EventReducer extends Reducer {
   }
 
   /** @ignore */
-  getNextUpdates(context) {
-    return context.events.filter(([eventNumber, e]) => e.type === this._eventType);
+  reduce(context) {
+    return context.getEvent().filter(event => this._eventType === event.type);
   }
 }

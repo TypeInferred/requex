@@ -1,22 +1,25 @@
-import ChainedReducer from './chained-reducer.js';
+import Reducer from './reducer.js';
+import Option from '../option.js';
+import {SOURCE} from './storage-keys.js';
 
 /**
  * <b>INTERNAL</b>
- * Yields its parent's results matching a predicate.
+ * Yields its source's results matching a predicate.
  */
-export default class FilteredReducer extends ChainedReducer {
+export default class FilteredReducer extends Reducer {
   /**
-   * Constructs a reducer that yields its parent's results that pass a predicate.
-   * @param  {Reducer<T>} parent - The parent reducer
-   * @param  {function(x:T):boolean} - The predicate to test the results from the parent
+   * Constructs a reducer that yields its source's results that pass a predicate.
+   * @param  {Reducer<T>} source - The source reducer
+   * @param  {function(x:T):boolean} - The predicate to test the results from the source
    */
-  constructor(parent, predicate) {
-    super(parent, true);
+  constructor(source, predicate) {
+    super();
     this._predicate = predicate;
+    this._source = source;
   }
 
   /** @ignore */
-  process(parentValues) {
-    return parentValues.filter(([eventNumber, x]) => this._predicate(x));
+  reduce(context) {
+    return context.getValue(SOURCE, this._source).filter(this._predicate);
   }
 }

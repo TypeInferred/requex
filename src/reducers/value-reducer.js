@@ -1,4 +1,5 @@
 import Reducer from './reducer.js';
+import Option from '../option.js';
 
 /**
  * <b>INTERNAL</b>
@@ -15,11 +16,8 @@ export default class ValueReducer extends Reducer {
   }
 
   /** @ignore */
-  getNextUpdates(context) {
-    context.enter('value');
-    const hasEmitted = context.getStoredValue();
-    context.store(true);
-    context.exit();
-    return hasEmitted ? [] : [[-1, this._value]];
+  reduce(context) {
+    const previous = context.getPreviousReduction();
+    return previous.isSome ? Option.none() : Option.some(this._value);
   }
 }

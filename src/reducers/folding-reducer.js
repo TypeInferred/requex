@@ -1,38 +1,30 @@
-import ChainedReducer from './chained-reducer.js';
+import Reducer from './reducer.js';
+import Option from '../option.js';
+import {SOURCE} from './storage-keys.js';
 
 /**
  * <b>INTERNAL</b>
- * Yields a seed and then accumulated values as its parent's results are thread through an accumulator.
+ * Yields a seed and then accumulated values as its source's results are thread through an accumulator.
  */
-export default class FoldingReducer extends ChainedReducer {
+export default class FoldingReducer extends Reducer {
   /**
-   * Constructs a reducer that yields a seed and then accumulated values as its parent's results 
+   * Constructs a reducer that yields a seed and then accumulated values as its source's results 
    * are thread through an accumulator.
-   * @param  {Reducer<T1>} parent - The parent reducer
+   * @param  {Reducer<T1>} source - The source reducer
    * @param  {function(acc:T2, x:T1):T2} accumulate - The accumulator function
-   * @param  {T2} seed - The initial value
+   * @param  {T2} zero - The zero value (must actually behave like zero).
    */
-  constructor(parent, accumulate, seed) {
-    super(parent, true);
+  constructor(source, accumulate, zero) {
+    super();
     this._accumulate = accumulate;
-    this._seed = seed;
+    this._zero = zero;
+    this._source = source;
   }
 
-  /** @ignore */
-  process(parentValues, context) {
-    context.enter('fold');
-    const stored = context.getStoredValue();
-    // Here we emit the seed the first time and then
-    // and then any accumulations. We don't compress
-    // as there could be multiple levels of reduction.
-    let acc = stored ? stored[0] : this._seed;
-    const result = stored ? [] : [[-1, acc]];
-    parentValues.forEach(([eventNumber, v]) => {
-      acc = this._accumulate(acc, v);
-      result.push([eventNumber, acc]);
-    });
-    context.store([acc]);
-    context.exit();
-    return result;
+  reduce(context) {
+    const value = context.getValue(SOURCE, this._source);
+    const previous = context.getPreviousReduction();
+    const next = value.map(x => this._accumulate(previous.otherwise(this._zero), x));
+    return previous.isNone && next.isNone ? Option.some(this._zero) : next;
   }
 }

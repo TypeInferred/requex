@@ -1,5 +1,4 @@
 import MappedReducer from './reducers/mapped-reducer.js';
-import FlatMappedReducer from './reducers/flat-mapped-reducer.js';
 import FlatReducedReducer from './reducers/flat-reduced-reducer.js';
 import FilteredReducer from './reducers/filtered-reducer.js';
 import ScopedReducer from './reducers/scoped-reducer.js';
@@ -48,16 +47,6 @@ export default class ReducerBuilder {
     return this.flatMap(manySelector);
   }
 
-  /**
-   * Flat maps the reduced value onto many values using a function.
-   * Experimental as it affects the event numbering so the changes are compacted when they reach a structure reducer.
-   * @experimental
-   * @param {function(x:T1):Array<T2>} manySelector - The flat-mapping function
-   * @returns {ReducerBuilder<T2>} A reducer builder that maps the value
-   */
-  flatMap(manySelector) {
-    return this._wrap(new FlatMappedReducer(this._parent, manySelector));
-  }
 
   flatReduce(reducerSelector) {
     return this._wrap(new FlatReducedReducer(this._parent, reducerSelector));

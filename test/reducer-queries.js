@@ -112,6 +112,42 @@ describe('Reducer queries', () => {
     });
   });
 
+  it('should reduce structure to seed property values if no event has occurred', () => {
+    // Arrange
+    const structure = { 
+      foo: 'abc', 
+      bar: Reduce.value(10),
+      baz: Reduce.eventsOfType('test-event-type').select(e => e.value)
+    };
+    const query = Reduce.structure(structure);
+    // Act
+    const reducer = query.build();
+    const {newState} = reducer.reduce();
+    // Assert
+    expect(newState).to.deep.equal({
+      foo: 'abc',
+      bar: 10
+    });
+  });
+
+  it('should return same object if structure query has not changed', () => {
+    // Arrange
+    const structure = { 
+      foo: 'abc', 
+      bar: Reduce.value(10),
+      baz: Reduce.eventsOfType('test-event-type').select(e => e.value)
+    };
+    const query = Reduce.structure(structure);
+    const reducer = query.build();
+    const firstEvent = { type: 'test-event-type', value: 42 };
+    const initialOutput = reducer.reduce({event: firstEvent});
+    // Act
+    const secondEvent = { type: 'unhandled-event-type' };
+    const secondOutput = reducer.reduce({event: secondEvent, previousState: initialOutput.newState, previousAuxillary: initialOutput.newAuxillary});
+    // Assert
+    expect(initialOutput.newState === secondOutput.newState).to.be.true;
+  });
+
   it('should reduce the query Reduce.eventsOfType("inc").select(_ => 1).sum(0) and 3 events { type: "inc"} to 3', () => {
     // Arrange
     const query = Reduce.eventsOfType('inc').select(_ => 1).sum(0);
@@ -166,18 +202,18 @@ describe('Reducer queries', () => {
     expect(newState).to.equal(1); 
   });
 
-  it('should reduce queries containing multiple reductions', () => {
+  it('should reduce queries containing multiple reductions BUT ONLY WHEN SEED ACTS AS ZERO', () => {
     // Arrange
-    const query = Reduce.eventsOfType('inc') //          e,  e
-                        .select(_ => 1)      //          1,  1
-                        .sum(1)              //      1,  2,  3
-                        .sum(0);             //  0,  1,  3,  6
+    const query = Reduce.eventsOfType('inc') //       e,       e
+                        .select(_ => 1)      //       1,       1
+                        .sum(0)              //  (0 + 1), (1 + 1)
+                        .sum(0);             //  (0 + 1), (1 + 2)
     const events = [{ type: 'inc' }, { type: 'inc' }];
     // Act
     const reducer = query.build();
     const {newState, newAuxillary} = reducer.reduce({events});
     // Assert
-    expect(newState).to.equal(6); 
+    expect(newState).to.equal(3); 
   });
 
   it('should reduce to seed values before a matching event occurs', () => {
@@ -201,16 +237,6 @@ describe('Reducer queries', () => {
     expect(newState).to.not.exist;
   });
 
-  it('should reduce Reduce.value([1,2,3]).flatMap(xs => xs) to 3', () => {
-    // Arrange
-    const query = Reduce.value([1,2,3]).flatMap(xs => xs);
-    // Act
-    const reducer = query.build();
-    const {newState} = reducer.reduce();
-    // Assert
-    expect(newState).to.equal(3);
-  });
-
   it('should reduce reducers', () => {
     // Arrange
     const query = Reduce.value(2).flatReduce(x => Reduce.value(x).map(x => 3 * x));
@@ -227,15 +253,15 @@ describe('Reducer queries', () => {
       Reduce.structure({
         id: id,
         description: 'my description',
-        isCompleted: Reduce.eventsOfType('checked')
-                           .select(_ => true)
-      }).scoped(e => !e.id || e.id === id);
+        isCompleted: Reduce.eventsOfType('toggle_completed')
+                           .fold((isCompleted, _) => !isCompleted, false)
+      }).scoped(e => !e.todoId || e.todoId === id);
     const staticTodoList = Reduce.structure({
       item1: todo(1),
       item2: todo(2)
     });
     const events = [
-      { type: 'checked', id: 2 }
+      { type: 'toggle_completed', todoId: 2 }
     ];
     // Act
     const reducer = staticTodoList.build();
@@ -244,7 +270,8 @@ describe('Reducer queries', () => {
     expect(newState).to.deep.equal({
       item1: {
         id: 1,
-        description: 'my description'
+        description: 'my description',
+        isCompleted: false
       },
       item2: {
         id: 2,
