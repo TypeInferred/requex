@@ -373,10 +373,10 @@
           "type": "ImportDefaultSpecifier",
           "local": {
             "type": "Identifier",
-            "name": "NeverReducer",
+            "name": "LinkedListReducer",
             "range": [
               297,
-              309
+              314
             ],
             "loc": {
               "start": {
@@ -385,13 +385,13 @@
               },
               "end": {
                 "line": 6,
-                "column": 19
+                "column": 24
               }
             }
           },
           "range": [
             297,
-            309
+            314
           ],
           "loc": {
             "start": {
@@ -400,6 +400,79 @@
             },
             "end": {
               "line": 6,
+              "column": 24
+            }
+          }
+        }
+      ],
+      "source": {
+        "type": "Literal",
+        "value": "./reducers/linked-list-reducer.js",
+        "raw": "'./reducers/linked-list-reducer.js'",
+        "range": [
+          320,
+          355
+        ],
+        "loc": {
+          "start": {
+            "line": 6,
+            "column": 30
+          },
+          "end": {
+            "line": 6,
+            "column": 65
+          }
+        }
+      },
+      "range": [
+        290,
+        356
+      ],
+      "loc": {
+        "start": {
+          "line": 6,
+          "column": 0
+        },
+        "end": {
+          "line": 6,
+          "column": 66
+        }
+      }
+    },
+    {
+      "type": "ImportDeclaration",
+      "specifiers": [
+        {
+          "type": "ImportDefaultSpecifier",
+          "local": {
+            "type": "Identifier",
+            "name": "NeverReducer",
+            "range": [
+              364,
+              376
+            ],
+            "loc": {
+              "start": {
+                "line": 7,
+                "column": 7
+              },
+              "end": {
+                "line": 7,
+                "column": 19
+              }
+            }
+          },
+          "range": [
+            364,
+            376
+          ],
+          "loc": {
+            "start": {
+              "line": 7,
+              "column": 7
+            },
+            "end": {
+              "line": 7,
               "column": 19
             }
           }
@@ -410,49 +483,539 @@
         "value": "./reducers/never-reducer.js",
         "raw": "'./reducers/never-reducer.js'",
         "range": [
-          315,
-          344
+          382,
+          411
         ],
         "loc": {
           "start": {
-            "line": 6,
+            "line": 7,
             "column": 25
           },
           "end": {
-            "line": 6,
+            "line": 7,
             "column": 54
           }
         }
       },
       "range": [
-        290,
-        345
+        357,
+        412
       ],
       "loc": {
         "start": {
-          "line": 6,
+          "line": 7,
           "column": 0
         },
         "end": {
-          "line": 6,
+          "line": 7,
           "column": 55
+        }
+      }
+    },
+    {
+      "type": "ImportDeclaration",
+      "specifiers": [
+        {
+          "type": "ImportDefaultSpecifier",
+          "local": {
+            "type": "Identifier",
+            "name": "_Option",
+            "range": [
+              420,
+              427
+            ],
+            "loc": {
+              "start": {
+                "line": 8,
+                "column": 7
+              },
+              "end": {
+                "line": 8,
+                "column": 14
+              }
+            }
+          },
+          "range": [
+            420,
+            427
+          ],
+          "loc": {
+            "start": {
+              "line": 8,
+              "column": 7
+            },
+            "end": {
+              "line": 8,
+              "column": 14
+            }
+          }
+        }
+      ],
+      "source": {
+        "type": "Literal",
+        "value": "./option.js",
+        "raw": "'./option.js'",
+        "range": [
+          433,
+          446
+        ],
+        "loc": {
+          "start": {
+            "line": 8,
+            "column": 20
+          },
+          "end": {
+            "line": 8,
+            "column": 33
+          }
+        }
+      },
+      "range": [
+        413,
+        447
+      ],
+      "loc": {
+        "start": {
+          "line": 8,
+          "column": 0
+        },
+        "end": {
+          "line": 8,
+          "column": 34
+        }
+      }
+    },
+    {
+      "type": "ImportDeclaration",
+      "specifiers": [
+        {
+          "type": "ImportDefaultSpecifier",
+          "local": {
+            "type": "Identifier",
+            "name": "_LinkedList",
+            "range": [
+              455,
+              466
+            ],
+            "loc": {
+              "start": {
+                "line": 9,
+                "column": 7
+              },
+              "end": {
+                "line": 9,
+                "column": 18
+              }
+            }
+          },
+          "range": [
+            455,
+            466
+          ],
+          "loc": {
+            "start": {
+              "line": 9,
+              "column": 7
+            },
+            "end": {
+              "line": 9,
+              "column": 18
+            }
+          }
+        }
+      ],
+      "source": {
+        "type": "Literal",
+        "value": "./linked-list.js",
+        "raw": "'./linked-list.js'",
+        "range": [
+          472,
+          490
+        ],
+        "loc": {
+          "start": {
+            "line": 9,
+            "column": 24
+          },
+          "end": {
+            "line": 9,
+            "column": 42
+          }
+        }
+      },
+      "range": [
+        448,
+        491
+      ],
+      "loc": {
+        "start": {
+          "line": 9,
+          "column": 0
+        },
+        "end": {
+          "line": 9,
+          "column": 43
         }
       },
       "trailingComments": [
         {
           "type": "Block",
-          "value": "*\n * A factory for creating reducer queries.\n ",
+          "value": "*\n * Represents an optional type, i.e., some value or none.\n * @type {Option<T>}\n ",
           "range": [
-            347,
-            397
+            493,
+            579
           ],
           "loc": {
             "start": {
-              "line": 8,
+              "line": 11,
               "column": 0
             },
             "end": {
-              "line": 10,
+              "line": 14,
+              "column": 3
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "ExportNamedDeclaration",
+      "declaration": {
+        "type": "VariableDeclaration",
+        "declarations": [
+          {
+            "type": "VariableDeclarator",
+            "id": {
+              "type": "Identifier",
+              "name": "Option",
+              "range": [
+                593,
+                599
+              ],
+              "loc": {
+                "start": {
+                  "line": 15,
+                  "column": 13
+                },
+                "end": {
+                  "line": 15,
+                  "column": 19
+                }
+              }
+            },
+            "init": {
+              "type": "Identifier",
+              "name": "_Option",
+              "range": [
+                602,
+                609
+              ],
+              "loc": {
+                "start": {
+                  "line": 15,
+                  "column": 22
+                },
+                "end": {
+                  "line": 15,
+                  "column": 29
+                }
+              }
+            },
+            "range": [
+              593,
+              609
+            ],
+            "loc": {
+              "start": {
+                "line": 15,
+                "column": 13
+              },
+              "end": {
+                "line": 15,
+                "column": 29
+              }
+            }
+          }
+        ],
+        "kind": "const",
+        "range": [
+          587,
+          610
+        ],
+        "loc": {
+          "start": {
+            "line": 15,
+            "column": 7
+          },
+          "end": {
+            "line": 15,
+            "column": 30
+          }
+        },
+        "leadingComments": [
+          {
+            "type": "Block",
+            "value": "*\n * Represents an optional type, i.e., some value or none.\n * @type {Option<T>}\n ",
+            "range": [
+              493,
+              579
+            ],
+            "loc": {
+              "start": {
+                "line": 11,
+                "column": 0
+              },
+              "end": {
+                "line": 14,
+                "column": 3
+              }
+            }
+          }
+        ],
+        "trailingComments": [
+          {
+            "type": "Block",
+            "value": "*\n * Represents a linked-list\n * @type {LinkedList<T>}\n ",
+            "range": [
+              612,
+              672
+            ],
+            "loc": {
+              "start": {
+                "line": 17,
+                "column": 0
+              },
+              "end": {
+                "line": 20,
+                "column": 3
+              }
+            }
+          }
+        ]
+      },
+      "specifiers": [],
+      "source": null,
+      "range": [
+        580,
+        610
+      ],
+      "loc": {
+        "start": {
+          "line": 15,
+          "column": 0
+        },
+        "end": {
+          "line": 15,
+          "column": 30
+        }
+      },
+      "leadingComments": [
+        {
+          "type": "Block",
+          "value": "*\n * Represents an optional type, i.e., some value or none.\n * @type {Option<T>}\n ",
+          "range": [
+            493,
+            579
+          ],
+          "loc": {
+            "start": {
+              "line": 11,
+              "column": 0
+            },
+            "end": {
+              "line": 14,
+              "column": 3
+            }
+          }
+        }
+      ],
+      "trailingComments": [
+        {
+          "type": "Block",
+          "value": "*\n * Represents a linked-list\n * @type {LinkedList<T>}\n ",
+          "range": [
+            612,
+            672
+          ],
+          "loc": {
+            "start": {
+              "line": 17,
+              "column": 0
+            },
+            "end": {
+              "line": 20,
+              "column": 3
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "ExportNamedDeclaration",
+      "declaration": {
+        "type": "VariableDeclaration",
+        "declarations": [
+          {
+            "type": "VariableDeclarator",
+            "id": {
+              "type": "Identifier",
+              "name": "LinkedList",
+              "range": [
+                686,
+                696
+              ],
+              "loc": {
+                "start": {
+                  "line": 21,
+                  "column": 13
+                },
+                "end": {
+                  "line": 21,
+                  "column": 23
+                }
+              }
+            },
+            "init": {
+              "type": "Identifier",
+              "name": "_LinkedList",
+              "range": [
+                699,
+                710
+              ],
+              "loc": {
+                "start": {
+                  "line": 21,
+                  "column": 26
+                },
+                "end": {
+                  "line": 21,
+                  "column": 37
+                }
+              }
+            },
+            "range": [
+              686,
+              710
+            ],
+            "loc": {
+              "start": {
+                "line": 21,
+                "column": 13
+              },
+              "end": {
+                "line": 21,
+                "column": 37
+              }
+            }
+          }
+        ],
+        "kind": "const",
+        "range": [
+          680,
+          711
+        ],
+        "loc": {
+          "start": {
+            "line": 21,
+            "column": 7
+          },
+          "end": {
+            "line": 21,
+            "column": 38
+          }
+        },
+        "leadingComments": [
+          {
+            "type": "Block",
+            "value": "*\n * Represents a linked-list\n * @type {LinkedList<T>}\n ",
+            "range": [
+              612,
+              672
+            ],
+            "loc": {
+              "start": {
+                "line": 17,
+                "column": 0
+              },
+              "end": {
+                "line": 20,
+                "column": 3
+              }
+            }
+          }
+        ],
+        "trailingComments": [
+          {
+            "type": "Block",
+            "value": "*\n * A factory for creating reducer queries.\n ",
+            "range": [
+              713,
+              763
+            ],
+            "loc": {
+              "start": {
+                "line": 23,
+                "column": 0
+              },
+              "end": {
+                "line": 25,
+                "column": 3
+              }
+            }
+          }
+        ]
+      },
+      "specifiers": [],
+      "source": null,
+      "range": [
+        673,
+        711
+      ],
+      "loc": {
+        "start": {
+          "line": 21,
+          "column": 0
+        },
+        "end": {
+          "line": 21,
+          "column": 38
+        }
+      },
+      "leadingComments": [
+        {
+          "type": "Block",
+          "value": "*\n * Represents a linked-list\n * @type {LinkedList<T>}\n ",
+          "range": [
+            612,
+            672
+          ],
+          "loc": {
+            "start": {
+              "line": 17,
+              "column": 0
+            },
+            "end": {
+              "line": 20,
+              "column": 3
+            }
+          }
+        }
+      ],
+      "trailingComments": [
+        {
+          "type": "Block",
+          "value": "*\n * A factory for creating reducer queries.\n ",
+          "range": [
+            713,
+            763
+          ],
+          "loc": {
+            "start": {
+              "line": 23,
+              "column": 0
+            },
+            "end": {
+              "line": 25,
               "column": 3
             }
           }
@@ -467,16 +1030,16 @@
           "type": "Identifier",
           "name": "Reduce",
           "range": [
-            419,
-            425
+            785,
+            791
           ],
           "loc": {
             "start": {
-              "line": 11,
+              "line": 26,
               "column": 21
             },
             "end": {
-              "line": 11,
+              "line": 26,
               "column": 27
             }
           }
@@ -491,16 +1054,16 @@
                 "type": "Identifier",
                 "name": "eventsOfType",
                 "range": [
-                  648,
-                  660
+                  1014,
+                  1026
                 ],
                 "loc": {
                   "start": {
-                    "line": 17,
+                    "line": 32,
                     "column": 9
                   },
                   "end": {
-                    "line": 17,
+                    "line": 32,
                     "column": 21
                   }
                 }
@@ -513,16 +1076,16 @@
                     "type": "Identifier",
                     "name": "eventType",
                     "range": [
-                      661,
-                      670
+                      1027,
+                      1036
                     ],
                     "loc": {
                       "start": {
-                        "line": 17,
+                        "line": 32,
                         "column": 22
                       },
                       "end": {
-                        "line": 17,
+                        "line": 32,
                         "column": 31
                       }
                     }
@@ -539,16 +1102,16 @@
                           "type": "Identifier",
                           "name": "ReducerBuilder",
                           "range": [
-                            689,
-                            703
+                            1055,
+                            1069
                           ],
                           "loc": {
                             "start": {
-                              "line": 18,
+                              "line": 33,
                               "column": 15
                             },
                             "end": {
-                              "line": 18,
+                              "line": 33,
                               "column": 29
                             }
                           }
@@ -560,16 +1123,16 @@
                               "type": "Identifier",
                               "name": "EventReducer",
                               "range": [
-                                708,
-                                720
+                                1074,
+                                1086
                               ],
                               "loc": {
                                 "start": {
-                                  "line": 18,
+                                  "line": 33,
                                   "column": 34
                                 },
                                 "end": {
-                                  "line": 18,
+                                  "line": 33,
                                   "column": 46
                                 }
                               }
@@ -579,79 +1142,79 @@
                                 "type": "Identifier",
                                 "name": "eventType",
                                 "range": [
-                                  721,
-                                  730
+                                  1087,
+                                  1096
                                 ],
                                 "loc": {
                                   "start": {
-                                    "line": 18,
+                                    "line": 33,
                                     "column": 47
                                   },
                                   "end": {
-                                    "line": 18,
+                                    "line": 33,
                                     "column": 56
                                   }
                                 }
                               }
                             ],
                             "range": [
-                              704,
-                              731
+                              1070,
+                              1097
                             ],
                             "loc": {
                               "start": {
-                                "line": 18,
+                                "line": 33,
                                 "column": 30
                               },
                               "end": {
-                                "line": 18,
+                                "line": 33,
                                 "column": 57
                               }
                             }
                           }
                         ],
                         "range": [
-                          685,
-                          732
+                          1051,
+                          1098
                         ],
                         "loc": {
                           "start": {
-                            "line": 18,
+                            "line": 33,
                             "column": 11
                           },
                           "end": {
-                            "line": 18,
+                            "line": 33,
                             "column": 58
                           }
                         }
                       },
                       "range": [
-                        678,
-                        733
+                        1044,
+                        1099
                       ],
                       "loc": {
                         "start": {
-                          "line": 18,
+                          "line": 33,
                           "column": 4
                         },
                         "end": {
-                          "line": 18,
+                          "line": 33,
                           "column": 59
                         }
                       }
                     }
                   ],
                   "range": [
-                    672,
-                    737
+                    1038,
+                    1103
                   ],
                   "loc": {
                     "start": {
-                      "line": 17,
+                      "line": 32,
                       "column": 33
                     },
                     "end": {
-                      "line": 19,
+                      "line": 34,
                       "column": 3
                     }
                   }
@@ -659,16 +1222,16 @@
                 "generator": false,
                 "expression": false,
                 "range": [
-                  660,
-                  737
+                  1026,
+                  1103
                 ],
                 "loc": {
                   "start": {
-                    "line": 17,
+                    "line": 32,
                     "column": 21
                   },
                   "end": {
-                    "line": 19,
+                    "line": 34,
                     "column": 3
                   }
                 }
@@ -676,16 +1239,16 @@
               "kind": "method",
               "computed": false,
               "range": [
-                641,
-                737
+                1007,
+                1103
               ],
               "loc": {
                 "start": {
-                  "line": 17,
+                  "line": 32,
                   "column": 2
                 },
                 "end": {
-                  "line": 19,
+                  "line": 34,
                   "column": 3
                 }
               },
@@ -694,16 +1257,16 @@
                   "type": "Block",
                   "value": "*\n   * Creates a reducer query over events in scope matching the event type specified.\n   * @param {string} eventType - The event type\n   * @returns {ReducerBuilder} The query over the matching events\n   ",
                   "range": [
-                    430,
-                    638
+                    796,
+                    1004
                   ],
                   "loc": {
                     "start": {
-                      "line": 12,
+                      "line": 27,
                       "column": 2
                     },
                     "end": {
-                      "line": 16,
+                      "line": 31,
                       "column": 5
                     }
                   }
@@ -714,16 +1277,16 @@
                   "type": "Block",
                   "value": "*\n   * Creates a reducer query of over all events in scope.\n   * @returns {ReducerBuilder} The query over the events in scope\n   ",
                   "range": [
-                    741,
-                    874
+                    1107,
+                    1240
                   ],
                   "loc": {
                     "start": {
-                      "line": 21,
+                      "line": 36,
                       "column": 2
                     },
                     "end": {
-                      "line": 24,
+                      "line": 39,
                       "column": 5
                     }
                   }
@@ -737,16 +1300,16 @@
                 "type": "Identifier",
                 "name": "allEvents",
                 "range": [
-                  884,
-                  893
+                  1250,
+                  1259
                 ],
                 "loc": {
                   "start": {
-                    "line": 25,
+                    "line": 40,
                     "column": 9
                   },
                   "end": {
-                    "line": 25,
+                    "line": 40,
                     "column": 18
                   }
                 }
@@ -766,16 +1329,16 @@
                           "type": "Identifier",
                           "name": "ReducerBuilder",
                           "range": [
-                            913,
-                            927
+                            1279,
+                            1293
                           ],
                           "loc": {
                             "start": {
-                              "line": 26,
+                              "line": 41,
                               "column": 15
                             },
                             "end": {
-                              "line": 26,
+                              "line": 41,
                               "column": 29
                             }
                           }
@@ -787,79 +1350,79 @@
                               "type": "Identifier",
                               "name": "AnyEventReducer",
                               "range": [
-                                932,
-                                947
+                                1298,
+                                1313
                               ],
                               "loc": {
                                 "start": {
-                                  "line": 26,
+                                  "line": 41,
                                   "column": 34
                                 },
                                 "end": {
-                                  "line": 26,
+                                  "line": 41,
                                   "column": 49
                                 }
                               }
                             },
                             "arguments": [],
                             "range": [
-                              928,
-                              949
+                              1294,
+                              1315
                             ],
                             "loc": {
                               "start": {
-                                "line": 26,
+                                "line": 41,
                                 "column": 30
                               },
                               "end": {
-                                "line": 26,
+                                "line": 41,
                                 "column": 51
                               }
                             }
                           }
                         ],
                         "range": [
-                          909,
-                          950
+                          1275,
+                          1316
                         ],
                         "loc": {
                           "start": {
-                            "line": 26,
+                            "line": 41,
                             "column": 11
                           },
                           "end": {
-                            "line": 26,
+                            "line": 41,
                             "column": 52
                           }
                         }
                       },
                       "range": [
-                        902,
-                        951
+                        1268,
+                        1317
                       ],
                       "loc": {
                         "start": {
-                          "line": 26,
+                          "line": 41,
                           "column": 4
                         },
                         "end": {
-                          "line": 26,
+                          "line": 41,
                           "column": 53
                         }
                       }
                     }
                   ],
                   "range": [
-                    896,
-                    955
+                    1262,
+                    1321
                   ],
                   "loc": {
                     "start": {
-                      "line": 25,
+                      "line": 40,
                       "column": 21
                     },
                     "end": {
-                      "line": 27,
+                      "line": 42,
                       "column": 3
                     }
                   }
@@ -867,16 +1430,16 @@
                 "generator": false,
                 "expression": false,
                 "range": [
-                  893,
-                  955
+                  1259,
+                  1321
                 ],
                 "loc": {
                   "start": {
-                    "line": 25,
+                    "line": 40,
                     "column": 18
                   },
                   "end": {
-                    "line": 27,
+                    "line": 42,
                     "column": 3
                   }
                 }
@@ -884,16 +1447,16 @@
               "kind": "method",
               "computed": false,
               "range": [
-                877,
-                955
+                1243,
+                1321
               ],
               "loc": {
                 "start": {
-                  "line": 25,
+                  "line": 40,
                   "column": 2
                 },
                 "end": {
-                  "line": 27,
+                  "line": 42,
                   "column": 3
                 }
               },
@@ -902,16 +1465,16 @@
                   "type": "Block",
                   "value": "*\n   * Creates a reducer query of over all events in scope.\n   * @returns {ReducerBuilder} The query over the events in scope\n   ",
                   "range": [
-                    741,
-                    874
+                    1107,
+                    1240
                   ],
                   "loc": {
                     "start": {
-                      "line": 21,
+                      "line": 36,
                       "column": 2
                     },
                     "end": {
-                      "line": 24,
+                      "line": 39,
                       "column": 5
                     }
                   }
@@ -922,16 +1485,16 @@
                   "type": "Block",
                   "value": "*\n   * A reducer query returning the value provided.\n   * @param value - The value\n   * @returns {ReducerBuilder} - The reducer query containing the value\n   ",
                   "range": [
-                    959,
-                    1121
+                    1325,
+                    1487
                   ],
                   "loc": {
                     "start": {
-                      "line": 29,
+                      "line": 44,
                       "column": 2
                     },
                     "end": {
-                      "line": 33,
+                      "line": 48,
                       "column": 5
                     }
                   }
@@ -945,16 +1508,16 @@
                 "type": "Identifier",
                 "name": "value",
                 "range": [
-                  1131,
-                  1136
+                  1497,
+                  1502
                 ],
                 "loc": {
                   "start": {
-                    "line": 34,
+                    "line": 49,
                     "column": 9
                   },
                   "end": {
-                    "line": 34,
+                    "line": 49,
                     "column": 14
                   }
                 }
@@ -967,16 +1530,16 @@
                     "type": "Identifier",
                     "name": "value",
                     "range": [
-                      1137,
-                      1142
+                      1503,
+                      1508
                     ],
                     "loc": {
                       "start": {
-                        "line": 34,
+                        "line": 49,
                         "column": 15
                       },
                       "end": {
-                        "line": 34,
+                        "line": 49,
                         "column": 20
                       }
                     }
@@ -993,16 +1556,16 @@
                           "type": "Identifier",
                           "name": "ReducerBuilder",
                           "range": [
-                            1161,
-                            1175
+                            1527,
+                            1541
                           ],
                           "loc": {
                             "start": {
-                              "line": 35,
+                              "line": 50,
                               "column": 15
                             },
                             "end": {
-                              "line": 35,
+                              "line": 50,
                               "column": 29
                             }
                           }
@@ -1014,16 +1577,16 @@
                               "type": "Identifier",
                               "name": "ValueReducer",
                               "range": [
-                                1180,
-                                1192
+                                1546,
+                                1558
                               ],
                               "loc": {
                                 "start": {
-                                  "line": 35,
+                                  "line": 50,
                                   "column": 34
                                 },
                                 "end": {
-                                  "line": 35,
+                                  "line": 50,
                                   "column": 46
                                 }
                               }
@@ -1033,79 +1596,79 @@
                                 "type": "Identifier",
                                 "name": "value",
                                 "range": [
-                                  1193,
-                                  1198
+                                  1559,
+                                  1564
                                 ],
                                 "loc": {
                                   "start": {
-                                    "line": 35,
+                                    "line": 50,
                                     "column": 47
                                   },
                                   "end": {
-                                    "line": 35,
+                                    "line": 50,
                                     "column": 52
                                   }
                                 }
                               }
                             ],
                             "range": [
-                              1176,
-                              1199
+                              1542,
+                              1565
                             ],
                             "loc": {
                               "start": {
-                                "line": 35,
+                                "line": 50,
                                 "column": 30
                               },
                               "end": {
-                                "line": 35,
+                                "line": 50,
                                 "column": 53
                               }
                             }
                           }
                         ],
                         "range": [
-                          1157,
-                          1200
+                          1523,
+                          1566
                         ],
                         "loc": {
                           "start": {
-                            "line": 35,
+                            "line": 50,
                             "column": 11
                           },
                           "end": {
-                            "line": 35,
+                            "line": 50,
                             "column": 54
                           }
                         }
                       },
                       "range": [
-                        1150,
-                        1201
+                        1516,
+                        1567
                       ],
                       "loc": {
                         "start": {
-                          "line": 35,
+                          "line": 50,
                           "column": 4
                         },
                         "end": {
-                          "line": 35,
+                          "line": 50,
                           "column": 55
                         }
                       }
                     }
                   ],
                   "range": [
-                    1144,
-                    1205
+                    1510,
+                    1571
                   ],
                   "loc": {
                     "start": {
-                      "line": 34,
+                      "line": 49,
                       "column": 22
                     },
                     "end": {
-                      "line": 36,
+                      "line": 51,
                       "column": 3
                     }
                   }
@@ -1113,16 +1676,16 @@
                 "generator": false,
                 "expression": false,
                 "range": [
-                  1136,
-                  1205
+                  1502,
+                  1571
                 ],
                 "loc": {
                   "start": {
-                    "line": 34,
+                    "line": 49,
                     "column": 14
                   },
                   "end": {
-                    "line": 36,
+                    "line": 51,
                     "column": 3
                   }
                 }
@@ -1130,16 +1693,16 @@
               "kind": "method",
               "computed": false,
               "range": [
-                1124,
-                1205
+                1490,
+                1571
               ],
               "loc": {
                 "start": {
-                  "line": 34,
+                  "line": 49,
                   "column": 2
                 },
                 "end": {
-                  "line": 36,
+                  "line": 51,
                   "column": 3
                 }
               },
@@ -1148,16 +1711,16 @@
                   "type": "Block",
                   "value": "*\n   * A reducer query returning the value provided.\n   * @param value - The value\n   * @returns {ReducerBuilder} - The reducer query containing the value\n   ",
                   "range": [
-                    959,
-                    1121
+                    1325,
+                    1487
                   ],
                   "loc": {
                     "start": {
-                      "line": 29,
+                      "line": 44,
                       "column": 2
                     },
                     "end": {
-                      "line": 33,
+                      "line": 48,
                       "column": 5
                     }
                   }
@@ -1166,18 +1729,18 @@
               "trailingComments": [
                 {
                   "type": "Block",
-                  "value": "*\n   * Builds a a reducer query from a structure of reducer queries and constants representing\n   * the reduced structure.\n   * @returns {ReducerBuilder} - The reducer query builder\n   ",
+                  "value": "*\n   * Builds a reducer query from a structure of reducer queries and constants representing\n   * the reduced structure.\n   * @returns {ReducerBuilder} - The reducer query builder\n   ",
                   "range": [
-                    1209,
-                    1398
+                    1575,
+                    1762
                   ],
                   "loc": {
                     "start": {
-                      "line": 38,
+                      "line": 53,
                       "column": 2
                     },
                     "end": {
-                      "line": 42,
+                      "line": 57,
                       "column": 5
                     }
                   }
@@ -1191,16 +1754,16 @@
                 "type": "Identifier",
                 "name": "structure",
                 "range": [
-                  1408,
-                  1417
+                  1772,
+                  1781
                 ],
                 "loc": {
                   "start": {
-                    "line": 43,
+                    "line": 58,
                     "column": 9
                   },
                   "end": {
-                    "line": 43,
+                    "line": 58,
                     "column": 18
                   }
                 }
@@ -1213,16 +1776,16 @@
                     "type": "Identifier",
                     "name": "reducerStructure",
                     "range": [
-                      1418,
-                      1434
+                      1782,
+                      1798
                     ],
                     "loc": {
                       "start": {
-                        "line": 43,
+                        "line": 58,
                         "column": 19
                       },
                       "end": {
-                        "line": 43,
+                        "line": 58,
                         "column": 35
                       }
                     }
@@ -1239,16 +1802,16 @@
                           "type": "Identifier",
                           "name": "ReducerBuilder",
                           "range": [
-                            1453,
-                            1467
+                            1817,
+                            1831
                           ],
                           "loc": {
                             "start": {
-                              "line": 44,
+                              "line": 59,
                               "column": 15
                             },
                             "end": {
-                              "line": 44,
+                              "line": 59,
                               "column": 29
                             }
                           }
@@ -1260,16 +1823,16 @@
                               "type": "Identifier",
                               "name": "StructureReducer",
                               "range": [
-                                1472,
-                                1488
+                                1836,
+                                1852
                               ],
                               "loc": {
                                 "start": {
-                                  "line": 44,
+                                  "line": 59,
                                   "column": 34
                                 },
                                 "end": {
-                                  "line": 44,
+                                  "line": 59,
                                   "column": 50
                                 }
                               }
@@ -1279,79 +1842,79 @@
                                 "type": "Identifier",
                                 "name": "reducerStructure",
                                 "range": [
-                                  1489,
-                                  1505
+                                  1853,
+                                  1869
                                 ],
                                 "loc": {
                                   "start": {
-                                    "line": 44,
+                                    "line": 59,
                                     "column": 51
                                   },
                                   "end": {
-                                    "line": 44,
+                                    "line": 59,
                                     "column": 67
                                   }
                                 }
                               }
                             ],
                             "range": [
-                              1468,
-                              1506
+                              1832,
+                              1870
                             ],
                             "loc": {
                               "start": {
-                                "line": 44,
+                                "line": 59,
                                 "column": 30
                               },
                               "end": {
-                                "line": 44,
+                                "line": 59,
                                 "column": 68
                               }
                             }
                           }
                         ],
                         "range": [
-                          1449,
-                          1507
+                          1813,
+                          1871
                         ],
                         "loc": {
                           "start": {
-                            "line": 44,
+                            "line": 59,
                             "column": 11
                           },
                           "end": {
-                            "line": 44,
+                            "line": 59,
                             "column": 69
                           }
                         }
                       },
                       "range": [
-                        1442,
-                        1508
+                        1806,
+                        1872
                       ],
                       "loc": {
                         "start": {
-                          "line": 44,
+                          "line": 59,
                           "column": 4
                         },
                         "end": {
-                          "line": 44,
+                          "line": 59,
                           "column": 70
                         }
                       }
                     }
                   ],
                   "range": [
-                    1436,
-                    1512
+                    1800,
+                    1876
                   ],
                   "loc": {
                     "start": {
-                      "line": 43,
+                      "line": 58,
                       "column": 37
                     },
                     "end": {
-                      "line": 45,
+                      "line": 60,
                       "column": 3
                     }
                   }
@@ -1359,16 +1922,16 @@
                 "generator": false,
                 "expression": false,
                 "range": [
-                  1417,
-                  1512
+                  1781,
+                  1876
                 ],
                 "loc": {
                   "start": {
-                    "line": 43,
+                    "line": 58,
                     "column": 18
                   },
                   "end": {
-                    "line": 45,
+                    "line": 60,
                     "column": 3
                   }
                 }
@@ -1376,34 +1939,316 @@
               "kind": "method",
               "computed": false,
               "range": [
-                1401,
-                1512
+                1765,
+                1876
               ],
               "loc": {
                 "start": {
-                  "line": 43,
+                  "line": 58,
                   "column": 2
                 },
                 "end": {
-                  "line": 45,
+                  "line": 60,
                   "column": 3
                 }
               },
               "leadingComments": [
                 {
                   "type": "Block",
-                  "value": "*\n   * Builds a a reducer query from a structure of reducer queries and constants representing\n   * the reduced structure.\n   * @returns {ReducerBuilder} - The reducer query builder\n   ",
+                  "value": "*\n   * Builds a reducer query from a structure of reducer queries and constants representing\n   * the reduced structure.\n   * @returns {ReducerBuilder} - The reducer query builder\n   ",
                   "range": [
-                    1209,
-                    1398
+                    1575,
+                    1762
                   ],
                   "loc": {
                     "start": {
-                      "line": 38,
+                      "line": 53,
                       "column": 2
                     },
                     "end": {
-                      "line": 42,
+                      "line": 57,
+                      "column": 5
+                    }
+                  }
+                }
+              ],
+              "trailingComments": [
+                {
+                  "type": "Block",
+                  "value": "*\n   * @typedef {Object} CollectionConfiguration\n   * @property {ReducerBuilder<TArgs>|ReducerBuilder<Array<TArgs>>} additions - The reducer that produces argument objects (single or arrays) to be constructed into items for the collection\n   * @property {?ReducerBuilder<TKey>|ReducerBuilder<Array<TKey>>} removals - The reducer that produces keys of items to be removed from the collction\n   * @property {function(args:TArgs):TItem|function(args:TArgs):ReducerBuilder<TItem>} itemFactory - The function that builds new items from arguments produced by the additions reducer. The items can be constant values or ReducerBuilders.\n   * @property {function(item:TItem):TKey} itemKey - The function that extracts a key from an existing item\n   ",
+                  "range": [
+                    1880,
+                    2624
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 62,
+                      "column": 2
+                    },
+                    "end": {
+                      "line": 68,
+                      "column": 5
+                    }
+                  }
+                },
+                {
+                  "type": "Block",
+                  "value": "*\n   * Builds a reducer query of a linked list from a reducer for additions, a reducer for removals, a function to construct\n   * items and a function to extract the key from a constructed item. Keys are used for removal and addressing the auxillary\n   * state to ensure accumulators are seeded correctly etc.\n   * @param  {CollectionConfiguration} configuration - the configuration needed to build the list\n   * @returns {ReducerBuilder} - The reducer query builder\n   ",
+                  "range": [
+                    2628,
+                    3102
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 70,
+                      "column": 2
+                    },
+                    "end": {
+                      "line": 76,
+                      "column": 5
+                    }
+                  }
+                }
+              ],
+              "static": true
+            },
+            {
+              "type": "MethodDefinition",
+              "key": {
+                "type": "Identifier",
+                "name": "linkedListOf",
+                "range": [
+                  3112,
+                  3124
+                ],
+                "loc": {
+                  "start": {
+                    "line": 77,
+                    "column": 9
+                  },
+                  "end": {
+                    "line": 77,
+                    "column": 21
+                  }
+                }
+              },
+              "value": {
+                "type": "FunctionExpression",
+                "id": null,
+                "params": [
+                  {
+                    "type": "Identifier",
+                    "name": "configuration",
+                    "range": [
+                      3125,
+                      3138
+                    ],
+                    "loc": {
+                      "start": {
+                        "line": 77,
+                        "column": 22
+                      },
+                      "end": {
+                        "line": 77,
+                        "column": 35
+                      }
+                    }
+                  }
+                ],
+                "body": {
+                  "type": "BlockStatement",
+                  "body": [
+                    {
+                      "type": "ReturnStatement",
+                      "argument": {
+                        "type": "NewExpression",
+                        "callee": {
+                          "type": "Identifier",
+                          "name": "ReducerBuilder",
+                          "range": [
+                            3157,
+                            3171
+                          ],
+                          "loc": {
+                            "start": {
+                              "line": 78,
+                              "column": 15
+                            },
+                            "end": {
+                              "line": 78,
+                              "column": 29
+                            }
+                          }
+                        },
+                        "arguments": [
+                          {
+                            "type": "NewExpression",
+                            "callee": {
+                              "type": "Identifier",
+                              "name": "LinkedListReducer",
+                              "range": [
+                                3176,
+                                3193
+                              ],
+                              "loc": {
+                                "start": {
+                                  "line": 78,
+                                  "column": 34
+                                },
+                                "end": {
+                                  "line": 78,
+                                  "column": 51
+                                }
+                              }
+                            },
+                            "arguments": [
+                              {
+                                "type": "Identifier",
+                                "name": "configuration",
+                                "range": [
+                                  3194,
+                                  3207
+                                ],
+                                "loc": {
+                                  "start": {
+                                    "line": 78,
+                                    "column": 52
+                                  },
+                                  "end": {
+                                    "line": 78,
+                                    "column": 65
+                                  }
+                                }
+                              }
+                            ],
+                            "range": [
+                              3172,
+                              3208
+                            ],
+                            "loc": {
+                              "start": {
+                                "line": 78,
+                                "column": 30
+                              },
+                              "end": {
+                                "line": 78,
+                                "column": 66
+                              }
+                            }
+                          }
+                        ],
+                        "range": [
+                          3153,
+                          3209
+                        ],
+                        "loc": {
+                          "start": {
+                            "line": 78,
+                            "column": 11
+                          },
+                          "end": {
+                            "line": 78,
+                            "column": 67
+                          }
+                        }
+                      },
+                      "range": [
+                        3146,
+                        3210
+                      ],
+                      "loc": {
+                        "start": {
+                          "line": 78,
+                          "column": 4
+                        },
+                        "end": {
+                          "line": 78,
+                          "column": 68
+                        }
+                      }
+                    }
+                  ],
+                  "range": [
+                    3140,
+                    3214
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 77,
+                      "column": 37
+                    },
+                    "end": {
+                      "line": 79,
+                      "column": 3
+                    }
+                  }
+                },
+                "generator": false,
+                "expression": false,
+                "range": [
+                  3124,
+                  3214
+                ],
+                "loc": {
+                  "start": {
+                    "line": 77,
+                    "column": 21
+                  },
+                  "end": {
+                    "line": 79,
+                    "column": 3
+                  }
+                }
+              },
+              "kind": "method",
+              "computed": false,
+              "range": [
+                3105,
+                3214
+              ],
+              "loc": {
+                "start": {
+                  "line": 77,
+                  "column": 2
+                },
+                "end": {
+                  "line": 79,
+                  "column": 3
+                }
+              },
+              "leadingComments": [
+                {
+                  "type": "Block",
+                  "value": "*\n   * @typedef {Object} CollectionConfiguration\n   * @property {ReducerBuilder<TArgs>|ReducerBuilder<Array<TArgs>>} additions - The reducer that produces argument objects (single or arrays) to be constructed into items for the collection\n   * @property {?ReducerBuilder<TKey>|ReducerBuilder<Array<TKey>>} removals - The reducer that produces keys of items to be removed from the collction\n   * @property {function(args:TArgs):TItem|function(args:TArgs):ReducerBuilder<TItem>} itemFactory - The function that builds new items from arguments produced by the additions reducer. The items can be constant values or ReducerBuilders.\n   * @property {function(item:TItem):TKey} itemKey - The function that extracts a key from an existing item\n   ",
+                  "range": [
+                    1880,
+                    2624
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 62,
+                      "column": 2
+                    },
+                    "end": {
+                      "line": 68,
+                      "column": 5
+                    }
+                  }
+                },
+                {
+                  "type": "Block",
+                  "value": "*\n   * Builds a reducer query of a linked list from a reducer for additions, a reducer for removals, a function to construct\n   * items and a function to extract the key from a constructed item. Keys are used for removal and addressing the auxillary\n   * state to ensure accumulators are seeded correctly etc.\n   * @param  {CollectionConfiguration} configuration - the configuration needed to build the list\n   * @returns {ReducerBuilder} - The reducer query builder\n   ",
+                  "range": [
+                    2628,
+                    3102
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 70,
+                      "column": 2
+                    },
+                    "end": {
+                      "line": 76,
                       "column": 5
                     }
                   }
@@ -1414,16 +2259,16 @@
                   "type": "Block",
                   "value": "*\n   * A reducer query that never produces any updates in state.\n   * @returns {ReducerBuilder} - The reducer query builder\n   ",
                   "range": [
-                    1516,
-                    1647
+                    3218,
+                    3349
                   ],
                   "loc": {
                     "start": {
-                      "line": 47,
+                      "line": 81,
                       "column": 2
                     },
                     "end": {
-                      "line": 50,
+                      "line": 84,
                       "column": 5
                     }
                   }
@@ -1437,16 +2282,16 @@
                 "type": "Identifier",
                 "name": "never",
                 "range": [
-                  1657,
-                  1662
+                  3359,
+                  3364
                 ],
                 "loc": {
                   "start": {
-                    "line": 51,
+                    "line": 85,
                     "column": 9
                   },
                   "end": {
-                    "line": 51,
+                    "line": 85,
                     "column": 14
                   }
                 }
@@ -1466,16 +2311,16 @@
                           "type": "Identifier",
                           "name": "ReducerBuilder",
                           "range": [
-                            1682,
-                            1696
+                            3384,
+                            3398
                           ],
                           "loc": {
                             "start": {
-                              "line": 52,
+                              "line": 86,
                               "column": 15
                             },
                             "end": {
-                              "line": 52,
+                              "line": 86,
                               "column": 29
                             }
                           }
@@ -1487,79 +2332,79 @@
                               "type": "Identifier",
                               "name": "NeverReducer",
                               "range": [
-                                1701,
-                                1713
+                                3403,
+                                3415
                               ],
                               "loc": {
                                 "start": {
-                                  "line": 52,
+                                  "line": 86,
                                   "column": 34
                                 },
                                 "end": {
-                                  "line": 52,
+                                  "line": 86,
                                   "column": 46
                                 }
                               }
                             },
                             "arguments": [],
                             "range": [
-                              1697,
-                              1715
+                              3399,
+                              3417
                             ],
                             "loc": {
                               "start": {
-                                "line": 52,
+                                "line": 86,
                                 "column": 30
                               },
                               "end": {
-                                "line": 52,
+                                "line": 86,
                                 "column": 48
                               }
                             }
                           }
                         ],
                         "range": [
-                          1678,
-                          1716
+                          3380,
+                          3418
                         ],
                         "loc": {
                           "start": {
-                            "line": 52,
+                            "line": 86,
                             "column": 11
                           },
                           "end": {
-                            "line": 52,
+                            "line": 86,
                             "column": 49
                           }
                         }
                       },
                       "range": [
-                        1671,
-                        1717
+                        3373,
+                        3419
                       ],
                       "loc": {
                         "start": {
-                          "line": 52,
+                          "line": 86,
                           "column": 4
                         },
                         "end": {
-                          "line": 52,
+                          "line": 86,
                           "column": 50
                         }
                       }
                     }
                   ],
                   "range": [
-                    1665,
-                    1721
+                    3367,
+                    3423
                   ],
                   "loc": {
                     "start": {
-                      "line": 51,
+                      "line": 85,
                       "column": 17
                     },
                     "end": {
-                      "line": 53,
+                      "line": 87,
                       "column": 3
                     }
                   }
@@ -1567,16 +2412,16 @@
                 "generator": false,
                 "expression": false,
                 "range": [
-                  1662,
-                  1721
+                  3364,
+                  3423
                 ],
                 "loc": {
                   "start": {
-                    "line": 51,
+                    "line": 85,
                     "column": 14
                   },
                   "end": {
-                    "line": 53,
+                    "line": 87,
                     "column": 3
                   }
                 }
@@ -1584,16 +2429,16 @@
               "kind": "method",
               "computed": false,
               "range": [
-                1650,
-                1721
+                3352,
+                3423
               ],
               "loc": {
                 "start": {
-                  "line": 51,
+                  "line": 85,
                   "column": 2
                 },
                 "end": {
-                  "line": 53,
+                  "line": 87,
                   "column": 3
                 }
               },
@@ -1602,16 +2447,16 @@
                   "type": "Block",
                   "value": "*\n   * A reducer query that never produces any updates in state.\n   * @returns {ReducerBuilder} - The reducer query builder\n   ",
                   "range": [
-                    1516,
-                    1647
+                    3218,
+                    3349
                   ],
                   "loc": {
                     "start": {
-                      "line": 47,
+                      "line": 81,
                       "column": 2
                     },
                     "end": {
-                      "line": 50,
+                      "line": 84,
                       "column": 5
                     }
                   }
@@ -1621,31 +2466,31 @@
             }
           ],
           "range": [
-            426,
-            1723
+            792,
+            3425
           ],
           "loc": {
             "start": {
-              "line": 11,
+              "line": 26,
               "column": 28
             },
             "end": {
-              "line": 54,
+              "line": 88,
               "column": 1
             }
           }
         },
         "range": [
-          413,
-          1723
+          779,
+          3425
         ],
         "loc": {
           "start": {
-            "line": 11,
+            "line": 26,
             "column": 15
           },
           "end": {
-            "line": 54,
+            "line": 88,
             "column": 1
           }
         },
@@ -1654,16 +2499,16 @@
             "type": "Block",
             "value": "*\n * A factory for creating reducer queries.\n ",
             "range": [
-              347,
-              397
+              713,
+              763
             ],
             "loc": {
               "start": {
-                "line": 8,
+                "line": 23,
                 "column": 0
               },
               "end": {
-                "line": 10,
+                "line": 25,
                 "column": 3
               }
             }
@@ -1672,16 +2517,16 @@
         "trailingComments": []
       },
       "range": [
-        398,
-        1723
+        764,
+        3425
       ],
       "loc": {
         "start": {
-          "line": 11,
+          "line": 26,
           "column": 0
         },
         "end": {
-          "line": 54,
+          "line": 88,
           "column": 1
         }
       },
@@ -1690,16 +2535,16 @@
           "type": "Block",
           "value": "*\n * A factory for creating reducer queries.\n ",
           "range": [
-            347,
-            397
+            713,
+            763
           ],
           "loc": {
             "start": {
-              "line": 8,
+              "line": 23,
               "column": 0
             },
             "end": {
-              "line": 10,
+              "line": 25,
               "column": 3
             }
           }
@@ -1710,7 +2555,7 @@
   "sourceType": "module",
   "range": [
     0,
-    1723
+    3425
   ],
   "loc": {
     "start": {
@@ -1718,25 +2563,61 @@
       "column": 0
     },
     "end": {
-      "line": 54,
+      "line": 88,
       "column": 1
     }
   },
   "comments": [
     {
       "type": "Block",
-      "value": "*\n * A factory for creating reducer queries.\n ",
+      "value": "*\n * Represents an optional type, i.e., some value or none.\n * @type {Option<T>}\n ",
       "range": [
-        347,
-        397
+        493,
+        579
       ],
       "loc": {
         "start": {
-          "line": 8,
+          "line": 11,
           "column": 0
         },
         "end": {
-          "line": 10,
+          "line": 14,
+          "column": 3
+        }
+      }
+    },
+    {
+      "type": "Block",
+      "value": "*\n * Represents a linked-list\n * @type {LinkedList<T>}\n ",
+      "range": [
+        612,
+        672
+      ],
+      "loc": {
+        "start": {
+          "line": 17,
+          "column": 0
+        },
+        "end": {
+          "line": 20,
+          "column": 3
+        }
+      }
+    },
+    {
+      "type": "Block",
+      "value": "*\n * A factory for creating reducer queries.\n ",
+      "range": [
+        713,
+        763
+      ],
+      "loc": {
+        "start": {
+          "line": 23,
+          "column": 0
+        },
+        "end": {
+          "line": 25,
           "column": 3
         }
       }
@@ -1745,16 +2626,16 @@
       "type": "Block",
       "value": "*\n   * Creates a reducer query over events in scope matching the event type specified.\n   * @param {string} eventType - The event type\n   * @returns {ReducerBuilder} The query over the matching events\n   ",
       "range": [
-        430,
-        638
+        796,
+        1004
       ],
       "loc": {
         "start": {
-          "line": 12,
+          "line": 27,
           "column": 2
         },
         "end": {
-          "line": 16,
+          "line": 31,
           "column": 5
         }
       }
@@ -1763,16 +2644,16 @@
       "type": "Block",
       "value": "*\n   * Creates a reducer query of over all events in scope.\n   * @returns {ReducerBuilder} The query over the events in scope\n   ",
       "range": [
-        741,
-        874
+        1107,
+        1240
       ],
       "loc": {
         "start": {
-          "line": 21,
+          "line": 36,
           "column": 2
         },
         "end": {
-          "line": 24,
+          "line": 39,
           "column": 5
         }
       }
@@ -1781,34 +2662,70 @@
       "type": "Block",
       "value": "*\n   * A reducer query returning the value provided.\n   * @param value - The value\n   * @returns {ReducerBuilder} - The reducer query containing the value\n   ",
       "range": [
-        959,
-        1121
+        1325,
+        1487
       ],
       "loc": {
         "start": {
-          "line": 29,
+          "line": 44,
           "column": 2
         },
         "end": {
-          "line": 33,
+          "line": 48,
           "column": 5
         }
       }
     },
     {
       "type": "Block",
-      "value": "*\n   * Builds a a reducer query from a structure of reducer queries and constants representing\n   * the reduced structure.\n   * @returns {ReducerBuilder} - The reducer query builder\n   ",
+      "value": "*\n   * Builds a reducer query from a structure of reducer queries and constants representing\n   * the reduced structure.\n   * @returns {ReducerBuilder} - The reducer query builder\n   ",
       "range": [
-        1209,
-        1398
+        1575,
+        1762
       ],
       "loc": {
         "start": {
-          "line": 38,
+          "line": 53,
           "column": 2
         },
         "end": {
-          "line": 42,
+          "line": 57,
+          "column": 5
+        }
+      }
+    },
+    {
+      "type": "Block",
+      "value": "*\n   * @typedef {Object} CollectionConfiguration\n   * @property {ReducerBuilder<TArgs>|ReducerBuilder<Array<TArgs>>} additions - The reducer that produces argument objects (single or arrays) to be constructed into items for the collection\n   * @property {?ReducerBuilder<TKey>|ReducerBuilder<Array<TKey>>} removals - The reducer that produces keys of items to be removed from the collction\n   * @property {function(args:TArgs):TItem|function(args:TArgs):ReducerBuilder<TItem>} itemFactory - The function that builds new items from arguments produced by the additions reducer. The items can be constant values or ReducerBuilders.\n   * @property {function(item:TItem):TKey} itemKey - The function that extracts a key from an existing item\n   ",
+      "range": [
+        1880,
+        2624
+      ],
+      "loc": {
+        "start": {
+          "line": 62,
+          "column": 2
+        },
+        "end": {
+          "line": 68,
+          "column": 5
+        }
+      }
+    },
+    {
+      "type": "Block",
+      "value": "*\n   * Builds a reducer query of a linked list from a reducer for additions, a reducer for removals, a function to construct\n   * items and a function to extract the key from a constructed item. Keys are used for removal and addressing the auxillary\n   * state to ensure accumulators are seeded correctly etc.\n   * @param  {CollectionConfiguration} configuration - the configuration needed to build the list\n   * @returns {ReducerBuilder} - The reducer query builder\n   ",
+      "range": [
+        2628,
+        3102
+      ],
+      "loc": {
+        "start": {
+          "line": 70,
+          "column": 2
+        },
+        "end": {
+          "line": 76,
           "column": 5
         }
       }
@@ -1817,16 +2734,16 @@
       "type": "Block",
       "value": "*\n   * A reducer query that never produces any updates in state.\n   * @returns {ReducerBuilder} - The reducer query builder\n   ",
       "range": [
-        1516,
-        1647
+        3218,
+        3349
       ],
       "loc": {
         "start": {
-          "line": 47,
+          "line": 81,
           "column": 2
         },
         "end": {
-          "line": 50,
+          "line": 84,
           "column": 5
         }
       }

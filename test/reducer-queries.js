@@ -1,5 +1,5 @@
 import chai from 'chai';
-import Reduce from '../src/index.js';
+import Reduce, {LinkedList} from '../src/index.js';
 
 const expect = chai.expect;
 
@@ -280,96 +280,387 @@ describe('Reducer queries', () => {
     });
   });
 
-  it('should reduce maps from single add deltas', () => {
+  // it('should reduce maps from single add deltas', () => {
+  //   // Arrange
+  //   const query = Reduce.eventsOfType('add-todo')
+  //                       .map(e => ({ added: [[e.todoId, e.title]] }))
+  //                       .toDictionary();
+  //   // Act
+  //   const reducer = query.build();
+  //   const events = [
+  //     { type: 'add-todo', todoId: 40, title: 'Pick up milk' },
+  //     { type: 'add-todo', todoId: 42, title: 'Buy the paper' }
+  //   ];
+  //   const {newState} = reducer.reduce({events});
+  //   // Assert
+  //   expect(newState).to.deep.equal({
+  //     [40]: 'Pick up milk',
+  //     [42]: 'Buy the paper'
+  //   });
+  // });
+
+  // it('should reduce maps from multiple add deltas', () => {
+  //   // Arrange
+  //   const query = Reduce.eventsOfType('add-todo')
+  //                       .map(e => ({ added: [[e.todoId, e.title], [e.todoId * 2, e.title]] }))
+  //                       .toDictionary();
+  //   // Act
+  //   const reducer = query.build();
+  //   const events = [
+  //     { type: 'add-todo', todoId: 40, title: 'Pick up milk' },
+  //     { type: 'add-todo', todoId: 42, title: 'Buy the paper' }
+  //   ];
+  //   const {newState} = reducer.reduce({events});
+  //   // Assert
+  //   expect(newState).to.deep.equal({
+  //     [40]: 'Pick up milk',
+  //     [80]: 'Pick up milk',
+  //     [42]: 'Buy the paper',
+  //     [84]: 'Buy the paper'
+  //   });
+  // });
+
+  // it('should initialize maps to their seeds if provided', () => {
+  //   // Arrange
+  //   const query = Reduce.never()
+  //                       .toDictionary({
+  //                         foo: 'bar'
+  //                       });
+  //   // Act
+  //   const reducer = query.build();
+  //   const {newState} = reducer.reduce();
+  //   // Assert
+  //   expect(newState).to.deep.equal({
+  //     foo: 'bar'
+  //   });
+  // });
+
+  // it('should reduce maps from single remove deltas', () => {
+  //   // Arrange
+  //   const query = Reduce.eventsOfType('remove-todo')
+  //                       .map(e => ({ removed: [e.todoId] }))
+  //                       .toDictionary({
+  //                         [40]: 'Pick up milk',
+  //                         [42]: 'Buy the paper'
+  //                       });
+  //   const events = [
+  //     { type: 'remove-todo', todoId: 40 }
+  //   ];
+  //   // Act
+  //   const reducer = query.build();
+  //   const {newState} = reducer.reduce({events});
+  //   // Assert
+  //   expect(newState).to.deep.equal({
+  //     [42]: 'Buy the paper'
+  //   });
+  // });
+
+  // it('should reduce maps from multiple remove deltas', () => {
+  //   // Arrange
+  //   const query = Reduce.eventsOfType('remove-todos')
+  //                       .map(e => ({ removed: e.todoIds }))
+  //                       .toDictionary({
+  //                         '40': 'Pick up milk',
+  //                         '42': 'Buy the paper'
+  //                       });
+  //   const events = [
+  //     { type: 'remove-todos', todoIds: [40, 42] }
+  //   ];
+  //   // Act
+  //   const reducer = query.build();
+  //   const {newState} = reducer.reduce({events});
+  //   // Assert
+  //   expect(newState).to.deep.equal({});
+  // });
+
+  // it('should reduce linked lists from add deltas and preserve order', () => {
+  //   // Arrange
+  //   const query = Reduce.eventsOfType('add-todo')
+  //                       .map(e => ({ added: [{ id: e.todoId, title: e.title}] }))
+  //                       .toLinkedList();
+  //   // Act
+  //   const reducer = query.build();
+  //   const events = [
+  //     { type: 'add-todo', todoId: 40, title: 'Pick up milk' },
+  //     { type: 'add-todo', todoId: 42, title: 'Buy the paper' }
+  //   ];
+  //   const {newState} = reducer.reduce({events});
+  //   // Assert
+  //   expect(LinkedList.toArray(newState)).to.deep.equal([
+  //     {id: 40, title: 'Pick up milk'},
+  //     {id: 42, title: 'Buy the paper'}
+  //   ]);
+  // });
+
+  // it('should initialize linked lists to their seeds if provided', () => {
+  //   // Arrange
+  //   const query = Reduce.never()
+  //                       .toLinkedList(['foo']);
+  //   // Act
+  //   const reducer = query.build();
+  //   const {newState} = reducer.reduce();
+  //   // Assert
+  //   expect(LinkedList.toArray(newState)).to.deep.equal(['foo']);
+  // });
+
+  // it('should reduce linked lists from remove deltas', () => {
+  //   // Arrange
+  //   const query = Reduce.eventsOfType('remove-todo')
+  //                       .map(e => e.todoId)
+  //                       .map(todoId => ({ removed: [todoId] }))
+  //                       .toLinkedList([{id: 20}, {id: 40}, {id: 80}], item => item.id);
+  //   // Act
+  //   const reducer = query.build();
+  //   const events = [
+  //     { type: 'remove-todo', todoId: 40 },
+  //   ];
+  //   const {newState} = reducer.reduce({events});
+  //   // Assert
+  //   expect(LinkedList.toArray(newState)).to.deep.equal([{id: 20}, {id: 80}]);
+  // });
+
+  it('should handle single additions of reducer structures to linked lists', () => {
     // Arrange
-    const query = Reduce.eventsOfType('add-todo')
-                        .map(e => ({ added: [[e.todoId, e.title]] }))
-                        .toDictionary();
-    // Act
-    const reducer = query.build();
+    const todo = (id, description) => 
+      Reduce.structure({
+        id: id,
+        description: description,
+        isCompleted: Reduce.eventsOfType('toggle-completed')
+                           .fold((isCompleted, _) => !isCompleted, false)
+      }).scoped(e => !e.todoId || e.todoId === id);
+    const todoList =
+      Reduce.linkedListOf({
+        additions: Reduce.eventsOfType('add-todo'),
+        removals: Reduce.eventsOfType('remove-todo').map(e => e.todoId),
+        itemFactory: e => todo(e.todoId, e.description),
+        itemKey: todo => todo.id
+      });
     const events = [
-      { type: 'add-todo', todoId: 40, title: 'Pick up milk' },
-      { type: 'add-todo', todoId: 42, title: 'Buy the paper' }
+      { type: 'add-todo', todoId: 1, description: 'foo' },
+      { type: 'add-todo', todoId: 2, description: 'bar' },
+      { type: 'toggle-completed', todoId: 2 },
+      { type: 'add-todo', todoId: 3, description: 'barf' },
+      { type: 'remove-todo', todoId: 2},
+      { type: 'toggle-completed', todoId: 3 },
     ];
+    // Act
+    const reducer = todoList.build();
     const {newState} = reducer.reduce({events});
     // Assert
-    expect(newState).to.deep.equal({
-      [40]: 'Pick up milk',
-      [42]: 'Buy the paper'
-    });
+    expect(LinkedList.toArray(newState)).to.deep.equal([
+      {
+        id: 1,
+        description: 'foo',
+        isCompleted: false
+      },
+      {
+        id: 3,
+        description: 'barf',
+        isCompleted: true
+      }
+    ]);
   });
 
-  it('should reduce maps from multiple add deltas', () => {
+  it('should handle multiple additions of reducer structures to linked lists', () => {
     // Arrange
-    const query = Reduce.eventsOfType('add-todo')
-                        .map(e => ({ added: [[e.todoId, e.title], [e.todoId * 2, e.title]] }))
-                        .toDictionary();
-    // Act
-    const reducer = query.build();
+    const todo = (id, description) => 
+      Reduce.structure({
+        id: id,
+        description: description,
+        isCompleted: Reduce.eventsOfType('toggle-completed')
+                           .fold((isCompleted, _) => !isCompleted, false)
+      }).scoped(e => !e.todoId || e.todoId === id);
+    const todoList =
+      Reduce.linkedListOf({
+        additions: Reduce.eventsOfType('add-todo').map(e => e.todos),
+        itemFactory: e => todo(e.todoId, e.description),
+        itemKey: todo => todo.id
+      });
     const events = [
-      { type: 'add-todo', todoId: 40, title: 'Pick up milk' },
-      { type: 'add-todo', todoId: 42, title: 'Buy the paper' }
-    ];
-    const {newState} = reducer.reduce({events});
-    // Assert
-    expect(newState).to.deep.equal({
-      [40]: 'Pick up milk',
-      [80]: 'Pick up milk',
-      [42]: 'Buy the paper',
-      [84]: 'Buy the paper'
-    });
-  });
-
-  it('should initialize maps to their seeds if provided', () => {
-    // Arrange
-    const query = Reduce.never()
-                        .toDictionary({
-                          foo: 'bar'
-                        });
-    // Act
-    const reducer = query.build();
-    const {newState} = reducer.reduce();
-    // Assert
-    expect(newState).to.deep.equal({
-      foo: 'bar'
-    });
-  });
-
-  it('should reduce maps from single remove deltas', () => {
-    // Arrange
-    const query = Reduce.eventsOfType('remove-todo')
-                        .map(e => ({ removed: [e.todoId] }))
-                        .toDictionary({
-                          [40]: 'Pick up milk',
-                          [42]: 'Buy the paper'
-                        });
-    const events = [
-      { type: 'remove-todo', todoId: 40 }
+      { type: 'add-todo', todos: [{todoId: 1, description: 'foo'}, {todoId: 2, description: 'bar'}] },
+      { type: 'toggle-completed', todoId: 2 },
     ];
     // Act
-    const reducer = query.build();
+    const reducer = todoList.build();
     const {newState} = reducer.reduce({events});
     // Assert
-    expect(newState).to.deep.equal({
-      [42]: 'Buy the paper'
-    });
+    expect(LinkedList.toArray(newState)).to.deep.equal([
+      {
+        id: 1,
+        description: 'foo',
+        isCompleted: false
+      },
+      {
+        id: 2,
+        description: 'bar',
+        isCompleted: true
+      }
+    ]);
   });
 
-  it('should reduce maps from multiple remove deltas', () => {
+  it('should handle single removals of reducer structures from linked lists', () => {
     // Arrange
-    const query = Reduce.eventsOfType('remove-todos')
-                        .map(e => ({ removed: e.todoIds }))
-                        .toDictionary({
-                          '40': 'Pick up milk',
-                          '42': 'Buy the paper'
-                        });
+    const todo = (id, description) => 
+      Reduce.structure({
+        id: id,
+        description: description,
+        isCompleted: Reduce.eventsOfType('toggle-completed')
+                           .fold((isCompleted, _) => !isCompleted, false)
+      }).scoped(e => !e.todoId || e.todoId === id);
+    const todoList =
+      Reduce.linkedListOf({
+        additions: Reduce.eventsOfType('add-todo'),
+        removals: Reduce.eventsOfType('remove-todo').map(e => e.todoId),
+        itemFactory: e => todo(e.todoId, e.description),
+        itemKey: todo => todo.id
+      });
     const events = [
-      { type: 'remove-todos', todoIds: [40, 42] }
+      { type: 'add-todo', todoId: 1, description: 'foo' },
+      { type: 'add-todo', todoId: 2, description: 'bar' },
+      { type: 'remove-todo', todoId: 2}
     ];
     // Act
-    const reducer = query.build();
+    const reducer = todoList.build();
     const {newState} = reducer.reduce({events});
     // Assert
-    expect(newState).to.deep.equal({});
+    expect(LinkedList.toArray(newState)).to.deep.equal([
+      {
+        id: 1,
+        description: 'foo',
+        isCompleted: false
+      }
+    ]);
+  });
+
+  it('should handle multiple removals of reducer structures from linked lists', () => {
+    // Arrange
+    const todo = (id, description) => 
+      Reduce.structure({
+        id: id,
+        description: description,
+        isCompleted: Reduce.eventsOfType('toggle-completed')
+                           .fold((isCompleted, _) => !isCompleted, false)
+      }).scoped(e => !e.todoId || e.todoId === id);
+    const todoList =
+      Reduce.linkedListOf({
+        additions: Reduce.eventsOfType('add-todo'),
+        removals: Reduce.eventsOfType('remove-todo').map(e => e.todoIds),
+        itemFactory: e => todo(e.todoId, e.description),
+        itemKey: todo => todo.id
+      });
+    const events = [
+      { type: 'add-todo', todoId: 1, description: 'foo' },
+      { type: 'add-todo', todoId: 2, description: 'bar' },
+      { type: 'remove-todo', todoIds: [2, 1] }
+    ];
+    // Act
+    const reducer = todoList.build();
+    const {newState} = reducer.reduce({events});
+    // Assert
+    expect(LinkedList.toArray(newState)).to.deep.equal([]);
+  });
+
+it('should handle single additions of constant values to linked lists', () => {
+    // Arrange
+    const todoList =
+      Reduce.linkedListOf({
+        additions: Reduce.eventsOfType('add-todo'),
+        removals: Reduce.eventsOfType('remove-todo').map(e => e.todoId),
+        itemFactory: e => ({ id: e.todoId, description: e.description }),
+        itemKey: todo => todo.id
+      });
+    const events = [
+      { type: 'add-todo', todoId: 1, description: 'foo' },
+      { type: 'add-todo', todoId: 2, description: 'bar' }
+    ];
+    // Act
+    const reducer = todoList.build();
+    const {newState} = reducer.reduce({events});
+    // Assert
+    expect(LinkedList.toArray(newState)).to.deep.equal([
+      {
+        id: 1,
+        description: 'foo'
+      },
+      {
+        id: 2,
+        description: 'bar'
+      }
+    ]);
+  });
+
+  it('should handle multiple additions of constant values to linked lists', () => {
+    // Arrange
+    const todoList =
+      Reduce.linkedListOf({
+        additions: Reduce.eventsOfType('add-todo').map(e => e.todos),
+        itemFactory: todo => todo,
+        itemKey: todo => todo.id
+      });
+    const events = [
+      { type: 'add-todo', todos: [{id: 1, description: 'foo'}, {id: 2, description: 'bar'}] },
+      { type: 'toggle-completed', todoId: 2 },
+    ];
+    // Act
+    const reducer = todoList.build();
+    const {newState} = reducer.reduce({events});
+    // Assert
+    expect(LinkedList.toArray(newState)).to.deep.equal([
+      {
+        id: 1,
+        description: 'foo'
+      },
+      {
+        id: 2,
+        description: 'bar'
+      }
+    ]);
+  });
+
+  it('should handle single removals of constant values from linked lists', () => {
+    // Arrange
+    const todoList =
+      Reduce.linkedListOf({
+        additions: Reduce.eventsOfType('add-todo'),
+        removals: Reduce.eventsOfType('remove-todo').map(e => e.todoId),
+        itemFactory: e => ({ id: e.todoId, description: e.description }),
+        itemKey: todo => todo.id
+      });
+    const events = [
+      { type: 'add-todo', todoId: 1, description: 'foo' },
+      { type: 'add-todo', todoId: 2, description: 'bar' },
+      { type: 'remove-todo', todoId: 2}
+    ];
+    // Act
+    const reducer = todoList.build();
+    const {newState} = reducer.reduce({events});
+    // Assert
+    expect(LinkedList.toArray(newState)).to.deep.equal([
+      {
+        id: 1,
+        description: 'foo'
+      }
+    ]);
+  });
+
+  it('should handle multiple removals of constant values from linked lists', () => {
+    // Arrange
+    const todoList =
+      Reduce.linkedListOf({
+        additions: Reduce.eventsOfType('add-todo'),
+        removals: Reduce.eventsOfType('remove-todo').map(e => e.todoIds),
+        itemFactory: e => ({ id: e.todoId, description: e.description }),
+        itemKey: todo => todo.id
+      });
+    const events = [
+      { type: 'add-todo', todoId: 1, description: 'foo' },
+      { type: 'add-todo', todoId: 2, description: 'bar' },
+      { type: 'remove-todo', todoIds: [1, 2]}
+    ];
+    // Act
+    const reducer = todoList.build();
+    const {newState} = reducer.reduce({events});
+    // Assert
+    expect(LinkedList.toArray(newState)).to.deep.equal([]);
   });
 });

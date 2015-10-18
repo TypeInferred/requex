@@ -12,9 +12,8 @@ export default class FlatReducedReducer extends Reducer {
    *
    * TODO: Marble diagram to explain!
    * 
-   * @param  {[type]} source      [description]
-   * @param  {[type]} flatReducer [description]
-   * @return {[type]}             [description]
+   * @param  {Reducer<T1>} source - The source reducer
+   * @param  {function(x:T1):ReducerBuilder<T2>} flatReducer - The function that selects a reducer from a value in the underlying source
    */
   constructor(source, flatReducer) {
     super();

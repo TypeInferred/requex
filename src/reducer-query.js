@@ -50,4 +50,19 @@ export default class ReducerQuery {
     const newState = output.update.otherwise(context && context.previousState);
     return {newState, newAuxillary};
   }
+
+  /**
+   * Returns a store.
+   * @param  {?NewState} previousState - The last produced state by another store if any.
+   * @return {Object} A store
+   * @property {function(e:Event)} dispatch - Dispatches an event into the store to update the state.
+   * @property {function():T} getState - Returns the current state.
+   */
+  toStore(previousState) {
+    let state = previousState || reduce();
+    return {
+      dispatch: event => state = reduce({previousAuxillary: context.newAuxillary, previousState: context.newState, event}),
+      getState: () => state.newState
+    };
+  }
 }

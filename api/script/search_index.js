@@ -1,5 +1,17 @@
 window.esdocSearchIndex = [
   [
+    "requex/src/reducers/storage-keys.js~addition_source",
+    "variable/index.html#static-variable-ADDITION_SOURCE",
+    "<span>ADDITION_SOURCE</span> <span class=\"search-result-import-path\">requex/src/reducers/storage-keys.js</span>",
+    "variable"
+  ],
+  [
+    "requex/src/reducers/storage-keys.js~args_prefix",
+    "variable/index.html#static-variable-ARGS_PREFIX",
+    "<span>ARGS_PREFIX</span> <span class=\"search-result-import-path\">requex/src/reducers/storage-keys.js</span>",
+    "variable"
+  ],
+  [
     "requex/src/reducers/any-event-reducer.js~anyeventreducer",
     "class/src/reducers/any-event-reducer.js~AnyEventReducer.html",
     "<span>AnyEventReducer</span> <span class=\"search-result-import-path\">requex/src/reducers/any-event-reducer.js</span>",
@@ -36,6 +48,24 @@ window.esdocSearchIndex = [
     "variable"
   ],
   [
+    "requex/src/index.js~linkedlist",
+    "variable/index.html#static-variable-LinkedList",
+    "<span>LinkedList</span> <span class=\"search-result-import-path\">requex/src/index.js</span>",
+    "variable"
+  ],
+  [
+    "requex/src/linked-list.js~linkedlist",
+    "class/src/linked-list.js~LinkedList.html",
+    "<span>LinkedList</span> <span class=\"search-result-import-path\">requex/src/linked-list.js</span>",
+    "class"
+  ],
+  [
+    "requex/src/reducers/linked-list-reducer.js~linkedlistreducer",
+    "class/src/reducers/linked-list-reducer.js~LinkedListReducer.html",
+    "<span>LinkedListReducer</span> <span class=\"search-result-import-path\">requex/src/reducers/linked-list-reducer.js</span>",
+    "class"
+  ],
+  [
     "requex/src/reducers/mapped-reducer.js~mappedreducer",
     "class/src/reducers/mapped-reducer.js~MappedReducer.html",
     "<span>MappedReducer</span> <span class=\"search-result-import-path\">requex/src/reducers/mapped-reducer.js</span>",
@@ -48,10 +78,22 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
+    "requex/src/index.js~option",
+    "variable/index.html#static-variable-Option",
+    "<span>Option</span> <span class=\"search-result-import-path\">requex/src/index.js</span>",
+    "variable"
+  ],
+  [
     "requex/src/option.js~option",
     "class/src/option.js~Option.html",
     "<span>Option</span> <span class=\"search-result-import-path\">requex/src/option.js</span>",
     "class"
+  ],
+  [
+    "requex/src/reducers/storage-keys.js~removal_source",
+    "variable/index.html#static-variable-REMOVAL_SOURCE",
+    "<span>REMOVAL_SOURCE</span> <span class=\"search-result-import-path\">requex/src/reducers/storage-keys.js</span>",
+    "variable"
   ],
   [
     "requex/src/reducers/storage-keys.js~root",
@@ -450,6 +492,12 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
+    "src/index.js~reduce.collectionconfiguration",
+    "typedef/index.html#static-typedef-CollectionConfiguration",
+    "src/index.js~Reduce.CollectionConfiguration",
+    "typedef"
+  ],
+  [
     "src/index.js~reduce.allevents",
     "class/src/index.js~Reduce.html#static-method-allEvents",
     "src/index.js~Reduce.allEvents",
@@ -459,6 +507,12 @@ window.esdocSearchIndex = [
     "src/index.js~reduce.eventsoftype",
     "class/src/index.js~Reduce.html#static-method-eventsOfType",
     "src/index.js~Reduce.eventsOfType",
+    "method"
+  ],
+  [
+    "src/index.js~reduce.linkedlistof",
+    "class/src/index.js~Reduce.html#static-method-linkedListOf",
+    "src/index.js~Reduce.linkedListOf",
     "method"
   ],
   [
@@ -477,6 +531,72 @@ window.esdocSearchIndex = [
     "src/index.js~reduce.value",
     "class/src/index.js~Reduce.html#static-method-value",
     "src/index.js~Reduce.value",
+    "method"
+  ],
+  [
+    "src/linked-list.js",
+    "file/src/linked-list.js.html",
+    "src/linked-list.js",
+    "file"
+  ],
+  [
+    "src/linked-list.js~linkedlist.cons",
+    "class/src/linked-list.js~LinkedList.html#static-method-cons",
+    "src/linked-list.js~LinkedList.cons",
+    "method"
+  ],
+  [
+    "src/linked-list.js~linkedlist.filter",
+    "class/src/linked-list.js~LinkedList.html#static-method-filter",
+    "src/linked-list.js~LinkedList.filter",
+    "method"
+  ],
+  [
+    "src/linked-list.js~linkedlist.foreach",
+    "class/src/linked-list.js~LinkedList.html#static-method-forEach",
+    "src/linked-list.js~LinkedList.forEach",
+    "method"
+  ],
+  [
+    "src/linked-list.js~linkedlist.isempty",
+    "class/src/linked-list.js~LinkedList.html#static-method-isEmpty",
+    "src/linked-list.js~LinkedList.isEmpty",
+    "method"
+  ],
+  [
+    "src/linked-list.js~linkedlist.map",
+    "class/src/linked-list.js~LinkedList.html#static-method-map",
+    "src/linked-list.js~LinkedList.map",
+    "method"
+  ],
+  [
+    "src/linked-list.js~linkedlist.nil",
+    "class/src/linked-list.js~LinkedList.html#static-method-nil",
+    "src/linked-list.js~LinkedList.nil",
+    "method"
+  ],
+  [
+    "src/linked-list.js~linkedlist.ofarray",
+    "class/src/linked-list.js~LinkedList.html#static-method-ofArray",
+    "src/linked-list.js~LinkedList.ofArray",
+    "method"
+  ],
+  [
+    "src/linked-list.js~linkedlist.reduce",
+    "class/src/linked-list.js~LinkedList.html#static-method-reduce",
+    "src/linked-list.js~LinkedList.reduce",
+    "method"
+  ],
+  [
+    "src/linked-list.js~linkedlist.reverse",
+    "class/src/linked-list.js~LinkedList.html#static-method-reverse",
+    "src/linked-list.js~LinkedList.reverse",
+    "method"
+  ],
+  [
+    "src/linked-list.js~linkedlist.toarray",
+    "class/src/linked-list.js~LinkedList.html#static-method-toArray",
+    "src/linked-list.js~LinkedList.toArray",
     "method"
   ],
   [
@@ -600,12 +720,6 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
-    "src/reducer-builder.js~reducerbuilder#todictionary",
-    "class/src/reducer-builder.js~ReducerBuilder.html#instance-method-toDictionary",
-    "src/reducer-builder.js~ReducerBuilder#toDictionary",
-    "method"
-  ],
-  [
     "src/reducer-builder.js~reducerbuilder#unwrap",
     "class/src/reducer-builder.js~ReducerBuilder.html#instance-method-unwrap",
     "src/reducer-builder.js~ReducerBuilder#unwrap",
@@ -648,6 +762,12 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "src/reducer-context.js~reducercontext#getstoredvalue",
+    "class/src/reducer-context.js~ReducerContext.html#instance-method-getStoredValue",
+    "src/reducer-context.js~ReducerContext#getStoredValue",
+    "method"
+  ],
+  [
     "src/reducer-context.js~reducercontext#getvalue",
     "class/src/reducer-context.js~ReducerContext.html#instance-method-getValue",
     "src/reducer-context.js~ReducerContext#getValue",
@@ -666,6 +786,12 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "src/reducer-context.js~reducercontext#storevalue",
+    "class/src/reducer-context.js~ReducerContext.html#instance-method-storeValue",
+    "src/reducer-context.js~ReducerContext#storeValue",
+    "method"
+  ],
+  [
     "src/reducer-query.js",
     "file/src/reducer-query.js.html",
     "src/reducer-query.js",
@@ -675,6 +801,12 @@ window.esdocSearchIndex = [
     "src/reducer-query.js~reducerquery#reduce",
     "class/src/reducer-query.js~ReducerQuery.html#instance-method-reduce",
     "src/reducer-query.js~ReducerQuery#reduce",
+    "method"
+  ],
+  [
+    "src/reducer-query.js~reducerquery#tostore",
+    "class/src/reducer-query.js~ReducerQuery.html#instance-method-toStore",
+    "src/reducer-query.js~ReducerQuery#toStore",
     "method"
   ],
   [
@@ -741,6 +873,18 @@ window.esdocSearchIndex = [
     "src/reducers/folding-reducer.js~foldingreducer#constructor",
     "class/src/reducers/folding-reducer.js~FoldingReducer.html#instance-constructor-constructor",
     "src/reducers/folding-reducer.js~FoldingReducer#constructor",
+    "method"
+  ],
+  [
+    "src/reducers/linked-list-reducer.js",
+    "file/src/reducers/linked-list-reducer.js.html",
+    "src/reducers/linked-list-reducer.js",
+    "file"
+  ],
+  [
+    "src/reducers/linked-list-reducer.js~linkedlistreducer#constructor",
+    "class/src/reducers/linked-list-reducer.js~LinkedListReducer.html#instance-constructor-constructor",
+    "src/reducers/linked-list-reducer.js~LinkedListReducer#constructor",
     "method"
   ],
   [

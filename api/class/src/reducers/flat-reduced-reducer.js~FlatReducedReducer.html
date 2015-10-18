@@ -32,10 +32,14 @@
   <ul>
     
   <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/index.js~Reduce.html">Reduce</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/linked-list.js~LinkedList.html">LinkedList</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/option.js~Option.html">Option</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/reducer-builder.js~ReducerBuilder.html">ReducerBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/reducer-context.js~ReducerContext.html">ReducerContext</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/reducer-query.js~ReducerQuery.html">ReducerQuery</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-LinkedList">LinkedList</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-Option">Option</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-CollectionConfiguration">CollectionConfiguration</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-NewState">NewState</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-PreviousState">PreviousState</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">reducers</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/reducers/any-event-reducer.js~AnyEventReducer.html">AnyEventReducer</a></span></span></li>
@@ -43,13 +47,17 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/reducers/filtered-reducer.js~FilteredReducer.html">FilteredReducer</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/reducers/flat-reduced-reducer.js~FlatReducedReducer.html">FlatReducedReducer</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/reducers/folding-reducer.js~FoldingReducer.html">FoldingReducer</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/reducers/linked-list-reducer.js~LinkedListReducer.html">LinkedListReducer</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/reducers/mapped-reducer.js~MappedReducer.html">MappedReducer</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/reducers/never-reducer.js~NeverReducer.html">NeverReducer</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/reducers/reducer.js~Reducer.html">Reducer</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/reducers/scoped-reducer.js~ScopedReducer.html">ScopedReducer</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/reducers/structure-reducer.js~StructureReducer.html">StructureReducer</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/reducers/value-reducer.js~ValueReducer.html">ValueReducer</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-ADDITION_SOURCE">ADDITION_SOURCE</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-ARGS_PREFIX">ARGS_PREFIX</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-INNER_SOURCE">INNER_SOURCE</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-REMOVAL_SOURCE">REMOVAL_SOURCE</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-ROOT">ROOT</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-SOURCE">SOURCE</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-VALUE">VALUE</a></span></span></li>
@@ -114,7 +122,7 @@ A reducing reducer.</p>
     <td>
       <div>
         <p>
-           <span data-ice="name"><span><a href="class/src/reducers/flat-reduced-reducer.js~FlatReducedReducer.html#instance-constructor-constructor">constructor</a></span></span><span data-ice="signature">(source: <span>[type]</span>, flatReducer: <span>[type]</span>): <span>[type]</span></span>
+           <span data-ice="name"><span><a href="class/src/reducers/flat-reduced-reducer.js~FlatReducedReducer.html#instance-constructor-constructor">constructor</a></span></span><span data-ice="signature">(source: <span><a href="class/src/reducers/reducer.js~Reducer.html">Reducer</a></span>&lt;<span>T1</span>&gt;, flatReducer: <span><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">function</a></span><span>(x: <span>T1</span>)</span>: <span><a href="class/src/reducer-builder.js~ReducerBuilder.html">ReducerBuilder</a></span>&lt;<span>T2</span>&gt;</span>)</span>
         </p>
       </div>
       <div>
@@ -152,7 +160,7 @@ TODO: Marble diagram to explain!</div>
     <td>
       <div>
         <p>
-           <span data-ice="name"><span><a href="class/src/reducers/reducer.js~Reducer.html#instance-method-reduce">reduce</a></span></span><span data-ice="signature">(context: <span><a href="class/src/reducer-context.js~ReducerContext.html">ReducerContext</a></span>): <span><a href="class/src/option.js~Option.html">Option</a></span>&lt;<span>T</span>&gt;</span>
+           <span data-ice="name"><span><a href="class/src/reducers/reducer.js~Reducer.html#instance-method-reduce">reduce</a></span></span><span data-ice="signature">(context: <span><a href="class/src/reducer-context.js~ReducerContext.html">ReducerContext</a></span>): <span><a href="variable/index.html#static-variable-Option">Option</a></span>&lt;<span>T</span>&gt;</span>
         </p>
       </div>
       <div>
@@ -181,11 +189,11 @@ TODO: Marble diagram to explain!</div>
     
     
     
-    <span data-ice="name">constructor</span><span data-ice="signature">(source: <span>[type]</span>, flatReducer: <span>[type]</span>): <span>[type]</span></span>
+    <span data-ice="name">constructor</span><span data-ice="signature">(source: <span><a href="class/src/reducers/reducer.js~Reducer.html">Reducer</a></span>&lt;<span>T1</span>&gt;, flatReducer: <span><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">function</a></span><span>(x: <span>T1</span>)</span>: <span><a href="class/src/reducer-builder.js~ReducerBuilder.html">ReducerBuilder</a></span>&lt;<span>T2</span>&gt;</span>)</span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/reducers/flat-reduced-reducer.js.html#lineNumber19">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/reducers/flat-reduced-reducer.js.html#lineNumber18">source</a></span></span>
     </span>
   </h3>
 
@@ -209,16 +217,16 @@ until the next source value.</p>
     
     <tr data-ice="property" data-depth="0">
       <td data-ice="name" data-depth="0">source</td>
-      <td data-ice="type"><span>[type]</span></td>
+      <td data-ice="type"><span><a href="class/src/reducers/reducer.js~Reducer.html">Reducer</a></span>&lt;<span>T1</span>&gt;</td>
       <td data-ice="appendix"></td>
-      <td data-ice="description"><p>[description]</p>
+      <td data-ice="description"><p>The source reducer</p>
 </td>
     </tr>
 <tr data-ice="property" data-depth="0">
       <td data-ice="name" data-depth="0">flatReducer</td>
-      <td data-ice="type"><span>[type]</span></td>
+      <td data-ice="type"><span><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">function</a></span><span>(x: <span>T1</span>)</span>: <span><a href="class/src/reducer-builder.js~ReducerBuilder.html">ReducerBuilder</a></span>&lt;<span>T2</span>&gt;</span></td>
       <td data-ice="appendix"></td>
-      <td data-ice="description"><p>[description]</p>
+      <td data-ice="description"><p>The function that selects a reducer from a value in the underlying source</p>
 </td>
     </tr>
 </tbody>
@@ -226,18 +234,7 @@ until the next source value.</p>
 </div>
 </div>
 
-  <div class="return-params" data-ice="returnParams">
-    <h4>Return:</h4>
-    <table>
-      <tr>
-        <td class="return-type" data-ice="returnType"><span>[type]</span></td>
-        <td class="return-desc" data-ice="returnDescription"><p>[description]</p>
-</td>
-      </tr>
-    </table>
-    <div data-ice="returnProperties">
-</div>
-  </div>
+  
 
   
 

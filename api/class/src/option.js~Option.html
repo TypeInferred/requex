@@ -32,10 +32,14 @@
   <ul>
     
   <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/index.js~Reduce.html">Reduce</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/linked-list.js~LinkedList.html">LinkedList</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/option.js~Option.html">Option</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/reducer-builder.js~ReducerBuilder.html">ReducerBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/reducer-context.js~ReducerContext.html">ReducerContext</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/reducer-query.js~ReducerQuery.html">ReducerQuery</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-LinkedList">LinkedList</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-Option">Option</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-CollectionConfiguration">CollectionConfiguration</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-NewState">NewState</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-PreviousState">PreviousState</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">reducers</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/reducers/any-event-reducer.js~AnyEventReducer.html">AnyEventReducer</a></span></span></li>
@@ -43,13 +47,17 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/reducers/filtered-reducer.js~FilteredReducer.html">FilteredReducer</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/reducers/flat-reduced-reducer.js~FlatReducedReducer.html">FlatReducedReducer</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/reducers/folding-reducer.js~FoldingReducer.html">FoldingReducer</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/reducers/linked-list-reducer.js~LinkedListReducer.html">LinkedListReducer</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/reducers/mapped-reducer.js~MappedReducer.html">MappedReducer</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/reducers/never-reducer.js~NeverReducer.html">NeverReducer</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/reducers/reducer.js~Reducer.html">Reducer</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/reducers/scoped-reducer.js~ScopedReducer.html">ScopedReducer</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/reducers/structure-reducer.js~StructureReducer.html">StructureReducer</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/reducers/value-reducer.js~ValueReducer.html">ValueReducer</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-ADDITION_SOURCE">ADDITION_SOURCE</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-ARGS_PREFIX">ARGS_PREFIX</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-INNER_SOURCE">INNER_SOURCE</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-REMOVAL_SOURCE">REMOVAL_SOURCE</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-ROOT">ROOT</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-SOURCE">SOURCE</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-VALUE">VALUE</a></span></span></li>
@@ -137,7 +145,7 @@
     <td>
       <div>
         <p>
-           <span data-ice="name"><span><a href="class/src/option.js~Option.html#static-method-some">some</a></span></span><span data-ice="signature">(value: <span>T</span>): <span><a href="class/src/option.js~Option.html">Option</a></span>&lt;<span>T</span>&gt;</span>
+           <span data-ice="name"><span><a href="class/src/option.js~Option.html#static-method-some">some</a></span></span><span data-ice="signature">(value: <span>T</span>): <span><a href="variable/index.html#static-variable-Option">Option</a></span>&lt;<span>T</span>&gt;</span>
         </p>
       </div>
       <div>
@@ -227,7 +235,7 @@
     <td>
       <div>
         <p>
-           <span data-ice="name"><span><a href="class/src/option.js~Option.html#instance-method-bind">bind</a></span></span><span data-ice="signature">(selector: <span><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">function</a></span><span>(x: <span>T1</span>)</span>: <span><a href="class/src/option.js~Option.html">Option</a></span>&lt;<span>T2</span>&gt;</span>): <span><a href="class/src/option.js~Option.html">Option</a></span>&lt;<span>T2</span>&gt;</span>
+           <span data-ice="name"><span><a href="class/src/option.js~Option.html#instance-method-bind">bind</a></span></span><span data-ice="signature">(selector: <span><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">function</a></span><span>(x: <span>T1</span>)</span>: <span><a href="variable/index.html#static-variable-Option">Option</a></span>&lt;<span>T2</span>&gt;</span>): <span><a href="variable/index.html#static-variable-Option">Option</a></span>&lt;<span>T2</span>&gt;</span>
         </p>
       </div>
       <div>
@@ -253,7 +261,7 @@ the selector function.</div>
     <td>
       <div>
         <p>
-           <span data-ice="name"><span><a href="class/src/option.js~Option.html#instance-method-filter">filter</a></span></span><span data-ice="signature">(predicate: <span><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">function</a></span><span>(x: <span>T</span>)</span>: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span></span>): <span><a href="class/src/option.js~Option.html">Option</a></span>&lt;<span>T</span>&gt;</span>
+           <span data-ice="name"><span><a href="class/src/option.js~Option.html#instance-method-filter">filter</a></span></span><span data-ice="signature">(predicate: <span><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">function</a></span><span>(x: <span>T</span>)</span>: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span></span>): <span><a href="variable/index.html#static-variable-Option">Option</a></span>&lt;<span>T</span>&gt;</span>
         </p>
       </div>
       <div>
@@ -303,7 +311,7 @@ the selector function.</div>
     <td>
       <div>
         <p>
-           <span data-ice="name"><span><a href="class/src/option.js~Option.html#instance-method-map">map</a></span></span><span data-ice="signature">(selector: <span><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">function</a></span><span>(x: <span>T1</span>)</span>: <span>T2</span></span>): <span><a href="class/src/option.js~Option.html">Option</a></span>&lt;<span>T2</span>&gt;</span>
+           <span data-ice="name"><span><a href="class/src/option.js~Option.html#instance-method-map">map</a></span></span><span data-ice="signature">(selector: <span><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">function</a></span><span>(x: <span>T1</span>)</span>: <span>T2</span></span>): <span><a href="variable/index.html#static-variable-Option">Option</a></span>&lt;<span>T2</span>&gt;</span>
         </p>
       </div>
       <div>
@@ -436,7 +444,7 @@ accumulator function.</div>
     
     
     
-    <span data-ice="name">some</span><span data-ice="signature">(value: <span>T</span>): <span><a href="class/src/option.js~Option.html">Option</a></span>&lt;<span>T</span>&gt;</span>
+    <span data-ice="name">some</span><span data-ice="signature">(value: <span>T</span>): <span><a href="variable/index.html#static-variable-Option">Option</a></span>&lt;<span>T</span>&gt;</span>
     <span class="right-info">
       
       
@@ -476,7 +484,7 @@ accumulator function.</div>
     <h4>Return:</h4>
     <table>
       <tr>
-        <td class="return-type" data-ice="returnType"><span><a href="class/src/option.js~Option.html">Option</a></span>&lt;<span>T</span>&gt;</td>
+        <td class="return-type" data-ice="returnType"><span><a href="variable/index.html#static-variable-Option">Option</a></span>&lt;<span>T</span>&gt;</td>
         <td class="return-desc" data-ice="returnDescription"><p>The value wrapped in an option</p>
 </td>
       </tr>
@@ -594,7 +602,7 @@ accumulator function.</div>
     
     
     
-    <span data-ice="name">bind</span><span data-ice="signature">(selector: <span><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">function</a></span><span>(x: <span>T1</span>)</span>: <span><a href="class/src/option.js~Option.html">Option</a></span>&lt;<span>T2</span>&gt;</span>): <span><a href="class/src/option.js~Option.html">Option</a></span>&lt;<span>T2</span>&gt;</span>
+    <span data-ice="name">bind</span><span data-ice="signature">(selector: <span><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">function</a></span><span>(x: <span>T1</span>)</span>: <span><a href="variable/index.html#static-variable-Option">Option</a></span>&lt;<span>T2</span>&gt;</span>): <span><a href="variable/index.html#static-variable-Option">Option</a></span>&lt;<span>T2</span>&gt;</span>
     <span class="right-info">
       
       
@@ -621,7 +629,7 @@ the selector function.</p>
     
     <tr data-ice="property" data-depth="0">
       <td data-ice="name" data-depth="0">selector</td>
-      <td data-ice="type"><span><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">function</a></span><span>(x: <span>T1</span>)</span>: <span><a href="class/src/option.js~Option.html">Option</a></span>&lt;<span>T2</span>&gt;</span></td>
+      <td data-ice="type"><span><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">function</a></span><span>(x: <span>T1</span>)</span>: <span><a href="variable/index.html#static-variable-Option">Option</a></span>&lt;<span>T2</span>&gt;</span></td>
       <td data-ice="appendix"></td>
       <td data-ice="description"><p>The projection function</p>
 </td>
@@ -635,7 +643,7 @@ the selector function.</p>
     <h4>Return:</h4>
     <table>
       <tr>
-        <td class="return-type" data-ice="returnType"><span><a href="class/src/option.js~Option.html">Option</a></span>&lt;<span>T2</span>&gt;</td>
+        <td class="return-type" data-ice="returnType"><span><a href="variable/index.html#static-variable-Option">Option</a></span>&lt;<span>T2</span>&gt;</td>
         <td class="return-desc" data-ice="returnDescription"><p>The resulting option.</p>
 </td>
       </tr>
@@ -664,7 +672,7 @@ the selector function.</p>
     
     
     
-    <span data-ice="name">filter</span><span data-ice="signature">(predicate: <span><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">function</a></span><span>(x: <span>T</span>)</span>: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span></span>): <span><a href="class/src/option.js~Option.html">Option</a></span>&lt;<span>T</span>&gt;</span>
+    <span data-ice="name">filter</span><span data-ice="signature">(predicate: <span><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">function</a></span><span>(x: <span>T</span>)</span>: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span></span>): <span><a href="variable/index.html#static-variable-Option">Option</a></span>&lt;<span>T</span>&gt;</span>
     <span class="right-info">
       
       
@@ -704,7 +712,7 @@ the selector function.</p>
     <h4>Return:</h4>
     <table>
       <tr>
-        <td class="return-type" data-ice="returnType"><span><a href="class/src/option.js~Option.html">Option</a></span>&lt;<span>T</span>&gt;</td>
+        <td class="return-type" data-ice="returnType"><span><a href="variable/index.html#static-variable-Option">Option</a></span>&lt;<span>T</span>&gt;</td>
         <td class="return-desc" data-ice="returnDescription"><p>The filtered option</p>
 </td>
       </tr>
@@ -785,7 +793,7 @@ the selector function.</p>
     
     
     
-    <span data-ice="name">map</span><span data-ice="signature">(selector: <span><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">function</a></span><span>(x: <span>T1</span>)</span>: <span>T2</span></span>): <span><a href="class/src/option.js~Option.html">Option</a></span>&lt;<span>T2</span>&gt;</span>
+    <span data-ice="name">map</span><span data-ice="signature">(selector: <span><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">function</a></span><span>(x: <span>T1</span>)</span>: <span>T2</span></span>): <span><a href="variable/index.html#static-variable-Option">Option</a></span>&lt;<span>T2</span>&gt;</span>
     <span class="right-info">
       
       
@@ -825,7 +833,7 @@ the selector function.</p>
     <h4>Return:</h4>
     <table>
       <tr>
-        <td class="return-type" data-ice="returnType"><span><a href="class/src/option.js~Option.html">Option</a></span>&lt;<span>T2</span>&gt;</td>
+        <td class="return-type" data-ice="returnType"><span><a href="variable/index.html#static-variable-Option">Option</a></span>&lt;<span>T2</span>&gt;</td>
         <td class="return-desc" data-ice="returnDescription"><p>The mapped option</p>
 </td>
       </tr>
