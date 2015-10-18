@@ -55,10 +55,7 @@ export default class CollectionReducer extends Reducer {
     if (removals.isSome) {
       changeTracker.hasChanged = true;
       const removedKeys = asArray(removals.get());
-      return this._collectionApi.filter(items, x => {
-        const key = this._keySelector(x);
-        return !removedKeys.includes(key);
-      });
+      return this._collectionApi.remove(items, this._keySelector, removedKeys);
     }
     return items;
   }

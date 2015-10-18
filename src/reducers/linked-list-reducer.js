@@ -5,12 +5,22 @@ import LinkedList from '../linked-list.js';
 const linkedListApi = {
   prepare: x => x,
   empty: () => LinkedList.nil(),
-  filter: (list, predicate) => LinkedList.filter(list, predicate),
+  remove: (list, itemKey, removedKeys) => LinkedList.filter(list, x => {
+    const key = itemKey(x);
+    return !removedKeys.includes(key);
+  }),
   map: (list, selector) => LinkedList.map(list, selector),
   put: (list, key, value) => LinkedList.cons(value, list)
 };
 
+/**
+ * Reducer for building linked lists.
+ */
 export default class LinkedListReducer extends CollectionReducer {
+  /** 
+   * Builds a linked list reducer. See {@link CollectionReducer} for more information.
+   * @param  {CollectionConfiguration} configuration - the configuration needed to build the collection
+   */
   constructor(configuration) {
     super(linkedListApi, configuration);
   }
