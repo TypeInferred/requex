@@ -43,6 +43,8 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-NewState">NewState</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-PreviousState">PreviousState</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">reducers</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/reducers/any-event-reducer.js~AnyEventReducer.html">AnyEventReducer</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/reducers/collection-reducer.js~CollectionReducer.html">CollectionReducer</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/reducers/dictionary-object-reducer.js~DictionaryObjectReducer.html">DictionaryObjectReducer</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/reducers/event-reducer.js~EventReducer.html">EventReducer</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/reducers/filtered-reducer.js~FilteredReducer.html">FilteredReducer</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/reducers/flat-reduced-reducer.js~FlatReducedReducer.html">FlatReducedReducer</a></span></span></li>
@@ -66,101 +68,31 @@
 </nav>
 
 <div class="content" data-ice="content"><h1 data-ice="title">src/reducers/linked-list-reducer.js</h1>
-<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import Reducer from &apos;./reducer.js&apos;;
-import Option from &apos;../option.js&apos;;
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import CollectionReducer from &apos;./collection-reducer.js&apos;;
 import LinkedList from &apos;../linked-list.js&apos;;
-import NeverReducer from &apos;./never-reducer.js&apos;;
-import {ADDITION_SOURCE, REMOVAL_SOURCE, ARGS_PREFIX} from &apos;./storage-keys.js&apos;;
+
+/** @ignore */
+const linkedListApi = {
+  prepare: x =&gt; x,
+  empty: () =&gt; LinkedList.nil(),
+  remove: (list, itemKey, removedKeys) =&gt; LinkedList.filter(list, x =&gt; {
+    const key = itemKey(x);
+    return !removedKeys.includes(key);
+  }),
+  map: (list, selector) =&gt; LinkedList.map(list, selector),
+  put: (list, key, value) =&gt; LinkedList.cons(value, list)
+};
 
 /**
- * Returns the single object wrapped in an array or the array if the argument is an array.
- * @param {T|Array&lt;T&gt;} itemOrArray - The item or array of items
- * @return {Array&lt;T&gt;} An array of items
+ * Reducer for building linked lists.
  */
-const asArray = itemOrArray =&gt;
-  itemOrArray instanceof Array ? itemOrArray : [itemOrArray];
-
-/**
- * &lt;b&gt;INTERNAL&lt;/b&gt;
- * A reducer of linked lists that may itself contain reducers.
- */
-export default class LinkedListReducer extends Reducer {
-
-  /**
-   * Builds a reducer that creates of a linked list from a reducer for additions, a reducer for removals, a function to construct
-   * items and a function to extract the key from a constructed item. Keys are used for removal and addressing the auxillary
-   * state to ensure accumulators are seeded correctly etc.
-   * @param  {CollectionConfiguration} configuration - the configuration needed to build the list
+export default class LinkedListReducer extends CollectionReducer {
+  /** 
+   * Builds a linked list reducer. See {@link CollectionReducer} for more information.
+   * @param  {CollectionConfiguration} configuration - the configuration needed to build the collection
    */
   constructor(configuration) {
-    super();
-    const {additions, itemFactory, itemKey} = configuration;
-    const removals = configuration.removals &amp;&amp; configuration.removals.unwrap() || new NeverReducer();
-    this._additionSource = additions.unwrap();
-    this._removalSource = removals;
-    this._keySelector = itemKey;
-    this._elementSelector = itemFactory;
-  }
-
-  /** @ignore */
-  reduce(context) {
-    const previous = context.getPreviousReduction();
-    const removals = context.getValue(REMOVAL_SOURCE, this._removalSource);
-    const additions = context.getValue(ADDITION_SOURCE, this._additionSource);
-    let hasChanged = previous.isNone;
-
-    const existingItems = previous.otherwise(LinkedList.nil());
-    let items = existingItems;
-
-    // REMOVE
-    if (removals.isSome) {
-      hasChanged = true;
-      const removedKeys = asArray(removals.get());
-      items = LinkedList.filter(items, x =&gt; {
-        const key = this._keySelector(x);
-        return !removedKeys.includes(key);
-      });
-    }
-
-    // UPDATE REMAINING
-    items = LinkedList.map(items, x =&gt; {
-      const key = this._keySelector(x);
-      const reducerArgs = context.getStoredValue(ARGS_PREFIX + key);
-      context.storeValue(ARGS_PREFIX + key, reducerArgs); // Keep for next time.
-      const reducer = this._elementSelector(reducerArgs);
-      let newValue = x;
-      // If it is a reducer we reduce the new value.
-      if (reducer.unwrap) {
-        const reducedValue = context.getValue(key, reducer.unwrap());
-        hasChanged = hasChanged || reducedValue.isSome;
-        newValue = reducedValue.otherwise(x);
-      }
-      return newValue;
-    });
-
-    // ADD + SEED NEW
-    if (additions.isSome) {
-      hasChanged = true;
-      items = asArray(additions.get()).reduce((acc, reducerArgs) =&gt; {
-        const reducerOrValue = this._elementSelector(reducerArgs);
-        let value;
-        let key; 
-        if (reducerOrValue.unwrap) {
-          const reducedValue = context.getFreshValue(&apos;temp&apos;, reducerOrValue.unwrap());
-          value = reducedValue.get();
-          key = this._keySelector(value);
-          // Move storage to under actual key. TODO: refactor this.
-          context.getValue(key, {reduce: () =&gt; reducedValue});
-        } else {
-          value = reducerOrValue;
-          key = this._keySelector(value);
-        }
-        context.storeValue(ARGS_PREFIX + key, reducerArgs); // Keep for next time.
-        return LinkedList.cons(value, acc);
-      }, items);
-    }
-
-    return hasChanged ? Option.some(items) : Option.none();
+    super(linkedListApi, configuration);
   }
 }</code></pre>
 

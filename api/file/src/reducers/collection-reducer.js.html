@@ -2,8 +2,8 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <base data-ice="baseUrl" href="../../">
-  <title data-ice="title">src/option.js | API Document</title>
+  <base data-ice="baseUrl" href="../../../">
+  <title data-ice="title">src/reducers/collection-reducer.js | API Document</title>
   <link type="text/css" rel="stylesheet" href="css/style.css">
   <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
   <script src="script/prettify/prettify.js"></script>
@@ -67,102 +67,109 @@
 </div>
 </nav>
 
-<div class="content" data-ice="content"><h1 data-ice="title">src/option.js</h1>
-<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">let none;
+<div class="content" data-ice="content"><h1 data-ice="title">src/reducers/collection-reducer.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import Reducer from &apos;./reducer.js&apos;;
+import Option from &apos;../option.js&apos;;
+import NeverReducer from &apos;./never-reducer.js&apos;;
+import {ADDITION_SOURCE, REMOVAL_SOURCE, ARGS_PREFIX} from &apos;./storage-keys.js&apos;;
 
 /**
- * Represents an optional type, i.e., some value or none.
+ * Returns the single object wrapped in an array or the array if the argument is an array.
+ * @param {T|Array&lt;T&gt;} itemOrArray - The item or array of items
+ * @return {Array&lt;T&gt;} An array of items
  */
-export default class Option {
-  /**
-   * @private
-   */
-  constructor(hasValue, value) {
-    this._value = value;
-    /**
-     * Returns true if the option wraps a value, i.e., if it is some
-     * @type {Boolean}
-     */
-    this.isSome = hasValue;
-    /**
-     * Returns true if the option doesn&apos;t wrap a value, i.e., if it is none
-     * @type {Boolean}
-     */
-    this.isNone = !this.isSome;
-  }
+const asArray = itemOrArray =&gt;
+  itemOrArray instanceof Array ? itemOrArray : [itemOrArray];
+
+/**
+ * &lt;b&gt;INTERNAL&lt;/b&gt;
+ * A reducer of a collection that may itself contain reducers.
+ */
+export default class CollectionReducer extends Reducer {
 
   /**
-   * Returns none.
-   * @return {[type]} [description]
+   * Builds a reducer that creates of a collection from a reducer for additions, a reducer for removals, a function to construct
+   * items and a function to extract the key from a constructed item. Keys are used for removal and addressing the auxillary
+   * state to ensure accumulators are seeded correctly etc.
+   * @param  {CollectionConfiguration} configuration - the configuration needed to build the collection
    */
-  static none() {
-    return none || (none = new Option(false));
+  constructor(collectionApi, configuration) {
+    super();
+    const {additions, itemFactory, itemKey} = configuration;
+    const removals = configuration.removals &amp;&amp; configuration.removals.unwrap() || new NeverReducer();
+    this._additionSource = additions.unwrap();
+    this._removalSource = removals;
+    this._keySelector = itemKey;
+    this._elementSelector = itemFactory;
+    this._collectionApi = collectionApi;
   }
 
-  /**
-   * Returns the value wrapped as a some option. 
-   * @param  {T} value - The value the wrap
-   * @return {Option&lt;T&gt;} The value wrapped in an option
-   */
-  static some(value) {
-    return new Option(true, value);
+  /** @ignore */
+  reduce(context) {
+    const previous = context.getPreviousReduction();
+    let hasChanged = previous.isNone;
+    let changeTracker = { hasChanged: previous.isNone };
+    const existingItems = previous.otherwise(this._collectionApi.empty());
+    let items = this._collectionApi.prepare(existingItems);
+    // REMOVE
+    items = this._filterRemovals(context, items, changeTracker)
+    // UPDATE REMAINING
+    items = this._updateRemaining(context, items, changeTracker);
+    // ADD + SEED NEW
+    items = this._consAdditions(context, items, changeTracker);
+    return changeTracker.hasChanged ? Option.some(items) : Option.none();
   }
 
-  /**
-   * Returns the value if the option is a some otherwise throws.
-   * @return {T} The value.
-   */
-  get() {
-    if (this.isNone) throw new Error(&apos;Expected some&apos;);
-    return this._value;
+  _filterRemovals(context, items, changeTracker) {
+    const removals = context.getValue(REMOVAL_SOURCE, this._removalSource);
+    if (removals.isSome) {
+      changeTracker.hasChanged = true;
+      const removedKeys = asArray(removals.get());
+      return this._collectionApi.remove(items, this._keySelector, removedKeys);
+    }
+    return items;
   }
 
-  /**
-   * Maps the value wrapped in the option if any.
-   * @param  {function(x:T1):T2} selector - The mapping function
-   * @return {Option&lt;T2&gt;} The mapped option
-   */
-  map(selector) {
-    return this.isNone ? this : Option.some(selector(this._value));
+  _updateRemaining(context, items, changeTracker) {
+    return this._collectionApi.map(items, x =&gt; {
+      const key = this._keySelector(x);
+      const reducerArgs = context.getStoredValue(ARGS_PREFIX + key);
+      context.storeValue(ARGS_PREFIX + key, reducerArgs); // Keep for next time.
+      const reducer = this._elementSelector(reducerArgs);
+      let newValue = x;
+      // If it is a reducer we reduce the new value.
+      if (reducer.unwrap) {
+        const reducedValue = context.getValue(key, reducer.unwrap());
+        changeTracker.hasChanged = changeTracker.hasChanged || reducedValue.isSome;
+        newValue = reducedValue.otherwise(x);
+      }
+      return newValue;
+    });
   }
 
-  /**
-   * Filters the value wrapped in the option if any. If it passes the predicate retains some otherwise none.
-   * @param  {function(x:T):boolean} predicate - The filter function
-   * @return {Option&lt;T&gt;} The filtered option
-   */
-  filter(predicate) {
-    return this.isSome &amp;&amp; predicate(this._value) ? this : Option.none(); 
-  }
-
-  /**
-   * Returns the value wrapped in the option if some otherwise the other value passed as an argument.
-   * @param  {T} otherValue - The alternate value to return
-   * @return {T} The wrapped value if some else otherValue
-   */
-  otherwise(otherValue) {
-    return this.isSome ? this._value : otherValue;
-  }
-
-  /**
-   * Returns the seed if none otherwise accumulates a new value using the seed and the wrapped value using the
-   * accumulator function.
-   * @param  {function(acc:TAcc, x:T)} accumulator - The function to accumulate a result if some
-   * @param  {TAcc} seed - The value to return if none wrapped
-   * @return {TAcc} The accumulated value or the seed if none
-   */
-  reduce(accumulator, seed) {
-    return this.isSome ? accumulator(seed, this._value) : seed;
-  }
-
-  /**
-   * Returns none if none otherwise the option produced by projecting the wrapped value onto another option using
-   * the selector function.
-   * @param  {function(x:T1):Option&lt;T2&gt;} selector - The projection function
-   * @return {Option&lt;T2&gt;} The resulting option.
-   */
-  bind(selector) {
-    return this.isSome ? selector(this._value) : Option.none();
+  _consAdditions(context, items, changeTracker) {
+    const additions = context.getValue(ADDITION_SOURCE, this._additionSource);
+    if (additions.isSome) {
+      changeTracker.hasChanged = true;
+      return asArray(additions.get()).reduce((acc, reducerArgs) =&gt; {
+        const reducerOrValue = this._elementSelector(reducerArgs);
+        let value;
+        let key; 
+        if (reducerOrValue.unwrap) {
+          const reducedValue = context.getFreshValue(&apos;temp&apos;, reducerOrValue.unwrap());
+          value = reducedValue.get();
+          key = this._keySelector(value);
+          // Move storage to under actual key. TODO: refactor this.
+          context.getValue(key, {reduce: () =&gt; reducedValue});
+        } else {
+          value = reducerOrValue;
+          key = this._keySelector(value);
+        }
+        context.storeValue(ARGS_PREFIX + key, reducerArgs); // Keep for next time.
+        return this._collectionApi.put(acc, key, value);
+      }, items);
+    }
+    return items;
   }
 }</code></pre>
 

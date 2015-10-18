@@ -2,8 +2,8 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <base data-ice="baseUrl" href="../../">
-  <title data-ice="title">src/option.js | API Document</title>
+  <base data-ice="baseUrl" href="../../../">
+  <title data-ice="title">CollectionReducer | API Document</title>
   <link type="text/css" rel="stylesheet" href="css/style.css">
   <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
   <script src="script/prettify/prettify.js"></script>
@@ -67,104 +67,183 @@
 </div>
 </nav>
 
-<div class="content" data-ice="content"><h1 data-ice="title">src/option.js</h1>
-<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">let none;
+<div class="content" data-ice="content"><div class="header-notice">
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import CollectionReducer from &apos;<span><a href="file/src/reducers/collection-reducer.js.html#lineNumber18">requex/src/reducers/collection-reducer.js</a></span>&apos;</code></pre></div>
+  <span data-ice="access">public</span>
+  <span data-ice="kind">class</span>
+  
+  
+  
+  <span data-ice="source">| <span><a href="file/src/reducers/collection-reducer.js.html#lineNumber18">source</a></span></span>
+</div>
 
-/**
- * Represents an optional type, i.e., some value or none.
- */
-export default class Option {
-  /**
-   * @private
-   */
-  constructor(hasValue, value) {
-    this._value = value;
-    /**
-     * Returns true if the option wraps a value, i.e., if it is some
-     * @type {Boolean}
-     */
-    this.isSome = hasValue;
-    /**
-     * Returns true if the option doesn&apos;t wrap a value, i.e., if it is none
-     * @type {Boolean}
-     */
-    this.isNone = !this.isSome;
-  }
+<div class="self-detail detail">
+  <h1 data-ice="name">CollectionReducer</h1>
 
-  /**
-   * Returns none.
-   * @return {[type]} [description]
-   */
-  static none() {
-    return none || (none = new Option(false));
-  }
+  
 
-  /**
-   * Returns the value wrapped as a some option. 
-   * @param  {T} value - The value the wrap
-   * @return {Option&lt;T&gt;} The value wrapped in an option
-   */
-  static some(value) {
-    return new Option(true, value);
-  }
+  
+  
+  <div class="flat-list" data-ice="extendsChain"><h4>Extends:</h4><div><span><a href="class/src/reducers/reducer.js~Reducer.html">Reducer</a></span> &#x2192; CollectionReducer</div></div>
+  <div class="flat-list" data-ice="directSubclass"><h4>Direct Subclass:</h4><div><span><a href="class/src/reducers/dictionary-object-reducer.js~DictionaryObjectReducer.html">DictionaryObjectReducer</a></span>, <span><a href="class/src/reducers/linked-list-reducer.js~LinkedListReducer.html">LinkedListReducer</a></span></div></div>
+  
+  
+  
+  
+  
 
-  /**
-   * Returns the value if the option is a some otherwise throws.
-   * @return {T} The value.
-   */
-  get() {
-    if (this.isNone) throw new Error(&apos;Expected some&apos;);
-    return this._value;
-  }
+  
+  
+  <div class="description" data-ice="description"><p><b>INTERNAL</b>
+A reducer of a collection that may itself contain reducers.</p>
+</div>
 
-  /**
-   * Maps the value wrapped in the option if any.
-   * @param  {function(x:T1):T2} selector - The mapping function
-   * @return {Option&lt;T2&gt;} The mapped option
-   */
-  map(selector) {
-    return this.isNone ? this : Option.some(selector(this._value));
-  }
+  
 
-  /**
-   * Filters the value wrapped in the option if any. If it passes the predicate retains some otherwise none.
-   * @param  {function(x:T):boolean} predicate - The filter function
-   * @return {Option&lt;T&gt;} The filtered option
-   */
-  filter(predicate) {
-    return this.isSome &amp;&amp; predicate(this._value) ? this : Option.none(); 
-  }
+  
 
-  /**
-   * Returns the value wrapped in the option if some otherwise the other value passed as an argument.
-   * @param  {T} otherValue - The alternate value to return
-   * @return {T} The wrapped value if some else otherValue
-   */
-  otherwise(otherValue) {
-    return this.isSome ? this._value : otherValue;
-  }
+  
 
-  /**
-   * Returns the seed if none otherwise accumulates a new value using the seed and the wrapped value using the
-   * accumulator function.
-   * @param  {function(acc:TAcc, x:T)} accumulator - The function to accumulate a result if some
-   * @param  {TAcc} seed - The value to return if none wrapped
-   * @return {TAcc} The accumulated value or the seed if none
-   */
-  reduce(accumulator, seed) {
-    return this.isSome ? accumulator(seed, this._value) : seed;
-  }
+  
+</div>
 
-  /**
-   * Returns none if none otherwise the option produced by projecting the wrapped value onto another option using
-   * the selector function.
-   * @param  {function(x:T1):Option&lt;T2&gt;} selector - The projection function
-   * @return {Option&lt;T2&gt;} The resulting option.
-   */
-  bind(selector) {
-    return this.isSome ? selector(this._value) : Option.none();
-  }
-}</code></pre>
+
+
+<div data-ice="constructorSummary"><h2>Constructor Summary</h2><table class="summary" data-ice="summary">
+  <thead><tr><td data-ice="title" colspan="3">Public Constructor</td></tr></thead>
+  <tbody>
+  
+  <tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/src/reducers/collection-reducer.js~CollectionReducer.html#instance-constructor-constructor">constructor</a></span></span><span data-ice="signature">(configuration: <span><a href="typedef/index.html#static-typedef-CollectionConfiguration">CollectionConfiguration</a></span>)</span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description">Builds a reducer that creates of a collection from a reducer for additions, a reducer for removals, a function to construct
+items and a function to extract the key from a constructed item.</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+</tbody>
+</table>
+</div>
+
+
+
+<div class="inherited-summary" data-ice="inheritedSummary"><h2>Inherited Summary</h2><table class="summary" data-ice="summary">
+  <thead><tr><td data-ice="title" colspan="3"><span class="toggle closed"></span> From class <span><a href="class/src/reducers/reducer.js~Reducer.html">Reducer</a></span></td></tr></thead>
+  <tbody>
+  
+  <tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/src/reducers/reducer.js~Reducer.html#instance-method-reduce">reduce</a></span></span><span data-ice="signature">(context: <span><a href="class/src/reducer-context.js~ReducerContext.html">ReducerContext</a></span>): <span><a href="variable/index.html#static-variable-Option">Option</a></span>&lt;<span>T</span>&gt;</span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description">Reduces a new value given some previous state if possible.</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+</tbody>
+</table>
+</div>
+
+
+
+<div data-ice="constructorDetails"><h2 data-ice="title">Public Constructors</h2>
+
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="instance-constructor-constructor">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    <span data-ice="name">constructor</span><span data-ice="signature">(configuration: <span><a href="typedef/index.html#static-typedef-CollectionConfiguration">CollectionConfiguration</a></span>)</span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/src/reducers/collection-reducer.js.html#lineNumber26">source</a></span></span>
+    </span>
+  </h3>
+
+  
+  
+  
+  <div data-ice="description"><p>Builds a reducer that creates of a collection from a reducer for additions, a reducer for removals, a function to construct
+items and a function to extract the key from a constructed item. Keys are used for removal and addressing the auxillary
+state to ensure accumulators are seeded correctly etc.</p>
+</div>
+
+  
+
+  <div data-ice="properties"><div data-ice="properties">
+  <h4 data-ice="title">Params:</h4>
+  <table class="params">
+    <thead>
+    <tr><td>Name</td><td>Type</td><td>Attribute</td><td>Description</td></tr>
+    </thead>
+    <tbody>
+    
+    <tr data-ice="property" data-depth="0">
+      <td data-ice="name" data-depth="0">configuration</td>
+      <td data-ice="type"><span><a href="typedef/index.html#static-typedef-CollectionConfiguration">CollectionConfiguration</a></span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"><p>the configuration needed to build the collection</p>
+</td>
+    </tr>
+</tbody>
+  </table>
+</div>
+</div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+</div>
+
 
 </div>
 

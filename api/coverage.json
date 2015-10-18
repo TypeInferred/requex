@@ -1,7 +1,7 @@
 {
   "coverage": "100%",
-  "expectCount": 84,
-  "actualCount": 84,
+  "expectCount": 89,
+  "actualCount": 89,
   "files": {
     "src/reducers/storage-keys.js": {
       "expectCount": 7,
@@ -11,6 +11,16 @@
     "src/reducers/any-event-reducer.js": {
       "expectCount": 1,
       "actualCount": 1,
+      "undocumentLines": []
+    },
+    "src/reducers/collection-reducer.js": {
+      "expectCount": 2,
+      "actualCount": 2,
+      "undocumentLines": []
+    },
+    "src/reducers/dictionary-object-reducer.js": {
+      "expectCount": 2,
+      "actualCount": 2,
       "undocumentLines": []
     },
     "src/reducers/event-reducer.js": {
@@ -33,14 +43,14 @@
       "actualCount": 2,
       "undocumentLines": []
     },
+    "src/index.js": {
+      "expectCount": 10,
+      "actualCount": 10,
+      "undocumentLines": []
+    },
     "src/linked-list.js": {
       "expectCount": 11,
       "actualCount": 11,
-      "undocumentLines": []
-    },
-    "src/index.js": {
-      "expectCount": 9,
-      "actualCount": 9,
       "undocumentLines": []
     },
     "src/reducers/linked-list-reducer.js": {

@@ -18,6 +18,18 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
+    "requex/src/reducers/collection-reducer.js~collectionreducer",
+    "class/src/reducers/collection-reducer.js~CollectionReducer.html",
+    "<span>CollectionReducer</span> <span class=\"search-result-import-path\">requex/src/reducers/collection-reducer.js</span>",
+    "class"
+  ],
+  [
+    "requex/src/reducers/dictionary-object-reducer.js~dictionaryobjectreducer",
+    "class/src/reducers/dictionary-object-reducer.js~DictionaryObjectReducer.html",
+    "<span>DictionaryObjectReducer</span> <span class=\"search-result-import-path\">requex/src/reducers/dictionary-object-reducer.js</span>",
+    "class"
+  ],
+  [
     "requex/src/reducers/event-reducer.js~eventreducer",
     "class/src/reducers/event-reducer.js~EventReducer.html",
     "<span>EventReducer</span> <span class=\"search-result-import-path\">requex/src/reducers/event-reducer.js</span>",
@@ -504,6 +516,12 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "src/index.js~reduce.dictionaryobjectof",
+    "class/src/index.js~Reduce.html#static-method-dictionaryObjectOf",
+    "src/index.js~Reduce.dictionaryObjectOf",
+    "method"
+  ],
+  [
     "src/index.js~reduce.eventsoftype",
     "class/src/index.js~Reduce.html#static-method-eventsOfType",
     "src/index.js~Reduce.eventsOfType",
@@ -826,6 +844,30 @@ window.esdocSearchIndex = [
     "file/src/reducers/any-event-reducer.js.html",
     "src/reducers/any-event-reducer.js",
     "file"
+  ],
+  [
+    "src/reducers/collection-reducer.js",
+    "file/src/reducers/collection-reducer.js.html",
+    "src/reducers/collection-reducer.js",
+    "file"
+  ],
+  [
+    "src/reducers/collection-reducer.js~collectionreducer#constructor",
+    "class/src/reducers/collection-reducer.js~CollectionReducer.html#instance-constructor-constructor",
+    "src/reducers/collection-reducer.js~CollectionReducer#constructor",
+    "method"
+  ],
+  [
+    "src/reducers/dictionary-object-reducer.js",
+    "file/src/reducers/dictionary-object-reducer.js.html",
+    "src/reducers/dictionary-object-reducer.js",
+    "file"
+  ],
+  [
+    "src/reducers/dictionary-object-reducer.js~dictionaryobjectreducer#constructor",
+    "class/src/reducers/dictionary-object-reducer.js~DictionaryObjectReducer.html#instance-constructor-constructor",
+    "src/reducers/dictionary-object-reducer.js~DictionaryObjectReducer#constructor",
+    "method"
   ],
   [
     "src/reducers/event-reducer.js",

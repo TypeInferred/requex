@@ -2,8 +2,8 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <base data-ice="baseUrl" href="../../">
-  <title data-ice="title">src/option.js | API Document</title>
+  <base data-ice="baseUrl" href="../../../">
+  <title data-ice="title">src/reducers/dictionary-object-reducer.js | API Document</title>
   <link type="text/css" rel="stylesheet" href="css/style.css">
   <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
   <script src="script/prettify/prettify.js"></script>
@@ -67,102 +67,37 @@
 </div>
 </nav>
 
-<div class="content" data-ice="content"><h1 data-ice="title">src/option.js</h1>
-<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">let none;
+<div class="content" data-ice="content"><h1 data-ice="title">src/reducers/dictionary-object-reducer.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import CollectionReducer from &apos;./collection-reducer.js&apos;;
+
+/** @ignore */
+const dictionaryApi = {
+  prepare: x =&gt; Object.assign({}, x), //copy
+  empty: () =&gt; ({}),
+  remove: (obj, itemKey, removedKeys) =&gt; {
+    removedKeys.forEach(k =&gt; delete obj[k]);
+    return obj;
+  },
+  map: (obj, selector) =&gt; {
+    Object.keys(obj).forEach(k =&gt; obj[k] = selector(obj[k]));
+    return obj;
+  },
+  put: (obj, key, value) =&gt; {
+    obj[key] = value;
+    return obj;
+  }
+};
 
 /**
- * Represents an optional type, i.e., some value or none.
+ * Reducer for building dictionary objects.
  */
-export default class Option {
-  /**
-   * @private
+export default class DictionaryObjectReducer extends CollectionReducer {
+  /** 
+   * Builds a dictionary object reducer. See {@link CollectionReducer} for more information.
+   * @param  {CollectionConfiguration} configuration - the configuration needed to build the collection
    */
-  constructor(hasValue, value) {
-    this._value = value;
-    /**
-     * Returns true if the option wraps a value, i.e., if it is some
-     * @type {Boolean}
-     */
-    this.isSome = hasValue;
-    /**
-     * Returns true if the option doesn&apos;t wrap a value, i.e., if it is none
-     * @type {Boolean}
-     */
-    this.isNone = !this.isSome;
-  }
-
-  /**
-   * Returns none.
-   * @return {[type]} [description]
-   */
-  static none() {
-    return none || (none = new Option(false));
-  }
-
-  /**
-   * Returns the value wrapped as a some option. 
-   * @param  {T} value - The value the wrap
-   * @return {Option&lt;T&gt;} The value wrapped in an option
-   */
-  static some(value) {
-    return new Option(true, value);
-  }
-
-  /**
-   * Returns the value if the option is a some otherwise throws.
-   * @return {T} The value.
-   */
-  get() {
-    if (this.isNone) throw new Error(&apos;Expected some&apos;);
-    return this._value;
-  }
-
-  /**
-   * Maps the value wrapped in the option if any.
-   * @param  {function(x:T1):T2} selector - The mapping function
-   * @return {Option&lt;T2&gt;} The mapped option
-   */
-  map(selector) {
-    return this.isNone ? this : Option.some(selector(this._value));
-  }
-
-  /**
-   * Filters the value wrapped in the option if any. If it passes the predicate retains some otherwise none.
-   * @param  {function(x:T):boolean} predicate - The filter function
-   * @return {Option&lt;T&gt;} The filtered option
-   */
-  filter(predicate) {
-    return this.isSome &amp;&amp; predicate(this._value) ? this : Option.none(); 
-  }
-
-  /**
-   * Returns the value wrapped in the option if some otherwise the other value passed as an argument.
-   * @param  {T} otherValue - The alternate value to return
-   * @return {T} The wrapped value if some else otherValue
-   */
-  otherwise(otherValue) {
-    return this.isSome ? this._value : otherValue;
-  }
-
-  /**
-   * Returns the seed if none otherwise accumulates a new value using the seed and the wrapped value using the
-   * accumulator function.
-   * @param  {function(acc:TAcc, x:T)} accumulator - The function to accumulate a result if some
-   * @param  {TAcc} seed - The value to return if none wrapped
-   * @return {TAcc} The accumulated value or the seed if none
-   */
-  reduce(accumulator, seed) {
-    return this.isSome ? accumulator(seed, this._value) : seed;
-  }
-
-  /**
-   * Returns none if none otherwise the option produced by projecting the wrapped value onto another option using
-   * the selector function.
-   * @param  {function(x:T1):Option&lt;T2&gt;} selector - The projection function
-   * @return {Option&lt;T2&gt;} The resulting option.
-   */
-  bind(selector) {
-    return this.isSome ? selector(this._value) : Option.none();
+  constructor(configuration) {
+    super(dictionaryApi, configuration);
   }
 }</code></pre>
 

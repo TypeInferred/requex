@@ -43,6 +43,8 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-NewState">NewState</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-PreviousState">PreviousState</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">reducers</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/reducers/any-event-reducer.js~AnyEventReducer.html">AnyEventReducer</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/reducers/collection-reducer.js~CollectionReducer.html">CollectionReducer</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/reducers/dictionary-object-reducer.js~DictionaryObjectReducer.html">DictionaryObjectReducer</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/reducers/event-reducer.js~EventReducer.html">EventReducer</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/reducers/filtered-reducer.js~FilteredReducer.html">FilteredReducer</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/reducers/flat-reduced-reducer.js~FlatReducedReducer.html">FlatReducedReducer</a></span></span></li>
@@ -72,6 +74,7 @@ import EventReducer from &apos;./reducers/event-reducer.js&apos;;
 import AnyEventReducer from &apos;./reducers/any-event-reducer.js&apos;;
 import StructureReducer from &apos;./reducers/structure-reducer.js&apos;;
 import LinkedListReducer from &apos;./reducers/linked-list-reducer.js&apos;;
+import DictionaryObjectReducer from &apos;./reducers/dictionary-object-reducer.js&apos;;
 import NeverReducer from &apos;./reducers/never-reducer.js&apos;;
 import _Option from &apos;./option.js&apos;;
 import _LinkedList from &apos;./linked-list.js&apos;;
@@ -144,6 +147,17 @@ export default class Reduce {
    */
   static linkedListOf(configuration) {
     return new ReducerBuilder(new LinkedListReducer(configuration));
+  }
+
+  /**
+   * Builds a reducer query of a dictionary object from a reducer for additions, a reducer for removals, a function to construct
+   * items and a function to extract the key from a constructed item. Keys are used for removal and addressing the auxillary
+   * state to ensure accumulators are seeded correctly etc.
+   * @param  {CollectionConfiguration} configuration - the configuration needed to build the list
+   * @returns {ReducerBuilder} - The reducer query builder
+   */
+  static dictionaryObjectOf(configuration) {
+    return new ReducerBuilder(new DictionaryObjectReducer(configuration));
   }
 
   /**

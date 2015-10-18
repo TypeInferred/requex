@@ -43,6 +43,8 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-NewState">NewState</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-PreviousState">PreviousState</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">reducers</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/reducers/any-event-reducer.js~AnyEventReducer.html">AnyEventReducer</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/reducers/collection-reducer.js~CollectionReducer.html">CollectionReducer</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/reducers/dictionary-object-reducer.js~DictionaryObjectReducer.html">DictionaryObjectReducer</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/reducers/event-reducer.js~EventReducer.html">EventReducer</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/reducers/filtered-reducer.js~FilteredReducer.html">FilteredReducer</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/reducers/flat-reduced-reducer.js~FlatReducedReducer.html">FlatReducedReducer</a></span></span></li>
@@ -66,13 +68,13 @@
 </nav>
 
 <div class="content" data-ice="content"><div class="header-notice">
-  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import Reduce from &apos;<span><a href="file/src/index.js.html#lineNumber26">requex/src/index.js</a></span>&apos;</code></pre></div>
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import Reduce from &apos;<span><a href="file/src/index.js.html#lineNumber27">requex/src/index.js</a></span>&apos;</code></pre></div>
   <span data-ice="access">public</span>
   <span data-ice="kind">class</span>
   
   
   
-  <span data-ice="source">| <span><a href="file/src/index.js.html#lineNumber26">source</a></span></span>
+  <span data-ice="source">| <span><a href="file/src/index.js.html#lineNumber27">source</a></span></span>
 </div>
 
 <div class="self-detail detail">
@@ -127,6 +129,32 @@
         
         
         <div data-ice="description">Creates a reducer query of over all events in scope.</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      <span data-ice="static">static</span>
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/src/index.js~Reduce.html#static-method-dictionaryObjectOf">dictionaryObjectOf</a></span></span><span data-ice="signature">(configuration: <span><a href="typedef/index.html#static-typedef-CollectionConfiguration">CollectionConfiguration</a></span>): <span><a href="class/src/reducer-builder.js~ReducerBuilder.html">ReducerBuilder</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description">Builds a reducer query of a dictionary object from a reducer for additions, a reducer for removals, a function to construct
+items and a function to extract the key from a constructed item.</div>
       </div>
     </td>
     <td>
@@ -284,7 +312,7 @@ the reduced structure.</div>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/index.js.html#lineNumber40">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/index.js.html#lineNumber41">source</a></span></span>
     </span>
   </h3>
 
@@ -326,6 +354,77 @@ the reduced structure.</div>
   
 </div>
 <div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="static-method-dictionaryObjectOf">
+    <span class="access" data-ice="access">public</span>
+    <span data-ice="static">static</span>
+    
+    
+    
+    <span data-ice="name">dictionaryObjectOf</span><span data-ice="signature">(configuration: <span><a href="typedef/index.html#static-typedef-CollectionConfiguration">CollectionConfiguration</a></span>): <span><a href="class/src/reducer-builder.js~ReducerBuilder.html">ReducerBuilder</a></span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/src/index.js.html#lineNumber89">source</a></span></span>
+    </span>
+  </h3>
+
+  
+  
+  
+  <div data-ice="description"><p>Builds a reducer query of a dictionary object from a reducer for additions, a reducer for removals, a function to construct
+items and a function to extract the key from a constructed item. Keys are used for removal and addressing the auxillary
+state to ensure accumulators are seeded correctly etc.</p>
+</div>
+
+  
+
+  <div data-ice="properties"><div data-ice="properties">
+  <h4 data-ice="title">Params:</h4>
+  <table class="params">
+    <thead>
+    <tr><td>Name</td><td>Type</td><td>Attribute</td><td>Description</td></tr>
+    </thead>
+    <tbody>
+    
+    <tr data-ice="property" data-depth="0">
+      <td data-ice="name" data-depth="0">configuration</td>
+      <td data-ice="type"><span><a href="typedef/index.html#static-typedef-CollectionConfiguration">CollectionConfiguration</a></span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"><p>the configuration needed to build the list</p>
+</td>
+    </tr>
+</tbody>
+  </table>
+</div>
+</div>
+
+  <div class="return-params" data-ice="returnParams">
+    <h4>Return:</h4>
+    <table>
+      <tr>
+        <td class="return-type" data-ice="returnType"><span><a href="class/src/reducer-builder.js~ReducerBuilder.html">ReducerBuilder</a></span></td>
+        <td class="return-desc" data-ice="returnDescription"><p>The reducer query builder</p>
+</td>
+      </tr>
+    </table>
+    <div data-ice="returnProperties">
+</div>
+  </div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
   <h3 data-ice="anchor" id="static-method-eventsOfType">
     <span class="access" data-ice="access">public</span>
     <span data-ice="static">static</span>
@@ -336,7 +435,7 @@ the reduced structure.</div>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/index.js.html#lineNumber32">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/index.js.html#lineNumber33">source</a></span></span>
     </span>
   </h3>
 
@@ -405,7 +504,7 @@ the reduced structure.</div>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/index.js.html#lineNumber77">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/index.js.html#lineNumber78">source</a></span></span>
     </span>
   </h3>
 
@@ -476,7 +575,7 @@ state to ensure accumulators are seeded correctly etc.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/index.js.html#lineNumber85">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/index.js.html#lineNumber97">source</a></span></span>
     </span>
   </h3>
 
@@ -528,7 +627,7 @@ state to ensure accumulators are seeded correctly etc.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/index.js.html#lineNumber58">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/index.js.html#lineNumber59">source</a></span></span>
     </span>
   </h3>
 
@@ -597,7 +696,7 @@ the reduced structure.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/index.js.html#lineNumber49">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/index.js.html#lineNumber50">source</a></span></span>
     </span>
   </h3>
 
