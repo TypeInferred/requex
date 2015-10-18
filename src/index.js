@@ -5,6 +5,7 @@ import AnyEventReducer from './reducers/any-event-reducer.js';
 import StructureReducer from './reducers/structure-reducer.js';
 import LinkedListReducer from './reducers/linked-list-reducer.js';
 import DictionaryObjectReducer from './reducers/dictionary-object-reducer.js';
+import ArrayReducer from './reducers/array-reducer.js';
 import NeverReducer from './reducers/never-reducer.js';
 import _Option from './option.js';
 import _LinkedList from './linked-list.js';
@@ -88,6 +89,17 @@ export default class Reduce {
    */
   static dictionaryObjectOf(configuration) {
     return new ReducerBuilder(new DictionaryObjectReducer(configuration));
+  }
+
+  /**
+   * Builds a reducer query of an array from a reducer for additions, a reducer for removals, a function to construct
+   * items and a function to extract the key from a constructed item. Keys are used for removal and addressing the auxillary
+   * state to ensure accumulators are seeded correctly etc.
+   * @param  {CollectionConfiguration} configuration - the configuration needed to build the list
+   * @returns {ReducerBuilder} - The reducer query builder
+   */
+  static arrayOf(configuration) {
+    return new ReducerBuilder(new ArrayReducer(configuration));
   }
 
   /**
