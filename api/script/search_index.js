@@ -18,6 +18,12 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
+    "requex/src/reducers/array-reducer.js~arrayreducer",
+    "class/src/reducers/array-reducer.js~ArrayReducer.html",
+    "<span>ArrayReducer</span> <span class=\"search-result-import-path\">requex/src/reducers/array-reducer.js</span>",
+    "class"
+  ],
+  [
     "requex/src/reducers/collection-reducer.js~collectionreducer",
     "class/src/reducers/collection-reducer.js~CollectionReducer.html",
     "<span>CollectionReducer</span> <span class=\"search-result-import-path\">requex/src/reducers/collection-reducer.js</span>",
@@ -516,6 +522,12 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "src/index.js~reduce.arrayof",
+    "class/src/index.js~Reduce.html#static-method-arrayOf",
+    "src/index.js~Reduce.arrayOf",
+    "method"
+  ],
+  [
     "src/index.js~reduce.dictionaryobjectof",
     "class/src/index.js~Reduce.html#static-method-dictionaryObjectOf",
     "src/index.js~Reduce.dictionaryObjectOf",
@@ -844,6 +856,18 @@ window.esdocSearchIndex = [
     "file/src/reducers/any-event-reducer.js.html",
     "src/reducers/any-event-reducer.js",
     "file"
+  ],
+  [
+    "src/reducers/array-reducer.js",
+    "file/src/reducers/array-reducer.js.html",
+    "src/reducers/array-reducer.js",
+    "file"
+  ],
+  [
+    "src/reducers/array-reducer.js~arrayreducer#constructor",
+    "class/src/reducers/array-reducer.js~ArrayReducer.html#instance-constructor-constructor",
+    "src/reducers/array-reducer.js~ArrayReducer#constructor",
+    "method"
   ],
   [
     "src/reducers/collection-reducer.js",

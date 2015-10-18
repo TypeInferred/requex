@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <base data-ice="baseUrl" href="../../../">
-  <title data-ice="title">StructureReducer | API Document</title>
+  <title data-ice="title">src/reducers/array-reducer.js | API Document</title>
   <link type="text/css" rel="stylesheet" href="css/style.css">
   <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
   <script src="script/prettify/prettify.js"></script>
@@ -68,201 +68,39 @@
 </div>
 </nav>
 
-<div class="content" data-ice="content"><div class="header-notice">
-  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import StructureReducer from &apos;<span><a href="file/src/reducers/structure-reducer.js.html#lineNumber10">requex/src/reducers/structure-reducer.js</a></span>&apos;</code></pre></div>
-  <span data-ice="access">public</span>
-  <span data-ice="kind">class</span>
-  
-  
-  
-  <span data-ice="source">| <span><a href="file/src/reducers/structure-reducer.js.html#lineNumber10">source</a></span></span>
-</div>
+<div class="content" data-ice="content"><h1 data-ice="title">src/reducers/array-reducer.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import CollectionReducer from &apos;./collection-reducer.js&apos;;
 
-<div class="self-detail detail">
-  <h1 data-ice="name">StructureReducer</h1>
+/** @ignore */
+const emptyArray = [];
 
-  
+/** @ignore */
+const arrayApi = {
+  prepare: xs =&gt; xs.slice(), // Copy so we can cheat in the put and just use push, TODO: Use mutation for remove and map too.
+  empty: () =&gt; emptyArray,
+  remove: (array, itemKey, removedKeys) =&gt; array.filter(x =&gt; {
+    const key = itemKey(x);
+    return !removedKeys.includes(key);
+  }),
+  map: (array, selector) =&gt; array.map(selector),
+  put: (array, key, value) =&gt; {
+    array.push(value);
+    return array;
+  }
+};
 
-  
-  
-  <div class="flat-list" data-ice="extendsChain"><h4>Extends:</h4><div><span><a href="class/src/reducers/reducer.js~Reducer.html">Reducer</a></span> &#x2192; StructureReducer</div></div>
-  
-  
-  
-  
-  
-  
-
-  
-  
-  <div class="description" data-ice="description"><p><b>INTERNAL</b>
-Yields an object that is constructed from constant and/or reduced properties. 
-Yields a maximum of once per event and only when a child property is changed.</p>
-</div>
-
-  
-
-  
-
-  
-
-  
-</div>
-
-
-
-<div data-ice="constructorSummary"><h2>Constructor Summary</h2><table class="summary" data-ice="summary">
-  <thead><tr><td data-ice="title" colspan="3">Public Constructor</td></tr></thead>
-  <tbody>
-  
-  <tr data-ice="target">
-    <td>
-      <span class="access" data-ice="access">public</span>
-      
-      
-      
-      <span class="override" data-ice="override"></span>
-    </td>
-    <td>
-      <div>
-        <p>
-           <span data-ice="name"><span><a href="class/src/reducers/structure-reducer.js~StructureReducer.html#instance-constructor-constructor">constructor</a></span></span><span data-ice="signature">(structure: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></span>): <span>[type]</span></span>
-        </p>
-      </div>
-      <div>
-        
-        
-        <div data-ice="description">Constructs a reducer representing the object structure in the specification.</div>
-      </div>
-    </td>
-    <td>
-      
-      
-    </td>
-  </tr>
-</tbody>
-</table>
-</div>
-
-
-
-<div class="inherited-summary" data-ice="inheritedSummary"><h2>Inherited Summary</h2><table class="summary" data-ice="summary">
-  <thead><tr><td data-ice="title" colspan="3"><span class="toggle closed"></span> From class <span><a href="class/src/reducers/reducer.js~Reducer.html">Reducer</a></span></td></tr></thead>
-  <tbody>
-  
-  <tr data-ice="target">
-    <td>
-      <span class="access" data-ice="access">public</span>
-      
-      
-      
-      <span class="override" data-ice="override"></span>
-    </td>
-    <td>
-      <div>
-        <p>
-           <span data-ice="name"><span><a href="class/src/reducers/reducer.js~Reducer.html#instance-method-reduce">reduce</a></span></span><span data-ice="signature">(context: <span><a href="class/src/reducer-context.js~ReducerContext.html">ReducerContext</a></span>): <span><a href="variable/index.html#static-variable-Option">Option</a></span>&lt;<span>T</span>&gt;</span>
-        </p>
-      </div>
-      <div>
-        
-        
-        <div data-ice="description">Reduces a new value given some previous state if possible.</div>
-      </div>
-    </td>
-    <td>
-      
-      
-    </td>
-  </tr>
-</tbody>
-</table>
-</div>
-
-
-
-<div data-ice="constructorDetails"><h2 data-ice="title">Public Constructors</h2>
-
-<div class="detail" data-ice="detail">
-  <h3 data-ice="anchor" id="instance-constructor-constructor">
-    <span class="access" data-ice="access">public</span>
-    
-    
-    
-    
-    <span data-ice="name">constructor</span><span data-ice="signature">(structure: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></span>): <span>[type]</span></span>
-    <span class="right-info">
-      
-      
-      <span data-ice="source"><span><a href="file/src/reducers/structure-reducer.js.html#lineNumber22">source</a></span></span>
-    </span>
-  </h3>
-
-  
-  
-  
-  <div data-ice="description"><p>Constructs a reducer representing the object structure in the specification.</p>
-</div>
-
-  
-
-  <div data-ice="properties"><div data-ice="properties">
-  <h4 data-ice="title">Params:</h4>
-  <table class="params">
-    <thead>
-    <tr><td>Name</td><td>Type</td><td>Attribute</td><td>Description</td></tr>
-    </thead>
-    <tbody>
-    
-    <tr data-ice="property" data-depth="0">
-      <td data-ice="name" data-depth="0">structure</td>
-      <td data-ice="type"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></span></td>
-      <td data-ice="appendix"></td>
-      <td data-ice="description"><p>The structure containing constants and reduced properties</p>
-</td>
-    </tr>
-</tbody>
-  </table>
-</div>
-</div>
-
-  <div class="return-params" data-ice="returnParams">
-    <h4>Return:</h4>
-    <table>
-      <tr>
-        <td class="return-type" data-ice="returnType"><span>[type]</span></td>
-        
-      </tr>
-    </table>
-    <div data-ice="returnProperties">
-</div>
-  </div>
-
-  
-
-  
-
-  
-
-  <div data-ice="example">
-    <h4>Example:</h4>
-    
-  <div class="example-doc" data-ice="exampleDoc">
-      <div class="example-caption" data-ice="exampleCaption">A reducer structure containing both reduced and constant properties</div>
-      <pre class="prettyprint source-code"><code data-ice="exampleCode">From.structure({
-  foo: &apos;constant value&apos;,
-  bar: From.events().ofAnyType().select(e =&gt; e.value)
-})</code></pre>
-    </div>
-</div>
-
-  
-
-  
-  
-</div>
-</div>
-
+/**
+ * Reducer for building linked lists.
+ */
+export default class ArrayReducer extends CollectionReducer {
+  /** 
+   * Builds an array reducer. See {@link CollectionReducer} for more information.
+   * @param  {CollectionConfiguration} configuration - the configuration needed to build the collection
+   */
+  constructor(configuration) {
+    super(arrayApi, configuration);
+  }
+}</code></pre>
 
 </div>
 

@@ -1,7 +1,7 @@
 {
   "coverage": "100%",
-  "expectCount": 89,
-  "actualCount": 89,
+  "expectCount": 92,
+  "actualCount": 92,
   "files": {
     "src/reducers/storage-keys.js": {
       "expectCount": 7,
@@ -11,6 +11,11 @@
     "src/reducers/any-event-reducer.js": {
       "expectCount": 1,
       "actualCount": 1,
+      "undocumentLines": []
+    },
+    "src/reducers/array-reducer.js": {
+      "expectCount": 2,
+      "actualCount": 2,
       "undocumentLines": []
     },
     "src/reducers/collection-reducer.js": {
@@ -44,8 +49,8 @@
       "undocumentLines": []
     },
     "src/index.js": {
-      "expectCount": 10,
-      "actualCount": 10,
+      "expectCount": 11,
+      "actualCount": 11,
       "undocumentLines": []
     },
     "src/linked-list.js": {
