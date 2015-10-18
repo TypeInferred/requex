@@ -67,6 +67,14 @@ export default class ReducerContext {
     return this._reduce(storageKey, reducer, true);
   }
 
+  storeValue(storageKey, value) {
+    this.nextAuxillary[storageKey] = value;
+  }
+
+  getStoredValue(storageKey) {
+    return this._previousAuxillary[storageKey];
+  }
+
   /**
    * Returns the last value reduced by the current reducer if no storage key is provided otherwise that of
    * the child with the address given by the storage key. Looks up this value in auxillary state.
@@ -98,6 +106,7 @@ export default class ReducerContext {
     if (isEventInScope) {
       result = action(); 
     } else {
+      // TODO: could optimise this when we already have a value and aren't seeding by copying the existing state.
       const event = this._event;
       this._event = Option.none();
       result = action();
@@ -112,6 +121,7 @@ export default class ReducerContext {
     this.nextAuxillary = parentNextAux[storageKey] || (parentNextAux[storageKey] = {});
     this._previousAuxillary = !shouldUseFreshState && this._previousAuxillary && this._previousAuxillary[storageKey];
     const newValue = reducer.reduce(this);
+    // TODO: Should protect against this being something non-serializable. I.e., a function or a reducer!
     if (newValue.isSome) {
       this.nextAuxillary[VALUE] = [newValue.get()];
     } else if (this._previousAuxillary && this._previousAuxillary[VALUE] && this._previousAuxillary[VALUE].length) {

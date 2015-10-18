@@ -3,6 +3,7 @@ import ValueReducer from './reducers/value-reducer.js';
 import EventReducer from './reducers/event-reducer.js';
 import AnyEventReducer from './reducers/any-event-reducer.js';
 import StructureReducer from './reducers/structure-reducer.js';
+import LinkedListReducer from './reducers/linked-list-reducer.js';
 import NeverReducer from './reducers/never-reducer.js';
 import _Option from './option.js';
 import _LinkedList from './linked-list.js';
@@ -56,6 +57,10 @@ export default class Reduce {
    */
   static structure(reducerStructure) {
     return new ReducerBuilder(new StructureReducer(reducerStructure));
+  }
+
+  static linkedListOf({additions, removals, itemFactory, itemKey}) {
+    return new ReducerBuilder(new LinkedListReducer(additions.unwrap(), removals.unwrap(), itemFactory, itemKey));
   }
 
   /**

@@ -21,3 +21,21 @@ export const VALUE = '__VALUE';
  * @type {String}
  */
 export const ROOT = 'ROOT';
+
+/**
+ * A common storage key for addressing the additions source (for collections) in the auxillary state.
+ * @type {String}
+ */
+export const ADDITION_SOURCE = '__ADDITIONS';
+
+/**
+ * A common storage key for addressing the removals source (for collections) in the auxillary state.
+ * @type {String}
+ */
+export const REMOVAL_SOURCE = '__REMOVALS';
+
+/**
+ * A common storage key prefix for addressing the reducer arguments in the auxillary state.
+ * @type {String}
+ */
+export const ARGS_PREFIX = '__ARGS_';

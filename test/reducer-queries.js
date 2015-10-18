@@ -418,4 +418,46 @@ describe('Reducer queries', () => {
     // Assert
     expect(LinkedList.toArray(newState)).to.deep.equal([{id: 20}, {id: 80}]);
   });
+
+  it('should reduce linked lists of reducers', () => {
+    // Arrange
+    const todo = (id, description) => 
+      Reduce.structure({
+        id: id,
+        description: description,
+        isCompleted: Reduce.eventsOfType('toggle-completed')
+                           .fold((isCompleted, _) => !isCompleted, false)
+      }).scoped(e => !e.todoId || e.todoId === id);
+    const todoList =
+      Reduce.linkedListOf({
+        additions: Reduce.eventsOfType('add-todo'),
+        removals: Reduce.eventsOfType('remove-todo').map(e => e.todoId),
+        itemFactory: e => todo(e.todoId, e.description),
+        itemKey: todo => todo.id
+      });
+    const events = [
+      { type: 'add-todo', todoId: 1, description: 'foo' },
+      { type: 'add-todo', todoId: 2, description: 'bar' },
+      { type: 'toggle-completed', todoId: 2 },
+      { type: 'add-todo', todoId: 3, description: 'barf' },
+      { type: 'remove-todo', todoId: 2},
+      { type: 'toggle-completed', todoId: 3 },
+    ];
+    // Act
+    const reducer = todoList.build();
+    const {newState} = reducer.reduce({events});
+    // Assert
+    expect(LinkedList.toArray(newState)).to.deep.equal([
+      {
+        id: 1,
+        description: 'foo',
+        isCompleted: false
+      },
+      {
+        id: 3,
+        description: 'barf',
+        isCompleted: true
+      }
+    ]);
+  });
 });
