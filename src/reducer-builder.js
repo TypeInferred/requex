@@ -96,53 +96,6 @@ export default class ReducerBuilder {
   }
 
   /**
-   * Accumulates a dictionary from deltas. Remove deltas will be applied before add deltas.
-   * TODO: Use a persistent map data structure. Currently O(N) per delta but could be O(log2(N)) 
-   * 
-   * @returns {ReducerBuilder<T>} A reducer builder
-   * 
-   * @example <caption>Add delta</caption>
-   * Reduce.eventsOfType('add-todo').map(e => ({added: [[e.todoId, e.title]]}))
-   *
-   * @example <caption>Remove deltas</caption>
-   * Reduce.eventsOfType('remove-todo').map(e => ({removed: [e.todoId]}))
-   */
-  toDictionary(seed) {
-    const initial = seed || {};
-    return this.fold((acc, delta) => {
-      const copy = Object.assign({}, acc);
-      delta.removed && delta.removed.forEach(k => delete copy[k]);
-      delta.added && delta.added.forEach(([k, v]) => copy[k] = v);
-      return copy;
-    }, initial);
-  } 
-
-  /**
-   * Accumulates a linked list from deltas. Remove deltas will be applied before add deltas.
-   * The linked list is stored by most recent addition at the head to least recent at the tail
-   * (i.e., reverse order).
-   * 
-   * @param  {Array<T>}  seed - The initial values to be held in the linked list.
-   * @param  {function(x:T):TKey}  keySelector - The function used to determine the key of an element when removing by key
-   * @return {ReducerBuilder<T>} A reducer builder
-   */
-  toLinkedList(seed, keySelector) {
-    const isReversedOrder = true;
-    const initial = seed && LinkedList.ofArray(seed, isReversedOrder) || LinkedList.nil();
-    return this.fold((outerAcc, delta) => {
-      const afterRemoval = 
-        delta.removed
-        ? LinkedList.filter(outerAcc, item => !delta.removed.includes(keySelector(item)))
-        : outerAcc;
-      const afterAddition =
-        delta.added
-        ? delta.added.reduceRight((innerAcc, x) => LinkedList.cons(x, innerAcc), afterRemoval)
-        : afterRemoval;
-      return afterAddition;
-    }, initial);
-  }
-
-  /**
    * Constructs a reducer from the query defined using the builder.
    * @returns {ReducerQuery} a reducer query
    */

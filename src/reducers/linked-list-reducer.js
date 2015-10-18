@@ -1,8 +1,14 @@
 import Reducer from './reducer.js';
 import Option from '../option.js';
 import LinkedList from '../linked-list.js';
+import NeverReducer from './never-reducer.js';
 import {ADDITION_SOURCE, REMOVAL_SOURCE, ARGS_PREFIX} from './storage-keys.js';
 
+/**
+ * Returns the single object wrapped in an array or the array if the argument is an array.
+ * @param {T|Array<T>} itemOrArray - The item or array of items
+ * @return {Array<T>} An array of items
+ */
 const asArray = itemOrArray =>
   itemOrArray instanceof Array ? itemOrArray : [itemOrArray];
 
@@ -12,12 +18,20 @@ const asArray = itemOrArray =>
  */
 export default class LinkedListReducer extends Reducer {
 
-  constructor(additionSource, removalSource, elementSelector, keySelector) {
+  /**
+   * Builds a reducer that creates of a linked list from a reducer for additions, a reducer for removals, a function to construct
+   * items and a function to extract the key from a constructed item. Keys are used for removal and addressing the auxillary
+   * state to ensure accumulators are seeded correctly etc.
+   * @param  {CollectionConfiguration} configuration - the configuration needed to build the list
+   */
+  constructor(configuration) {
     super();
-    this._additionSource = additionSource;
-    this._removalSource = removalSource;
-    this._keySelector = keySelector;
-    this._elementSelector = elementSelector;
+    const {additions, itemFactory, itemKey} = configuration;
+    const removals = configuration.removals && configuration.removals.unwrap() || new NeverReducer();
+    this._additionSource = additions.unwrap();
+    this._removalSource = removals;
+    this._keySelector = itemKey;
+    this._elementSelector = itemFactory;
   }
 
   /** @ignore */
@@ -59,7 +73,7 @@ export default class LinkedListReducer extends Reducer {
     // ADD + SEED NEW
     if (additions.isSome) {
       hasChanged = true;
-      items = asArray(additions.get()).reduceRight((acc, reducerArgs) => {
+      items = asArray(additions.get()).reduce((acc, reducerArgs) => {
         const reducerOrValue = this._elementSelector(reducerArgs);
         let value;
         let key; 
