@@ -45,7 +45,6 @@ export default class ReducerQuery {
       : hasSeeded
         ? []
         : [Option.none()];
-    console.log('test');
     const output = eventsMaybe.reduce((acc, e) => {
       const internalContext = new ReducerContext(acc.auxillary, e);
       const updateMaybe = internalContext.getValue(ROOT, this._reducer);

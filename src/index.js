@@ -7,6 +7,8 @@ import LinkedListReducer from './reducers/linked-list-reducer.js';
 import DictionaryObjectReducer from './reducers/dictionary-object-reducer.js';
 import ArrayReducer from './reducers/array-reducer.js';
 import NeverReducer from './reducers/never-reducer.js';
+import MergeReducer from './reducers/merge-reducer.js';
+import CombineLatestReducer from './reducers/combine-latest-reducer.js';
 import _Option from './option.js';
 import _LinkedList from './linked-list.js';
 
@@ -108,5 +110,25 @@ export default class Reduce {
    */
   static never() {
     return new ReducerBuilder(new NeverReducer());
+  }
+
+  /**
+   * Builds a reducer query from an array of reducer queries where the produced value is the concatenation of all the
+   * changes in the current scope into an array.
+   * @param  {Array<ReducerBuilder<T>>} reducers - The reducers producing the updates to concatenate.
+   * @return {Reducer<Array<T>>} The reducer of the concatenated updates
+   */
+  static merge(reducers) {
+    return new ReducerBuilder(new MergeReducer(reducers));
+  }
+
+  /**
+   * Builds a reducer query from an array of reducer queries where the produced value is the concatenation of all the
+   * latest values in the current scope into an array.
+   * @param  {Array<ReducerBuilder<T>>} reducers - The reducers producing the updates to concatenate.
+   * @return {Reducer<Array<T>>} The reducer of the concatenated updates
+   */
+  static combineLatest(reducers) {
+    return new ReducerBuilder(new CombineLatestReducer(reducers));
   }
 }

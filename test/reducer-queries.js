@@ -277,4 +277,101 @@ describe('Reducer queries', () => {
       }
     });
   });
+
+  it('should reduce merge queries when there is only one update', () => {
+    // Arrange
+    const query = Reduce.merge([
+      Reduce.value(10)
+    ]);
+    // Act
+    const store = query.build().toStore();
+    const newState = store.getState();
+    // Assert
+    expect(newState).to.deep.equal([10]);
+  });
+
+  it('should reduce merge queries when there are multiple updates at once', () => {
+    // Arrange
+    const query = Reduce.merge([
+      Reduce.eventsOfType('foo').select(_ => 1),
+      Reduce.value(10),
+      Reduce.eventsOfType('foo').select(_ => 2)
+    ]);
+    // Act
+    const store = query.build().toStore();
+    store.dispatch({
+      type: 'foo'
+    });
+    const newState = store.getState();
+    // Assert
+    expect(newState).to.deep.equal([1, 2]);
+  });
+
+  it('should not update reduced merge queries when there are no changes', () => {
+    // Arrange
+    const query = Reduce.merge([
+      Reduce.eventsOfType('foo').select(_ => 1),
+      Reduce.value(10),
+      Reduce.eventsOfType('foo').select(_ => 2)
+    ]);
+    // Act
+    const store = query.build().toStore();
+    store.dispatch({
+      type: 'bar'
+    });
+    const newState = store.getState();
+    // Assert
+    expect(newState).to.deep.equal([10]);
+  });
+
+  it('should not reduce combineLatest queries where an element has never had a value', () => {
+    // Arrange
+    const query = Reduce.combineLatest([
+      Reduce.value(10),
+      Reduce.never()
+    ]);
+    // Act
+    const store = query.build().toStore();
+    const newState = store.getState();
+    // Assert
+    expect(newState).to.equal(undefined);
+  });
+
+  it('should initially reduce combineLatest queries to an array of the constituents initial values', () => {
+    // Arrange
+    const query = Reduce.combineLatest([
+      Reduce.value(10),
+      Reduce.eventsOfType('foo').select(e => e.value)
+    ]);
+    // Act
+    const store = query.build().toStore();
+    store.dispatch({
+      type: 'foo',
+      value: 2
+    });
+    const newState = store.getState();
+    // Assert
+    expect(newState).to.deep.equal([10, 2]);
+  });
+
+  it('should reduce combineLatest queries to an array of the constituents latest values', () => {
+    // Arrange
+    const query = Reduce.combineLatest([
+      Reduce.value(10),
+      Reduce.eventsOfType('foo').select(e => e.value)
+    ]);
+    // Act
+    const store = query.build().toStore();
+    store.dispatch({
+      type: 'foo',
+      value: 2
+    });
+    store.dispatch({
+      type: 'foo',
+      value: 4
+    });
+    const newState = store.getState();
+    // Assert
+    expect(newState).to.deep.equal([10, 4]);
+  });
 });

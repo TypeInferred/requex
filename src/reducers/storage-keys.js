@@ -39,3 +39,9 @@ export const REMOVAL_SOURCE = '__REMOVALS';
  * @type {String}
  */
 export const ARGS_PREFIX = '__ARGS_';
+
+/**
+ * A common storage key prefix for addressing one of the sources of a reduction chain in auxillary state.
+ * @type {String}
+ */
+export const SOURCE_PREFIX = '__SOURCE_';
