@@ -11,8 +11,8 @@ export default class Header extends Component {
 
   handleSave(text) {
     if (text.length !== 0) {
-      const id = cuid();
-      this.props.dispatch({type: TODO_ADDED, text, id});
+      const todoId = cuid();
+      this.props.dispatch({type: TODO_ADDED, text, todoId});
     }
   }
 

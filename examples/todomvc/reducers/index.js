@@ -1,4 +1,4 @@
-import Reduce from 'requex';
+import Reduce, {Deltas} from 'requex';
 import * as Events from '../constants/EventTypes';
 import { SHOW_ALL, SHOW_COMPLETED, SHOW_ACTIVE } from '../constants/TodoFilters';
 
@@ -17,10 +17,18 @@ const todo = (id, text) => Reduce.structure({
 }).scoped(e => e.todoId === undefined || e.todoId === id);
 
 const todos = Reduce.arrayOf({
-  additions: Reduce.eventsOfType(Events.TODO_ADDED),
-  removals: Reduce.eventsOfType(Events.TODO_DELETED).select(e => e.todoId),
-  itemFactory: e => todo(e.id, e.text),
-  itemKey: todo => todo.id
+  itemFactory: e => todo(e.todoId, e.text),
+  deltas: [
+    // Clearings
+    Reduce.eventsOfType(Events.COMPLETED_TODOS_CLEARED)
+          .select(e => e.completedTodoIds.map(Deltas.removed)),
+    // Removals
+    Reduce.eventsOfType(Events.TODO_DELETED)
+          .select(e => Deltas.removed(e.todoId)),
+    // Additions
+    Reduce.eventsOfType(Events.TODO_ADDED)
+          .select(e => Deltas.added(e.todoId, e))
+  ]
 });
 
 export default Reduce.structure({

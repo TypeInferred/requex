@@ -36,7 +36,8 @@ export default class MainSection extends ShallowDiffComponent {
 
     if (todos.length) {
       return (
-        <Footer activeCount={activeCount}
+        <Footer todos={todos}
+                activeCount={activeCount}
                 completedCount={completedCount}
                 filter={filter}
                 dispatch={dispatch} />
@@ -46,7 +47,7 @@ export default class MainSection extends ShallowDiffComponent {
 
   render() {
     const { filteredTodos, dispatch } = this.props;
-    console.log(filteredTodos);
+    
     return (
       <section className="main">
         {this.renderToggleAll()}

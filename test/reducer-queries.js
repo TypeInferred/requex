@@ -1,5 +1,5 @@
 import chai from 'chai';
-import Reduce, {LinkedList} from '../src/index.js';
+import Reduce from '../src/index.js';
 
 const expect = chai.expect;
 

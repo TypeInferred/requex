@@ -4,7 +4,6 @@ import FilteredReducer from './reducers/filtered-reducer.js';
 import ScopedReducer from './reducers/scoped-reducer.js';
 import FoldingReducer from './reducers/folding-reducer.js';
 import ReducerQuery from './reducer-query.js';
-import LinkedList from './linked-list.js';
 
 /**
  * A fluent reducer-query builder.

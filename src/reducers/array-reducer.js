@@ -1,32 +1,38 @@
 import CollectionReducer from './collection-reducer.js';
-
-/** @ignore */
-const emptyArray = [];
+import MappedReducer from './mapped-reducer.js';
 
 /** @ignore */
 const arrayApi = {
-  prepare: xs => xs.slice(), // Copy so we can cheat in the put and just use push, TODO: Use mutation for remove and map too.
-  empty: () => emptyArray,
-  remove: (array, itemKey, removedKeys) => array.filter(x => {
-    const key = itemKey(x);
-    return !removedKeys.includes(key);
-  }),
-  map: (array, selector) => array.map(selector),
-  put: (array, key, value) => {
-    array.push(value);
-    return array;
-  }
+  prepare: ({keys, values}) => ({keys: keys.slice(), values:values.slice()}), // Copy so we can cheat in the put and just use push, TODO: Use mutation for remove and map too.
+  empty: () => ({keys: [], values: []}),
+  remove: ({keys, values}, key) => {
+    const index = keys.indexOf(key);
+    if (index >= 0) {
+      keys.splice(index, 1);
+      values.splice(index, 1);
+    }
+  },
+  put: ({keys, values}, key, value) => {
+    const index = keys.indexOf(key);
+    if (index >= 0) {
+      values[index] = value;
+    } else {
+      keys.push(key);
+      values.push(value);
+    }
+  },
+  forEach: ({keys, values}, f) => keys.forEach((key, i) => f(key, values[i]))
 };
 
 /**
- * Reducer for building linked lists.
+ * Reducer for building arrays.
  */
-export default class ArrayReducer extends CollectionReducer {
+export default class ArrayReducer extends MappedReducer {
   /** 
    * Builds an array reducer. See {@link CollectionReducer} for more information.
    * @param  {CollectionConfiguration} configuration - the configuration needed to build the collection
    */
   constructor(configuration) {
-    super(arrayApi, configuration);
+    super(new CollectionReducer(arrayApi, configuration), ({keys, values}) => values);
   }
 }

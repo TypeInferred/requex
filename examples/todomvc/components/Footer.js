@@ -25,8 +25,11 @@ export default class Footer extends ShallowDiffComponent {
   }
 
   handleClearCompleted() {
-    const { dispatch } = this.props;
-    dispatch({ type: COMPLETED_TODOS_CLEARED });
+    const { todos, dispatch } = this.props;
+    dispatch({ 
+      type: COMPLETED_TODOS_CLEARED,
+      completedTodoIds: todos.filter(todo => todo.isCompleted).map(todo => todo.id)
+    });
   }
 
   renderTodoCount() {
@@ -83,6 +86,7 @@ export default class Footer extends ShallowDiffComponent {
 }
 
 Footer.propTypes = {
+  todos: PropTypes.array.isRequired,
   activeCount: PropTypes.number.isRequired,
   completedCount: PropTypes.number.isRequired,
   filter: PropTypes.string.isRequired,
