@@ -38,7 +38,14 @@ export default class ReducerQuery {
    */
   reduce(context) {
     const events = context && (context.events || [context.event]) || [];
-    const eventsMaybe = events.length ? events.map(Option.some) : [Option.none()];
+    const hasSeeded = context && context.previousAuxillary && true;
+    const eventsMaybe = 
+      events.length 
+      ? events.map(Option.some) 
+      : hasSeeded
+        ? []
+        : [Option.none()];
+    console.log('test');
     const output = eventsMaybe.reduce((acc, e) => {
       const internalContext = new ReducerContext(acc.auxillary, e);
       const updateMaybe = internalContext.getValue(ROOT, this._reducer);
@@ -59,10 +66,11 @@ export default class ReducerQuery {
    * @property {function():T} getState - Returns the current state.
    */
   toStore(previousState) {
-    let state = previousState || reduce();
+    let state = previousState || this.reduce();
     return {
-      dispatch: event => state = reduce({previousAuxillary: context.newAuxillary, previousState: context.newState, event}),
-      getState: () => state.newState
+      dispatch: event => state = this.reduce({previousAuxillary: state.newAuxillary, previousState: state.newState, event}),
+      getState: () => state.newState,
+      replaceReducer: reducerQuery => reducerQuery.toStore(state)
     };
   }
 }
