@@ -4,18 +4,9 @@ import CollectionReducer from './collection-reducer.js';
 const dictionaryApi = {
   prepare: x => Object.assign({}, x), //copy
   empty: () => ({}),
-  remove: (obj, itemKey, removedKeys) => {
-    removedKeys.forEach(k => delete obj[k]);
-    return obj;
-  },
-  map: (obj, selector) => {
-    Object.keys(obj).forEach(k => obj[k] = selector(obj[k]));
-    return obj;
-  },
-  put: (obj, key, value) => {
-    obj[key] = value;
-    return obj;
-  }
+  remove: (obj, key) => delete obj[key],
+  put: (obj, key, value) => obj[key] = value,
+  forEach: (obj, f) => Object.keys(obj).forEach(k => f(k, obj[k]))
 };
 
 /**
