@@ -4,16 +4,229 @@
     "kind": "file",
     "static": true,
     "variation": null,
+    "name": "src/collection-delta-kinds.js",
+    "memberof": null,
+    "longname": "src/collection-delta-kinds.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 5,
+    "content": "/**\n * Constant representing an addition to a collection.\n * @type {String}\n */\nexport const ADDED = 'ADDED';\n\n/**\n * Constant representing a removal from a collection.\n * @type {String}\n */\nexport const REMOVED = 'REMOVED';\n\n/**\n * Constant representing a clearing of a collection.\n * @type {String}\n */\nexport const CLEARED = 'CLEARED';"
+  },
+  {
+    "__docId__": 1,
+    "kind": "variable",
+    "static": true,
+    "variation": null,
+    "name": "ADDED",
+    "memberof": "src/collection-delta-kinds.js",
+    "longname": "src/collection-delta-kinds.js~ADDED",
+    "access": null,
+    "export": true,
+    "importPath": "requex/src/collection-delta-kinds.js",
+    "importStyle": "{ADDED}",
+    "description": "Constant representing an addition to a collection.",
+    "lineNumber": 5,
+    "type": {
+      "nullable": null,
+      "types": [
+        "String"
+      ],
+      "spread": false,
+      "description": null
+    }
+  },
+  {
+    "__docId__": 2,
+    "kind": "variable",
+    "static": true,
+    "variation": null,
+    "name": "REMOVED",
+    "memberof": "src/collection-delta-kinds.js",
+    "longname": "src/collection-delta-kinds.js~REMOVED",
+    "access": null,
+    "export": true,
+    "importPath": "requex/src/collection-delta-kinds.js",
+    "importStyle": "{REMOVED}",
+    "description": "Constant representing a removal from a collection.",
+    "lineNumber": 11,
+    "type": {
+      "nullable": null,
+      "types": [
+        "String"
+      ],
+      "spread": false,
+      "description": null
+    }
+  },
+  {
+    "__docId__": 3,
+    "kind": "variable",
+    "static": true,
+    "variation": null,
+    "name": "CLEARED",
+    "memberof": "src/collection-delta-kinds.js",
+    "longname": "src/collection-delta-kinds.js~CLEARED",
+    "access": null,
+    "export": true,
+    "importPath": "requex/src/collection-delta-kinds.js",
+    "importStyle": "{CLEARED}",
+    "description": "Constant representing a clearing of a collection.",
+    "lineNumber": 17,
+    "type": {
+      "nullable": null,
+      "types": [
+        "String"
+      ],
+      "spread": false,
+      "description": null
+    }
+  },
+  {
+    "__docId__": 4,
+    "kind": "file",
+    "static": true,
+    "variation": null,
+    "name": "src/collection-deltas.js",
+    "memberof": null,
+    "longname": "src/collection-deltas.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1,
+    "content": "import {ADDED, REMOVED, CLEARED} from './collection-delta-kinds.js';\n\n/**\n * Creates a new added modification.\n * @param {string} key - The key used to refer to the object in the collection for removal etc.\n * @param  value - The value to store in the collection\n * @return {Object} The modification\n */\nexport const added = (key, value) => ({kind: ADDED, key, value});\n\n/**\n * Creates a new removed modification.\n * @param {string} key - The key used to find the value for removal\n * @return {Object} The modification\n */\nexport const removed = key => ({kind: REMOVED, key});\n\n/**\n * Creates a new cleared modification.\n * @return {Object} The modification\n */\nexport const cleared = () => ({kind: CLEARED});"
+  },
+  {
+    "__docId__": 5,
+    "kind": "variable",
+    "static": true,
+    "variation": null,
+    "name": "added",
+    "memberof": "src/collection-deltas.js",
+    "longname": "src/collection-deltas.js~added",
+    "access": null,
+    "export": true,
+    "importPath": "requex/src/collection-deltas.js",
+    "importStyle": "{added}",
+    "description": "Creates a new added modification.",
+    "lineNumber": 9,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "key",
+        "description": "The key used to refer to the object in the collection for removal etc."
+      },
+      {
+        "nullable": null,
+        "types": [
+          "*"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "value",
+        "description": "The value to store in the collection"
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Object"
+      ],
+      "spread": false,
+      "description": "The modification"
+    },
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 6,
+    "kind": "variable",
+    "static": true,
+    "variation": null,
+    "name": "removed",
+    "memberof": "src/collection-deltas.js",
+    "longname": "src/collection-deltas.js~removed",
+    "access": null,
+    "export": true,
+    "importPath": "requex/src/collection-deltas.js",
+    "importStyle": "{removed}",
+    "description": "Creates a new removed modification.",
+    "lineNumber": 16,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "key",
+        "description": "The key used to find the value for removal"
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Object"
+      ],
+      "spread": false,
+      "description": "The modification"
+    },
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 7,
+    "kind": "variable",
+    "static": true,
+    "variation": null,
+    "name": "cleared",
+    "memberof": "src/collection-deltas.js",
+    "longname": "src/collection-deltas.js~cleared",
+    "access": null,
+    "export": true,
+    "importPath": "requex/src/collection-deltas.js",
+    "importStyle": "{cleared}",
+    "description": "Creates a new cleared modification.",
+    "lineNumber": 22,
+    "return": {
+      "nullable": null,
+      "types": [
+        "Object"
+      ],
+      "spread": false,
+      "description": "The modification"
+    },
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 8,
+    "kind": "file",
+    "static": true,
+    "variation": null,
     "name": "src/index.js",
     "memberof": null,
     "longname": "src/index.js",
     "access": null,
     "description": null,
     "lineNumber": 1,
-    "content": "import ReducerBuilder from './reducer-builder.js';\nimport ValueReducer from './reducers/value-reducer.js';\nimport EventReducer from './reducers/event-reducer.js';\nimport AnyEventReducer from './reducers/any-event-reducer.js';\nimport StructureReducer from './reducers/structure-reducer.js';\nimport LinkedListReducer from './reducers/linked-list-reducer.js';\nimport DictionaryObjectReducer from './reducers/dictionary-object-reducer.js';\nimport ArrayReducer from './reducers/array-reducer.js';\nimport NeverReducer from './reducers/never-reducer.js';\nimport _Option from './option.js';\nimport _LinkedList from './linked-list.js';\n\n/**\n * Represents an optional type, i.e., some value or none.\n * @type {Option<T>}\n */\nexport const Option = _Option;\n\n/**\n * Represents a linked-list\n * @type {LinkedList<T>}\n */\nexport const LinkedList = _LinkedList;\n\n/**\n * A factory for creating reducer queries.\n */\nexport default class Reduce {\n  /**\n   * Creates a reducer query over events in scope matching the event type specified.\n   * @param {string} eventType - The event type\n   * @returns {ReducerBuilder} The query over the matching events\n   */\n  static eventsOfType(eventType) {\n    return new ReducerBuilder(new EventReducer(eventType));\n  }\n\n  /**\n   * Creates a reducer query of over all events in scope.\n   * @returns {ReducerBuilder} The query over the events in scope\n   */\n  static allEvents() {\n    return new ReducerBuilder(new AnyEventReducer());\n  }\n\n  /**\n   * A reducer query returning the value provided.\n   * @param value - The value\n   * @returns {ReducerBuilder} - The reducer query containing the value\n   */\n  static value(value) {\n    return new ReducerBuilder(new ValueReducer(value));\n  }\n\n  /**\n   * Builds a reducer query from a structure of reducer queries and constants representing\n   * the reduced structure.\n   * @returns {ReducerBuilder} - The reducer query builder\n   */\n  static structure(reducerStructure) {\n    return new ReducerBuilder(new StructureReducer(reducerStructure));\n  }\n\n  /**\n   * @typedef {Object} CollectionConfiguration\n   * @property {ReducerBuilder<TArgs>|ReducerBuilder<Array<TArgs>>} additions - The reducer that produces argument objects (single or arrays) to be constructed into items for the collection\n   * @property {?ReducerBuilder<TKey>|ReducerBuilder<Array<TKey>>} removals - The reducer that produces keys of items to be removed from the collction\n   * @property {function(args:TArgs):TItem|function(args:TArgs):ReducerBuilder<TItem>} itemFactory - The function that builds new items from arguments produced by the additions reducer. The items can be constant values or ReducerBuilders.\n   * @property {function(item:TItem):TKey} itemKey - The function that extracts a key from an existing item\n   */\n\n  /**\n   * Builds a reducer query of a linked list from a reducer for additions, a reducer for removals, a function to construct\n   * items and a function to extract the key from a constructed item. Keys are used for removal and addressing the auxillary\n   * state to ensure accumulators are seeded correctly etc.\n   * @param  {CollectionConfiguration} configuration - the configuration needed to build the list\n   * @returns {ReducerBuilder} - The reducer query builder\n   */\n  static linkedListOf(configuration) {\n    return new ReducerBuilder(new LinkedListReducer(configuration));\n  }\n\n  /**\n   * Builds a reducer query of a dictionary object from a reducer for additions, a reducer for removals, a function to construct\n   * items and a function to extract the key from a constructed item. Keys are used for removal and addressing the auxillary\n   * state to ensure accumulators are seeded correctly etc.\n   * @param  {CollectionConfiguration} configuration - the configuration needed to build the list\n   * @returns {ReducerBuilder} - The reducer query builder\n   */\n  static dictionaryObjectOf(configuration) {\n    return new ReducerBuilder(new DictionaryObjectReducer(configuration));\n  }\n\n  /**\n   * Builds a reducer query of an array from a reducer for additions, a reducer for removals, a function to construct\n   * items and a function to extract the key from a constructed item. Keys are used for removal and addressing the auxillary\n   * state to ensure accumulators are seeded correctly etc.\n   * @param  {CollectionConfiguration} configuration - the configuration needed to build the list\n   * @returns {ReducerBuilder} - The reducer query builder\n   */\n  static arrayOf(configuration) {\n    return new ReducerBuilder(new ArrayReducer(configuration));\n  }\n\n  /**\n   * A reducer query that never produces any updates in state.\n   * @returns {ReducerBuilder} - The reducer query builder\n   */\n  static never() {\n    return new ReducerBuilder(new NeverReducer());\n  }\n}"
+    "content": "import ReducerBuilder from './reducer-builder.js';\nimport ValueReducer from './reducers/value-reducer.js';\nimport EventReducer from './reducers/event-reducer.js';\nimport AnyEventReducer from './reducers/any-event-reducer.js';\nimport StructureReducer from './reducers/structure-reducer.js';\nimport DictionaryObjectReducer from './reducers/dictionary-object-reducer.js';\nimport ArrayReducer from './reducers/array-reducer.js';\nimport NeverReducer from './reducers/never-reducer.js';\nimport MergeReducer from './reducers/merge-reducer.js';\nimport CombineLatestReducer from './reducers/combine-latest-reducer.js';\nimport _Option from './option.js';\nimport * as _Deltas from './collection-deltas.js';\n\n/**\n * Represents an optional type, i.e., some value or none.\n * @type {Option<T>}\n */\nexport const Option = _Option;\n\n/**\n * Factories for constructing deltas to collections.\n * @type {Object}\n */\nexport const Deltas = _Deltas;\n\n/**\n * A factory for creating reducer queries.\n */\nexport default class Reduce {\n  /**\n   * Creates a reducer query over events in scope matching the event type specified.\n   * @param {string} eventType - The event type\n   * @returns {ReducerBuilder} The query over the matching events\n   */\n  static eventsOfType(eventType) {\n    return new ReducerBuilder(new EventReducer(eventType));\n  }\n\n  /**\n   * Creates a reducer query of over all events in scope.\n   * @returns {ReducerBuilder} The query over the events in scope\n   */\n  static allEvents() {\n    return new ReducerBuilder(new AnyEventReducer());\n  }\n\n  /**\n   * A reducer query returning the value provided.\n   * @param value - The value\n   * @returns {ReducerBuilder} - The reducer query containing the value\n   */\n  static value(value) {\n    return new ReducerBuilder(new ValueReducer(value));\n  }\n\n  /**\n   * Builds a reducer query from a structure of reducer queries and constants representing\n   * the reduced structure.\n   * @returns {ReducerBuilder} - The reducer query builder\n   */\n  static structure(reducerStructure) {\n    return new ReducerBuilder(new StructureReducer(reducerStructure));\n  }\n\n  /**\n   * @typedef {Object} CollectionConfiguration\n   * @property {function(args:TArgs):TItem|function(args:TArgs):ReducerBuilder<TItem>} itemFactory - The function that builds new items from arguments produced by the additions reducer. The items can be constant values or ReducerBuilders.\n   * @property {Array<ReducerBuilder>} deltas - The reducers that produces deltas to alter the collection\n   */\n\n  /**\n   * Builds a reducer query of a map-like dictionary object from an item factory and an array of reducers to supply deltas to the collection.\n   * @param  {CollectionConfiguration} configuration - the configuration needed to build the list\n   * @returns {ReducerBuilder} - The reducer query builder\n   */\n  static dictionaryObjectOf(configuration) {\n    return new ReducerBuilder(new DictionaryObjectReducer(configuration));\n  }\n\n  /**\n   * Builds a reducer query of an array from an item factory and an array of reducers to supply deltas to the collection.\n   * @param  {CollectionConfiguration} configuration - the configuration needed to build the list\n   * @returns {ReducerBuilder} - The reducer query builder\n   */\n  static arrayOf(configuration) {\n    return new ReducerBuilder(new ArrayReducer(configuration));\n  }\n\n  /**\n   * A reducer query that never produces any updates in state.\n   * @returns {ReducerBuilder} - The reducer query builder\n   */\n  static never() {\n    return new ReducerBuilder(new NeverReducer());\n  }\n\n  /**\n   * Builds a reducer query from an array of reducer queries where the produced value is the concatenation of all the\n   * changes in the current scope into an array.\n   * @param  {Array<ReducerBuilder<T>>} reducers - The reducers producing the updates to concatenate.\n   * @return {Reducer<Array<T>>} The reducer of the concatenated updates\n   */\n  static merge(reducers) {\n    return new ReducerBuilder(new MergeReducer(reducers));\n  }\n\n  /**\n   * Builds a reducer query from an array of reducer queries where the produced value is the concatenation of all the\n   * latest values in the current scope into an array.\n   * @param  {Array<ReducerBuilder<T>>} reducers - The reducers producing the updates to concatenate.\n   * @return {Reducer<Array<T>>} The reducer of the concatenated updates\n   */\n  static combineLatest(reducers) {\n    return new ReducerBuilder(new CombineLatestReducer(reducers));\n  }\n}"
   },
   {
-    "__docId__": 1,
+    "__docId__": 9,
     "kind": "variable",
     "static": true,
     "variation": null,
@@ -25,7 +238,7 @@
     "importPath": "requex/src/index.js",
     "importStyle": "{Option}",
     "description": "Represents an optional type, i.e., some value or none.",
-    "lineNumber": 17,
+    "lineNumber": 18,
     "type": {
       "nullable": null,
       "types": [
@@ -36,30 +249,30 @@
     }
   },
   {
-    "__docId__": 2,
+    "__docId__": 10,
     "kind": "variable",
     "static": true,
     "variation": null,
-    "name": "LinkedList",
+    "name": "Deltas",
     "memberof": "src/index.js",
-    "longname": "src/index.js~LinkedList",
+    "longname": "src/index.js~Deltas",
     "access": null,
     "export": true,
     "importPath": "requex/src/index.js",
-    "importStyle": "{LinkedList}",
-    "description": "Represents a linked-list",
-    "lineNumber": 23,
+    "importStyle": "{Deltas}",
+    "description": "Factories for constructing deltas to collections.",
+    "lineNumber": 24,
     "type": {
       "nullable": null,
       "types": [
-        "LinkedList<T>"
+        "Object"
       ],
       "spread": false,
       "description": null
     }
   },
   {
-    "__docId__": 3,
+    "__docId__": 11,
     "kind": "class",
     "static": true,
     "variation": null,
@@ -71,11 +284,11 @@
     "importPath": "requex/src/index.js",
     "importStyle": "Reduce",
     "description": "A factory for creating reducer queries.",
-    "lineNumber": 28,
+    "lineNumber": 29,
     "interface": false
   },
   {
-    "__docId__": 4,
+    "__docId__": 12,
     "kind": "method",
     "static": true,
     "variation": null,
@@ -84,7 +297,7 @@
     "longname": "src/index.js~Reduce.eventsOfType",
     "access": null,
     "description": "Creates a reducer query over events in scope matching the event type specified.",
-    "lineNumber": 34,
+    "lineNumber": 35,
     "unknown": [
       {
         "tagName": "@returns",
@@ -114,7 +327,7 @@
     "generator": false
   },
   {
-    "__docId__": 5,
+    "__docId__": 13,
     "kind": "method",
     "static": true,
     "variation": null,
@@ -123,7 +336,7 @@
     "longname": "src/index.js~Reduce.allEvents",
     "access": null,
     "description": "Creates a reducer query of over all events in scope.",
-    "lineNumber": 42,
+    "lineNumber": 43,
     "unknown": [
       {
         "tagName": "@returns",
@@ -142,7 +355,7 @@
     "generator": false
   },
   {
-    "__docId__": 6,
+    "__docId__": 14,
     "kind": "method",
     "static": true,
     "variation": null,
@@ -151,7 +364,7 @@
     "longname": "src/index.js~Reduce.value",
     "access": null,
     "description": "A reducer query returning the value provided.",
-    "lineNumber": 51,
+    "lineNumber": 52,
     "unknown": [
       {
         "tagName": "@returns",
@@ -181,7 +394,7 @@
     "generator": false
   },
   {
-    "__docId__": 7,
+    "__docId__": 15,
     "kind": "method",
     "static": true,
     "variation": null,
@@ -190,7 +403,7 @@
     "longname": "src/index.js~Reduce.structure",
     "access": null,
     "description": "Builds a reducer query from a structure of reducer queries and constants representing\nthe reduced structure.",
-    "lineNumber": 60,
+    "lineNumber": 61,
     "unknown": [
       {
         "tagName": "@returns",
@@ -216,7 +429,7 @@
     "generator": false
   },
   {
-    "__docId__": 8,
+    "__docId__": 16,
     "kind": "typedef",
     "static": true,
     "variation": null,
@@ -226,28 +439,6 @@
     "access": null,
     "description": null,
     "properties": [
-      {
-        "nullable": null,
-        "types": [
-          "ReducerBuilder<TArgs>",
-          "ReducerBuilder<Array<TArgs>>"
-        ],
-        "spread": false,
-        "optional": false,
-        "name": "additions",
-        "description": "The reducer that produces argument objects (single or arrays) to be constructed into items for the collection"
-      },
-      {
-        "nullable": true,
-        "types": [
-          "ReducerBuilder<TKey>",
-          "ReducerBuilder<Array<TKey>>"
-        ],
-        "spread": false,
-        "optional": false,
-        "name": "removals",
-        "description": "The reducer that produces keys of items to be removed from the collction"
-      },
       {
         "nullable": null,
         "types": [
@@ -262,12 +453,12 @@
       {
         "nullable": null,
         "types": [
-          "function(item:TItem):TKey"
+          "Array<ReducerBuilder>"
         ],
         "spread": false,
         "optional": false,
-        "name": "itemKey",
-        "description": "The function that extracts a key from an existing item"
+        "name": "deltas",
+        "description": "The reducers that produces deltas to alter the collection"
       }
     ],
     "type": {
@@ -279,46 +470,7 @@
     }
   },
   {
-    "__docId__": 9,
-    "kind": "method",
-    "static": true,
-    "variation": null,
-    "name": "linkedListOf",
-    "memberof": "src/index.js~Reduce",
-    "longname": "src/index.js~Reduce.linkedListOf",
-    "access": null,
-    "description": "Builds a reducer query of a linked list from a reducer for additions, a reducer for removals, a function to construct\nitems and a function to extract the key from a constructed item. Keys are used for removal and addressing the auxillary\nstate to ensure accumulators are seeded correctly etc.",
-    "lineNumber": 79,
-    "unknown": [
-      {
-        "tagName": "@returns",
-        "tagValue": "{ReducerBuilder} - The reducer query builder"
-      }
-    ],
-    "params": [
-      {
-        "nullable": null,
-        "types": [
-          "CollectionConfiguration"
-        ],
-        "spread": false,
-        "optional": false,
-        "name": "configuration",
-        "description": "the configuration needed to build the list"
-      }
-    ],
-    "return": {
-      "nullable": null,
-      "types": [
-        "ReducerBuilder"
-      ],
-      "spread": false,
-      "description": "The reducer query builder"
-    },
-    "generator": false
-  },
-  {
-    "__docId__": 10,
+    "__docId__": 17,
     "kind": "method",
     "static": true,
     "variation": null,
@@ -326,8 +478,8 @@
     "memberof": "src/index.js~Reduce",
     "longname": "src/index.js~Reduce.dictionaryObjectOf",
     "access": null,
-    "description": "Builds a reducer query of a dictionary object from a reducer for additions, a reducer for removals, a function to construct\nitems and a function to extract the key from a constructed item. Keys are used for removal and addressing the auxillary\nstate to ensure accumulators are seeded correctly etc.",
-    "lineNumber": 90,
+    "description": "Builds a reducer query of a map-like dictionary object from an item factory and an array of reducers to supply deltas to the collection.",
+    "lineNumber": 76,
     "unknown": [
       {
         "tagName": "@returns",
@@ -353,200 +505,6 @@
       ],
       "spread": false,
       "description": "The reducer query builder"
-    },
-    "generator": false
-  },
-  {
-    "__docId__": 11,
-    "kind": "method",
-    "static": true,
-    "variation": null,
-    "name": "arrayOf",
-    "memberof": "src/index.js~Reduce",
-    "longname": "src/index.js~Reduce.arrayOf",
-    "access": null,
-    "description": "Builds a reducer query of an array from a reducer for additions, a reducer for removals, a function to construct\nitems and a function to extract the key from a constructed item. Keys are used for removal and addressing the auxillary\nstate to ensure accumulators are seeded correctly etc.",
-    "lineNumber": 101,
-    "unknown": [
-      {
-        "tagName": "@returns",
-        "tagValue": "{ReducerBuilder} - The reducer query builder"
-      }
-    ],
-    "params": [
-      {
-        "nullable": null,
-        "types": [
-          "CollectionConfiguration"
-        ],
-        "spread": false,
-        "optional": false,
-        "name": "configuration",
-        "description": "the configuration needed to build the list"
-      }
-    ],
-    "return": {
-      "nullable": null,
-      "types": [
-        "ReducerBuilder"
-      ],
-      "spread": false,
-      "description": "The reducer query builder"
-    },
-    "generator": false
-  },
-  {
-    "__docId__": 12,
-    "kind": "method",
-    "static": true,
-    "variation": null,
-    "name": "never",
-    "memberof": "src/index.js~Reduce",
-    "longname": "src/index.js~Reduce.never",
-    "access": null,
-    "description": "A reducer query that never produces any updates in state.",
-    "lineNumber": 109,
-    "unknown": [
-      {
-        "tagName": "@returns",
-        "tagValue": "{ReducerBuilder} - The reducer query builder"
-      }
-    ],
-    "params": [],
-    "return": {
-      "nullable": null,
-      "types": [
-        "ReducerBuilder"
-      ],
-      "spread": false,
-      "description": "The reducer query builder"
-    },
-    "generator": false
-  },
-  {
-    "__docId__": 13,
-    "kind": "file",
-    "static": true,
-    "variation": null,
-    "name": "src/linked-list.js",
-    "memberof": null,
-    "longname": "src/linked-list.js",
-    "access": null,
-    "description": null,
-    "lineNumber": 4,
-    "content": "/**\n * Represents a linked-list\n */\nexport default class LinkedList {\n  /**\n   * Returns the empty list.\n   * @return {LinkedList<T>} The empty list\n   */\n  static nil() {\n    return null;\n  }\n\n  /**\n   * Returns a new list of the concatenation of a head value to another list (the tail). \n   * @param  {T} head - The value to add\n   * @param  {LinkedList<T>} tail - The tail list\n   * @return {LinkedList<T>} A linked list containing the head and the tail.\n   */\n  static cons(head, tail) {\n    return { head, tail };\n  }\n\n  /**\n   * Returns true if the list passed is empty.\n   * @param  {LinkedList<T>} list - The list to test\n   * @return {Boolean} Whether the list is empty\n   */\n  static isEmpty(list) {\n    return list === null || list === undefined;\n  }\n\n  /**\n   * Produces a list containing elements from the list provided in reversed order.\n   * @param  {LinkedList<T>} list - The list to reverse\n   * @return {LinkedList<T>} The reversed list\n   */\n  static reverse(list) {\n    return LinkedList.reduce(list, (acc, x) => LinkedList.cons(x, acc), LinkedList.nil());\n  }\n\n  /**\n   * Produces a new list containing only those elements from the list provided that pass the predicate function.\n   * @param  {LinkedList<T>} list - The list to filter\n   * @param  {function(x:T):boolean} predicate - The predicate used to test for inclusion in the new list\n   * @return {LinkedList<T>} The filtered list\n   */\n  static filter(list, predicate) {\n    return LinkedList.reverse(LinkedList.reduce(list, (acc, x) => predicate(x) ? LinkedList.cons(x, acc) : acc, LinkedList.nil()));\n  }\n\n  /**\n   * Produces a new list of elements that are the result of mapping elements from an existing list using the selector\n   * function provided.\n   * @param  {LinkedList<T1>} list - The list to map\n   * @param  {function(x:T1):T2} selector - The mapping function\n   * @return {LinkedList<T2>} The mapped list.\n   */\n  static map(list, selector) {\n    return LinkedList.reverse(LinkedList.reduce(list, (acc, x) => LinkedList.cons(selector(x), acc), LinkedList.nil()));\n  }\n\n  /**\n   * Iterates over a list calling the action on each element in the list.\n   * @param  {LinkedList<T>} list - The list to iterate\n   * @param  {function(x:T)} action - The action to call for each element\n   */\n  static forEach(list, action) {\n    LinkedList.reduce((_, x) => action(x));\n  }\n\n  /**\n   * Creates an array containing the same elements as the list.\n   * @param  {LinkedList<T>}  list - The list to create an array from\n   * @param  {Boolean} [isReversedOrder=true] - Whether the elements are stored in reverse order\n   * @return {Array<T>} The resulting array\n   */\n  static toArray(list, isReversedOrder = true) {\n    const result = LinkedList.reduce(list, (acc, x) => {\n      acc.push(x);\n      return acc;\n    }, []);\n    isReversedOrder && result.reverse();\n    return result;\n  }\n\n  /**\n   * Creates a linked list containing the same elements as the array.\n   * @param  {Array<T>}  array - The array to create a list from\n   * @param  {Boolean} [isReversedOrder=true] - Whether the elements should be stored in reverse order in the list\n   * @return {LinkedList<T>} The resulting list\n   */\n  static ofArray(array, isReversedOrder = true) {\n    const reduce = isReversedOrder ? array.reduce.bind(array) : array.reduceRight.bind(array);\n    return reduce((acc, x) => LinkedList.cons(x, acc), LinkedList.nil());\n  }\n\n  /**\n   * Reduces a value by folding over the elements in a linked list from head to tail.\n   * @param  {LinkedList<T>} list - The list to fold over\n   * @param  {function(acc:TAcc, x:T):TAcc} accumulate - The function to accumulate a value\n   * @param  {TAcc} seed - The initial value for the accumulator\n   * @return {TAcc} The final accumulator\n   */\n  static reduce(list, accumulate, seed) {\n    let current = list;\n    let acc = seed;\n    while (!LinkedList.isEmpty(current)) {\n      acc = accumulate(acc, current.head);\n      current = current.tail;\n    }\n    return acc;\n  }\n}"
-  },
-  {
-    "__docId__": 14,
-    "kind": "class",
-    "static": true,
-    "variation": null,
-    "name": "LinkedList",
-    "memberof": "src/linked-list.js",
-    "longname": "src/linked-list.js~LinkedList",
-    "access": null,
-    "export": true,
-    "importPath": "requex/src/linked-list.js",
-    "importStyle": "LinkedList",
-    "description": "Represents a linked-list",
-    "lineNumber": 4,
-    "interface": false
-  },
-  {
-    "__docId__": 15,
-    "kind": "method",
-    "static": true,
-    "variation": null,
-    "name": "nil",
-    "memberof": "src/linked-list.js~LinkedList",
-    "longname": "src/linked-list.js~LinkedList.nil",
-    "access": null,
-    "description": "Returns the empty list.",
-    "lineNumber": 9,
-    "params": [],
-    "return": {
-      "nullable": null,
-      "types": [
-        "LinkedList<T>"
-      ],
-      "spread": false,
-      "description": "The empty list"
-    },
-    "generator": false
-  },
-  {
-    "__docId__": 16,
-    "kind": "method",
-    "static": true,
-    "variation": null,
-    "name": "cons",
-    "memberof": "src/linked-list.js~LinkedList",
-    "longname": "src/linked-list.js~LinkedList.cons",
-    "access": null,
-    "description": "Returns a new list of the concatenation of a head value to another list (the tail). ",
-    "lineNumber": 19,
-    "params": [
-      {
-        "nullable": null,
-        "types": [
-          "T"
-        ],
-        "spread": false,
-        "optional": false,
-        "name": "head",
-        "description": "The value to add"
-      },
-      {
-        "nullable": null,
-        "types": [
-          "LinkedList<T>"
-        ],
-        "spread": false,
-        "optional": false,
-        "name": "tail",
-        "description": "The tail list"
-      }
-    ],
-    "return": {
-      "nullable": null,
-      "types": [
-        "LinkedList<T>"
-      ],
-      "spread": false,
-      "description": "A linked list containing the head and the tail."
-    },
-    "generator": false
-  },
-  {
-    "__docId__": 17,
-    "kind": "method",
-    "static": true,
-    "variation": null,
-    "name": "isEmpty",
-    "memberof": "src/linked-list.js~LinkedList",
-    "longname": "src/linked-list.js~LinkedList.isEmpty",
-    "access": null,
-    "description": "Returns true if the list passed is empty.",
-    "lineNumber": 28,
-    "params": [
-      {
-        "nullable": null,
-        "types": [
-          "LinkedList<T>"
-        ],
-        "spread": false,
-        "optional": false,
-        "name": "list",
-        "description": "The list to test"
-      }
-    ],
-    "return": {
-      "nullable": null,
-      "types": [
-        "Boolean"
-      ],
-      "spread": false,
-      "description": "Whether the list is empty"
     },
     "generator": false
   },
@@ -555,31 +513,37 @@
     "kind": "method",
     "static": true,
     "variation": null,
-    "name": "reverse",
-    "memberof": "src/linked-list.js~LinkedList",
-    "longname": "src/linked-list.js~LinkedList.reverse",
+    "name": "arrayOf",
+    "memberof": "src/index.js~Reduce",
+    "longname": "src/index.js~Reduce.arrayOf",
     "access": null,
-    "description": "Produces a list containing elements from the list provided in reversed order.",
-    "lineNumber": 37,
+    "description": "Builds a reducer query of an array from an item factory and an array of reducers to supply deltas to the collection.",
+    "lineNumber": 85,
+    "unknown": [
+      {
+        "tagName": "@returns",
+        "tagValue": "{ReducerBuilder} - The reducer query builder"
+      }
+    ],
     "params": [
       {
         "nullable": null,
         "types": [
-          "LinkedList<T>"
+          "CollectionConfiguration"
         ],
         "spread": false,
         "optional": false,
-        "name": "list",
-        "description": "The list to reverse"
+        "name": "configuration",
+        "description": "the configuration needed to build the list"
       }
     ],
     "return": {
       "nullable": null,
       "types": [
-        "LinkedList<T>"
+        "ReducerBuilder"
       ],
       "spread": false,
-      "description": "The reversed list"
+      "description": "The reducer query builder"
     },
     "generator": false
   },
@@ -588,41 +552,26 @@
     "kind": "method",
     "static": true,
     "variation": null,
-    "name": "filter",
-    "memberof": "src/linked-list.js~LinkedList",
-    "longname": "src/linked-list.js~LinkedList.filter",
+    "name": "never",
+    "memberof": "src/index.js~Reduce",
+    "longname": "src/index.js~Reduce.never",
     "access": null,
-    "description": "Produces a new list containing only those elements from the list provided that pass the predicate function.",
-    "lineNumber": 47,
-    "params": [
+    "description": "A reducer query that never produces any updates in state.",
+    "lineNumber": 93,
+    "unknown": [
       {
-        "nullable": null,
-        "types": [
-          "LinkedList<T>"
-        ],
-        "spread": false,
-        "optional": false,
-        "name": "list",
-        "description": "The list to filter"
-      },
-      {
-        "nullable": null,
-        "types": [
-          "function(x:T):boolean"
-        ],
-        "spread": false,
-        "optional": false,
-        "name": "predicate",
-        "description": "The predicate used to test for inclusion in the new list"
+        "tagName": "@returns",
+        "tagValue": "{ReducerBuilder} - The reducer query builder"
       }
     ],
+    "params": [],
     "return": {
       "nullable": null,
       "types": [
-        "LinkedList<T>"
+        "ReducerBuilder"
       ],
       "spread": false,
-      "description": "The filtered list"
+      "description": "The reducer query builder"
     },
     "generator": false
   },
@@ -631,41 +580,31 @@
     "kind": "method",
     "static": true,
     "variation": null,
-    "name": "map",
-    "memberof": "src/linked-list.js~LinkedList",
-    "longname": "src/linked-list.js~LinkedList.map",
+    "name": "merge",
+    "memberof": "src/index.js~Reduce",
+    "longname": "src/index.js~Reduce.merge",
     "access": null,
-    "description": "Produces a new list of elements that are the result of mapping elements from an existing list using the selector\nfunction provided.",
-    "lineNumber": 58,
+    "description": "Builds a reducer query from an array of reducer queries where the produced value is the concatenation of all the\nchanges in the current scope into an array.",
+    "lineNumber": 103,
     "params": [
       {
         "nullable": null,
         "types": [
-          "LinkedList<T1>"
+          "Array<ReducerBuilder<T>>"
         ],
         "spread": false,
         "optional": false,
-        "name": "list",
-        "description": "The list to map"
-      },
-      {
-        "nullable": null,
-        "types": [
-          "function(x:T1):T2"
-        ],
-        "spread": false,
-        "optional": false,
-        "name": "selector",
-        "description": "The mapping function"
+        "name": "reducers",
+        "description": "The reducers producing the updates to concatenate."
       }
     ],
     "return": {
       "nullable": null,
       "types": [
-        "LinkedList<T2>"
+        "Reducer<Array<T>>"
       ],
       "spread": false,
-      "description": "The mapped list."
+      "description": "The reducer of the concatenated updates"
     },
     "generator": false
   },
@@ -674,181 +613,36 @@
     "kind": "method",
     "static": true,
     "variation": null,
-    "name": "forEach",
-    "memberof": "src/linked-list.js~LinkedList",
-    "longname": "src/linked-list.js~LinkedList.forEach",
+    "name": "combineLatest",
+    "memberof": "src/index.js~Reduce",
+    "longname": "src/index.js~Reduce.combineLatest",
     "access": null,
-    "description": "Iterates over a list calling the action on each element in the list.",
-    "lineNumber": 67,
+    "description": "Builds a reducer query from an array of reducer queries where the produced value is the concatenation of all the\nlatest values in the current scope into an array.",
+    "lineNumber": 113,
     "params": [
       {
         "nullable": null,
         "types": [
-          "LinkedList<T>"
+          "Array<ReducerBuilder<T>>"
         ],
         "spread": false,
         "optional": false,
-        "name": "list",
-        "description": "The list to iterate"
-      },
-      {
-        "nullable": null,
-        "types": [
-          "function(x:T)"
-        ],
-        "spread": false,
-        "optional": false,
-        "name": "action",
-        "description": "The action to call for each element"
+        "name": "reducers",
+        "description": "The reducers producing the updates to concatenate."
       }
     ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Reducer<Array<T>>"
+      ],
+      "spread": false,
+      "description": "The reducer of the concatenated updates"
+    },
     "generator": false
   },
   {
     "__docId__": 22,
-    "kind": "method",
-    "static": true,
-    "variation": null,
-    "name": "toArray",
-    "memberof": "src/linked-list.js~LinkedList",
-    "longname": "src/linked-list.js~LinkedList.toArray",
-    "access": null,
-    "description": "Creates an array containing the same elements as the list.",
-    "lineNumber": 77,
-    "params": [
-      {
-        "nullable": null,
-        "types": [
-          "LinkedList<T>"
-        ],
-        "spread": false,
-        "optional": false,
-        "name": "list",
-        "description": "The list to create an array from"
-      },
-      {
-        "nullable": null,
-        "types": [
-          "Boolean"
-        ],
-        "spread": false,
-        "optional": true,
-        "defaultValue": "true",
-        "defaultRaw": true,
-        "name": "isReversedOrder",
-        "description": "Whether the elements are stored in reverse order"
-      }
-    ],
-    "return": {
-      "nullable": null,
-      "types": [
-        "Array<T>"
-      ],
-      "spread": false,
-      "description": "The resulting array"
-    },
-    "generator": false
-  },
-  {
-    "__docId__": 23,
-    "kind": "method",
-    "static": true,
-    "variation": null,
-    "name": "ofArray",
-    "memberof": "src/linked-list.js~LinkedList",
-    "longname": "src/linked-list.js~LinkedList.ofArray",
-    "access": null,
-    "description": "Creates a linked list containing the same elements as the array.",
-    "lineNumber": 92,
-    "params": [
-      {
-        "nullable": null,
-        "types": [
-          "Array<T>"
-        ],
-        "spread": false,
-        "optional": false,
-        "name": "array",
-        "description": "The array to create a list from"
-      },
-      {
-        "nullable": null,
-        "types": [
-          "Boolean"
-        ],
-        "spread": false,
-        "optional": true,
-        "defaultValue": "true",
-        "defaultRaw": true,
-        "name": "isReversedOrder",
-        "description": "Whether the elements should be stored in reverse order in the list"
-      }
-    ],
-    "return": {
-      "nullable": null,
-      "types": [
-        "LinkedList<T>"
-      ],
-      "spread": false,
-      "description": "The resulting list"
-    },
-    "generator": false
-  },
-  {
-    "__docId__": 24,
-    "kind": "method",
-    "static": true,
-    "variation": null,
-    "name": "reduce",
-    "memberof": "src/linked-list.js~LinkedList",
-    "longname": "src/linked-list.js~LinkedList.reduce",
-    "access": null,
-    "description": "Reduces a value by folding over the elements in a linked list from head to tail.",
-    "lineNumber": 104,
-    "params": [
-      {
-        "nullable": null,
-        "types": [
-          "LinkedList<T>"
-        ],
-        "spread": false,
-        "optional": false,
-        "name": "list",
-        "description": "The list to fold over"
-      },
-      {
-        "nullable": null,
-        "types": [
-          "function(acc:TAcc, x:T):TAcc"
-        ],
-        "spread": false,
-        "optional": false,
-        "name": "accumulate",
-        "description": "The function to accumulate a value"
-      },
-      {
-        "nullable": null,
-        "types": [
-          "TAcc"
-        ],
-        "spread": false,
-        "optional": false,
-        "name": "seed",
-        "description": "The initial value for the accumulator"
-      }
-    ],
-    "return": {
-      "nullable": null,
-      "types": [
-        "TAcc"
-      ],
-      "spread": false,
-      "description": "The final accumulator"
-    },
-    "generator": false
-  },
-  {
-    "__docId__": 25,
     "kind": "file",
     "static": true,
     "variation": null,
@@ -861,7 +655,7 @@
     "content": "let none;\n\n/**\n * Represents an optional type, i.e., some value or none.\n */\nexport default class Option {\n  /**\n   * @private\n   */\n  constructor(hasValue, value) {\n    this._value = value;\n    /**\n     * Returns true if the option wraps a value, i.e., if it is some\n     * @type {Boolean}\n     */\n    this.isSome = hasValue;\n    /**\n     * Returns true if the option doesn't wrap a value, i.e., if it is none\n     * @type {Boolean}\n     */\n    this.isNone = !this.isSome;\n  }\n\n  /**\n   * Returns none.\n   * @return {[type]} [description]\n   */\n  static none() {\n    return none || (none = new Option(false));\n  }\n\n  /**\n   * Returns the value wrapped as a some option. \n   * @param  {T} value - The value the wrap\n   * @return {Option<T>} The value wrapped in an option\n   */\n  static some(value) {\n    return new Option(true, value);\n  }\n\n  /**\n   * Returns the value if the option is a some otherwise throws.\n   * @return {T} The value.\n   */\n  get() {\n    if (this.isNone) throw new Error('Expected some');\n    return this._value;\n  }\n\n  /**\n   * Maps the value wrapped in the option if any.\n   * @param  {function(x:T1):T2} selector - The mapping function\n   * @return {Option<T2>} The mapped option\n   */\n  map(selector) {\n    return this.isNone ? this : Option.some(selector(this._value));\n  }\n\n  /**\n   * Filters the value wrapped in the option if any. If it passes the predicate retains some otherwise none.\n   * @param  {function(x:T):boolean} predicate - The filter function\n   * @return {Option<T>} The filtered option\n   */\n  filter(predicate) {\n    return this.isSome && predicate(this._value) ? this : Option.none(); \n  }\n\n  /**\n   * Returns the value wrapped in the option if some otherwise the other value passed as an argument.\n   * @param  {T} otherValue - The alternate value to return\n   * @return {T} The wrapped value if some else otherValue\n   */\n  otherwise(otherValue) {\n    return this.isSome ? this._value : otherValue;\n  }\n\n  /**\n   * Returns the seed if none otherwise accumulates a new value using the seed and the wrapped value using the\n   * accumulator function.\n   * @param  {function(acc:TAcc, x:T)} accumulator - The function to accumulate a result if some\n   * @param  {TAcc} seed - The value to return if none wrapped\n   * @return {TAcc} The accumulated value or the seed if none\n   */\n  reduce(accumulator, seed) {\n    return this.isSome ? accumulator(seed, this._value) : seed;\n  }\n\n  /**\n   * Returns none if none otherwise the option produced by projecting the wrapped value onto another option using\n   * the selector function.\n   * @param  {function(x:T1):Option<T2>} selector - The projection function\n   * @return {Option<T2>} The resulting option.\n   */\n  bind(selector) {\n    return this.isSome ? selector(this._value) : Option.none();\n  }\n}"
   },
   {
-    "__docId__": 26,
+    "__docId__": 23,
     "kind": "class",
     "static": true,
     "variation": null,
@@ -877,7 +671,7 @@
     "interface": false
   },
   {
-    "__docId__": 27,
+    "__docId__": 24,
     "kind": "constructor",
     "static": false,
     "variation": null,
@@ -904,7 +698,7 @@
     "generator": false
   },
   {
-    "__docId__": 28,
+    "__docId__": 25,
     "kind": "member",
     "static": false,
     "variation": null,
@@ -922,7 +716,7 @@
     }
   },
   {
-    "__docId__": 29,
+    "__docId__": 26,
     "kind": "member",
     "static": false,
     "variation": null,
@@ -942,7 +736,7 @@
     }
   },
   {
-    "__docId__": 30,
+    "__docId__": 27,
     "kind": "member",
     "static": false,
     "variation": null,
@@ -962,7 +756,7 @@
     }
   },
   {
-    "__docId__": 31,
+    "__docId__": 28,
     "kind": "method",
     "static": true,
     "variation": null,
@@ -984,7 +778,7 @@
     "generator": false
   },
   {
-    "__docId__": 32,
+    "__docId__": 29,
     "kind": "method",
     "static": true,
     "variation": null,
@@ -1017,7 +811,7 @@
     "generator": false
   },
   {
-    "__docId__": 33,
+    "__docId__": 30,
     "kind": "method",
     "static": false,
     "variation": null,
@@ -1039,7 +833,7 @@
     "generator": false
   },
   {
-    "__docId__": 34,
+    "__docId__": 31,
     "kind": "method",
     "static": false,
     "variation": null,
@@ -1072,7 +866,7 @@
     "generator": false
   },
   {
-    "__docId__": 35,
+    "__docId__": 32,
     "kind": "method",
     "static": false,
     "variation": null,
@@ -1105,7 +899,7 @@
     "generator": false
   },
   {
-    "__docId__": 36,
+    "__docId__": 33,
     "kind": "method",
     "static": false,
     "variation": null,
@@ -1138,7 +932,7 @@
     "generator": false
   },
   {
-    "__docId__": 37,
+    "__docId__": 34,
     "kind": "method",
     "static": false,
     "variation": null,
@@ -1181,7 +975,7 @@
     "generator": false
   },
   {
-    "__docId__": 38,
+    "__docId__": 35,
     "kind": "method",
     "static": false,
     "variation": null,
@@ -1214,7 +1008,7 @@
     "generator": false
   },
   {
-    "__docId__": 39,
+    "__docId__": 36,
     "kind": "file",
     "static": true,
     "variation": null,
@@ -1224,10 +1018,10 @@
     "access": null,
     "description": null,
     "lineNumber": 1,
-    "content": "import MappedReducer from './reducers/mapped-reducer.js';\nimport FlatReducedReducer from './reducers/flat-reduced-reducer.js';\nimport FilteredReducer from './reducers/filtered-reducer.js';\nimport ScopedReducer from './reducers/scoped-reducer.js';\nimport FoldingReducer from './reducers/folding-reducer.js';\nimport ReducerQuery from './reducer-query.js';\nimport LinkedList from './linked-list.js';\n\n/**\n * A fluent reducer-query builder.\n */\nexport default class ReducerBuilder {\n\n  /** @ignore */\n  constructor(parent) {\n    /** \n     * The previous reducer in the fluent chain.\n     * @type {Reducer}\n     * @private\n     */\n    this._parent = parent;\n  }\n\n  /**\n   * Maps the reduced value onto another value using a function.\n   * @param {function(x:T1):T2} selector - The mapping function\n   * @returns {ReducerBuilder<T2>} A reducer builder that maps the value\n   */\n  select(selector) {\n    return this.map(selector);\n  }\n\n  /**\n   * Maps the reduced value onto another value using a function.\n   * @param {function(x:T1):T2} selector - The mapping function\n   * @returns {ReducerBuilder<T2>} A reducer builder that maps the value\n   */\n  map(selector) {\n    return this._wrap(new MappedReducer(this._parent, selector));\n  }\n\n\n  /**\n   * Maps a value onto a reducer and produces values from that producer until the next value.\n   * @param  {function(x:T2):ReducerBuilder<T2>} reducerSelector - The function to project a value onto a reducer builder.\n   * @return {ReducerBuilder<T2>} A reducer builder\n   */\n  flatReduce(reducerSelector) {\n    return this._wrap(new FlatReducedReducer(this._parent, reducerSelector));\n  }\n\n  /**\n   * Filters the value by applying a predicate function to the value\n   * @param {function(x:T):boolean} predicate - The predicate function\n   * @returns {ReducerBuilder<T>} A reducer builder that filters using the predicate\n   */\n  where(predicate) {\n    return this.filter(predicate);\n  }\n\n  /**\n   * Filters the value by applying a predicate function to the value\n   * @param {function(x:T):boolean} predicate - The predicate function\n   * @returns {ReducerBuilder<T>} A reducer builder that filters using the predicate\n   */\n  filter(predicate) {\n    return this._wrap(new FilteredReducer(this._parent, predicate));\n  }\n\n  /**\n   * Scopes the events that are visible to reducers in the fluent chain leading to this.\n   * @param  {function(e:Event):boolean} predicate - The predicate to determine if an event is in scope.\n   * @returns {ReducerBuilder<T>} A reducer builder that is scoped to events passing the predicate.\n   */\n  scoped(predicate) {\n    return this._wrap(new ScopedReducer(this._parent, predicate));\n  }\n\n  /**\n   * Accumulates the sum of the reduced values.\n   * @param {number|string} zeroValue - The zero value for the addition operator.\n   * @returns {ReducerBuilder<T>} A reducer builder that accumulates the sum\n   */\n  sum(zeroValue) {\n    return this._wrap(new FoldingReducer(this._parent, (acc, x) => acc + x, zeroValue));\n  }\n\n  /**\n   * Accumulates using the accumulate function over the reduced values.\n   * @param {function(acc:T2, value:T1): T2} accumulate - The accumulator function\n   * @param seedValue - The seed value for the accumulation.\n   * @returns {ReducerBuilder<T2>} A reducer builder that accumulates the sum\n   */\n  fold(accumulate, seedValue) {\n    return this._wrap(new FoldingReducer(this._parent, accumulate, seedValue));\n  }\n\n  /**\n   * Constructs a reducer from the query defined using the builder.\n   * @returns {ReducerQuery} a reducer query\n   */\n  build() {\n    return new ReducerQuery(this._parent);\n  }\n\n  /**\n   * <b>INTERNAL</b>\n   * Returns the most recent reducer in the fluent chain.\n   * @return {Reducer} The most recent reducer in the fluent chain.\n   */\n  unwrap() {\n    return this._parent;\n  }\n\n  /** ignore */\n  _wrap(reducer) {\n    return new ReducerBuilder(reducer);\n  }\n}"
+    "content": "import MappedReducer from './reducers/mapped-reducer.js';\nimport FlatReducedReducer from './reducers/flat-reduced-reducer.js';\nimport FilteredReducer from './reducers/filtered-reducer.js';\nimport ScopedReducer from './reducers/scoped-reducer.js';\nimport FoldingReducer from './reducers/folding-reducer.js';\nimport ReducerQuery from './reducer-query.js';\n\n/**\n * A fluent reducer-query builder.\n */\nexport default class ReducerBuilder {\n\n  /** @ignore */\n  constructor(parent) {\n    /** \n     * The previous reducer in the fluent chain.\n     * @type {Reducer}\n     * @private\n     */\n    this._parent = parent;\n  }\n\n  /**\n   * Maps the reduced value onto another value using a function.\n   * @param {function(x:T1):T2} selector - The mapping function\n   * @returns {ReducerBuilder<T2>} A reducer builder that maps the value\n   */\n  select(selector) {\n    return this.map(selector);\n  }\n\n  /**\n   * Maps the reduced value onto another value using a function.\n   * @param {function(x:T1):T2} selector - The mapping function\n   * @returns {ReducerBuilder<T2>} A reducer builder that maps the value\n   */\n  map(selector) {\n    return this._wrap(new MappedReducer(this._parent, selector));\n  }\n\n\n  /**\n   * Maps a value onto a reducer and produces values from that producer until the next value.\n   * @param  {function(x:T2):ReducerBuilder<T2>} reducerSelector - The function to project a value onto a reducer builder.\n   * @return {ReducerBuilder<T2>} A reducer builder\n   */\n  flatReduce(reducerSelector) {\n    return this._wrap(new FlatReducedReducer(this._parent, reducerSelector));\n  }\n\n  /**\n   * Filters the value by applying a predicate function to the value\n   * @param {function(x:T):boolean} predicate - The predicate function\n   * @returns {ReducerBuilder<T>} A reducer builder that filters using the predicate\n   */\n  where(predicate) {\n    return this.filter(predicate);\n  }\n\n  /**\n   * Filters the value by applying a predicate function to the value\n   * @param {function(x:T):boolean} predicate - The predicate function\n   * @returns {ReducerBuilder<T>} A reducer builder that filters using the predicate\n   */\n  filter(predicate) {\n    return this._wrap(new FilteredReducer(this._parent, predicate));\n  }\n\n  /**\n   * Scopes the events that are visible to reducers in the fluent chain leading to this.\n   * @param  {function(e:Event):boolean} predicate - The predicate to determine if an event is in scope.\n   * @returns {ReducerBuilder<T>} A reducer builder that is scoped to events passing the predicate.\n   */\n  scoped(predicate) {\n    return this._wrap(new ScopedReducer(this._parent, predicate));\n  }\n\n  /**\n   * Accumulates the sum of the reduced values.\n   * @param {number|string} zeroValue - The zero value for the addition operator.\n   * @returns {ReducerBuilder<T>} A reducer builder that accumulates the sum\n   */\n  sum(zeroValue) {\n    return this._wrap(new FoldingReducer(this._parent, (acc, x) => acc + x, zeroValue));\n  }\n\n  /**\n   * Accumulates using the accumulate function over the reduced values.\n   * @param {function(acc:T2, value:T1): T2} accumulate - The accumulator function\n   * @param seedValue - The seed value for the accumulation.\n   * @returns {ReducerBuilder<T2>} A reducer builder that accumulates the sum\n   */\n  fold(accumulate, seedValue) {\n    return this._wrap(new FoldingReducer(this._parent, accumulate, seedValue));\n  }\n\n  /**\n   * Constructs a reducer from the query defined using the builder.\n   * @returns {ReducerQuery} a reducer query\n   */\n  build() {\n    return new ReducerQuery(this._parent);\n  }\n\n  /**\n   * <b>INTERNAL</b>\n   * Returns the most recent reducer in the fluent chain.\n   * @return {Reducer} The most recent reducer in the fluent chain.\n   */\n  unwrap() {\n    return this._parent;\n  }\n\n  /** ignore */\n  _wrap(reducer) {\n    return new ReducerBuilder(reducer);\n  }\n}"
   },
   {
-    "__docId__": 40,
+    "__docId__": 37,
     "kind": "class",
     "static": true,
     "variation": null,
@@ -1239,11 +1033,11 @@
     "importPath": "requex/src/reducer-builder.js",
     "importStyle": "ReducerBuilder",
     "description": "A fluent reducer-query builder.",
-    "lineNumber": 12,
+    "lineNumber": 11,
     "interface": false
   },
   {
-    "__docId__": 41,
+    "__docId__": 38,
     "kind": "constructor",
     "static": false,
     "variation": null,
@@ -1252,7 +1046,7 @@
     "longname": "src/reducer-builder.js~ReducerBuilder#constructor",
     "access": null,
     "description": null,
-    "lineNumber": 15,
+    "lineNumber": 14,
     "ignore": true,
     "params": [
       {
@@ -1265,7 +1059,7 @@
     "generator": false
   },
   {
-    "__docId__": 42,
+    "__docId__": 39,
     "kind": "member",
     "static": false,
     "variation": null,
@@ -1274,7 +1068,7 @@
     "longname": "src/reducer-builder.js~ReducerBuilder#_parent",
     "access": "private",
     "description": "The previous reducer in the fluent chain.",
-    "lineNumber": 21,
+    "lineNumber": 20,
     "type": {
       "nullable": null,
       "types": [
@@ -1285,7 +1079,7 @@
     }
   },
   {
-    "__docId__": 43,
+    "__docId__": 40,
     "kind": "method",
     "static": false,
     "variation": null,
@@ -1294,7 +1088,7 @@
     "longname": "src/reducer-builder.js~ReducerBuilder#select",
     "access": null,
     "description": "Maps the reduced value onto another value using a function.",
-    "lineNumber": 29,
+    "lineNumber": 28,
     "unknown": [
       {
         "tagName": "@returns",
@@ -1324,7 +1118,7 @@
     "generator": false
   },
   {
-    "__docId__": 44,
+    "__docId__": 41,
     "kind": "method",
     "static": false,
     "variation": null,
@@ -1333,7 +1127,7 @@
     "longname": "src/reducer-builder.js~ReducerBuilder#map",
     "access": null,
     "description": "Maps the reduced value onto another value using a function.",
-    "lineNumber": 38,
+    "lineNumber": 37,
     "unknown": [
       {
         "tagName": "@returns",
@@ -1363,7 +1157,7 @@
     "generator": false
   },
   {
-    "__docId__": 45,
+    "__docId__": 42,
     "kind": "method",
     "static": false,
     "variation": null,
@@ -1372,7 +1166,7 @@
     "longname": "src/reducer-builder.js~ReducerBuilder#flatReduce",
     "access": null,
     "description": "Maps a value onto a reducer and produces values from that producer until the next value.",
-    "lineNumber": 48,
+    "lineNumber": 47,
     "params": [
       {
         "nullable": null,
@@ -1396,7 +1190,7 @@
     "generator": false
   },
   {
-    "__docId__": 46,
+    "__docId__": 43,
     "kind": "method",
     "static": false,
     "variation": null,
@@ -1405,7 +1199,7 @@
     "longname": "src/reducer-builder.js~ReducerBuilder#where",
     "access": null,
     "description": "Filters the value by applying a predicate function to the value",
-    "lineNumber": 57,
+    "lineNumber": 56,
     "unknown": [
       {
         "tagName": "@returns",
@@ -1435,7 +1229,7 @@
     "generator": false
   },
   {
-    "__docId__": 47,
+    "__docId__": 44,
     "kind": "method",
     "static": false,
     "variation": null,
@@ -1444,7 +1238,7 @@
     "longname": "src/reducer-builder.js~ReducerBuilder#filter",
     "access": null,
     "description": "Filters the value by applying a predicate function to the value",
-    "lineNumber": 66,
+    "lineNumber": 65,
     "unknown": [
       {
         "tagName": "@returns",
@@ -1474,7 +1268,7 @@
     "generator": false
   },
   {
-    "__docId__": 48,
+    "__docId__": 45,
     "kind": "method",
     "static": false,
     "variation": null,
@@ -1483,7 +1277,7 @@
     "longname": "src/reducer-builder.js~ReducerBuilder#scoped",
     "access": null,
     "description": "Scopes the events that are visible to reducers in the fluent chain leading to this.",
-    "lineNumber": 75,
+    "lineNumber": 74,
     "unknown": [
       {
         "tagName": "@returns",
@@ -1513,7 +1307,7 @@
     "generator": false
   },
   {
-    "__docId__": 49,
+    "__docId__": 46,
     "kind": "method",
     "static": false,
     "variation": null,
@@ -1522,7 +1316,7 @@
     "longname": "src/reducer-builder.js~ReducerBuilder#sum",
     "access": null,
     "description": "Accumulates the sum of the reduced values.",
-    "lineNumber": 84,
+    "lineNumber": 83,
     "unknown": [
       {
         "tagName": "@returns",
@@ -1553,7 +1347,7 @@
     "generator": false
   },
   {
-    "__docId__": 50,
+    "__docId__": 47,
     "kind": "method",
     "static": false,
     "variation": null,
@@ -1562,7 +1356,7 @@
     "longname": "src/reducer-builder.js~ReducerBuilder#fold",
     "access": null,
     "description": "Accumulates using the accumulate function over the reduced values.",
-    "lineNumber": 94,
+    "lineNumber": 93,
     "unknown": [
       {
         "tagName": "@returns",
@@ -1602,7 +1396,7 @@
     "generator": false
   },
   {
-    "__docId__": 51,
+    "__docId__": 48,
     "kind": "method",
     "static": false,
     "variation": null,
@@ -1611,7 +1405,7 @@
     "longname": "src/reducer-builder.js~ReducerBuilder#build",
     "access": null,
     "description": "Constructs a reducer from the query defined using the builder.",
-    "lineNumber": 102,
+    "lineNumber": 101,
     "unknown": [
       {
         "tagName": "@returns",
@@ -1630,7 +1424,7 @@
     "generator": false
   },
   {
-    "__docId__": 52,
+    "__docId__": 49,
     "kind": "method",
     "static": false,
     "variation": null,
@@ -1639,7 +1433,7 @@
     "longname": "src/reducer-builder.js~ReducerBuilder#unwrap",
     "access": null,
     "description": "<b>INTERNAL</b>\nReturns the most recent reducer in the fluent chain.",
-    "lineNumber": 111,
+    "lineNumber": 110,
     "params": [],
     "return": {
       "nullable": null,
@@ -1652,7 +1446,7 @@
     "generator": false
   },
   {
-    "__docId__": 53,
+    "__docId__": 50,
     "kind": "method",
     "static": false,
     "variation": null,
@@ -1661,7 +1455,7 @@
     "longname": "src/reducer-builder.js~ReducerBuilder#_wrap",
     "access": null,
     "description": "ignore",
-    "lineNumber": 116,
+    "lineNumber": 115,
     "params": [
       {
         "name": "reducer",
@@ -1678,7 +1472,7 @@
     "generator": false
   },
   {
-    "__docId__": 54,
+    "__docId__": 51,
     "kind": "file",
     "static": true,
     "variation": null,
@@ -1688,10 +1482,10 @@
     "access": null,
     "description": null,
     "lineNumber": 1,
-    "content": "import {VALUE} from './reducers/storage-keys.js';\nimport Option from './option.js';\n\n/**\n * <b>INTERNAL</b>\n * Provides context for executing reducers so they can store and retrieve state.\n */\nexport default class ReducerContext {\n  /**\n   * Constructs a context used to by a tree of reducers.\n   * @param {Object} - The previous auxillary state used to retrieve stored values.\n   * @param {Array<Event>} - The events to reduce.\n   */\n  constructor(previousAuxillary, eventMaybe) {\n    /**\n     * This is the current level of scope. I.e., the route from the root to the current reducer.\n     * @type {Array<string>}\n     */\n    this._route = [];\n    /**\n     * This is the previous auxillary state used to retrieve stored values.\n     * @type {Object}\n     */\n    this._previousAuxillary = previousAuxillary || {};\n    \n    /**\n     * This contains the auxillary state built up in a reduction pass. For example, this\n     * may include accumulator values for folds that cannot easily be derived from looking \n     * at the previous state.\n     * \n     * @type {Object}\n     *\n     * @example <caption>Illustration where previous state isn't the same as the accumulator</caption>\n     * From.events().ofAnyType().select(_ => 1).sum(0).select(x => 2 * x)\n     */\n    this.nextAuxillary = {};\n\n    this._event = eventMaybe;\n  }\n\n  /**\n   * Returns an option wrapping the event being processed or none if there is none or it is out of scope.\n   * @return {Option<Event>} The event or none\n   */\n  getEvent() {\n    return this._event;\n  }\n\n  /**\n   * Reduces the value of a child reducer and uses the storage key provided to address it in auxillary state.\n   * @param  {string} storageKey - The address to use for the child in auxillary state\n   * @param  {Reducer} reducer - The child reducer\n   * @return {Option<T>} The value if any produced in this context by the child reducer  \n   */\n  getValue(storageKey, reducer) {\n    return this._reduce(storageKey, reducer);\n  }\n\n  /**\n   * Reduces the value of a child reducer and uses the storage key provided to address it in auxillary state.\n   * Doesn't use previous auxillary state to derive the value (i.e., it is \"fresh\").\n   * @param  {string} storageKey - The address to use for the child in auxillary state\n   * @param  {Reducer} reducer - The child reducer\n   * @return {Option<T>} The value if any produced in this context by the child reducer  \n   */\n  getFreshValue(storageKey, reducer) {\n    return this._reduce(storageKey, reducer, true);\n  }\n\n  /**\n   * Stores a value in auxillary storage under the storage key.\n   * @param  {string} storageKey - The address to use to access the value in auxillary state.\n   * @param  value - The <i>serializable</i> value to store.\n   */\n  storeValue(storageKey, value) {\n    this.nextAuxillary[storageKey] = value;\n  }\n\n  /**\n   * Retrieves a value stored in the previous auxillary storage on the last reduction.\n   * @param  {string} storageKey - The address to use to access the value in auxillary state.\n   * @return  The value\n   */\n  getStoredValue(storageKey) {\n    return this._previousAuxillary[storageKey];\n  }\n\n  /**\n   * Returns the last value reduced by the current reducer if no storage key is provided otherwise that of\n   * the child with the address given by the storage key. Looks up this value in auxillary state.\n   * @param  {?string} storageKey - The address of the child or omitted for own value.\n   * @return {T} The last value reduced by the reducer\n   */\n  getPreviousReduction(storageKey = null) {\n    let previousEntry;\n    if (storageKey) {\n      previousEntry = \n        this._previousAuxillary && \n        this._previousAuxillary[storageKey] && \n        this._previousAuxillary[storageKey][VALUE];\n    } else {\n      previousEntry = this._previousAuxillary && this._previousAuxillary[VALUE];\n    }\n    return previousEntry && previousEntry.length ? Option.some(previousEntry[0]) : Option.none();\n  }\n\n  /**\n   * Scopes the context within the action callback to only hold events matching the predicate.\n   * @param  {function(e:Event):boolean} predicate - The filter over the events\n   * @param  {function():T} action - The callback\n   * @return {T} the value produced by the callback\n   */\n  scopedBy(predicate, action) {\n    const isEventInScope = this._event.reduce((_, e) => predicate(e), true);\n    let result;\n    if (isEventInScope) {\n      result = action(); \n    } else {\n      // TODO: could optimise this when we already have a value and aren't seeding by copying the existing state.\n      const event = this._event;\n      this._event = Option.none();\n      result = action();\n      this._event = event;\n    }\n    return result;\n  }\n\n  _reduce(storageKey, reducer, shouldUseFreshState = false) {\n    const parentNextAux = this.nextAuxillary;\n    const parentPrevAux = this._previousAuxillary;\n    this.nextAuxillary = parentNextAux[storageKey] || (parentNextAux[storageKey] = {});\n    this._previousAuxillary = !shouldUseFreshState && this._previousAuxillary && this._previousAuxillary[storageKey];\n    const newValue = reducer.reduce(this);\n    // TODO: Should protect against this being something non-serializable. I.e., a function or a reducer!\n    if (newValue.isSome) {\n      this.nextAuxillary[VALUE] = [newValue.get()];\n    } else if (this._previousAuxillary && this._previousAuxillary[VALUE] && this._previousAuxillary[VALUE].length) {\n      this.nextAuxillary[VALUE] = this._previousAuxillary[VALUE];\n    }\n    this.nextAuxillary = parentNextAux;\n    this._previousAuxillary = parentPrevAux;\n    return newValue;\n  }\n}"
+    "content": "import {VALUE} from './reducers/storage-keys.js';\nimport Option from './option.js';\n\n/**\n * <b>INTERNAL</b>\n * Provides context for executing reducers so they can store and retrieve state.\n */\nexport default class ReducerContext {\n  /**\n   * Constructs a context used to by a tree of reducers.\n   * @param {Object} - The previous auxillary state used to retrieve stored values.\n   * @param {Array<Event>} - The events to reduce.\n   */\n  constructor(previousAuxillary, eventMaybe) {\n    /**\n     * This is the current level of scope. I.e., the route from the root to the current reducer.\n     * @type {Array<string>}\n     */\n    this._route = [];\n    /**\n     * This is the previous auxillary state used to retrieve stored values.\n     * @type {Object}\n     */\n    this._previousAuxillary = previousAuxillary || {};\n    \n    /**\n     * This contains the auxillary state built up in a reduction pass. For example, this\n     * may include accumulator values for folds that cannot easily be derived from looking \n     * at the previous state.\n     * \n     * @type {Object}\n     *\n     * @example <caption>Illustration where previous state isn't the same as the accumulator</caption>\n     * From.events().ofAnyType().select(_ => 1).sum(0).select(x => 2 * x)\n     */\n    this.nextAuxillary = {};\n\n    this._event = eventMaybe;\n  }\n\n  /**\n   * Returns an option wrapping the event being processed or none if there is none or it is out of scope.\n   * @return {Option<Event>} The event or none\n   */\n  getEvent() {\n    return this._event;\n  }\n\n  /**\n   * Reduces the value of a child reducer and uses the storage key provided to address it in auxillary state.\n   * @param  {string} storageKey - The address to use for the child in auxillary state\n   * @param  {Reducer} reducer - The child reducer\n   * @return {Option<T>} The value if any produced in this context by the child reducer  \n   */\n  getValue(storageKey, reducer) {\n    return this._reduce(storageKey, reducer);\n  }\n\n  /**\n   * Reduces the value of a child reducer and uses the storage key provided to address it in auxillary state.\n   * Doesn't use previous auxillary state to derive the value (i.e., it is \"fresh\").\n   * @param  {string} storageKey - The address to use for the child in auxillary state\n   * @param  {Reducer} reducer - The child reducer\n   * @return {Option<T>} The value if any produced in this context by the child reducer  \n   */\n  getFreshValue(storageKey, reducer) {\n    return this._reduce(storageKey, reducer, true);\n  }\n\n  /**\n   * Stores a value in auxillary storage under the storage key.\n   * @param  {string} storageKey - The address to use to access the value in auxillary state.\n   * @param  value - The <i>serializable</i> value to store.\n   */\n  storeValue(storageKey, value) {\n    this.nextAuxillary[storageKey] = [value];\n  }\n\n  /**\n   * Retrieves a value stored in the previous auxillary storage on the last reduction.\n   * @param  {string} storageKey - The address to use to access the value in auxillary state.\n   * @return {Option} The value option\n   */\n  getStoredValue(storageKey) {\n    if (this._previousAuxillary && \n        this._previousAuxillary[storageKey] &&\n        this._previousAuxillary[storageKey].length)\n    {\n      return Option.some(this._previousAuxillary[storageKey][0]);\n    }\n    return Option.none();\n  }\n\n  /**\n   * Returns the last value reduced by the current reducer if no storage key is provided otherwise that of\n   * the child with the address given by the storage key. Looks up this value in auxillary state.\n   * @param  {?string} storageKey - The address of the child or omitted for own value.\n   * @return {T} The last value reduced by the reducer\n   */\n  getPreviousReduction(storageKey = null) {\n    let previousEntry;\n    if (storageKey) {\n      previousEntry = \n        this._previousAuxillary && \n        this._previousAuxillary[storageKey] && \n        this._previousAuxillary[storageKey][VALUE];\n    } else {\n      previousEntry = this._previousAuxillary && this._previousAuxillary[VALUE];\n    }\n    return previousEntry && previousEntry.length ? Option.some(previousEntry[0]) : Option.none();\n  }\n\n  /**\n   * Scopes the context within the action callback to only hold events matching the predicate.\n   * @param  {function(e:Event):boolean} predicate - The filter over the events\n   * @param  {function():T} action - The callback\n   * @return {T} the value produced by the callback\n   */\n  scopedBy(predicate, action) {\n    const isEventInScope = this._event.reduce((_, e) => predicate(e), true);\n    let result;\n    if (isEventInScope) {\n      result = action(); \n    } else {\n      // TODO: could optimise this when we already have a value and aren't seeding by copying the existing state.\n      const event = this._event;\n      this._event = Option.none();\n      result = action();\n      this._event = event;\n    }\n    return result;\n  }\n\n  _reduce(storageKey, reducer, shouldUseFreshState = false) {\n    const parentNextAux = this.nextAuxillary;\n    const parentPrevAux = this._previousAuxillary;\n    this.nextAuxillary = parentNextAux[storageKey] || (parentNextAux[storageKey] = {});\n    this._previousAuxillary = !shouldUseFreshState && this._previousAuxillary && this._previousAuxillary[storageKey];\n    const newValue = reducer.reduce(this);\n    // TODO: Should protect against this being something non-serializable. I.e., a function or a reducer!\n    if (newValue.isSome) {\n      this.nextAuxillary[VALUE] = [newValue.get()];\n    } else if (this._previousAuxillary && this._previousAuxillary[VALUE] && this._previousAuxillary[VALUE].length) {\n      this.nextAuxillary[VALUE] = this._previousAuxillary[VALUE];\n    }\n    this.nextAuxillary = parentNextAux;\n    this._previousAuxillary = parentPrevAux;\n    return newValue;\n  }\n}"
   },
   {
-    "__docId__": 55,
+    "__docId__": 52,
     "kind": "class",
     "static": true,
     "variation": null,
@@ -1707,7 +1501,7 @@
     "interface": false
   },
   {
-    "__docId__": 56,
+    "__docId__": 53,
     "kind": "constructor",
     "static": false,
     "variation": null,
@@ -1742,7 +1536,7 @@
     "generator": false
   },
   {
-    "__docId__": 57,
+    "__docId__": 54,
     "kind": "member",
     "static": false,
     "variation": null,
@@ -1762,7 +1556,7 @@
     }
   },
   {
-    "__docId__": 58,
+    "__docId__": 55,
     "kind": "member",
     "static": false,
     "variation": null,
@@ -1782,7 +1576,7 @@
     }
   },
   {
-    "__docId__": 59,
+    "__docId__": 56,
     "kind": "member",
     "static": false,
     "variation": null,
@@ -1805,7 +1599,7 @@
     }
   },
   {
-    "__docId__": 60,
+    "__docId__": 57,
     "kind": "member",
     "static": false,
     "variation": null,
@@ -1823,7 +1617,7 @@
     }
   },
   {
-    "__docId__": 61,
+    "__docId__": 58,
     "kind": "method",
     "static": false,
     "variation": null,
@@ -1845,7 +1639,7 @@
     "generator": false
   },
   {
-    "__docId__": 62,
+    "__docId__": 59,
     "kind": "method",
     "static": false,
     "variation": null,
@@ -1888,7 +1682,7 @@
     "generator": false
   },
   {
-    "__docId__": 63,
+    "__docId__": 60,
     "kind": "method",
     "static": false,
     "variation": null,
@@ -1931,7 +1725,7 @@
     "generator": false
   },
   {
-    "__docId__": 64,
+    "__docId__": 61,
     "kind": "method",
     "static": false,
     "variation": null,
@@ -1966,7 +1760,7 @@
     "generator": false
   },
   {
-    "__docId__": 65,
+    "__docId__": 62,
     "kind": "method",
     "static": false,
     "variation": null,
@@ -1991,15 +1785,15 @@
     "return": {
       "nullable": null,
       "types": [
-        "*"
+        "Option"
       ],
       "spread": false,
-      "description": "The value"
+      "description": "The value option"
     },
     "generator": false
   },
   {
-    "__docId__": 66,
+    "__docId__": 63,
     "kind": "method",
     "static": false,
     "variation": null,
@@ -2008,7 +1802,7 @@
     "longname": "src/reducer-context.js~ReducerContext#getPreviousReduction",
     "access": null,
     "description": "Returns the last value reduced by the current reducer if no storage key is provided otherwise that of\nthe child with the address given by the storage key. Looks up this value in auxillary state.",
-    "lineNumber": 94,
+    "lineNumber": 100,
     "params": [
       {
         "nullable": true,
@@ -2032,7 +1826,7 @@
     "generator": false
   },
   {
-    "__docId__": 67,
+    "__docId__": 64,
     "kind": "method",
     "static": false,
     "variation": null,
@@ -2041,7 +1835,7 @@
     "longname": "src/reducer-context.js~ReducerContext#scopedBy",
     "access": null,
     "description": "Scopes the context within the action callback to only hold events matching the predicate.",
-    "lineNumber": 113,
+    "lineNumber": 119,
     "params": [
       {
         "nullable": null,
@@ -2075,7 +1869,7 @@
     "generator": false
   },
   {
-    "__docId__": 68,
+    "__docId__": 65,
     "kind": "member",
     "static": false,
     "variation": null,
@@ -2084,7 +1878,7 @@
     "longname": "src/reducer-context.js~ReducerContext#_event",
     "access": null,
     "description": null,
-    "lineNumber": 121,
+    "lineNumber": 127,
     "undocument": true,
     "type": {
       "types": [
@@ -2093,7 +1887,7 @@
     }
   },
   {
-    "__docId__": 69,
+    "__docId__": 66,
     "kind": "member",
     "static": false,
     "variation": null,
@@ -2102,7 +1896,7 @@
     "longname": "src/reducer-context.js~ReducerContext#_event",
     "access": null,
     "description": null,
-    "lineNumber": 123,
+    "lineNumber": 129,
     "undocument": true,
     "type": {
       "types": [
@@ -2111,7 +1905,7 @@
     }
   },
   {
-    "__docId__": 70,
+    "__docId__": 67,
     "kind": "method",
     "static": false,
     "variation": null,
@@ -2120,7 +1914,7 @@
     "longname": "src/reducer-context.js~ReducerContext#_reduce",
     "access": null,
     "description": null,
-    "lineNumber": 128,
+    "lineNumber": 134,
     "undocument": true,
     "params": [
       {
@@ -2153,7 +1947,7 @@
     "generator": false
   },
   {
-    "__docId__": 71,
+    "__docId__": 68,
     "kind": "member",
     "static": false,
     "variation": null,
@@ -2162,7 +1956,61 @@
     "longname": "src/reducer-context.js~ReducerContext#nextAuxillary",
     "access": null,
     "description": null,
-    "lineNumber": 131,
+    "lineNumber": 137,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 69,
+    "kind": "member",
+    "static": false,
+    "variation": null,
+    "name": "_previousAuxillary",
+    "memberof": "src/reducer-context.js~ReducerContext",
+    "longname": "src/reducer-context.js~ReducerContext#_previousAuxillary",
+    "access": null,
+    "description": null,
+    "lineNumber": 138,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 70,
+    "kind": "member",
+    "static": false,
+    "variation": null,
+    "name": "nextAuxillary",
+    "memberof": "src/reducer-context.js~ReducerContext",
+    "longname": "src/reducer-context.js~ReducerContext#nextAuxillary",
+    "access": null,
+    "description": null,
+    "lineNumber": 146,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 71,
+    "kind": "member",
+    "static": false,
+    "variation": null,
+    "name": "_previousAuxillary",
+    "memberof": "src/reducer-context.js~ReducerContext",
+    "longname": "src/reducer-context.js~ReducerContext#_previousAuxillary",
+    "access": null,
+    "description": null,
+    "lineNumber": 147,
     "undocument": true,
     "type": {
       "types": [
@@ -2172,60 +2020,6 @@
   },
   {
     "__docId__": 72,
-    "kind": "member",
-    "static": false,
-    "variation": null,
-    "name": "_previousAuxillary",
-    "memberof": "src/reducer-context.js~ReducerContext",
-    "longname": "src/reducer-context.js~ReducerContext#_previousAuxillary",
-    "access": null,
-    "description": null,
-    "lineNumber": 132,
-    "undocument": true,
-    "type": {
-      "types": [
-        "*"
-      ]
-    }
-  },
-  {
-    "__docId__": 73,
-    "kind": "member",
-    "static": false,
-    "variation": null,
-    "name": "nextAuxillary",
-    "memberof": "src/reducer-context.js~ReducerContext",
-    "longname": "src/reducer-context.js~ReducerContext#nextAuxillary",
-    "access": null,
-    "description": null,
-    "lineNumber": 140,
-    "undocument": true,
-    "type": {
-      "types": [
-        "*"
-      ]
-    }
-  },
-  {
-    "__docId__": 74,
-    "kind": "member",
-    "static": false,
-    "variation": null,
-    "name": "_previousAuxillary",
-    "memberof": "src/reducer-context.js~ReducerContext",
-    "longname": "src/reducer-context.js~ReducerContext#_previousAuxillary",
-    "access": null,
-    "description": null,
-    "lineNumber": 141,
-    "undocument": true,
-    "type": {
-      "types": [
-        "*"
-      ]
-    }
-  },
-  {
-    "__docId__": 75,
     "kind": "file",
     "static": true,
     "variation": null,
@@ -2235,10 +2029,10 @@
     "access": null,
     "description": null,
     "lineNumber": 1,
-    "content": "import ReducerContext from './reducer-context.js';\nimport {ROOT} from './reducers/storage-keys.js';\nimport Option from './option.js';\n\n/**\n * An entry-point to a tree of reducers forming a reducer query. Provides convenience methods for reducing events.\n */\nexport default class ReducerQuery {\n  /**\n   * <b>INTERNAL</b>\n   * Constructs a reducer query from a reducer.\n   * @param {Reducer} - The root reducer to wrap.\n   * @access internal\n   */\n  constructor(reducer) {\n    this._reducer = reducer;\n    this._eventIndex = 0;\n  }\n\n  /**\n   * @typedef {Object} PreviousState\n   * @property {Object} previousState - The last produced state.\n   * @property {Object} previousAuxillary - The last auxillary state that contains accumulator values etc.\n   * @property {?Array<Event>} events - The events to reduce (should only set one of `events` or `event` but not both)\n   * @property {?Event} events - The event to reduce (should only set one of `events` or `event` but not both)\n   */\n  \n  /**\n   * @typedef {Object} NewState\n   * @property {Object} newState - The newly produced state or the previous state if unchanged.\n   * @property {Object} newAuxillary - The newly produced auxillary state that contains accumulator values etc.\n   */\n\n  /**\n   * Reduces new events and the previous state into a new state.\n   * @param  {?PreviousState} context - The last produced state if any.\n   * @return {NewState} - The newly produced state.\n   */\n  reduce(context) {\n    const events = context && (context.events || [context.event]) || [];\n    const eventsMaybe = events.length ? events.map(Option.some) : [Option.none()];\n    const output = eventsMaybe.reduce((acc, e) => {\n      const internalContext = new ReducerContext(acc.auxillary, e);\n      const updateMaybe = internalContext.getValue(ROOT, this._reducer);\n      const update = updateMaybe.isSome ? updateMaybe : acc.update;\n      return {auxillary: internalContext.nextAuxillary, update};\n    }, {auxillary: context && context.previousAuxillary, update: Option.none()});\n\n    const newAuxillary = output.auxillary;\n    const newState = output.update.otherwise(context && context.previousState);\n    return {newState, newAuxillary};\n  }\n\n  /**\n   * Returns a store.\n   * @param  {?NewState} previousState - The last produced state by another store if any.\n   * @return {Object} A store\n   * @property {function(e:Event)} dispatch - Dispatches an event into the store to update the state.\n   * @property {function():T} getState - Returns the current state.\n   */\n  toStore(previousState) {\n    let state = previousState || reduce();\n    return {\n      dispatch: event => state = reduce({previousAuxillary: context.newAuxillary, previousState: context.newState, event}),\n      getState: () => state.newState\n    };\n  }\n}"
+    "content": "import ReducerContext from './reducer-context.js';\nimport {ROOT} from './reducers/storage-keys.js';\nimport Option from './option.js';\n\n/**\n * An entry-point to a tree of reducers forming a reducer query. Provides convenience methods for reducing events.\n */\nexport default class ReducerQuery {\n  /**\n   * <b>INTERNAL</b>\n   * Constructs a reducer query from a reducer.\n   * @param {Reducer} - The root reducer to wrap.\n   * @access internal\n   */\n  constructor(reducer) {\n    this._reducer = reducer;\n    this._eventIndex = 0;\n  }\n\n  /**\n   * @typedef {Object} PreviousState\n   * @property {Object} previousState - The last produced state.\n   * @property {Object} previousAuxillary - The last auxillary state that contains accumulator values etc.\n   * @property {?Array<Event>} events - The events to reduce (should only set one of `events` or `event` but not both)\n   * @property {?Event} events - The event to reduce (should only set one of `events` or `event` but not both)\n   */\n  \n  /**\n   * @typedef {Object} NewState\n   * @property {Object} newState - The newly produced state or the previous state if unchanged.\n   * @property {Object} newAuxillary - The newly produced auxillary state that contains accumulator values etc.\n   */\n\n  /**\n   * Reduces new events and the previous state into a new state.\n   * @param  {?PreviousState} context - The last produced state if any.\n   * @return {NewState} - The newly produced state.\n   */\n  reduce(context) {\n    const events = context && (context.events || [context.event]) || [];\n    const hasSeeded = context && context.previousAuxillary && true;\n    const eventsMaybe = \n      events.length \n      ? events.map(Option.some) \n      : hasSeeded\n        ? []\n        : [Option.none()];\n    const output = eventsMaybe.reduce((acc, e) => {\n      const internalContext = new ReducerContext(acc.auxillary, e);\n      const updateMaybe = internalContext.getValue(ROOT, this._reducer);\n      const update = updateMaybe.isSome ? updateMaybe : acc.update;\n      return {auxillary: internalContext.nextAuxillary, update};\n    }, {auxillary: context && context.previousAuxillary, update: Option.none()});\n\n    const newAuxillary = output.auxillary;\n    const newState = output.update.otherwise(context && context.previousState);\n    return {newState, newAuxillary};\n  }\n\n  /**\n   * Returns a store.\n   * @param  {?NewState} previousState - The last produced state by another store if any.\n   * @return {Object} A store\n   * @property {function(e:Event)} dispatch - Dispatches an event into the store to update the state.\n   * @property {function():T} getState - Returns the current state.\n   */\n  toStore(previousState) {\n    let state = previousState || this.reduce();\n    return {\n      dispatch: event => state = this.reduce({previousAuxillary: state.newAuxillary, previousState: state.newState, event}),\n      getState: () => state.newState,\n      replaceReducer: reducerQuery => reducerQuery.toStore(state)\n    };\n  }\n}"
   },
   {
-    "__docId__": 76,
+    "__docId__": 73,
     "kind": "class",
     "static": true,
     "variation": null,
@@ -2254,7 +2048,7 @@
     "interface": false
   },
   {
-    "__docId__": 77,
+    "__docId__": 74,
     "kind": "constructor",
     "static": false,
     "variation": null,
@@ -2279,7 +2073,7 @@
     "generator": false
   },
   {
-    "__docId__": 78,
+    "__docId__": 75,
     "kind": "member",
     "static": false,
     "variation": null,
@@ -2297,7 +2091,7 @@
     }
   },
   {
-    "__docId__": 79,
+    "__docId__": 76,
     "kind": "member",
     "static": false,
     "variation": null,
@@ -2315,7 +2109,7 @@
     }
   },
   {
-    "__docId__": 80,
+    "__docId__": 77,
     "kind": "typedef",
     "static": true,
     "variation": null,
@@ -2375,7 +2169,7 @@
     }
   },
   {
-    "__docId__": 81,
+    "__docId__": 78,
     "kind": "typedef",
     "static": true,
     "variation": null,
@@ -2415,7 +2209,7 @@
     }
   },
   {
-    "__docId__": 82,
+    "__docId__": 79,
     "kind": "method",
     "static": false,
     "variation": null,
@@ -2448,7 +2242,7 @@
     "generator": false
   },
   {
-    "__docId__": 83,
+    "__docId__": 80,
     "kind": "method",
     "static": false,
     "variation": null,
@@ -2457,7 +2251,7 @@
     "longname": "src/reducer-query.js~ReducerQuery#toStore",
     "access": null,
     "description": "Returns a store.",
-    "lineNumber": 61,
+    "lineNumber": 67,
     "params": [
       {
         "nullable": true,
@@ -2503,7 +2297,7 @@
     "generator": false
   },
   {
-    "__docId__": 84,
+    "__docId__": 81,
     "kind": "file",
     "static": true,
     "variation": null,
@@ -2516,7 +2310,7 @@
     "content": "import Reducer from './reducer.js';\nimport Option from '../option.js';\n\n/**\n * <b>INTERNAL</b>\n * Yields any events in the context.\n */\nexport default class AnyEventReducer extends Reducer {\n  /** @ignore */\n  reduce(context) {\n    return context.getEvent();\n  }\n}"
   },
   {
-    "__docId__": 85,
+    "__docId__": 82,
     "kind": "class",
     "static": true,
     "variation": null,
@@ -2535,7 +2329,7 @@
     ]
   },
   {
-    "__docId__": 86,
+    "__docId__": 83,
     "kind": "method",
     "static": false,
     "variation": null,
@@ -2562,7 +2356,7 @@
     "generator": false
   },
   {
-    "__docId__": 87,
+    "__docId__": 84,
     "kind": "file",
     "static": true,
     "variation": null,
@@ -2572,31 +2366,10 @@
     "access": null,
     "description": null,
     "lineNumber": 1,
-    "content": "import CollectionReducer from './collection-reducer.js';\n\n/** @ignore */\nconst emptyArray = [];\n\n/** @ignore */\nconst arrayApi = {\n  prepare: xs => xs.slice(), // Copy so we can cheat in the put and just use push, TODO: Use mutation for remove and map too.\n  empty: () => emptyArray,\n  remove: (array, itemKey, removedKeys) => array.filter(x => {\n    const key = itemKey(x);\n    return !removedKeys.includes(key);\n  }),\n  map: (array, selector) => array.map(selector),\n  put: (array, key, value) => {\n    array.push(value);\n    return array;\n  }\n};\n\n/**\n * Reducer for building linked lists.\n */\nexport default class ArrayReducer extends CollectionReducer {\n  /** \n   * Builds an array reducer. See {@link CollectionReducer} for more information.\n   * @param  {CollectionConfiguration} configuration - the configuration needed to build the collection\n   */\n  constructor(configuration) {\n    super(arrayApi, configuration);\n  }\n}"
+    "content": "import CollectionReducer from './collection-reducer.js';\nimport MappedReducer from './mapped-reducer.js';\n\n/** @ignore */\nconst arrayApi = {\n  prepare: ({keys, values}) => ({keys: keys.slice(), values:values.slice()}), // Copy so we can cheat in the put and just use push, TODO: Use mutation for remove and map too.\n  empty: () => ({keys: [], values: []}),\n  remove: ({keys, values}, key) => {\n    const index = keys.indexOf(key);\n    if (index >= 0) {\n      keys.splice(index, 1);\n      values.splice(index, 1);\n    }\n  },\n  put: ({keys, values}, key, value) => {\n    const index = keys.indexOf(key);\n    if (index >= 0) {\n      values[index] = value;\n    } else {\n      keys.push(key);\n      values.push(value);\n    }\n  },\n  forEach: ({keys, values}, f) => keys.forEach((key, i) => f(key, values[i]))\n};\n\n/**\n * Reducer for building arrays.\n */\nexport default class ArrayReducer extends MappedReducer {\n  /** \n   * Builds an array reducer. See {@link CollectionReducer} for more information.\n   * @param  {CollectionConfiguration} configuration - the configuration needed to build the collection\n   */\n  constructor(configuration) {\n    super(new CollectionReducer(arrayApi, configuration), ({keys, values}) => values);\n  }\n}"
   },
   {
-    "__docId__": 88,
-    "kind": "variable",
-    "static": true,
-    "variation": null,
-    "name": "emptyArray",
-    "memberof": "src/reducers/array-reducer.js",
-    "longname": "src/reducers/array-reducer.js~emptyArray",
-    "access": null,
-    "export": false,
-    "importPath": "requex/src/reducers/array-reducer.js",
-    "importStyle": null,
-    "description": null,
-    "lineNumber": 4,
-    "ignore": true,
-    "type": {
-      "types": [
-        "*"
-      ]
-    }
-  },
-  {
-    "__docId__": 89,
+    "__docId__": 85,
     "kind": "variable",
     "static": true,
     "variation": null,
@@ -2608,7 +2381,7 @@
     "importPath": "requex/src/reducers/array-reducer.js",
     "importStyle": null,
     "description": null,
-    "lineNumber": 7,
+    "lineNumber": 5,
     "ignore": true,
     "type": {
       "types": [
@@ -2617,7 +2390,7 @@
     }
   },
   {
-    "__docId__": 90,
+    "__docId__": 86,
     "kind": "class",
     "static": true,
     "variation": null,
@@ -2628,15 +2401,15 @@
     "export": true,
     "importPath": "requex/src/reducers/array-reducer.js",
     "importStyle": "ArrayReducer",
-    "description": "Reducer for building linked lists.",
-    "lineNumber": 24,
+    "description": "Reducer for building arrays.",
+    "lineNumber": 30,
     "interface": false,
     "extends": [
-      "src/reducers/collection-reducer.js~CollectionReducer"
+      "src/reducers/mapped-reducer.js~MappedReducer"
     ]
   },
   {
-    "__docId__": 91,
+    "__docId__": 87,
     "kind": "constructor",
     "static": false,
     "variation": null,
@@ -2645,7 +2418,7 @@
     "longname": "src/reducers/array-reducer.js~ArrayReducer#constructor",
     "access": null,
     "description": "Builds an array reducer. See {@link CollectionReducer} for more information.",
-    "lineNumber": 29,
+    "lineNumber": 35,
     "params": [
       {
         "nullable": null,
@@ -2661,7 +2434,7 @@
     "generator": false
   },
   {
-    "__docId__": 92,
+    "__docId__": 88,
     "kind": "file",
     "static": true,
     "variation": null,
@@ -2671,10 +2444,10 @@
     "access": null,
     "description": null,
     "lineNumber": 1,
-    "content": "import Reducer from './reducer.js';\nimport Option from '../option.js';\nimport NeverReducer from './never-reducer.js';\nimport {ADDITION_SOURCE, REMOVAL_SOURCE, ARGS_PREFIX} from './storage-keys.js';\n\n/**\n * Returns the single object wrapped in an array or the array if the argument is an array.\n * @param {T|Array<T>} itemOrArray - The item or array of items\n * @return {Array<T>} An array of items\n */\nconst asArray = itemOrArray =>\n  itemOrArray instanceof Array ? itemOrArray : [itemOrArray];\n\n/**\n * <b>INTERNAL</b>\n * A reducer of a collection that may itself contain reducers.\n */\nexport default class CollectionReducer extends Reducer {\n\n  /**\n   * Builds a reducer that creates of a collection from a reducer for additions, a reducer for removals, a function to construct\n   * items and a function to extract the key from a constructed item. Keys are used for removal and addressing the auxillary\n   * state to ensure accumulators are seeded correctly etc.\n   * @param  {CollectionConfiguration} configuration - the configuration needed to build the collection\n   */\n  constructor(collectionApi, configuration) {\n    super();\n    const {additions, itemFactory, itemKey} = configuration;\n    const removals = configuration.removals && configuration.removals.unwrap() || new NeverReducer();\n    this._additionSource = additions.unwrap();\n    this._removalSource = removals;\n    this._keySelector = itemKey;\n    this._elementSelector = itemFactory;\n    this._collectionApi = collectionApi;\n  }\n\n  /** @ignore */\n  reduce(context) {\n    const previous = context.getPreviousReduction();\n    let hasChanged = previous.isNone;\n    let changeTracker = { hasChanged: previous.isNone };\n    const existingItems = previous.otherwise(this._collectionApi.empty());\n    let items = this._collectionApi.prepare(existingItems);\n    // REMOVE\n    items = this._filterRemovals(context, items, changeTracker)\n    // UPDATE REMAINING\n    items = this._updateRemaining(context, items, changeTracker);\n    // ADD + SEED NEW\n    items = this._consAdditions(context, items, changeTracker);\n    return changeTracker.hasChanged ? Option.some(items) : Option.none();\n  }\n\n  _filterRemovals(context, items, changeTracker) {\n    const removals = context.getValue(REMOVAL_SOURCE, this._removalSource);\n    if (removals.isSome) {\n      changeTracker.hasChanged = true;\n      const removedKeys = asArray(removals.get());\n      return this._collectionApi.remove(items, this._keySelector, removedKeys);\n    }\n    return items;\n  }\n\n  _updateRemaining(context, items, changeTracker) {\n    return this._collectionApi.map(items, x => {\n      const key = this._keySelector(x);\n      const reducerArgs = context.getStoredValue(ARGS_PREFIX + key);\n      context.storeValue(ARGS_PREFIX + key, reducerArgs); // Keep for next time.\n      const reducer = this._elementSelector(reducerArgs);\n      let newValue = x;\n      // If it is a reducer we reduce the new value.\n      if (reducer.unwrap) {\n        const reducedValue = context.getValue(key, reducer.unwrap());\n        changeTracker.hasChanged = changeTracker.hasChanged || reducedValue.isSome;\n        newValue = reducedValue.otherwise(x);\n      }\n      return newValue;\n    });\n  }\n\n  _consAdditions(context, items, changeTracker) {\n    const additions = context.getValue(ADDITION_SOURCE, this._additionSource);\n    if (additions.isSome) {\n      changeTracker.hasChanged = true;\n      return asArray(additions.get()).reduce((acc, reducerArgs) => {\n        const reducerOrValue = this._elementSelector(reducerArgs);\n        let value;\n        let key; \n        if (reducerOrValue.unwrap) {\n          const reducedValue = context.getFreshValue('temp', reducerOrValue.unwrap());\n          value = reducedValue.get();\n          key = this._keySelector(value);\n          // Move storage to under actual key. TODO: refactor this.\n          context.getValue(key, {reduce: () => reducedValue});\n        } else {\n          value = reducerOrValue;\n          key = this._keySelector(value);\n        }\n        context.storeValue(ARGS_PREFIX + key, reducerArgs); // Keep for next time.\n        return this._collectionApi.put(acc, key, value);\n      }, items);\n    }\n    return items;\n  }\n}"
+    "content": "import Reducer from './reducer.js';\nimport Option from '../option.js';\nimport NeverReducer from './never-reducer.js';\nimport MergeReducer from './merge-reducer.js';\nimport {ADDED, REMOVED, CLEARED} from '../collection-delta-kinds.js';\nimport {EXTRA, SOURCE} from './storage-keys.js';\n\n/**\n * Returns the single object wrapped in an array or the array if the argument is an array.\n * @param {T|Array<T>} itemOrArray - The item or array of items\n * @return {Array<T>} An array of items\n */\nconst asArray = itemOrArray =>\n  itemOrArray instanceof Array ? itemOrArray : [itemOrArray];\n\n/**\n * <b>INTERNAL</b>\n * A reducer of a collection that may itself contain reducers.\n */\nexport default class CollectionReducer extends Reducer {\n\n  /**\n   * Builds a reducer of a collection from an item factory and an array of reducers to supply deltas to the collection.\n   * @param  {CollectionConfiguration} configuration - the configuration needed to build the collection\n   */\n  constructor(collectionApi, {itemFactory, deltas}) {\n    super();\n    this._itemFactory = itemFactory;\n    this._deltas = new MergeReducer(deltas);\n    this._collectionApi = collectionApi;\n  }\n\n  /** @ignore */\n  reduce(context) {\n    const previous = context.getPreviousReduction();\n    const existingReducerArgs = context.getStoredValue(EXTRA).otherwise({});\n    const deltas = context.getValue(SOURCE, this._deltas);\n    if (deltas.isSome || previous.isSome) {\n      const changeTracker = { hasChanged: false };\n      const newReducerArgs = {};\n      let items = previous.map(this._collectionApi.prepare).otherwise(this._collectionApi.empty());\n      const newDeltas = Array.prototype.concat.apply([], deltas.otherwise([]));\n      newDeltas.forEach(delta => {\n        changeTracker.hasChanged = true;\n        switch (delta.kind) {\n          case ADDED: \n            this._added(context, items, newReducerArgs, delta.key, delta.value);\n            break;\n          case REMOVED: \n            this._collectionApi.remove(items, delta.key);\n            break;\n          case CLEARED: \n            items = this._collectionApi.empty();\n            break;\n          default: \n            throw new Error(`Delta kind argument out of range: ${delta.kind}`);\n        }\n      });\n      this._collectionApi.forEach(items, (key, value) => \n        this._updated(context, items, changeTracker, existingReducerArgs, newReducerArgs, key));\n      context.storeValue(EXTRA, newReducerArgs);\n      if (changeTracker.hasChanged) {\n        return Option.some(items);\n      }\n      return Option.none();\n    }\n    return Option.some(this._collectionApi.empty());\n  }\n\n  _added(context, items, newReducerArgs, key, args) {\n    newReducerArgs[key] = args;\n    let item = this._itemFactory(args);\n    if (item.unwrap) {\n      item = context.getFreshValue(key, item.unwrap()).otherwise(undefined);\n    }\n    this._collectionApi.put(items, key, item);\n  }\n\n  _updated(context, items, changeTracker, existingReducerArgs, newReducerArgs, key) {\n    const args = existingReducerArgs[key]; // TODO: What about undefined as an argument? Should we allow that?\n    if (args) {\n      newReducerArgs[key] = args;\n      const reducer = this._itemFactory(args);\n      if (reducer.unwrap) {\n        const item = context.getValue(key, reducer.unwrap());\n        if (item.isSome) {\n          changeTracker.hasChanged = true;\n          this._collectionApi.put(items, key, item.get());\n        }\n      }\n    }\n  }\n}"
   },
   {
-    "__docId__": 93,
+    "__docId__": 89,
     "kind": "variable",
     "static": true,
     "variation": null,
@@ -2686,7 +2459,7 @@
     "importPath": "requex/src/reducers/collection-reducer.js",
     "importStyle": null,
     "description": "Returns the single object wrapped in an array or the array if the argument is an array.",
-    "lineNumber": 11,
+    "lineNumber": 13,
     "params": [
       {
         "nullable": null,
@@ -2715,7 +2488,7 @@
     }
   },
   {
-    "__docId__": 94,
+    "__docId__": 90,
     "kind": "class",
     "static": true,
     "variation": null,
@@ -2727,14 +2500,14 @@
     "importPath": "requex/src/reducers/collection-reducer.js",
     "importStyle": "CollectionReducer",
     "description": "<b>INTERNAL</b>\nA reducer of a collection that may itself contain reducers.",
-    "lineNumber": 18,
+    "lineNumber": 20,
     "interface": false,
     "extends": [
       "src/reducers/reducer.js~Reducer"
     ]
   },
   {
-    "__docId__": 95,
+    "__docId__": 91,
     "kind": "constructor",
     "static": false,
     "variation": null,
@@ -2742,7 +2515,7 @@
     "memberof": "src/reducers/collection-reducer.js~CollectionReducer",
     "longname": "src/reducers/collection-reducer.js~CollectionReducer#constructor",
     "access": null,
-    "description": "Builds a reducer that creates of a collection from a reducer for additions, a reducer for removals, a function to construct\nitems and a function to extract the key from a constructed item. Keys are used for removal and addressing the auxillary\nstate to ensure accumulators are seeded correctly etc.",
+    "description": "Builds a reducer of a collection from an item factory and an array of reducers to supply deltas to the collection.",
     "lineNumber": 26,
     "params": [
       {
@@ -2759,13 +2532,49 @@
     "generator": false
   },
   {
-    "__docId__": 96,
+    "__docId__": 92,
     "kind": "member",
     "static": false,
     "variation": null,
-    "name": "_additionSource",
+    "name": "_itemFactory",
     "memberof": "src/reducers/collection-reducer.js~CollectionReducer",
-    "longname": "src/reducers/collection-reducer.js~CollectionReducer#_additionSource",
+    "longname": "src/reducers/collection-reducer.js~CollectionReducer#_itemFactory",
+    "access": null,
+    "description": null,
+    "lineNumber": 28,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 93,
+    "kind": "member",
+    "static": false,
+    "variation": null,
+    "name": "_deltas",
+    "memberof": "src/reducers/collection-reducer.js~CollectionReducer",
+    "longname": "src/reducers/collection-reducer.js~CollectionReducer#_deltas",
+    "access": null,
+    "description": null,
+    "lineNumber": 29,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 94,
+    "kind": "member",
+    "static": false,
+    "variation": null,
+    "name": "_collectionApi",
+    "memberof": "src/reducers/collection-reducer.js~CollectionReducer",
+    "longname": "src/reducers/collection-reducer.js~CollectionReducer#_collectionApi",
     "access": null,
     "description": null,
     "lineNumber": 30,
@@ -2777,79 +2586,7 @@
     }
   },
   {
-    "__docId__": 97,
-    "kind": "member",
-    "static": false,
-    "variation": null,
-    "name": "_removalSource",
-    "memberof": "src/reducers/collection-reducer.js~CollectionReducer",
-    "longname": "src/reducers/collection-reducer.js~CollectionReducer#_removalSource",
-    "access": null,
-    "description": null,
-    "lineNumber": 31,
-    "undocument": true,
-    "type": {
-      "types": [
-        "*"
-      ]
-    }
-  },
-  {
-    "__docId__": 98,
-    "kind": "member",
-    "static": false,
-    "variation": null,
-    "name": "_keySelector",
-    "memberof": "src/reducers/collection-reducer.js~CollectionReducer",
-    "longname": "src/reducers/collection-reducer.js~CollectionReducer#_keySelector",
-    "access": null,
-    "description": null,
-    "lineNumber": 32,
-    "undocument": true,
-    "type": {
-      "types": [
-        "*"
-      ]
-    }
-  },
-  {
-    "__docId__": 99,
-    "kind": "member",
-    "static": false,
-    "variation": null,
-    "name": "_elementSelector",
-    "memberof": "src/reducers/collection-reducer.js~CollectionReducer",
-    "longname": "src/reducers/collection-reducer.js~CollectionReducer#_elementSelector",
-    "access": null,
-    "description": null,
-    "lineNumber": 33,
-    "undocument": true,
-    "type": {
-      "types": [
-        "*"
-      ]
-    }
-  },
-  {
-    "__docId__": 100,
-    "kind": "member",
-    "static": false,
-    "variation": null,
-    "name": "_collectionApi",
-    "memberof": "src/reducers/collection-reducer.js~CollectionReducer",
-    "longname": "src/reducers/collection-reducer.js~CollectionReducer#_collectionApi",
-    "access": null,
-    "description": null,
-    "lineNumber": 34,
-    "undocument": true,
-    "type": {
-      "types": [
-        "*"
-      ]
-    }
-  },
-  {
-    "__docId__": 101,
+    "__docId__": 95,
     "kind": "method",
     "static": false,
     "variation": null,
@@ -2858,7 +2595,7 @@
     "longname": "src/reducers/collection-reducer.js~CollectionReducer#reduce",
     "access": null,
     "description": null,
-    "lineNumber": 38,
+    "lineNumber": 34,
     "ignore": true,
     "params": [
       {
@@ -2876,16 +2613,62 @@
     "generator": false
   },
   {
-    "__docId__": 102,
+    "__docId__": 96,
     "kind": "method",
     "static": false,
     "variation": null,
-    "name": "_filterRemovals",
+    "name": "_added",
     "memberof": "src/reducers/collection-reducer.js~CollectionReducer",
-    "longname": "src/reducers/collection-reducer.js~CollectionReducer#_filterRemovals",
+    "longname": "src/reducers/collection-reducer.js~CollectionReducer#_added",
     "access": null,
     "description": null,
-    "lineNumber": 53,
+    "lineNumber": 70,
+    "undocument": true,
+    "params": [
+      {
+        "name": "context",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "items",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "newReducerArgs",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "key",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "args",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "generator": false
+  },
+  {
+    "__docId__": 97,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "_updated",
+    "memberof": "src/reducers/collection-reducer.js~CollectionReducer",
+    "longname": "src/reducers/collection-reducer.js~CollectionReducer#_updated",
+    "access": null,
+    "description": null,
+    "lineNumber": 79,
     "undocument": true,
     "params": [
       {
@@ -2902,6 +2685,117 @@
       },
       {
         "name": "changeTracker",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "existingReducerArgs",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "newReducerArgs",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "key",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "generator": false
+  },
+  {
+    "__docId__": 98,
+    "kind": "file",
+    "static": true,
+    "variation": null,
+    "name": "src/reducers/combine-latest-reducer.js",
+    "memberof": null,
+    "longname": "src/reducers/combine-latest-reducer.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1,
+    "content": "import Reducer from './reducer.js';\nimport {SOURCE_PREFIX} from './storage-keys.js';\nimport Option from '../option.js';\n\n/**\n * A reducer that takes an array of reducers and produces an array of their latest values.\n */\nexport default class CombineLatestReducer extends Reducer {\n  /**\n   * Constructs a reducer that takes an array of reducers and produces an array of their latest values.\n   */\n  constructor(sources) {\n    super();\n    this._sources = sources.map(source => source.unwrap());\n  }\n\n  /** @ignore */\n  reduce(context) {\n    const newSourceValues = this._sources.map((source, i) => {\n      const update = context.getValue(SOURCE_PREFIX + i, source);\n      const value = update.isSome ? update : context.getPreviousReduction(SOURCE_PREFIX + i, source);\n      const hasChanged = update.isSome;\n      return [hasChanged, value];\n    });\n    const hasChanged = newSourceValues.some(([hasValueChanged, _]) => hasValueChanged);\n    const hasAllValues = newSourceValues.every(([_, value]) => value.isSome);\n    if (hasChanged && hasAllValues) {\n      return Option.some(newSourceValues.map(([_, value]) => value.get()));\n    } else {\n      return Option.none();\n    }\n  }\n}"
+  },
+  {
+    "__docId__": 99,
+    "kind": "class",
+    "static": true,
+    "variation": null,
+    "name": "CombineLatestReducer",
+    "memberof": "src/reducers/combine-latest-reducer.js",
+    "longname": "src/reducers/combine-latest-reducer.js~CombineLatestReducer",
+    "access": null,
+    "export": true,
+    "importPath": "requex/src/reducers/combine-latest-reducer.js",
+    "importStyle": "CombineLatestReducer",
+    "description": "A reducer that takes an array of reducers and produces an array of their latest values.",
+    "lineNumber": 8,
+    "interface": false,
+    "extends": [
+      "src/reducers/reducer.js~Reducer"
+    ]
+  },
+  {
+    "__docId__": 100,
+    "kind": "constructor",
+    "static": false,
+    "variation": null,
+    "name": "constructor",
+    "memberof": "src/reducers/combine-latest-reducer.js~CombineLatestReducer",
+    "longname": "src/reducers/combine-latest-reducer.js~CombineLatestReducer#constructor",
+    "access": null,
+    "description": "Constructs a reducer that takes an array of reducers and produces an array of their latest values.",
+    "lineNumber": 12,
+    "params": [
+      {
+        "name": "sources",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "generator": false
+  },
+  {
+    "__docId__": 101,
+    "kind": "member",
+    "static": false,
+    "variation": null,
+    "name": "_sources",
+    "memberof": "src/reducers/combine-latest-reducer.js~CombineLatestReducer",
+    "longname": "src/reducers/combine-latest-reducer.js~CombineLatestReducer#_sources",
+    "access": null,
+    "description": null,
+    "lineNumber": 14,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 102,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "reduce",
+    "memberof": "src/reducers/combine-latest-reducer.js~CombineLatestReducer",
+    "longname": "src/reducers/combine-latest-reducer.js~CombineLatestReducer#reduce",
+    "access": null,
+    "description": null,
+    "lineNumber": 18,
+    "ignore": true,
+    "params": [
+      {
+        "name": "context",
         "types": [
           "*"
         ]
@@ -2916,84 +2810,6 @@
   },
   {
     "__docId__": 103,
-    "kind": "method",
-    "static": false,
-    "variation": null,
-    "name": "_updateRemaining",
-    "memberof": "src/reducers/collection-reducer.js~CollectionReducer",
-    "longname": "src/reducers/collection-reducer.js~CollectionReducer#_updateRemaining",
-    "access": null,
-    "description": null,
-    "lineNumber": 63,
-    "undocument": true,
-    "params": [
-      {
-        "name": "context",
-        "types": [
-          "*"
-        ]
-      },
-      {
-        "name": "items",
-        "types": [
-          "*"
-        ]
-      },
-      {
-        "name": "changeTracker",
-        "types": [
-          "*"
-        ]
-      }
-    ],
-    "return": {
-      "types": [
-        "*"
-      ]
-    },
-    "generator": false
-  },
-  {
-    "__docId__": 104,
-    "kind": "method",
-    "static": false,
-    "variation": null,
-    "name": "_consAdditions",
-    "memberof": "src/reducers/collection-reducer.js~CollectionReducer",
-    "longname": "src/reducers/collection-reducer.js~CollectionReducer#_consAdditions",
-    "access": null,
-    "description": null,
-    "lineNumber": 80,
-    "undocument": true,
-    "params": [
-      {
-        "name": "context",
-        "types": [
-          "*"
-        ]
-      },
-      {
-        "name": "items",
-        "types": [
-          "*"
-        ]
-      },
-      {
-        "name": "changeTracker",
-        "types": [
-          "*"
-        ]
-      }
-    ],
-    "return": {
-      "types": [
-        "*"
-      ]
-    },
-    "generator": false
-  },
-  {
-    "__docId__": 105,
     "kind": "file",
     "static": true,
     "variation": null,
@@ -3003,10 +2819,10 @@
     "access": null,
     "description": null,
     "lineNumber": 1,
-    "content": "import CollectionReducer from './collection-reducer.js';\n\n/** @ignore */\nconst dictionaryApi = {\n  prepare: x => Object.assign({}, x), //copy\n  empty: () => ({}),\n  remove: (obj, itemKey, removedKeys) => {\n    removedKeys.forEach(k => delete obj[k]);\n    return obj;\n  },\n  map: (obj, selector) => {\n    Object.keys(obj).forEach(k => obj[k] = selector(obj[k]));\n    return obj;\n  },\n  put: (obj, key, value) => {\n    obj[key] = value;\n    return obj;\n  }\n};\n\n/**\n * Reducer for building dictionary objects.\n */\nexport default class DictionaryObjectReducer extends CollectionReducer {\n  /** \n   * Builds a dictionary object reducer. See {@link CollectionReducer} for more information.\n   * @param  {CollectionConfiguration} configuration - the configuration needed to build the collection\n   */\n  constructor(configuration) {\n    super(dictionaryApi, configuration);\n  }\n}"
+    "content": "import CollectionReducer from './collection-reducer.js';\n\n/** @ignore */\nconst dictionaryApi = {\n  prepare: x => Object.assign({}, x), //copy\n  empty: () => ({}),\n  remove: (obj, key) => delete obj[key],\n  put: (obj, key, value) => obj[key] = value,\n  forEach: (obj, f) => Object.keys(obj).forEach(k => f(k, obj[k]))\n};\n\n/**\n * Reducer for building dictionary objects.\n */\nexport default class DictionaryObjectReducer extends CollectionReducer {\n  /** \n   * Builds a dictionary object reducer. See {@link CollectionReducer} for more information.\n   * @param  {CollectionConfiguration} configuration - the configuration needed to build the collection\n   */\n  constructor(configuration) {\n    super(dictionaryApi, configuration);\n  }\n}"
   },
   {
-    "__docId__": 106,
+    "__docId__": 104,
     "kind": "variable",
     "static": true,
     "variation": null,
@@ -3027,7 +2843,7 @@
     }
   },
   {
-    "__docId__": 107,
+    "__docId__": 105,
     "kind": "class",
     "static": true,
     "variation": null,
@@ -3039,14 +2855,14 @@
     "importPath": "requex/src/reducers/dictionary-object-reducer.js",
     "importStyle": "DictionaryObjectReducer",
     "description": "Reducer for building dictionary objects.",
-    "lineNumber": 24,
+    "lineNumber": 15,
     "interface": false,
     "extends": [
       "src/reducers/collection-reducer.js~CollectionReducer"
     ]
   },
   {
-    "__docId__": 108,
+    "__docId__": 106,
     "kind": "constructor",
     "static": false,
     "variation": null,
@@ -3055,7 +2871,7 @@
     "longname": "src/reducers/dictionary-object-reducer.js~DictionaryObjectReducer#constructor",
     "access": null,
     "description": "Builds a dictionary object reducer. See {@link CollectionReducer} for more information.",
-    "lineNumber": 29,
+    "lineNumber": 20,
     "params": [
       {
         "nullable": null,
@@ -3071,7 +2887,7 @@
     "generator": false
   },
   {
-    "__docId__": 109,
+    "__docId__": 107,
     "kind": "file",
     "static": true,
     "variation": null,
@@ -3084,7 +2900,7 @@
     "content": "import Reducer from './reducer.js';\nimport Option from '../option.js';\n\n/**\n * <b>INTERNAL</b>\n * Yields any matching events in the context.\n */\nexport default class EventReducer extends Reducer {\n  /**\n   * Constructs a reducer that yields for the given event type.\n   * @param {string} eventType - The event type to filter on.\n   */\n  constructor(eventType) {\n    super();\n    this._eventType = eventType;\n  }\n\n  /** @ignore */\n  reduce(context) {\n    return context.getEvent().filter(event => this._eventType === event.type);\n  }\n}"
   },
   {
-    "__docId__": 110,
+    "__docId__": 108,
     "kind": "class",
     "static": true,
     "variation": null,
@@ -3103,7 +2919,7 @@
     ]
   },
   {
-    "__docId__": 111,
+    "__docId__": 109,
     "kind": "constructor",
     "static": false,
     "variation": null,
@@ -3128,7 +2944,7 @@
     "generator": false
   },
   {
-    "__docId__": 112,
+    "__docId__": 110,
     "kind": "member",
     "static": false,
     "variation": null,
@@ -3146,7 +2962,7 @@
     }
   },
   {
-    "__docId__": 113,
+    "__docId__": 111,
     "kind": "method",
     "static": false,
     "variation": null,
@@ -3173,7 +2989,7 @@
     "generator": false
   },
   {
-    "__docId__": 114,
+    "__docId__": 112,
     "kind": "file",
     "static": true,
     "variation": null,
@@ -3186,7 +3002,7 @@
     "content": "import Reducer from './reducer.js';\nimport Option from '../option.js';\nimport {SOURCE} from './storage-keys.js';\n\n/**\n * <b>INTERNAL</b>\n * Yields its source's results matching a predicate.\n */\nexport default class FilteredReducer extends Reducer {\n  /**\n   * Constructs a reducer that yields its source's results that pass a predicate.\n   * @param  {Reducer<T>} source - The source reducer\n   * @param  {function(x:T):boolean} - The predicate to test the results from the source\n   */\n  constructor(source, predicate) {\n    super();\n    this._predicate = predicate;\n    this._source = source;\n  }\n\n  /** @ignore */\n  reduce(context) {\n    return context.getValue(SOURCE, this._source).filter(this._predicate);\n  }\n}"
   },
   {
-    "__docId__": 115,
+    "__docId__": 113,
     "kind": "class",
     "static": true,
     "variation": null,
@@ -3205,7 +3021,7 @@
     ]
   },
   {
-    "__docId__": 116,
+    "__docId__": 114,
     "kind": "constructor",
     "static": false,
     "variation": null,
@@ -3240,7 +3056,7 @@
     "generator": false
   },
   {
-    "__docId__": 117,
+    "__docId__": 115,
     "kind": "member",
     "static": false,
     "variation": null,
@@ -3258,7 +3074,7 @@
     }
   },
   {
-    "__docId__": 118,
+    "__docId__": 116,
     "kind": "member",
     "static": false,
     "variation": null,
@@ -3276,7 +3092,7 @@
     }
   },
   {
-    "__docId__": 119,
+    "__docId__": 117,
     "kind": "method",
     "static": false,
     "variation": null,
@@ -3303,7 +3119,7 @@
     "generator": false
   },
   {
-    "__docId__": 120,
+    "__docId__": 118,
     "kind": "file",
     "static": true,
     "variation": null,
@@ -3316,7 +3132,7 @@
     "content": "import Reducer from './reducer.js';\nimport {SOURCE, INNER_SOURCE} from './storage-keys.js';\n\n/**\n * <b>INTERNAL</b>\n * A reducing reducer.\n */\nexport default class FlatReducedReducer extends Reducer {\n  /**\n   * Creates a reducer from the source's value using the function provided then yields results from that reducer\n   * until the next source value.\n   *\n   * TODO: Marble diagram to explain!\n   * \n   * @param  {Reducer<T1>} source - The source reducer\n   * @param  {function(x:T1):ReducerBuilder<T2>} flatReducer - The function that selects a reducer from a value in the underlying source\n   */\n  constructor(source, flatReducer) {\n    super();\n    this._source = source;\n    this._flatReducer = flatReducer;\n  }\n\n  /** @ignore */\n  reduce(context) {\n    const previousReducerSeed = context.getPreviousReduction(SOURCE);\n    const newReducerSeed = context.getValue(SOURCE, this._source);\n    const isNewReductionChain = newReducerSeed.isSome;\n    const currentSeed = isNewReductionChain ? newReducerSeed : previousReducerSeed;\n    return currentSeed.bind(seed => {\n      const reducer = this._flatReducer(seed).unwrap();\n      if (isNewReductionChain) {\n        return context.getFreshValue(INNER_SOURCE, reducer);\n      }\n      return context.getValue(INNER_SOURCE, reducer);\n    });\n  }\n}"
   },
   {
-    "__docId__": 121,
+    "__docId__": 119,
     "kind": "class",
     "static": true,
     "variation": null,
@@ -3335,7 +3151,7 @@
     ]
   },
   {
-    "__docId__": 122,
+    "__docId__": 120,
     "kind": "constructor",
     "static": false,
     "variation": null,
@@ -3370,7 +3186,7 @@
     "generator": false
   },
   {
-    "__docId__": 123,
+    "__docId__": 121,
     "kind": "member",
     "static": false,
     "variation": null,
@@ -3388,7 +3204,7 @@
     }
   },
   {
-    "__docId__": 124,
+    "__docId__": 122,
     "kind": "member",
     "static": false,
     "variation": null,
@@ -3406,7 +3222,7 @@
     }
   },
   {
-    "__docId__": 125,
+    "__docId__": 123,
     "kind": "method",
     "static": false,
     "variation": null,
@@ -3433,7 +3249,7 @@
     "generator": false
   },
   {
-    "__docId__": 126,
+    "__docId__": 124,
     "kind": "file",
     "static": true,
     "variation": null,
@@ -3446,7 +3262,7 @@
     "content": "import Reducer from './reducer.js';\nimport Option from '../option.js';\nimport {SOURCE} from './storage-keys.js';\n\n/**\n * <b>INTERNAL</b>\n * Yields a seed and then accumulated values as its source's results are thread through an accumulator.\n */\nexport default class FoldingReducer extends Reducer {\n  /**\n   * Constructs a reducer that yields a seed and then accumulated values as its source's results \n   * are thread through an accumulator.\n   * @param  {Reducer<T1>} source - The source reducer\n   * @param  {function(acc:T2, x:T1):T2} accumulate - The accumulator function\n   * @param  {T2} zero - The zero value (must actually behave like zero).\n   */\n  constructor(source, accumulate, zero) {\n    super();\n    this._accumulate = accumulate;\n    this._zero = zero;\n    this._source = source;\n  }\n\n  /** @ignore */\n  reduce(context) {\n    const value = context.getValue(SOURCE, this._source);\n    const previous = context.getPreviousReduction();\n    const next = value.map(x => this._accumulate(previous.otherwise(this._zero), x));\n    return previous.isNone && next.isNone ? Option.some(this._zero) : next;\n  }\n}"
   },
   {
-    "__docId__": 127,
+    "__docId__": 125,
     "kind": "class",
     "static": true,
     "variation": null,
@@ -3465,7 +3281,7 @@
     ]
   },
   {
-    "__docId__": 128,
+    "__docId__": 126,
     "kind": "constructor",
     "static": false,
     "variation": null,
@@ -3510,7 +3326,7 @@
     "generator": false
   },
   {
-    "__docId__": 129,
+    "__docId__": 127,
     "kind": "member",
     "static": false,
     "variation": null,
@@ -3528,7 +3344,7 @@
     }
   },
   {
-    "__docId__": 130,
+    "__docId__": 128,
     "kind": "member",
     "static": false,
     "variation": null,
@@ -3546,7 +3362,7 @@
     }
   },
   {
-    "__docId__": 131,
+    "__docId__": 129,
     "kind": "member",
     "static": false,
     "variation": null,
@@ -3564,7 +3380,7 @@
     }
   },
   {
-    "__docId__": 132,
+    "__docId__": 130,
     "kind": "method",
     "static": false,
     "variation": null,
@@ -3591,85 +3407,7 @@
     "generator": false
   },
   {
-    "__docId__": 133,
-    "kind": "file",
-    "static": true,
-    "variation": null,
-    "name": "src/reducers/linked-list-reducer.js",
-    "memberof": null,
-    "longname": "src/reducers/linked-list-reducer.js",
-    "access": null,
-    "description": null,
-    "lineNumber": 1,
-    "content": "import CollectionReducer from './collection-reducer.js';\nimport LinkedList from '../linked-list.js';\n\n/** @ignore */\nconst linkedListApi = {\n  prepare: x => x,\n  empty: () => LinkedList.nil(),\n  remove: (list, itemKey, removedKeys) => LinkedList.filter(list, x => {\n    const key = itemKey(x);\n    return !removedKeys.includes(key);\n  }),\n  map: (list, selector) => LinkedList.map(list, selector),\n  put: (list, key, value) => LinkedList.cons(value, list)\n};\n\n/**\n * Reducer for building linked lists.\n */\nexport default class LinkedListReducer extends CollectionReducer {\n  /** \n   * Builds a linked list reducer. See {@link CollectionReducer} for more information.\n   * @param  {CollectionConfiguration} configuration - the configuration needed to build the collection\n   */\n  constructor(configuration) {\n    super(linkedListApi, configuration);\n  }\n}"
-  },
-  {
-    "__docId__": 134,
-    "kind": "variable",
-    "static": true,
-    "variation": null,
-    "name": "linkedListApi",
-    "memberof": "src/reducers/linked-list-reducer.js",
-    "longname": "src/reducers/linked-list-reducer.js~linkedListApi",
-    "access": null,
-    "export": false,
-    "importPath": "requex/src/reducers/linked-list-reducer.js",
-    "importStyle": null,
-    "description": null,
-    "lineNumber": 5,
-    "ignore": true,
-    "type": {
-      "types": [
-        "*"
-      ]
-    }
-  },
-  {
-    "__docId__": 135,
-    "kind": "class",
-    "static": true,
-    "variation": null,
-    "name": "LinkedListReducer",
-    "memberof": "src/reducers/linked-list-reducer.js",
-    "longname": "src/reducers/linked-list-reducer.js~LinkedListReducer",
-    "access": null,
-    "export": true,
-    "importPath": "requex/src/reducers/linked-list-reducer.js",
-    "importStyle": "LinkedListReducer",
-    "description": "Reducer for building linked lists.",
-    "lineNumber": 19,
-    "interface": false,
-    "extends": [
-      "src/reducers/collection-reducer.js~CollectionReducer"
-    ]
-  },
-  {
-    "__docId__": 136,
-    "kind": "constructor",
-    "static": false,
-    "variation": null,
-    "name": "constructor",
-    "memberof": "src/reducers/linked-list-reducer.js~LinkedListReducer",
-    "longname": "src/reducers/linked-list-reducer.js~LinkedListReducer#constructor",
-    "access": null,
-    "description": "Builds a linked list reducer. See {@link CollectionReducer} for more information.",
-    "lineNumber": 24,
-    "params": [
-      {
-        "nullable": null,
-        "types": [
-          "CollectionConfiguration"
-        ],
-        "spread": false,
-        "optional": false,
-        "name": "configuration",
-        "description": "the configuration needed to build the collection"
-      }
-    ],
-    "generator": false
-  },
-  {
-    "__docId__": 137,
+    "__docId__": 131,
     "kind": "file",
     "static": true,
     "variation": null,
@@ -3682,7 +3420,7 @@
     "content": "import Reducer from './reducer.js';\nimport Option from '../option.js';\nimport {SOURCE} from './storage-keys.js';\n\n/**\n * <b>INTERNAL</b>\n * Yields mapped versions of its source's results.\n */\nexport default class MappedReducer extends Reducer {\n  /**\n   * Constructs a reducer that yields mapped versions of its source's results by passing them through a selector function.\n   * @param  {Reducer} source - The source reducer.\n   * @param  {function(x:T1):T2} selector - The selector function.\n   */\n  constructor(source, selector) {\n    super();\n    this._source = source;\n    this._selector = selector;\n  }\n\n  /** @ignore */\n  reduce(context) {\n    return context.getValue(SOURCE, this._source).map(this._selector);\n  }\n}"
   },
   {
-    "__docId__": 138,
+    "__docId__": 132,
     "kind": "class",
     "static": true,
     "variation": null,
@@ -3701,7 +3439,7 @@
     ]
   },
   {
-    "__docId__": 139,
+    "__docId__": 133,
     "kind": "constructor",
     "static": false,
     "variation": null,
@@ -3736,7 +3474,7 @@
     "generator": false
   },
   {
-    "__docId__": 140,
+    "__docId__": 134,
     "kind": "member",
     "static": false,
     "variation": null,
@@ -3754,7 +3492,7 @@
     }
   },
   {
-    "__docId__": 141,
+    "__docId__": 135,
     "kind": "member",
     "static": false,
     "variation": null,
@@ -3772,7 +3510,7 @@
     }
   },
   {
-    "__docId__": 142,
+    "__docId__": 136,
     "kind": "method",
     "static": false,
     "variation": null,
@@ -3799,7 +3537,105 @@
     "generator": false
   },
   {
-    "__docId__": 143,
+    "__docId__": 137,
+    "kind": "file",
+    "static": true,
+    "variation": null,
+    "name": "src/reducers/merge-reducer.js",
+    "memberof": null,
+    "longname": "src/reducers/merge-reducer.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1,
+    "content": "import Reducer from './reducer.js';\nimport {SOURCE_PREFIX} from './storage-keys.js';\nimport Option from '../option.js';\n\n/**\n * A reducer that takes an array of reducers and produces an array of their updated values in each context.\n */\nexport default class MergeReducer extends Reducer {\n  /**\n   * Constructs a reducer that takes an array of reducers and produces an array of their updated values in each context.\n   */\n  constructor(sources) {\n    super();\n    this._sources = sources.map(source => source.unwrap());\n  }\n\n  /** @ignore */\n  reduce(context) {\n    const newSourceValues = \n      this._sources.map((source, i) => context.getValue(SOURCE_PREFIX + i, source));\n    const changedValues =\n      newSourceValues.filter(value => value.isSome).map(value => value.get());\n    if (changedValues.length) {\n      return Option.some(changedValues);\n    } else {\n      return Option.none();\n    }\n  }\n}"
+  },
+  {
+    "__docId__": 138,
+    "kind": "class",
+    "static": true,
+    "variation": null,
+    "name": "MergeReducer",
+    "memberof": "src/reducers/merge-reducer.js",
+    "longname": "src/reducers/merge-reducer.js~MergeReducer",
+    "access": null,
+    "export": true,
+    "importPath": "requex/src/reducers/merge-reducer.js",
+    "importStyle": "MergeReducer",
+    "description": "A reducer that takes an array of reducers and produces an array of their updated values in each context.",
+    "lineNumber": 8,
+    "interface": false,
+    "extends": [
+      "src/reducers/reducer.js~Reducer"
+    ]
+  },
+  {
+    "__docId__": 139,
+    "kind": "constructor",
+    "static": false,
+    "variation": null,
+    "name": "constructor",
+    "memberof": "src/reducers/merge-reducer.js~MergeReducer",
+    "longname": "src/reducers/merge-reducer.js~MergeReducer#constructor",
+    "access": null,
+    "description": "Constructs a reducer that takes an array of reducers and produces an array of their updated values in each context.",
+    "lineNumber": 12,
+    "params": [
+      {
+        "name": "sources",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "generator": false
+  },
+  {
+    "__docId__": 140,
+    "kind": "member",
+    "static": false,
+    "variation": null,
+    "name": "_sources",
+    "memberof": "src/reducers/merge-reducer.js~MergeReducer",
+    "longname": "src/reducers/merge-reducer.js~MergeReducer#_sources",
+    "access": null,
+    "description": null,
+    "lineNumber": 14,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 141,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "reduce",
+    "memberof": "src/reducers/merge-reducer.js~MergeReducer",
+    "longname": "src/reducers/merge-reducer.js~MergeReducer#reduce",
+    "access": null,
+    "description": null,
+    "lineNumber": 18,
+    "ignore": true,
+    "params": [
+      {
+        "name": "context",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 142,
     "kind": "file",
     "static": true,
     "variation": null,
@@ -3812,7 +3648,7 @@
     "content": "import Reducer from './reducer';\nimport Option from '../option.js';\n\n/**\n * <b>INTERNAL</b>\n * Never yields\n */\nexport default class NeverReducer extends Reducer {\n  /** @ignore */\n  reduce() {\n    return Option.none();\n  }\n}"
   },
   {
-    "__docId__": 144,
+    "__docId__": 143,
     "kind": "class",
     "static": true,
     "variation": null,
@@ -3831,7 +3667,7 @@
     ]
   },
   {
-    "__docId__": 145,
+    "__docId__": 144,
     "kind": "method",
     "static": false,
     "variation": null,
@@ -3851,7 +3687,7 @@
     "generator": false
   },
   {
-    "__docId__": 146,
+    "__docId__": 145,
     "kind": "file",
     "static": true,
     "variation": null,
@@ -3864,7 +3700,7 @@
     "content": "/**\n * <b>INTERNAL</b>\n * The base type for reducers.\n */\nexport default class Reducer {\n  /**\n   * Reduces a new value given some previous state if possible.\n   * @param  {ReducerContext} context - The context under which to reduce a new state if possible.\n   * @return {Option<T>} Some value if able to reduce a value otherwise none.\n   */\n  reduce(context) {\n    throw new Error('Abstract method.');\n  }\n}"
   },
   {
-    "__docId__": 147,
+    "__docId__": 146,
     "kind": "class",
     "static": true,
     "variation": null,
@@ -3880,7 +3716,7 @@
     "interface": false
   },
   {
-    "__docId__": 148,
+    "__docId__": 147,
     "kind": "method",
     "static": false,
     "variation": null,
@@ -3913,7 +3749,7 @@
     "generator": false
   },
   {
-    "__docId__": 149,
+    "__docId__": 148,
     "kind": "file",
     "static": true,
     "variation": null,
@@ -3926,7 +3762,7 @@
     "content": "import Reducer from './reducer.js';\nimport {SOURCE} from './storage-keys.js';\n\n/**\n * <b>INTERNAL</b>\n * A reducer that scopes the events that its source reducers (that is, reducers earlier in the fluent chain)\n * can handle.\n */\nexport default class ScopedReducer extends Reducer {\n  /**\n   * Constructs a reducer that scopes the events that its source reducers (that is, reducers earlier in the fluent chain)\n   * can handle.\n   * @param  {Reducer} source - The source reducer.\n   * @param  {function(x:Event):boolean} predicate - The predicate to determine which events are allowed.\n   */\n  constructor(source, predicate) {\n    super();\n    this._source = source;\n    this._predicate = predicate;\n  }\n\n  /** @ignore */\n  reduce(context) {\n    return context.scopedBy(this._predicate, () => \n      context.getValue(SOURCE, this._source)\n    );\n  }\n}"
   },
   {
-    "__docId__": 150,
+    "__docId__": 149,
     "kind": "class",
     "static": true,
     "variation": null,
@@ -3945,7 +3781,7 @@
     ]
   },
   {
-    "__docId__": 151,
+    "__docId__": 150,
     "kind": "constructor",
     "static": false,
     "variation": null,
@@ -3980,7 +3816,7 @@
     "generator": false
   },
   {
-    "__docId__": 152,
+    "__docId__": 151,
     "kind": "member",
     "static": false,
     "variation": null,
@@ -3998,7 +3834,7 @@
     }
   },
   {
-    "__docId__": 153,
+    "__docId__": 152,
     "kind": "member",
     "static": false,
     "variation": null,
@@ -4016,7 +3852,7 @@
     }
   },
   {
-    "__docId__": 154,
+    "__docId__": 153,
     "kind": "method",
     "static": false,
     "variation": null,
@@ -4043,7 +3879,7 @@
     "generator": false
   },
   {
-    "__docId__": 155,
+    "__docId__": 154,
     "kind": "file",
     "static": true,
     "variation": null,
@@ -4053,10 +3889,10 @@
     "access": null,
     "description": null,
     "lineNumber": 5,
-    "content": "/**\n * A common storage key for addressing the source of a reduction chain in auxillary state.\n * @type {String}\n */\nexport const SOURCE = '__SOURCE';\n\n/**\n * A common storage key for addressing an inner-source of a reduction chain in auxillary state.\n * @type {String}\n */\nexport const INNER_SOURCE = '__INNER_SOURCE';\n\n/**\n * A common storage key for addressing the value of a reducer in auxillary state.\n * @type {String}\n */\nexport const VALUE = '__VALUE';\n\n/**\n * A common storage key for addressing the root value in the auxillary state.\n * @type {String}\n */\nexport const ROOT = 'ROOT';\n\n/**\n * A common storage key for addressing the additions source (for collections) in the auxillary state.\n * @type {String}\n */\nexport const ADDITION_SOURCE = '__ADDITIONS';\n\n/**\n * A common storage key for addressing the removals source (for collections) in the auxillary state.\n * @type {String}\n */\nexport const REMOVAL_SOURCE = '__REMOVALS';\n\n/**\n * A common storage key prefix for addressing the reducer arguments in the auxillary state.\n * @type {String}\n */\nexport const ARGS_PREFIX = '__ARGS_';"
+    "content": "/**\n * A common storage key for addressing the source of a reduction chain in auxillary state.\n * @type {String}\n */\nexport const SOURCE = '__SOURCE';\n\n/**\n * A common storage key for addressing an inner-source of a reduction chain in auxillary state.\n * @type {String}\n */\nexport const INNER_SOURCE = '__INNER_SOURCE';\n\n/**\n * A common storage key for addressing the value of a reducer in auxillary state.\n * @type {String}\n */\nexport const VALUE = '__VALUE';\n\n/**\n * A common storage key for addressing the root value in the auxillary state.\n * @type {String}\n */\nexport const ROOT = 'ROOT';\n\n/**\n * A common storage key prefix for addressing the reducer arguments in the auxillary state.\n * @type {String}\n */\nexport const ARGS_PREFIX = '__ARGS_';\n\n/**\n * A common storage key prefix for addressing one of the sources of a reduction chain in auxillary state.\n * @type {String}\n */\nexport const SOURCE_PREFIX = '__SOURCE_';\n\n/**\n * A common storage key prefix for addressing extra state in the auxillary state object.\n */\nexport const EXTRA = '__EXTRA';"
   },
   {
-    "__docId__": 156,
+    "__docId__": 155,
     "kind": "variable",
     "static": true,
     "variation": null,
@@ -4079,7 +3915,7 @@
     }
   },
   {
-    "__docId__": 157,
+    "__docId__": 156,
     "kind": "variable",
     "static": true,
     "variation": null,
@@ -4102,7 +3938,7 @@
     }
   },
   {
-    "__docId__": 158,
+    "__docId__": 157,
     "kind": "variable",
     "static": true,
     "variation": null,
@@ -4125,7 +3961,7 @@
     }
   },
   {
-    "__docId__": 159,
+    "__docId__": 158,
     "kind": "variable",
     "static": true,
     "variation": null,
@@ -4148,19 +3984,42 @@
     }
   },
   {
+    "__docId__": 159,
+    "kind": "variable",
+    "static": true,
+    "variation": null,
+    "name": "ARGS_PREFIX",
+    "memberof": "src/reducers/storage-keys.js",
+    "longname": "src/reducers/storage-keys.js~ARGS_PREFIX",
+    "access": null,
+    "export": true,
+    "importPath": "requex/src/reducers/storage-keys.js",
+    "importStyle": "{ARGS_PREFIX}",
+    "description": "A common storage key prefix for addressing the reducer arguments in the auxillary state.",
+    "lineNumber": 29,
+    "type": {
+      "nullable": null,
+      "types": [
+        "String"
+      ],
+      "spread": false,
+      "description": null
+    }
+  },
+  {
     "__docId__": 160,
     "kind": "variable",
     "static": true,
     "variation": null,
-    "name": "ADDITION_SOURCE",
+    "name": "SOURCE_PREFIX",
     "memberof": "src/reducers/storage-keys.js",
-    "longname": "src/reducers/storage-keys.js~ADDITION_SOURCE",
+    "longname": "src/reducers/storage-keys.js~SOURCE_PREFIX",
     "access": null,
     "export": true,
     "importPath": "requex/src/reducers/storage-keys.js",
-    "importStyle": "{ADDITION_SOURCE}",
-    "description": "A common storage key for addressing the additions source (for collections) in the auxillary state.",
-    "lineNumber": 29,
+    "importStyle": "{SOURCE_PREFIX}",
+    "description": "A common storage key prefix for addressing one of the sources of a reduction chain in auxillary state.",
+    "lineNumber": 35,
     "type": {
       "nullable": null,
       "types": [
@@ -4175,49 +4034,23 @@
     "kind": "variable",
     "static": true,
     "variation": null,
-    "name": "REMOVAL_SOURCE",
+    "name": "EXTRA",
     "memberof": "src/reducers/storage-keys.js",
-    "longname": "src/reducers/storage-keys.js~REMOVAL_SOURCE",
+    "longname": "src/reducers/storage-keys.js~EXTRA",
     "access": null,
     "export": true,
     "importPath": "requex/src/reducers/storage-keys.js",
-    "importStyle": "{REMOVAL_SOURCE}",
-    "description": "A common storage key for addressing the removals source (for collections) in the auxillary state.",
-    "lineNumber": 35,
+    "importStyle": "{EXTRA}",
+    "description": "A common storage key prefix for addressing extra state in the auxillary state object.",
+    "lineNumber": 40,
     "type": {
-      "nullable": null,
       "types": [
-        "String"
-      ],
-      "spread": false,
-      "description": null
+        "string"
+      ]
     }
   },
   {
     "__docId__": 162,
-    "kind": "variable",
-    "static": true,
-    "variation": null,
-    "name": "ARGS_PREFIX",
-    "memberof": "src/reducers/storage-keys.js",
-    "longname": "src/reducers/storage-keys.js~ARGS_PREFIX",
-    "access": null,
-    "export": true,
-    "importPath": "requex/src/reducers/storage-keys.js",
-    "importStyle": "{ARGS_PREFIX}",
-    "description": "A common storage key prefix for addressing the reducer arguments in the auxillary state.",
-    "lineNumber": 41,
-    "type": {
-      "nullable": null,
-      "types": [
-        "String"
-      ],
-      "spread": false,
-      "description": null
-    }
-  },
-  {
-    "__docId__": 163,
     "kind": "file",
     "static": true,
     "variation": null,
@@ -4230,7 +4063,7 @@
     "content": "import Reducer from './reducer.js';\nimport ReducerBuilder from '../reducer-builder.js'; //Hmm... need to make sure we don't make any circular refs here.\nimport Option from '../option.js';\n\n/**\n * <b>INTERNAL</b>\n * Yields an object that is constructed from constant and/or reduced properties. \n * Yields a maximum of once per event and only when a child property is changed.\n */\nexport default class StructureReducer extends Reducer {\n\n  /**\n   * Constructs a reducer representing the object structure in the specification.\n   * @param  {Object} structure - The structure containing constants and reduced properties\n   * @return {[type]}\n   * @example <caption>A reducer structure containing both reduced and constant properties</caption>\n   * From.structure({\n   *   foo: 'constant value',\n   *   bar: From.events().ofAnyType().select(e => e.value)\n   * })\n   */\n  constructor(structure) {\n    super();\n    if (typeof structure !== 'object') throw new Error('Invalid structure argument. Expected an object.');\n    const keys = Object.keys(structure);\n    this._constants = {};\n    keys\n      .filter(k => !(structure[k] instanceof ReducerBuilder))\n      .forEach(k => this._constants[k] = structure[k]);\n    this._reducerProperties = keys\n      .filter(k => structure[k] instanceof ReducerBuilder)\n      .map(k => [k, structure[k].unwrap()]);\n  }\n\n  /** @ignore */\n  reduce(context) {\n    const previous = context.getPreviousReduction()\n    const basis = previous.otherwise(this._constants);\n    const changed = this._reducerProperties.reduce((outerAcc, [k, reducer]) =>\n      // TODO: Really we should ensure k doesn't conflict with any of the storage-keys here.\n      context.getValue(k, reducer).reduce((innerAcc, v) => {\n        innerAcc = innerAcc || {}; // Avoiding creation of the object until necessary.\n        innerAcc[k] = v; // Mutating here rather than using a functional approach to avoid lots of garbage objects.\n        return innerAcc;\n      }, outerAcc), undefined);\n    return changed \n      ? Option.some(Object.assign({}, basis, changed))\n      : previous.isSome \n        ? Option.none()\n        : Option.some(basis);\n  }\n}"
   },
   {
-    "__docId__": 164,
+    "__docId__": 163,
     "kind": "class",
     "static": true,
     "variation": null,
@@ -4249,7 +4082,7 @@
     ]
   },
   {
-    "__docId__": 165,
+    "__docId__": 164,
     "kind": "constructor",
     "static": false,
     "variation": null,
@@ -4285,7 +4118,7 @@
     "generator": false
   },
   {
-    "__docId__": 166,
+    "__docId__": 165,
     "kind": "member",
     "static": false,
     "variation": null,
@@ -4303,7 +4136,7 @@
     }
   },
   {
-    "__docId__": 167,
+    "__docId__": 166,
     "kind": "member",
     "static": false,
     "variation": null,
@@ -4321,7 +4154,7 @@
     }
   },
   {
-    "__docId__": 168,
+    "__docId__": 167,
     "kind": "method",
     "static": false,
     "variation": null,
@@ -4348,7 +4181,7 @@
     "generator": false
   },
   {
-    "__docId__": 169,
+    "__docId__": 168,
     "kind": "file",
     "static": true,
     "variation": null,
@@ -4361,7 +4194,7 @@
     "content": "import Reducer from './reducer.js';\nimport Option from '../option.js';\n\n/**\n * <b>INTERNAL</b>\n * Yields the provided value <i>once</i>.\n */\nexport default class ValueReducer extends Reducer {\n  /**\n   * Constructs a reducer that yields the provided value <i>once</i>.\n   * @param value - The value to produce\n   */\n  constructor(value) {\n    super();\n    this._value = value;\n  }\n\n  /** @ignore */\n  reduce(context) {\n    const previous = context.getPreviousReduction();\n    return previous.isSome ? Option.none() : Option.some(this._value);\n  }\n}"
   },
   {
-    "__docId__": 170,
+    "__docId__": 169,
     "kind": "class",
     "static": true,
     "variation": null,
@@ -4380,7 +4213,7 @@
     ]
   },
   {
-    "__docId__": 171,
+    "__docId__": 170,
     "kind": "constructor",
     "static": false,
     "variation": null,
@@ -4405,7 +4238,7 @@
     "generator": false
   },
   {
-    "__docId__": 172,
+    "__docId__": 171,
     "kind": "member",
     "static": false,
     "variation": null,
@@ -4423,7 +4256,7 @@
     }
   },
   {
-    "__docId__": 173,
+    "__docId__": 172,
     "kind": "method",
     "static": false,
     "variation": null,
@@ -4450,7 +4283,7 @@
     "generator": false
   },
   {
-    "__docId__": 175,
+    "__docId__": 174,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -4463,7 +4296,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 176,
+    "__docId__": 175,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -4476,7 +4309,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 177,
+    "__docId__": 176,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -4489,7 +4322,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 178,
+    "__docId__": 177,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -4502,7 +4335,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 179,
+    "__docId__": 178,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -4515,7 +4348,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 180,
+    "__docId__": 179,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -4528,7 +4361,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 181,
+    "__docId__": 180,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -4541,7 +4374,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 182,
+    "__docId__": 181,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -4554,7 +4387,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 183,
+    "__docId__": 182,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -4567,7 +4400,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 184,
+    "__docId__": 183,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -4580,7 +4413,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 185,
+    "__docId__": 184,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -4593,7 +4426,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 186,
+    "__docId__": 185,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -4606,7 +4439,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 187,
+    "__docId__": 186,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -4619,7 +4452,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 188,
+    "__docId__": 187,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -4632,7 +4465,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 189,
+    "__docId__": 188,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -4645,7 +4478,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 190,
+    "__docId__": 189,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -4658,7 +4491,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 191,
+    "__docId__": 190,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -4671,7 +4504,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 192,
+    "__docId__": 191,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -4684,7 +4517,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 193,
+    "__docId__": 192,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -4697,7 +4530,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 194,
+    "__docId__": 193,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -4710,7 +4543,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 195,
+    "__docId__": 194,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -4723,7 +4556,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 196,
+    "__docId__": 195,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -4736,7 +4569,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 197,
+    "__docId__": 196,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -4749,7 +4582,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 198,
+    "__docId__": 197,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -4762,7 +4595,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 199,
+    "__docId__": 198,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -4775,7 +4608,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 200,
+    "__docId__": 199,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -4788,7 +4621,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 201,
+    "__docId__": 200,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -4801,7 +4634,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 202,
+    "__docId__": 201,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -4814,7 +4647,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 203,
+    "__docId__": 202,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -4827,7 +4660,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 204,
+    "__docId__": 203,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -4840,7 +4673,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 205,
+    "__docId__": 204,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -4853,7 +4686,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 206,
+    "__docId__": 205,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -4866,7 +4699,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 207,
+    "__docId__": 206,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -4879,7 +4712,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 208,
+    "__docId__": 207,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -4892,7 +4725,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 209,
+    "__docId__": 208,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -4905,7 +4738,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 210,
+    "__docId__": 209,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -4918,7 +4751,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 211,
+    "__docId__": 210,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -4931,7 +4764,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 212,
+    "__docId__": 211,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -4944,7 +4777,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 213,
+    "__docId__": 212,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -4957,7 +4790,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 214,
+    "__docId__": 213,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -4970,7 +4803,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 215,
+    "__docId__": 214,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -4983,7 +4816,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 216,
+    "__docId__": 215,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -4996,7 +4829,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 217,
+    "__docId__": 216,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -5009,7 +4842,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 218,
+    "__docId__": 217,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -5022,7 +4855,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 219,
+    "__docId__": 218,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -5035,7 +4868,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 220,
+    "__docId__": 219,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -5048,7 +4881,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 221,
+    "__docId__": 220,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -5061,7 +4894,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 223,
+    "__docId__": 222,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -5074,7 +4907,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 224,
+    "__docId__": 223,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -5087,7 +4920,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 225,
+    "__docId__": 224,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -5100,7 +4933,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 226,
+    "__docId__": 225,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -5113,7 +4946,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 227,
+    "__docId__": 226,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -5126,7 +4959,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 228,
+    "__docId__": 227,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -5139,7 +4972,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 229,
+    "__docId__": 228,
     "kind": "external",
     "static": true,
     "variation": null,

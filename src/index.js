@@ -3,12 +3,13 @@ import ValueReducer from './reducers/value-reducer.js';
 import EventReducer from './reducers/event-reducer.js';
 import AnyEventReducer from './reducers/any-event-reducer.js';
 import StructureReducer from './reducers/structure-reducer.js';
-import LinkedListReducer from './reducers/linked-list-reducer.js';
 import DictionaryObjectReducer from './reducers/dictionary-object-reducer.js';
 import ArrayReducer from './reducers/array-reducer.js';
 import NeverReducer from './reducers/never-reducer.js';
+import MergeReducer from './reducers/merge-reducer.js';
+import CombineLatestReducer from './reducers/combine-latest-reducer.js';
 import _Option from './option.js';
-import _LinkedList from './linked-list.js';
+import * as _Deltas from './collection-deltas.js';
 
 /**
  * Represents an optional type, i.e., some value or none.
@@ -17,10 +18,10 @@ import _LinkedList from './linked-list.js';
 export const Option = _Option;
 
 /**
- * Represents a linked-list
- * @type {LinkedList<T>}
+ * Factories for constructing deltas to collections.
+ * @type {Object}
  */
-export const LinkedList = _LinkedList;
+export const Deltas = _Deltas;
 
 /**
  * A factory for creating reducer queries.
@@ -63,27 +64,12 @@ export default class Reduce {
 
   /**
    * @typedef {Object} CollectionConfiguration
-   * @property {ReducerBuilder<TArgs>|ReducerBuilder<Array<TArgs>>} additions - The reducer that produces argument objects (single or arrays) to be constructed into items for the collection
-   * @property {?ReducerBuilder<TKey>|ReducerBuilder<Array<TKey>>} removals - The reducer that produces keys of items to be removed from the collction
    * @property {function(args:TArgs):TItem|function(args:TArgs):ReducerBuilder<TItem>} itemFactory - The function that builds new items from arguments produced by the additions reducer. The items can be constant values or ReducerBuilders.
-   * @property {function(item:TItem):TKey} itemKey - The function that extracts a key from an existing item
+   * @property {Array<ReducerBuilder>} deltas - The reducers that produces deltas to alter the collection
    */
 
   /**
-   * Builds a reducer query of a linked list from a reducer for additions, a reducer for removals, a function to construct
-   * items and a function to extract the key from a constructed item. Keys are used for removal and addressing the auxillary
-   * state to ensure accumulators are seeded correctly etc.
-   * @param  {CollectionConfiguration} configuration - the configuration needed to build the list
-   * @returns {ReducerBuilder} - The reducer query builder
-   */
-  static linkedListOf(configuration) {
-    return new ReducerBuilder(new LinkedListReducer(configuration));
-  }
-
-  /**
-   * Builds a reducer query of a dictionary object from a reducer for additions, a reducer for removals, a function to construct
-   * items and a function to extract the key from a constructed item. Keys are used for removal and addressing the auxillary
-   * state to ensure accumulators are seeded correctly etc.
+   * Builds a reducer query of a map-like dictionary object from an item factory and an array of reducers to supply deltas to the collection.
    * @param  {CollectionConfiguration} configuration - the configuration needed to build the list
    * @returns {ReducerBuilder} - The reducer query builder
    */
@@ -92,9 +78,7 @@ export default class Reduce {
   }
 
   /**
-   * Builds a reducer query of an array from a reducer for additions, a reducer for removals, a function to construct
-   * items and a function to extract the key from a constructed item. Keys are used for removal and addressing the auxillary
-   * state to ensure accumulators are seeded correctly etc.
+   * Builds a reducer query of an array from an item factory and an array of reducers to supply deltas to the collection.
    * @param  {CollectionConfiguration} configuration - the configuration needed to build the list
    * @returns {ReducerBuilder} - The reducer query builder
    */
@@ -108,5 +92,25 @@ export default class Reduce {
    */
   static never() {
     return new ReducerBuilder(new NeverReducer());
+  }
+
+  /**
+   * Builds a reducer query from an array of reducer queries where the produced value is the concatenation of all the
+   * changes in the current scope into an array.
+   * @param  {Array<ReducerBuilder<T>>} reducers - The reducers producing the updates to concatenate.
+   * @return {Reducer<Array<T>>} The reducer of the concatenated updates
+   */
+  static merge(reducers) {
+    return new ReducerBuilder(new MergeReducer(reducers));
+  }
+
+  /**
+   * Builds a reducer query from an array of reducer queries where the produced value is the concatenation of all the
+   * latest values in the current scope into an array.
+   * @param  {Array<ReducerBuilder<T>>} reducers - The reducers producing the updates to concatenate.
+   * @return {Reducer<Array<T>>} The reducer of the concatenated updates
+   */
+  static combineLatest(reducers) {
+    return new ReducerBuilder(new CombineLatestReducer(reducers));
   }
 }

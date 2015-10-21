@@ -1,8 +1,13 @@
 {
   "coverage": "100%",
-  "expectCount": 92,
-  "actualCount": 92,
+  "expectCount": 90,
+  "actualCount": 90,
   "files": {
+    "src/collection-delta-kinds.js": {
+      "expectCount": 3,
+      "actualCount": 3,
+      "undocumentLines": []
+    },
     "src/reducers/storage-keys.js": {
       "expectCount": 7,
       "actualCount": 7,
@@ -21,6 +26,16 @@
     "src/reducers/collection-reducer.js": {
       "expectCount": 2,
       "actualCount": 2,
+      "undocumentLines": []
+    },
+    "src/reducers/combine-latest-reducer.js": {
+      "expectCount": 2,
+      "actualCount": 2,
+      "undocumentLines": []
+    },
+    "src/index.js": {
+      "expectCount": 12,
+      "actualCount": 12,
       "undocumentLines": []
     },
     "src/reducers/dictionary-object-reducer.js": {
@@ -48,22 +63,12 @@
       "actualCount": 2,
       "undocumentLines": []
     },
-    "src/index.js": {
-      "expectCount": 11,
-      "actualCount": 11,
-      "undocumentLines": []
-    },
-    "src/linked-list.js": {
-      "expectCount": 11,
-      "actualCount": 11,
-      "undocumentLines": []
-    },
-    "src/reducers/linked-list-reducer.js": {
+    "src/reducers/mapped-reducer.js": {
       "expectCount": 2,
       "actualCount": 2,
       "undocumentLines": []
     },
-    "src/reducers/mapped-reducer.js": {
+    "src/reducers/merge-reducer.js": {
       "expectCount": 2,
       "actualCount": 2,
       "undocumentLines": []
@@ -111,6 +116,11 @@
     "src/reducers/value-reducer.js": {
       "expectCount": 2,
       "actualCount": 2,
+      "undocumentLines": []
+    },
+    "src/collection-deltas.js": {
+      "expectCount": 3,
+      "actualCount": 3,
       "undocumentLines": []
     }
   }

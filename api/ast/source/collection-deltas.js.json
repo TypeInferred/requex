@@ -1,0 +1,1234 @@
+{
+  "type": "Program",
+  "body": [
+    {
+      "type": "ImportDeclaration",
+      "specifiers": [
+        {
+          "type": "ImportSpecifier",
+          "local": {
+            "type": "Identifier",
+            "name": "ADDED",
+            "range": [
+              8,
+              13
+            ],
+            "loc": {
+              "start": {
+                "line": 1,
+                "column": 8
+              },
+              "end": {
+                "line": 1,
+                "column": 13
+              }
+            }
+          },
+          "imported": {
+            "type": "Identifier",
+            "name": "ADDED",
+            "range": [
+              8,
+              13
+            ],
+            "loc": {
+              "start": {
+                "line": 1,
+                "column": 8
+              },
+              "end": {
+                "line": 1,
+                "column": 13
+              }
+            }
+          },
+          "range": [
+            8,
+            13
+          ],
+          "loc": {
+            "start": {
+              "line": 1,
+              "column": 8
+            },
+            "end": {
+              "line": 1,
+              "column": 13
+            }
+          }
+        },
+        {
+          "type": "ImportSpecifier",
+          "local": {
+            "type": "Identifier",
+            "name": "REMOVED",
+            "range": [
+              15,
+              22
+            ],
+            "loc": {
+              "start": {
+                "line": 1,
+                "column": 15
+              },
+              "end": {
+                "line": 1,
+                "column": 22
+              }
+            }
+          },
+          "imported": {
+            "type": "Identifier",
+            "name": "REMOVED",
+            "range": [
+              15,
+              22
+            ],
+            "loc": {
+              "start": {
+                "line": 1,
+                "column": 15
+              },
+              "end": {
+                "line": 1,
+                "column": 22
+              }
+            }
+          },
+          "range": [
+            15,
+            22
+          ],
+          "loc": {
+            "start": {
+              "line": 1,
+              "column": 15
+            },
+            "end": {
+              "line": 1,
+              "column": 22
+            }
+          }
+        },
+        {
+          "type": "ImportSpecifier",
+          "local": {
+            "type": "Identifier",
+            "name": "CLEARED",
+            "range": [
+              24,
+              31
+            ],
+            "loc": {
+              "start": {
+                "line": 1,
+                "column": 24
+              },
+              "end": {
+                "line": 1,
+                "column": 31
+              }
+            }
+          },
+          "imported": {
+            "type": "Identifier",
+            "name": "CLEARED",
+            "range": [
+              24,
+              31
+            ],
+            "loc": {
+              "start": {
+                "line": 1,
+                "column": 24
+              },
+              "end": {
+                "line": 1,
+                "column": 31
+              }
+            }
+          },
+          "range": [
+            24,
+            31
+          ],
+          "loc": {
+            "start": {
+              "line": 1,
+              "column": 24
+            },
+            "end": {
+              "line": 1,
+              "column": 31
+            }
+          }
+        }
+      ],
+      "source": {
+        "type": "Literal",
+        "value": "./collection-delta-kinds.js",
+        "raw": "'./collection-delta-kinds.js'",
+        "range": [
+          38,
+          67
+        ],
+        "loc": {
+          "start": {
+            "line": 1,
+            "column": 38
+          },
+          "end": {
+            "line": 1,
+            "column": 67
+          }
+        }
+      },
+      "range": [
+        0,
+        68
+      ],
+      "loc": {
+        "start": {
+          "line": 1,
+          "column": 0
+        },
+        "end": {
+          "line": 1,
+          "column": 68
+        }
+      },
+      "trailingComments": [
+        {
+          "type": "Block",
+          "value": "*\n * Creates a new added modification.\n * @param {string} key - The key used to refer to the object in the collection for removal etc.\n * @param  value - The value to store in the collection\n * @return {Object} The modification\n ",
+          "range": [
+            70,
+            303
+          ],
+          "loc": {
+            "start": {
+              "line": 3,
+              "column": 0
+            },
+            "end": {
+              "line": 8,
+              "column": 3
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "ExportNamedDeclaration",
+      "declaration": {
+        "type": "VariableDeclaration",
+        "declarations": [
+          {
+            "type": "VariableDeclarator",
+            "id": {
+              "type": "Identifier",
+              "name": "added",
+              "range": [
+                317,
+                322
+              ],
+              "loc": {
+                "start": {
+                  "line": 9,
+                  "column": 13
+                },
+                "end": {
+                  "line": 9,
+                  "column": 18
+                }
+              }
+            },
+            "init": {
+              "type": "ArrowFunctionExpression",
+              "id": null,
+              "params": [
+                {
+                  "type": "Identifier",
+                  "name": "key",
+                  "range": [
+                    326,
+                    329
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 9,
+                      "column": 22
+                    },
+                    "end": {
+                      "line": 9,
+                      "column": 25
+                    }
+                  }
+                },
+                {
+                  "type": "Identifier",
+                  "name": "value",
+                  "range": [
+                    331,
+                    336
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 9,
+                      "column": 27
+                    },
+                    "end": {
+                      "line": 9,
+                      "column": 32
+                    }
+                  }
+                }
+              ],
+              "body": {
+                "type": "ObjectExpression",
+                "properties": [
+                  {
+                    "type": "Property",
+                    "key": {
+                      "type": "Identifier",
+                      "name": "kind",
+                      "range": [
+                        343,
+                        347
+                      ],
+                      "loc": {
+                        "start": {
+                          "line": 9,
+                          "column": 39
+                        },
+                        "end": {
+                          "line": 9,
+                          "column": 43
+                        }
+                      }
+                    },
+                    "value": {
+                      "type": "Identifier",
+                      "name": "ADDED",
+                      "range": [
+                        349,
+                        354
+                      ],
+                      "loc": {
+                        "start": {
+                          "line": 9,
+                          "column": 45
+                        },
+                        "end": {
+                          "line": 9,
+                          "column": 50
+                        }
+                      }
+                    },
+                    "kind": "init",
+                    "method": false,
+                    "shorthand": false,
+                    "computed": false,
+                    "range": [
+                      343,
+                      354
+                    ],
+                    "loc": {
+                      "start": {
+                        "line": 9,
+                        "column": 39
+                      },
+                      "end": {
+                        "line": 9,
+                        "column": 50
+                      }
+                    }
+                  },
+                  {
+                    "type": "Property",
+                    "key": {
+                      "type": "Identifier",
+                      "name": "key",
+                      "range": [
+                        356,
+                        359
+                      ],
+                      "loc": {
+                        "start": {
+                          "line": 9,
+                          "column": 52
+                        },
+                        "end": {
+                          "line": 9,
+                          "column": 55
+                        }
+                      }
+                    },
+                    "value": {
+                      "type": "Identifier",
+                      "name": "key",
+                      "range": [
+                        356,
+                        359
+                      ],
+                      "loc": {
+                        "start": {
+                          "line": 9,
+                          "column": 52
+                        },
+                        "end": {
+                          "line": 9,
+                          "column": 55
+                        }
+                      }
+                    },
+                    "kind": "init",
+                    "method": false,
+                    "shorthand": true,
+                    "computed": false,
+                    "range": [
+                      356,
+                      359
+                    ],
+                    "loc": {
+                      "start": {
+                        "line": 9,
+                        "column": 52
+                      },
+                      "end": {
+                        "line": 9,
+                        "column": 55
+                      }
+                    }
+                  },
+                  {
+                    "type": "Property",
+                    "key": {
+                      "type": "Identifier",
+                      "name": "value",
+                      "range": [
+                        361,
+                        366
+                      ],
+                      "loc": {
+                        "start": {
+                          "line": 9,
+                          "column": 57
+                        },
+                        "end": {
+                          "line": 9,
+                          "column": 62
+                        }
+                      }
+                    },
+                    "value": {
+                      "type": "Identifier",
+                      "name": "value",
+                      "range": [
+                        361,
+                        366
+                      ],
+                      "loc": {
+                        "start": {
+                          "line": 9,
+                          "column": 57
+                        },
+                        "end": {
+                          "line": 9,
+                          "column": 62
+                        }
+                      }
+                    },
+                    "kind": "init",
+                    "method": false,
+                    "shorthand": true,
+                    "computed": false,
+                    "range": [
+                      361,
+                      366
+                    ],
+                    "loc": {
+                      "start": {
+                        "line": 9,
+                        "column": 57
+                      },
+                      "end": {
+                        "line": 9,
+                        "column": 62
+                      }
+                    }
+                  }
+                ],
+                "range": [
+                  342,
+                  367
+                ],
+                "loc": {
+                  "start": {
+                    "line": 9,
+                    "column": 38
+                  },
+                  "end": {
+                    "line": 9,
+                    "column": 63
+                  }
+                }
+              },
+              "generator": false,
+              "expression": true,
+              "range": [
+                325,
+                368
+              ],
+              "loc": {
+                "start": {
+                  "line": 9,
+                  "column": 21
+                },
+                "end": {
+                  "line": 9,
+                  "column": 64
+                }
+              }
+            },
+            "range": [
+              317,
+              368
+            ],
+            "loc": {
+              "start": {
+                "line": 9,
+                "column": 13
+              },
+              "end": {
+                "line": 9,
+                "column": 64
+              }
+            }
+          }
+        ],
+        "kind": "const",
+        "range": [
+          311,
+          369
+        ],
+        "loc": {
+          "start": {
+            "line": 9,
+            "column": 7
+          },
+          "end": {
+            "line": 9,
+            "column": 65
+          }
+        },
+        "leadingComments": [
+          {
+            "type": "Block",
+            "value": "*\n * Creates a new added modification.\n * @param {string} key - The key used to refer to the object in the collection for removal etc.\n * @param  value - The value to store in the collection\n * @return {Object} The modification\n ",
+            "range": [
+              70,
+              303
+            ],
+            "loc": {
+              "start": {
+                "line": 3,
+                "column": 0
+              },
+              "end": {
+                "line": 8,
+                "column": 3
+              }
+            }
+          }
+        ],
+        "trailingComments": [
+          {
+            "type": "Block",
+            "value": "*\n * Creates a new removed modification.\n * @param {string} key - The key used to find the value for removal\n * @return {Object} The modification\n ",
+            "range": [
+              371,
+              522
+            ],
+            "loc": {
+              "start": {
+                "line": 11,
+                "column": 0
+              },
+              "end": {
+                "line": 15,
+                "column": 3
+              }
+            }
+          }
+        ]
+      },
+      "specifiers": [],
+      "source": null,
+      "range": [
+        304,
+        369
+      ],
+      "loc": {
+        "start": {
+          "line": 9,
+          "column": 0
+        },
+        "end": {
+          "line": 9,
+          "column": 65
+        }
+      },
+      "leadingComments": [
+        {
+          "type": "Block",
+          "value": "*\n * Creates a new added modification.\n * @param {string} key - The key used to refer to the object in the collection for removal etc.\n * @param  value - The value to store in the collection\n * @return {Object} The modification\n ",
+          "range": [
+            70,
+            303
+          ],
+          "loc": {
+            "start": {
+              "line": 3,
+              "column": 0
+            },
+            "end": {
+              "line": 8,
+              "column": 3
+            }
+          }
+        }
+      ],
+      "trailingComments": [
+        {
+          "type": "Block",
+          "value": "*\n * Creates a new removed modification.\n * @param {string} key - The key used to find the value for removal\n * @return {Object} The modification\n ",
+          "range": [
+            371,
+            522
+          ],
+          "loc": {
+            "start": {
+              "line": 11,
+              "column": 0
+            },
+            "end": {
+              "line": 15,
+              "column": 3
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "ExportNamedDeclaration",
+      "declaration": {
+        "type": "VariableDeclaration",
+        "declarations": [
+          {
+            "type": "VariableDeclarator",
+            "id": {
+              "type": "Identifier",
+              "name": "removed",
+              "range": [
+                536,
+                543
+              ],
+              "loc": {
+                "start": {
+                  "line": 16,
+                  "column": 13
+                },
+                "end": {
+                  "line": 16,
+                  "column": 20
+                }
+              }
+            },
+            "init": {
+              "type": "ArrowFunctionExpression",
+              "id": null,
+              "params": [
+                {
+                  "type": "Identifier",
+                  "name": "key",
+                  "range": [
+                    546,
+                    549
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 16,
+                      "column": 23
+                    },
+                    "end": {
+                      "line": 16,
+                      "column": 26
+                    }
+                  }
+                }
+              ],
+              "body": {
+                "type": "ObjectExpression",
+                "properties": [
+                  {
+                    "type": "Property",
+                    "key": {
+                      "type": "Identifier",
+                      "name": "kind",
+                      "range": [
+                        555,
+                        559
+                      ],
+                      "loc": {
+                        "start": {
+                          "line": 16,
+                          "column": 32
+                        },
+                        "end": {
+                          "line": 16,
+                          "column": 36
+                        }
+                      }
+                    },
+                    "value": {
+                      "type": "Identifier",
+                      "name": "REMOVED",
+                      "range": [
+                        561,
+                        568
+                      ],
+                      "loc": {
+                        "start": {
+                          "line": 16,
+                          "column": 38
+                        },
+                        "end": {
+                          "line": 16,
+                          "column": 45
+                        }
+                      }
+                    },
+                    "kind": "init",
+                    "method": false,
+                    "shorthand": false,
+                    "computed": false,
+                    "range": [
+                      555,
+                      568
+                    ],
+                    "loc": {
+                      "start": {
+                        "line": 16,
+                        "column": 32
+                      },
+                      "end": {
+                        "line": 16,
+                        "column": 45
+                      }
+                    }
+                  },
+                  {
+                    "type": "Property",
+                    "key": {
+                      "type": "Identifier",
+                      "name": "key",
+                      "range": [
+                        570,
+                        573
+                      ],
+                      "loc": {
+                        "start": {
+                          "line": 16,
+                          "column": 47
+                        },
+                        "end": {
+                          "line": 16,
+                          "column": 50
+                        }
+                      }
+                    },
+                    "value": {
+                      "type": "Identifier",
+                      "name": "key",
+                      "range": [
+                        570,
+                        573
+                      ],
+                      "loc": {
+                        "start": {
+                          "line": 16,
+                          "column": 47
+                        },
+                        "end": {
+                          "line": 16,
+                          "column": 50
+                        }
+                      }
+                    },
+                    "kind": "init",
+                    "method": false,
+                    "shorthand": true,
+                    "computed": false,
+                    "range": [
+                      570,
+                      573
+                    ],
+                    "loc": {
+                      "start": {
+                        "line": 16,
+                        "column": 47
+                      },
+                      "end": {
+                        "line": 16,
+                        "column": 50
+                      }
+                    }
+                  }
+                ],
+                "range": [
+                  554,
+                  574
+                ],
+                "loc": {
+                  "start": {
+                    "line": 16,
+                    "column": 31
+                  },
+                  "end": {
+                    "line": 16,
+                    "column": 51
+                  }
+                }
+              },
+              "generator": false,
+              "expression": true,
+              "range": [
+                546,
+                575
+              ],
+              "loc": {
+                "start": {
+                  "line": 16,
+                  "column": 23
+                },
+                "end": {
+                  "line": 16,
+                  "column": 52
+                }
+              }
+            },
+            "range": [
+              536,
+              575
+            ],
+            "loc": {
+              "start": {
+                "line": 16,
+                "column": 13
+              },
+              "end": {
+                "line": 16,
+                "column": 52
+              }
+            }
+          }
+        ],
+        "kind": "const",
+        "range": [
+          530,
+          576
+        ],
+        "loc": {
+          "start": {
+            "line": 16,
+            "column": 7
+          },
+          "end": {
+            "line": 16,
+            "column": 53
+          }
+        },
+        "leadingComments": [
+          {
+            "type": "Block",
+            "value": "*\n * Creates a new removed modification.\n * @param {string} key - The key used to find the value for removal\n * @return {Object} The modification\n ",
+            "range": [
+              371,
+              522
+            ],
+            "loc": {
+              "start": {
+                "line": 11,
+                "column": 0
+              },
+              "end": {
+                "line": 15,
+                "column": 3
+              }
+            }
+          }
+        ],
+        "trailingComments": [
+          {
+            "type": "Block",
+            "value": "*\n * Creates a new cleared modification.\n * @return {Object} The modification\n ",
+            "range": [
+              578,
+              661
+            ],
+            "loc": {
+              "start": {
+                "line": 18,
+                "column": 0
+              },
+              "end": {
+                "line": 21,
+                "column": 3
+              }
+            }
+          }
+        ]
+      },
+      "specifiers": [],
+      "source": null,
+      "range": [
+        523,
+        576
+      ],
+      "loc": {
+        "start": {
+          "line": 16,
+          "column": 0
+        },
+        "end": {
+          "line": 16,
+          "column": 53
+        }
+      },
+      "leadingComments": [
+        {
+          "type": "Block",
+          "value": "*\n * Creates a new removed modification.\n * @param {string} key - The key used to find the value for removal\n * @return {Object} The modification\n ",
+          "range": [
+            371,
+            522
+          ],
+          "loc": {
+            "start": {
+              "line": 11,
+              "column": 0
+            },
+            "end": {
+              "line": 15,
+              "column": 3
+            }
+          }
+        }
+      ],
+      "trailingComments": [
+        {
+          "type": "Block",
+          "value": "*\n * Creates a new cleared modification.\n * @return {Object} The modification\n ",
+          "range": [
+            578,
+            661
+          ],
+          "loc": {
+            "start": {
+              "line": 18,
+              "column": 0
+            },
+            "end": {
+              "line": 21,
+              "column": 3
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "ExportNamedDeclaration",
+      "declaration": {
+        "type": "VariableDeclaration",
+        "declarations": [
+          {
+            "type": "VariableDeclarator",
+            "id": {
+              "type": "Identifier",
+              "name": "cleared",
+              "range": [
+                675,
+                682
+              ],
+              "loc": {
+                "start": {
+                  "line": 22,
+                  "column": 13
+                },
+                "end": {
+                  "line": 22,
+                  "column": 20
+                }
+              }
+            },
+            "init": {
+              "type": "ArrowFunctionExpression",
+              "id": null,
+              "params": [],
+              "body": {
+                "type": "ObjectExpression",
+                "properties": [
+                  {
+                    "type": "Property",
+                    "key": {
+                      "type": "Identifier",
+                      "name": "kind",
+                      "range": [
+                        693,
+                        697
+                      ],
+                      "loc": {
+                        "start": {
+                          "line": 22,
+                          "column": 31
+                        },
+                        "end": {
+                          "line": 22,
+                          "column": 35
+                        }
+                      }
+                    },
+                    "value": {
+                      "type": "Identifier",
+                      "name": "CLEARED",
+                      "range": [
+                        699,
+                        706
+                      ],
+                      "loc": {
+                        "start": {
+                          "line": 22,
+                          "column": 37
+                        },
+                        "end": {
+                          "line": 22,
+                          "column": 44
+                        }
+                      }
+                    },
+                    "kind": "init",
+                    "method": false,
+                    "shorthand": false,
+                    "computed": false,
+                    "range": [
+                      693,
+                      706
+                    ],
+                    "loc": {
+                      "start": {
+                        "line": 22,
+                        "column": 31
+                      },
+                      "end": {
+                        "line": 22,
+                        "column": 44
+                      }
+                    }
+                  }
+                ],
+                "range": [
+                  692,
+                  707
+                ],
+                "loc": {
+                  "start": {
+                    "line": 22,
+                    "column": 30
+                  },
+                  "end": {
+                    "line": 22,
+                    "column": 45
+                  }
+                }
+              },
+              "generator": false,
+              "expression": true,
+              "range": [
+                685,
+                708
+              ],
+              "loc": {
+                "start": {
+                  "line": 22,
+                  "column": 23
+                },
+                "end": {
+                  "line": 22,
+                  "column": 46
+                }
+              }
+            },
+            "range": [
+              675,
+              708
+            ],
+            "loc": {
+              "start": {
+                "line": 22,
+                "column": 13
+              },
+              "end": {
+                "line": 22,
+                "column": 46
+              }
+            }
+          }
+        ],
+        "kind": "const",
+        "range": [
+          669,
+          709
+        ],
+        "loc": {
+          "start": {
+            "line": 22,
+            "column": 7
+          },
+          "end": {
+            "line": 22,
+            "column": 47
+          }
+        },
+        "leadingComments": [
+          {
+            "type": "Block",
+            "value": "*\n * Creates a new cleared modification.\n * @return {Object} The modification\n ",
+            "range": [
+              578,
+              661
+            ],
+            "loc": {
+              "start": {
+                "line": 18,
+                "column": 0
+              },
+              "end": {
+                "line": 21,
+                "column": 3
+              }
+            }
+          }
+        ],
+        "trailingComments": []
+      },
+      "specifiers": [],
+      "source": null,
+      "range": [
+        662,
+        709
+      ],
+      "loc": {
+        "start": {
+          "line": 22,
+          "column": 0
+        },
+        "end": {
+          "line": 22,
+          "column": 47
+        }
+      },
+      "leadingComments": [
+        {
+          "type": "Block",
+          "value": "*\n * Creates a new cleared modification.\n * @return {Object} The modification\n ",
+          "range": [
+            578,
+            661
+          ],
+          "loc": {
+            "start": {
+              "line": 18,
+              "column": 0
+            },
+            "end": {
+              "line": 21,
+              "column": 3
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "sourceType": "module",
+  "range": [
+    0,
+    709
+  ],
+  "loc": {
+    "start": {
+      "line": 1,
+      "column": 0
+    },
+    "end": {
+      "line": 22,
+      "column": 47
+    }
+  },
+  "comments": [
+    {
+      "type": "Block",
+      "value": "*\n * Creates a new added modification.\n * @param {string} key - The key used to refer to the object in the collection for removal etc.\n * @param  value - The value to store in the collection\n * @return {Object} The modification\n ",
+      "range": [
+        70,
+        303
+      ],
+      "loc": {
+        "start": {
+          "line": 3,
+          "column": 0
+        },
+        "end": {
+          "line": 8,
+          "column": 3
+        }
+      }
+    },
+    {
+      "type": "Block",
+      "value": "*\n * Creates a new removed modification.\n * @param {string} key - The key used to find the value for removal\n * @return {Object} The modification\n ",
+      "range": [
+        371,
+        522
+      ],
+      "loc": {
+        "start": {
+          "line": 11,
+          "column": 0
+        },
+        "end": {
+          "line": 15,
+          "column": 3
+        }
+      }
+    },
+    {
+      "type": "Block",
+      "value": "*\n * Creates a new cleared modification.\n * @return {Object} The modification\n ",
+      "range": [
+        578,
+        661
+      ],
+      "loc": {
+        "start": {
+          "line": 18,
+          "column": 0
+        },
+        "end": {
+          "line": 21,
+          "column": 3
+        }
+      }
+    }
+  ]
+}

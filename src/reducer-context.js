@@ -73,16 +73,22 @@ export default class ReducerContext {
    * @param  value - The <i>serializable</i> value to store.
    */
   storeValue(storageKey, value) {
-    this.nextAuxillary[storageKey] = value;
+    this.nextAuxillary[storageKey] = [value];
   }
 
   /**
    * Retrieves a value stored in the previous auxillary storage on the last reduction.
    * @param  {string} storageKey - The address to use to access the value in auxillary state.
-   * @return  The value
+   * @return {Option} The value option
    */
   getStoredValue(storageKey) {
-    return this._previousAuxillary[storageKey];
+    if (this._previousAuxillary && 
+        this._previousAuxillary[storageKey] &&
+        this._previousAuxillary[storageKey].length)
+    {
+      return Option.some(this._previousAuxillary[storageKey][0]);
+    }
+    return Option.none();
   }
 
   /**

@@ -618,10 +618,10 @@
         "trailingComments": [
           {
             "type": "Block",
-            "value": "*\n * A common storage key for addressing the additions source (for collections) in the auxillary state.\n * @type {String}\n ",
+            "value": "*\n * A common storage key prefix for addressing the reducer arguments in the auxillary state.\n * @type {String}\n ",
             "range": [
               595,
-              722
+              712
             ],
             "loc": {
               "start": {
@@ -675,364 +675,18 @@
       "trailingComments": [
         {
           "type": "Block",
-          "value": "*\n * A common storage key for addressing the additions source (for collections) in the auxillary state.\n * @type {String}\n ",
-          "range": [
-            595,
-            722
-          ],
-          "loc": {
-            "start": {
-              "line": 25,
-              "column": 0
-            },
-            "end": {
-              "line": 28,
-              "column": 3
-            }
-          }
-        }
-      ]
-    },
-    {
-      "type": "ExportNamedDeclaration",
-      "declaration": {
-        "type": "VariableDeclaration",
-        "declarations": [
-          {
-            "type": "VariableDeclarator",
-            "id": {
-              "type": "Identifier",
-              "name": "ADDITION_SOURCE",
-              "range": [
-                736,
-                751
-              ],
-              "loc": {
-                "start": {
-                  "line": 29,
-                  "column": 13
-                },
-                "end": {
-                  "line": 29,
-                  "column": 28
-                }
-              }
-            },
-            "init": {
-              "type": "Literal",
-              "value": "__ADDITIONS",
-              "raw": "'__ADDITIONS'",
-              "range": [
-                754,
-                767
-              ],
-              "loc": {
-                "start": {
-                  "line": 29,
-                  "column": 31
-                },
-                "end": {
-                  "line": 29,
-                  "column": 44
-                }
-              }
-            },
-            "range": [
-              736,
-              767
-            ],
-            "loc": {
-              "start": {
-                "line": 29,
-                "column": 13
-              },
-              "end": {
-                "line": 29,
-                "column": 44
-              }
-            }
-          }
-        ],
-        "kind": "const",
-        "range": [
-          730,
-          768
-        ],
-        "loc": {
-          "start": {
-            "line": 29,
-            "column": 7
-          },
-          "end": {
-            "line": 29,
-            "column": 45
-          }
-        },
-        "leadingComments": [
-          {
-            "type": "Block",
-            "value": "*\n * A common storage key for addressing the additions source (for collections) in the auxillary state.\n * @type {String}\n ",
-            "range": [
-              595,
-              722
-            ],
-            "loc": {
-              "start": {
-                "line": 25,
-                "column": 0
-              },
-              "end": {
-                "line": 28,
-                "column": 3
-              }
-            }
-          }
-        ],
-        "trailingComments": [
-          {
-            "type": "Block",
-            "value": "*\n * A common storage key for addressing the removals source (for collections) in the auxillary state.\n * @type {String}\n ",
-            "range": [
-              770,
-              896
-            ],
-            "loc": {
-              "start": {
-                "line": 31,
-                "column": 0
-              },
-              "end": {
-                "line": 34,
-                "column": 3
-              }
-            }
-          }
-        ]
-      },
-      "specifiers": [],
-      "source": null,
-      "range": [
-        723,
-        768
-      ],
-      "loc": {
-        "start": {
-          "line": 29,
-          "column": 0
-        },
-        "end": {
-          "line": 29,
-          "column": 45
-        }
-      },
-      "leadingComments": [
-        {
-          "type": "Block",
-          "value": "*\n * A common storage key for addressing the additions source (for collections) in the auxillary state.\n * @type {String}\n ",
-          "range": [
-            595,
-            722
-          ],
-          "loc": {
-            "start": {
-              "line": 25,
-              "column": 0
-            },
-            "end": {
-              "line": 28,
-              "column": 3
-            }
-          }
-        }
-      ],
-      "trailingComments": [
-        {
-          "type": "Block",
-          "value": "*\n * A common storage key for addressing the removals source (for collections) in the auxillary state.\n * @type {String}\n ",
-          "range": [
-            770,
-            896
-          ],
-          "loc": {
-            "start": {
-              "line": 31,
-              "column": 0
-            },
-            "end": {
-              "line": 34,
-              "column": 3
-            }
-          }
-        }
-      ]
-    },
-    {
-      "type": "ExportNamedDeclaration",
-      "declaration": {
-        "type": "VariableDeclaration",
-        "declarations": [
-          {
-            "type": "VariableDeclarator",
-            "id": {
-              "type": "Identifier",
-              "name": "REMOVAL_SOURCE",
-              "range": [
-                910,
-                924
-              ],
-              "loc": {
-                "start": {
-                  "line": 35,
-                  "column": 13
-                },
-                "end": {
-                  "line": 35,
-                  "column": 27
-                }
-              }
-            },
-            "init": {
-              "type": "Literal",
-              "value": "__REMOVALS",
-              "raw": "'__REMOVALS'",
-              "range": [
-                927,
-                939
-              ],
-              "loc": {
-                "start": {
-                  "line": 35,
-                  "column": 30
-                },
-                "end": {
-                  "line": 35,
-                  "column": 42
-                }
-              }
-            },
-            "range": [
-              910,
-              939
-            ],
-            "loc": {
-              "start": {
-                "line": 35,
-                "column": 13
-              },
-              "end": {
-                "line": 35,
-                "column": 42
-              }
-            }
-          }
-        ],
-        "kind": "const",
-        "range": [
-          904,
-          940
-        ],
-        "loc": {
-          "start": {
-            "line": 35,
-            "column": 7
-          },
-          "end": {
-            "line": 35,
-            "column": 43
-          }
-        },
-        "leadingComments": [
-          {
-            "type": "Block",
-            "value": "*\n * A common storage key for addressing the removals source (for collections) in the auxillary state.\n * @type {String}\n ",
-            "range": [
-              770,
-              896
-            ],
-            "loc": {
-              "start": {
-                "line": 31,
-                "column": 0
-              },
-              "end": {
-                "line": 34,
-                "column": 3
-              }
-            }
-          }
-        ],
-        "trailingComments": [
-          {
-            "type": "Block",
-            "value": "*\n * A common storage key prefix for addressing the reducer arguments in the auxillary state.\n * @type {String}\n ",
-            "range": [
-              942,
-              1059
-            ],
-            "loc": {
-              "start": {
-                "line": 37,
-                "column": 0
-              },
-              "end": {
-                "line": 40,
-                "column": 3
-              }
-            }
-          }
-        ]
-      },
-      "specifiers": [],
-      "source": null,
-      "range": [
-        897,
-        940
-      ],
-      "loc": {
-        "start": {
-          "line": 35,
-          "column": 0
-        },
-        "end": {
-          "line": 35,
-          "column": 43
-        }
-      },
-      "leadingComments": [
-        {
-          "type": "Block",
-          "value": "*\n * A common storage key for addressing the removals source (for collections) in the auxillary state.\n * @type {String}\n ",
-          "range": [
-            770,
-            896
-          ],
-          "loc": {
-            "start": {
-              "line": 31,
-              "column": 0
-            },
-            "end": {
-              "line": 34,
-              "column": 3
-            }
-          }
-        }
-      ],
-      "trailingComments": [
-        {
-          "type": "Block",
           "value": "*\n * A common storage key prefix for addressing the reducer arguments in the auxillary state.\n * @type {String}\n ",
           "range": [
-            942,
-            1059
+            595,
+            712
           ],
           "loc": {
             "start": {
-              "line": 37,
+              "line": 25,
               "column": 0
             },
             "end": {
-              "line": 40,
+              "line": 28,
               "column": 3
             }
           }
@@ -1050,16 +704,16 @@
               "type": "Identifier",
               "name": "ARGS_PREFIX",
               "range": [
-                1073,
-                1084
+                726,
+                737
               ],
               "loc": {
                 "start": {
-                  "line": 41,
+                  "line": 29,
                   "column": 13
                 },
                 "end": {
-                  "line": 41,
+                  "line": 29,
                   "column": 24
                 }
               }
@@ -1069,31 +723,31 @@
               "value": "__ARGS_",
               "raw": "'__ARGS_'",
               "range": [
-                1087,
-                1096
+                740,
+                749
               ],
               "loc": {
                 "start": {
-                  "line": 41,
+                  "line": 29,
                   "column": 27
                 },
                 "end": {
-                  "line": 41,
+                  "line": 29,
                   "column": 36
                 }
               }
             },
             "range": [
-              1073,
-              1096
+              726,
+              749
             ],
             "loc": {
               "start": {
-                "line": 41,
+                "line": 29,
                 "column": 13
               },
               "end": {
-                "line": 41,
+                "line": 29,
                 "column": 36
               }
             }
@@ -1101,16 +755,16 @@
         ],
         "kind": "const",
         "range": [
-          1067,
-          1097
+          720,
+          750
         ],
         "loc": {
           "start": {
-            "line": 41,
+            "line": 29,
             "column": 7
           },
           "end": {
-            "line": 41,
+            "line": 29,
             "column": 37
           }
         },
@@ -1119,8 +773,201 @@
             "type": "Block",
             "value": "*\n * A common storage key prefix for addressing the reducer arguments in the auxillary state.\n * @type {String}\n ",
             "range": [
-              942,
-              1059
+              595,
+              712
+            ],
+            "loc": {
+              "start": {
+                "line": 25,
+                "column": 0
+              },
+              "end": {
+                "line": 28,
+                "column": 3
+              }
+            }
+          }
+        ],
+        "trailingComments": [
+          {
+            "type": "Block",
+            "value": "*\n * A common storage key prefix for addressing one of the sources of a reduction chain in auxillary state.\n * @type {String}\n ",
+            "range": [
+              752,
+              883
+            ],
+            "loc": {
+              "start": {
+                "line": 31,
+                "column": 0
+              },
+              "end": {
+                "line": 34,
+                "column": 3
+              }
+            }
+          }
+        ]
+      },
+      "specifiers": [],
+      "source": null,
+      "range": [
+        713,
+        750
+      ],
+      "loc": {
+        "start": {
+          "line": 29,
+          "column": 0
+        },
+        "end": {
+          "line": 29,
+          "column": 37
+        }
+      },
+      "leadingComments": [
+        {
+          "type": "Block",
+          "value": "*\n * A common storage key prefix for addressing the reducer arguments in the auxillary state.\n * @type {String}\n ",
+          "range": [
+            595,
+            712
+          ],
+          "loc": {
+            "start": {
+              "line": 25,
+              "column": 0
+            },
+            "end": {
+              "line": 28,
+              "column": 3
+            }
+          }
+        }
+      ],
+      "trailingComments": [
+        {
+          "type": "Block",
+          "value": "*\n * A common storage key prefix for addressing one of the sources of a reduction chain in auxillary state.\n * @type {String}\n ",
+          "range": [
+            752,
+            883
+          ],
+          "loc": {
+            "start": {
+              "line": 31,
+              "column": 0
+            },
+            "end": {
+              "line": 34,
+              "column": 3
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "ExportNamedDeclaration",
+      "declaration": {
+        "type": "VariableDeclaration",
+        "declarations": [
+          {
+            "type": "VariableDeclarator",
+            "id": {
+              "type": "Identifier",
+              "name": "SOURCE_PREFIX",
+              "range": [
+                897,
+                910
+              ],
+              "loc": {
+                "start": {
+                  "line": 35,
+                  "column": 13
+                },
+                "end": {
+                  "line": 35,
+                  "column": 26
+                }
+              }
+            },
+            "init": {
+              "type": "Literal",
+              "value": "__SOURCE_",
+              "raw": "'__SOURCE_'",
+              "range": [
+                913,
+                924
+              ],
+              "loc": {
+                "start": {
+                  "line": 35,
+                  "column": 29
+                },
+                "end": {
+                  "line": 35,
+                  "column": 40
+                }
+              }
+            },
+            "range": [
+              897,
+              924
+            ],
+            "loc": {
+              "start": {
+                "line": 35,
+                "column": 13
+              },
+              "end": {
+                "line": 35,
+                "column": 40
+              }
+            }
+          }
+        ],
+        "kind": "const",
+        "range": [
+          891,
+          925
+        ],
+        "loc": {
+          "start": {
+            "line": 35,
+            "column": 7
+          },
+          "end": {
+            "line": 35,
+            "column": 41
+          }
+        },
+        "leadingComments": [
+          {
+            "type": "Block",
+            "value": "*\n * A common storage key prefix for addressing one of the sources of a reduction chain in auxillary state.\n * @type {String}\n ",
+            "range": [
+              752,
+              883
+            ],
+            "loc": {
+              "start": {
+                "line": 31,
+                "column": 0
+              },
+              "end": {
+                "line": 34,
+                "column": 3
+              }
+            }
+          }
+        ],
+        "trailingComments": [
+          {
+            "type": "Block",
+            "value": "*\n * A common storage key prefix for addressing extra state in the auxillary state object.\n ",
+            "range": [
+              927,
+              1023
             ],
             "loc": {
               "start": {
@@ -1128,7 +975,160 @@
                 "column": 0
               },
               "end": {
+                "line": 39,
+                "column": 3
+              }
+            }
+          }
+        ]
+      },
+      "specifiers": [],
+      "source": null,
+      "range": [
+        884,
+        925
+      ],
+      "loc": {
+        "start": {
+          "line": 35,
+          "column": 0
+        },
+        "end": {
+          "line": 35,
+          "column": 41
+        }
+      },
+      "leadingComments": [
+        {
+          "type": "Block",
+          "value": "*\n * A common storage key prefix for addressing one of the sources of a reduction chain in auxillary state.\n * @type {String}\n ",
+          "range": [
+            752,
+            883
+          ],
+          "loc": {
+            "start": {
+              "line": 31,
+              "column": 0
+            },
+            "end": {
+              "line": 34,
+              "column": 3
+            }
+          }
+        }
+      ],
+      "trailingComments": [
+        {
+          "type": "Block",
+          "value": "*\n * A common storage key prefix for addressing extra state in the auxillary state object.\n ",
+          "range": [
+            927,
+            1023
+          ],
+          "loc": {
+            "start": {
+              "line": 37,
+              "column": 0
+            },
+            "end": {
+              "line": 39,
+              "column": 3
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "ExportNamedDeclaration",
+      "declaration": {
+        "type": "VariableDeclaration",
+        "declarations": [
+          {
+            "type": "VariableDeclarator",
+            "id": {
+              "type": "Identifier",
+              "name": "EXTRA",
+              "range": [
+                1037,
+                1042
+              ],
+              "loc": {
+                "start": {
+                  "line": 40,
+                  "column": 13
+                },
+                "end": {
+                  "line": 40,
+                  "column": 18
+                }
+              }
+            },
+            "init": {
+              "type": "Literal",
+              "value": "__EXTRA",
+              "raw": "'__EXTRA'",
+              "range": [
+                1045,
+                1054
+              ],
+              "loc": {
+                "start": {
+                  "line": 40,
+                  "column": 21
+                },
+                "end": {
+                  "line": 40,
+                  "column": 30
+                }
+              }
+            },
+            "range": [
+              1037,
+              1054
+            ],
+            "loc": {
+              "start": {
                 "line": 40,
+                "column": 13
+              },
+              "end": {
+                "line": 40,
+                "column": 30
+              }
+            }
+          }
+        ],
+        "kind": "const",
+        "range": [
+          1031,
+          1055
+        ],
+        "loc": {
+          "start": {
+            "line": 40,
+            "column": 7
+          },
+          "end": {
+            "line": 40,
+            "column": 31
+          }
+        },
+        "leadingComments": [
+          {
+            "type": "Block",
+            "value": "*\n * A common storage key prefix for addressing extra state in the auxillary state object.\n ",
+            "range": [
+              927,
+              1023
+            ],
+            "loc": {
+              "start": {
+                "line": 37,
+                "column": 0
+              },
+              "end": {
+                "line": 39,
                 "column": 3
               }
             }
@@ -1139,26 +1139,26 @@
       "specifiers": [],
       "source": null,
       "range": [
-        1060,
-        1097
+        1024,
+        1055
       ],
       "loc": {
         "start": {
-          "line": 41,
+          "line": 40,
           "column": 0
         },
         "end": {
-          "line": 41,
-          "column": 37
+          "line": 40,
+          "column": 31
         }
       },
       "leadingComments": [
         {
           "type": "Block",
-          "value": "*\n * A common storage key prefix for addressing the reducer arguments in the auxillary state.\n * @type {String}\n ",
+          "value": "*\n * A common storage key prefix for addressing extra state in the auxillary state object.\n ",
           "range": [
-            942,
-            1059
+            927,
+            1023
           ],
           "loc": {
             "start": {
@@ -1166,7 +1166,7 @@
               "column": 0
             },
             "end": {
-              "line": 40,
+              "line": 39,
               "column": 3
             }
           }
@@ -1177,7 +1177,7 @@
   "sourceType": "module",
   "range": [
     117,
-    1097
+    1055
   ],
   "loc": {
     "start": {
@@ -1185,8 +1185,8 @@
       "column": 0
     },
     "end": {
-      "line": 41,
-      "column": 37
+      "line": 40,
+      "column": 31
     }
   },
   "comments": [
@@ -1264,10 +1264,10 @@
     },
     {
       "type": "Block",
-      "value": "*\n * A common storage key for addressing the additions source (for collections) in the auxillary state.\n * @type {String}\n ",
+      "value": "*\n * A common storage key prefix for addressing the reducer arguments in the auxillary state.\n * @type {String}\n ",
       "range": [
         595,
-        722
+        712
       ],
       "loc": {
         "start": {
@@ -1282,10 +1282,10 @@
     },
     {
       "type": "Block",
-      "value": "*\n * A common storage key for addressing the removals source (for collections) in the auxillary state.\n * @type {String}\n ",
+      "value": "*\n * A common storage key prefix for addressing one of the sources of a reduction chain in auxillary state.\n * @type {String}\n ",
       "range": [
-        770,
-        896
+        752,
+        883
       ],
       "loc": {
         "start": {
@@ -1300,10 +1300,10 @@
     },
     {
       "type": "Block",
-      "value": "*\n * A common storage key prefix for addressing the reducer arguments in the auxillary state.\n * @type {String}\n ",
+      "value": "*\n * A common storage key prefix for addressing extra state in the auxillary state object.\n ",
       "range": [
-        942,
-        1059
+        927,
+        1023
       ],
       "loc": {
         "start": {
@@ -1311,7 +1311,7 @@
           "column": 0
         },
         "end": {
-          "line": 40,
+          "line": 39,
           "column": 3
         }
       }

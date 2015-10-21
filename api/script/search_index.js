@@ -1,8 +1,8 @@
 window.esdocSearchIndex = [
   [
-    "requex/src/reducers/storage-keys.js~addition_source",
-    "variable/index.html#static-variable-ADDITION_SOURCE",
-    "<span>ADDITION_SOURCE</span> <span class=\"search-result-import-path\">requex/src/reducers/storage-keys.js</span>",
+    "requex/src/collection-delta-kinds.js~added",
+    "variable/index.html#static-variable-ADDED",
+    "<span>ADDED</span> <span class=\"search-result-import-path\">requex/src/collection-delta-kinds.js</span>",
     "variable"
   ],
   [
@@ -24,16 +24,40 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
+    "requex/src/collection-delta-kinds.js~cleared",
+    "variable/index.html#static-variable-CLEARED",
+    "<span>CLEARED</span> <span class=\"search-result-import-path\">requex/src/collection-delta-kinds.js</span>",
+    "variable"
+  ],
+  [
     "requex/src/reducers/collection-reducer.js~collectionreducer",
     "class/src/reducers/collection-reducer.js~CollectionReducer.html",
     "<span>CollectionReducer</span> <span class=\"search-result-import-path\">requex/src/reducers/collection-reducer.js</span>",
     "class"
   ],
   [
+    "requex/src/reducers/combine-latest-reducer.js~combinelatestreducer",
+    "class/src/reducers/combine-latest-reducer.js~CombineLatestReducer.html",
+    "<span>CombineLatestReducer</span> <span class=\"search-result-import-path\">requex/src/reducers/combine-latest-reducer.js</span>",
+    "class"
+  ],
+  [
+    "requex/src/index.js~deltas",
+    "variable/index.html#static-variable-Deltas",
+    "<span>Deltas</span> <span class=\"search-result-import-path\">requex/src/index.js</span>",
+    "variable"
+  ],
+  [
     "requex/src/reducers/dictionary-object-reducer.js~dictionaryobjectreducer",
     "class/src/reducers/dictionary-object-reducer.js~DictionaryObjectReducer.html",
     "<span>DictionaryObjectReducer</span> <span class=\"search-result-import-path\">requex/src/reducers/dictionary-object-reducer.js</span>",
     "class"
+  ],
+  [
+    "requex/src/reducers/storage-keys.js~extra",
+    "variable/index.html#static-variable-EXTRA",
+    "<span>EXTRA</span> <span class=\"search-result-import-path\">requex/src/reducers/storage-keys.js</span>",
+    "variable"
   ],
   [
     "requex/src/reducers/event-reducer.js~eventreducer",
@@ -66,27 +90,15 @@ window.esdocSearchIndex = [
     "variable"
   ],
   [
-    "requex/src/index.js~linkedlist",
-    "variable/index.html#static-variable-LinkedList",
-    "<span>LinkedList</span> <span class=\"search-result-import-path\">requex/src/index.js</span>",
-    "variable"
-  ],
-  [
-    "requex/src/linked-list.js~linkedlist",
-    "class/src/linked-list.js~LinkedList.html",
-    "<span>LinkedList</span> <span class=\"search-result-import-path\">requex/src/linked-list.js</span>",
-    "class"
-  ],
-  [
-    "requex/src/reducers/linked-list-reducer.js~linkedlistreducer",
-    "class/src/reducers/linked-list-reducer.js~LinkedListReducer.html",
-    "<span>LinkedListReducer</span> <span class=\"search-result-import-path\">requex/src/reducers/linked-list-reducer.js</span>",
-    "class"
-  ],
-  [
     "requex/src/reducers/mapped-reducer.js~mappedreducer",
     "class/src/reducers/mapped-reducer.js~MappedReducer.html",
     "<span>MappedReducer</span> <span class=\"search-result-import-path\">requex/src/reducers/mapped-reducer.js</span>",
+    "class"
+  ],
+  [
+    "requex/src/reducers/merge-reducer.js~mergereducer",
+    "class/src/reducers/merge-reducer.js~MergeReducer.html",
+    "<span>MergeReducer</span> <span class=\"search-result-import-path\">requex/src/reducers/merge-reducer.js</span>",
     "class"
   ],
   [
@@ -108,9 +120,9 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
-    "requex/src/reducers/storage-keys.js~removal_source",
-    "variable/index.html#static-variable-REMOVAL_SOURCE",
-    "<span>REMOVAL_SOURCE</span> <span class=\"search-result-import-path\">requex/src/reducers/storage-keys.js</span>",
+    "requex/src/collection-delta-kinds.js~removed",
+    "variable/index.html#static-variable-REMOVED",
+    "<span>REMOVED</span> <span class=\"search-result-import-path\">requex/src/collection-delta-kinds.js</span>",
     "variable"
   ],
   [
@@ -156,6 +168,12 @@ window.esdocSearchIndex = [
     "variable"
   ],
   [
+    "requex/src/reducers/storage-keys.js~source_prefix",
+    "variable/index.html#static-variable-SOURCE_PREFIX",
+    "<span>SOURCE_PREFIX</span> <span class=\"search-result-import-path\">requex/src/reducers/storage-keys.js</span>",
+    "variable"
+  ],
+  [
     "requex/src/reducers/scoped-reducer.js~scopedreducer",
     "class/src/reducers/scoped-reducer.js~ScopedReducer.html",
     "<span>ScopedReducer</span> <span class=\"search-result-import-path\">requex/src/reducers/scoped-reducer.js</span>",
@@ -178,6 +196,24 @@ window.esdocSearchIndex = [
     "class/src/reducers/value-reducer.js~ValueReducer.html",
     "<span>ValueReducer</span> <span class=\"search-result-import-path\">requex/src/reducers/value-reducer.js</span>",
     "class"
+  ],
+  [
+    "requex/src/collection-deltas.js~added",
+    "variable/index.html#static-variable-added",
+    "<span>added</span> <span class=\"search-result-import-path\">requex/src/collection-deltas.js</span>",
+    "variable"
+  ],
+  [
+    "requex/src/collection-deltas.js~cleared",
+    "variable/index.html#static-variable-cleared",
+    "<span>cleared</span> <span class=\"search-result-import-path\">requex/src/collection-deltas.js</span>",
+    "variable"
+  ],
+  [
+    "requex/src/collection-deltas.js~removed",
+    "variable/index.html#static-variable-removed",
+    "<span>removed</span> <span class=\"search-result-import-path\">requex/src/collection-deltas.js</span>",
+    "variable"
   ],
   [
     "builtinexternal/ecmascriptexternal.js~array",
@@ -504,6 +540,18 @@ window.esdocSearchIndex = [
     "external"
   ],
   [
+    "src/collection-delta-kinds.js",
+    "file/src/collection-delta-kinds.js.html",
+    "src/collection-delta-kinds.js",
+    "file"
+  ],
+  [
+    "src/collection-deltas.js",
+    "file/src/collection-deltas.js.html",
+    "src/collection-deltas.js",
+    "file"
+  ],
+  [
     "src/index.js",
     "file/src/index.js.html",
     "src/index.js",
@@ -528,6 +576,12 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "src/index.js~reduce.combinelatest",
+    "class/src/index.js~Reduce.html#static-method-combineLatest",
+    "src/index.js~Reduce.combineLatest",
+    "method"
+  ],
+  [
     "src/index.js~reduce.dictionaryobjectof",
     "class/src/index.js~Reduce.html#static-method-dictionaryObjectOf",
     "src/index.js~Reduce.dictionaryObjectOf",
@@ -540,9 +594,9 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
-    "src/index.js~reduce.linkedlistof",
-    "class/src/index.js~Reduce.html#static-method-linkedListOf",
-    "src/index.js~Reduce.linkedListOf",
+    "src/index.js~reduce.merge",
+    "class/src/index.js~Reduce.html#static-method-merge",
+    "src/index.js~Reduce.merge",
     "method"
   ],
   [
@@ -561,72 +615,6 @@ window.esdocSearchIndex = [
     "src/index.js~reduce.value",
     "class/src/index.js~Reduce.html#static-method-value",
     "src/index.js~Reduce.value",
-    "method"
-  ],
-  [
-    "src/linked-list.js",
-    "file/src/linked-list.js.html",
-    "src/linked-list.js",
-    "file"
-  ],
-  [
-    "src/linked-list.js~linkedlist.cons",
-    "class/src/linked-list.js~LinkedList.html#static-method-cons",
-    "src/linked-list.js~LinkedList.cons",
-    "method"
-  ],
-  [
-    "src/linked-list.js~linkedlist.filter",
-    "class/src/linked-list.js~LinkedList.html#static-method-filter",
-    "src/linked-list.js~LinkedList.filter",
-    "method"
-  ],
-  [
-    "src/linked-list.js~linkedlist.foreach",
-    "class/src/linked-list.js~LinkedList.html#static-method-forEach",
-    "src/linked-list.js~LinkedList.forEach",
-    "method"
-  ],
-  [
-    "src/linked-list.js~linkedlist.isempty",
-    "class/src/linked-list.js~LinkedList.html#static-method-isEmpty",
-    "src/linked-list.js~LinkedList.isEmpty",
-    "method"
-  ],
-  [
-    "src/linked-list.js~linkedlist.map",
-    "class/src/linked-list.js~LinkedList.html#static-method-map",
-    "src/linked-list.js~LinkedList.map",
-    "method"
-  ],
-  [
-    "src/linked-list.js~linkedlist.nil",
-    "class/src/linked-list.js~LinkedList.html#static-method-nil",
-    "src/linked-list.js~LinkedList.nil",
-    "method"
-  ],
-  [
-    "src/linked-list.js~linkedlist.ofarray",
-    "class/src/linked-list.js~LinkedList.html#static-method-ofArray",
-    "src/linked-list.js~LinkedList.ofArray",
-    "method"
-  ],
-  [
-    "src/linked-list.js~linkedlist.reduce",
-    "class/src/linked-list.js~LinkedList.html#static-method-reduce",
-    "src/linked-list.js~LinkedList.reduce",
-    "method"
-  ],
-  [
-    "src/linked-list.js~linkedlist.reverse",
-    "class/src/linked-list.js~LinkedList.html#static-method-reverse",
-    "src/linked-list.js~LinkedList.reverse",
-    "method"
-  ],
-  [
-    "src/linked-list.js~linkedlist.toarray",
-    "class/src/linked-list.js~LinkedList.html#static-method-toArray",
-    "src/linked-list.js~LinkedList.toArray",
     "method"
   ],
   [
@@ -882,6 +870,18 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "src/reducers/combine-latest-reducer.js",
+    "file/src/reducers/combine-latest-reducer.js.html",
+    "src/reducers/combine-latest-reducer.js",
+    "file"
+  ],
+  [
+    "src/reducers/combine-latest-reducer.js~combinelatestreducer#constructor",
+    "class/src/reducers/combine-latest-reducer.js~CombineLatestReducer.html#instance-constructor-constructor",
+    "src/reducers/combine-latest-reducer.js~CombineLatestReducer#constructor",
+    "method"
+  ],
+  [
     "src/reducers/dictionary-object-reducer.js",
     "file/src/reducers/dictionary-object-reducer.js.html",
     "src/reducers/dictionary-object-reducer.js",
@@ -942,18 +942,6 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
-    "src/reducers/linked-list-reducer.js",
-    "file/src/reducers/linked-list-reducer.js.html",
-    "src/reducers/linked-list-reducer.js",
-    "file"
-  ],
-  [
-    "src/reducers/linked-list-reducer.js~linkedlistreducer#constructor",
-    "class/src/reducers/linked-list-reducer.js~LinkedListReducer.html#instance-constructor-constructor",
-    "src/reducers/linked-list-reducer.js~LinkedListReducer#constructor",
-    "method"
-  ],
-  [
     "src/reducers/mapped-reducer.js",
     "file/src/reducers/mapped-reducer.js.html",
     "src/reducers/mapped-reducer.js",
@@ -963,6 +951,18 @@ window.esdocSearchIndex = [
     "src/reducers/mapped-reducer.js~mappedreducer#constructor",
     "class/src/reducers/mapped-reducer.js~MappedReducer.html#instance-constructor-constructor",
     "src/reducers/mapped-reducer.js~MappedReducer#constructor",
+    "method"
+  ],
+  [
+    "src/reducers/merge-reducer.js",
+    "file/src/reducers/merge-reducer.js.html",
+    "src/reducers/merge-reducer.js",
+    "file"
+  ],
+  [
+    "src/reducers/merge-reducer.js~mergereducer#constructor",
+    "class/src/reducers/merge-reducer.js~MergeReducer.html#instance-constructor-constructor",
+    "src/reducers/merge-reducer.js~MergeReducer#constructor",
     "method"
   ],
   [
